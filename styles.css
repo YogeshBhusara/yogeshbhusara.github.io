@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.5;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.intro {
+    margin-bottom: 0;
+}
+
+.name-title {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.hero {
+    margin-top: 0;
+}
+
+.hero-text {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0;
+    max-width: 900px;
+}
+
+.featured-projects {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.section-label {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.section-label.emoji {
+    writing-mode: initial;
+    text-orientation: initial;
+    transform: none;
+    font-size: 24px;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex: 1;
+}
+
+.project-item {
+    margin: 0;
+}
+
+.project-link {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.project-link:hover {
+    opacity: 0.6;
+}
+
+.project-link h3 {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.experience {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+.experience-item {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.experience-item .company {
+    font-weight: 500;
+    min-width: 200px;
+}
+
+.experience-item .dates {
+    min-width: 120px;
+    opacity: 0.7;
+}
+
+.experience-item .role {
+    flex: 1;
+    opacity: 0.7;
+}
+
+.contact {
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    transition: opacity 0.2s ease;
+}
+
+.social-link:hover {
+    opacity: 0.6;
+}
+
+@media (max-width: 968px) {
+    body {
+        padding: 24px;
+    }
+
+    main {
+        gap: 60px;
+    }
+
+    .hero-text {
+        font-size: 48px;
+    }
+
+    .featured-projects,
+    .experience,
+    .contact {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .section-label {
+        writing-mode: initial;
+        text-orientation: initial;
+        transform: none;
+    }
+
+    .experience-item {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+    }
+
+    .experience-item .company,
+    .experience-item .dates {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-text {
+        font-size: 36px;
+    }
+
+    .name-title {
+        font-size: 22px;
+    }
+
+    .project-link h3 {
+        font-size: 20px;
+    }
+}
