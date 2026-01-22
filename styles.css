@@ -99,6 +99,23 @@ main {
 .intro {
     margin-bottom: 0;
     grid-column: 2 / -1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.intro-profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .name-title {
@@ -645,6 +662,15 @@ main {
 
     .hero-text {
         font-size: 36px;
+    }
+
+    .intro-profile-img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .intro {
+        gap: 16px;
     }
 
     .name-title {
