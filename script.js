@@ -1,10 +1,20 @@
-// Circular name logo – build letter spans and place on circle
+// Circular name logo – build letter spans, place on circle, JS-driven rotation
 (function initNameLogo() {
     const el = document.getElementById('name-logo');
     if (!el) return;
     const text = (el.getAttribute('data-text') || 'REPEAT*ITERATE*DESIGN*').trim();
     const letters = Array.from(text);
     const tau = Math.PI * 2;
+
+    const DEG_PER_SEC_NORMAL = 360 / 20;
+    const DEG_PER_SEC_HOVER = 360 / 5;
+    const SPEED_EASE = 0.08;
+
+    let rotation = 0;
+    let currentSpeed = DEG_PER_SEC_NORMAL;
+    let targetSpeed = DEG_PER_SEC_NORMAL;
+    let lastTime = null;
+    let rafId = null;
 
     function layout() {
         const size = el.offsetWidth || 130;
@@ -21,7 +31,33 @@
         });
     }
 
+    function tick(now) {
+        lastTime = lastTime != null ? lastTime : now;
+        const dt = Math.min((now - lastTime) / 1000, 0.1);
+        lastTime = now;
+
+        currentSpeed += (targetSpeed - currentSpeed) * SPEED_EASE;
+        rotation += currentSpeed * dt;
+        el.style.transform = `rotate(${rotation}deg)`;
+
+        rafId = requestAnimationFrame(tick);
+    }
+
+    function startSpin() {
+        lastTime = null;
+        rafId = requestAnimationFrame(tick);
+    }
+
+    el.addEventListener('mouseenter', function () {
+        targetSpeed = DEG_PER_SEC_HOVER;
+    });
+    el.addEventListener('mouseleave', function () {
+        targetSpeed = DEG_PER_SEC_NORMAL;
+    });
+
     layout();
+    startSpin();
+
     let resizeT;
     window.addEventListener('resize', function () {
         clearTimeout(resizeT);

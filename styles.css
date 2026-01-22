@@ -41,7 +41,7 @@ body {
     padding: 0 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 0;
+    column-gap: 24px;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -64,11 +64,6 @@ body {
     text-align: center;
     cursor: pointer;
     transform-origin: 50% 50%;
-    animation: name-logo-spin 20s linear infinite;
-}
-
-.name-logo:hover {
-    animation-duration: 5s;
 }
 
 .name-logo span {
@@ -79,11 +74,6 @@ body {
     font-size: 11px;
     letter-spacing: 0.02em;
     transform-origin: 50% 50%;
-}
-
-@keyframes name-logo-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
 
 main {
@@ -126,7 +116,7 @@ main {
     font-size: 80px;
     font-weight: 700;
     line-height: 1.1;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     margin: 0;
     max-width: 900px;
 }
@@ -530,7 +520,7 @@ main {
 
     .grid-overlay__inner {
         padding: 0 24px;
-        column-gap: 0;
+        column-gap: 16px;
     }
 
     .grid-overlay__inner,
@@ -631,7 +621,7 @@ main {
 
     .grid-overlay__inner {
         padding: 0 16px;
-        column-gap: 0;
+        column-gap: 12px;
     }
 
     .grid-overlay__inner,
