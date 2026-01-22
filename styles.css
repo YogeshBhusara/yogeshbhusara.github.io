@@ -223,8 +223,10 @@ main {
 
 .experience-detail {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.35em;
 }
 
 .experience-role {
@@ -242,6 +244,7 @@ main {
 }
 
 .experience-desc {
+    flex-basis: 100%;
     font-size: 15px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.75);
