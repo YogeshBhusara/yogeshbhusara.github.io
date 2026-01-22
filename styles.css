@@ -102,11 +102,19 @@ main {
 }
 
 .name-title {
-    font-size: 28px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.3;
     margin: 0;
+}
+
+.name-designation {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.02em;
+    margin: 4px 0 0;
 }
 
 .hero {
@@ -638,7 +646,11 @@ main {
     }
 
     .name-title {
-        font-size: 22px;
+        font-size: 20px;
+    }
+
+    .name-designation {
+        font-size: 13px;
     }
 
     .project-link h3 {
