@@ -25,7 +25,7 @@ body {
     display: block;
 }
 
-/* Vertical grid overlay – subtle lines, Andre Ribeiro–style */
+/* Vertical grid overlay – 5 subtle lines (4 columns), Andre Ribeiro–style */
 .grid-overlay {
     position: fixed;
     inset: 0;
@@ -40,16 +40,13 @@ body {
     margin: 0 auto;
     padding: 0 40px;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 24px;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .grid-overlay__col {
     border-right: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.grid-overlay__col--last {
-    border-right: none;
 }
 
 /* Circular name logo – top right */
@@ -93,7 +90,7 @@ main {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 24px;
     row-gap: 80px;
     padding: 0;
@@ -521,12 +518,14 @@ main {
         padding: 24px;
     }
 
-    .grid-overlay__col {
-        border-right-color: rgba(255, 255, 255, 0.03);
-    }
-
     .grid-overlay__inner {
         padding: 0 24px;
+        column-gap: 16px;
+    }
+
+    .grid-overlay__inner,
+    .grid-overlay__col {
+        border-color: rgba(255, 255, 255, 0.04);
     }
 
     .name-logo {
@@ -616,6 +615,24 @@ main {
 }
 
 @media (max-width: 640px) {
+    body {
+        padding: 16px;
+    }
+
+    .grid-overlay__inner {
+        padding: 0 16px;
+        column-gap: 12px;
+    }
+
+    .grid-overlay__inner,
+    .grid-overlay__col {
+        border-color: rgba(255, 255, 255, 0.03);
+    }
+
+    main {
+        column-gap: 12px;
+    }
+
     .hero-text {
         font-size: 36px;
     }
