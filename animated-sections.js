@@ -11,11 +11,11 @@
     if (!sections.length) return;
 
     const config = {
-        distance: 100,
+        distance: 40,
         direction: 'vertical',
         reverse: false,
-        duration: 0.8,
-        ease: 'power3.out',
+        duration: 1.4,
+        ease: 'power2.out',
         initialOpacity: 0,
         animateOpacity: true,
         scale: 1,
