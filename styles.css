@@ -270,7 +270,7 @@ main {
 
 .experience-item {
     display: grid;
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 24px;
     align-items: start;
 }
