@@ -67,17 +67,6 @@ body {
     animation: name-logo-spin 20s linear infinite;
 }
 
-.name-logo--inline {
-    position: static;
-    flex-shrink: 0;
-    width: 100px;
-    height: 100px;
-}
-
-.name-logo.name-logo--inline span {
-    font-size: 9px;
-}
-
 .name-logo:hover {
     animation-duration: 5s;
 }
@@ -110,16 +99,6 @@ main {
 .intro {
     margin-bottom: 0;
     grid-column: 2 / -1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    background: #000;
-    padding-bottom: 24px;
 }
 
 .name-title {
@@ -532,20 +511,6 @@ main {
 .footer-icon {
     width: 22px;
     height: 22px;
-}
-
-@media (max-width: 1100px) {
-    .name-logo {
-        position: static;
-        width: 100px;
-        height: 100px;
-        top: auto;
-        right: auto;
-    }
-
-    .name-logo span {
-        font-size: 9px;
-    }
 }
 
 @media (max-width: 968px) {
