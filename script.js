@@ -2,9 +2,10 @@
 (function initNameLogo() {
     const el = document.getElementById('name-logo');
     if (!el) return;
-    const text = (el.getAttribute('data-text') || 'YOGESH * BHUSARA *').trim();
+    const text = (el.getAttribute('data-text') || 'REPEAT*ITERATE*DESIGN*').trim();
     const letters = Array.from(text);
     const tau = Math.PI * 2;
+    const INLINE_BREAKPOINT = 1100;
 
     function layout() {
         const size = el.offsetWidth || 130;
@@ -27,6 +28,26 @@
         clearTimeout(resizeT);
         resizeT = setTimeout(layout, 150);
     });
+
+    // Scroll past About OR viewport < 1100px: logo moves next to name (inline)
+    const about = document.querySelector('.about');
+    if (!about) return;
+
+    function updateInlineState() {
+        const wide = window.innerWidth >= INLINE_BREAKPOINT;
+        const had = el.classList.contains('name-logo--inline');
+        if (!wide) {
+            el.classList.add('name-logo--inline');
+        } else {
+            const rect = about.getBoundingClientRect();
+            el.classList.toggle('name-logo--inline', rect.bottom < 0);
+        }
+        if (had !== el.classList.contains('name-logo--inline')) layout();
+    }
+
+    window.addEventListener('scroll', updateInlineState, { passive: true });
+    window.addEventListener('resize', updateInlineState);
+    updateInlineState();
 })();
 
 // Smooth scrolling for in-page anchors
