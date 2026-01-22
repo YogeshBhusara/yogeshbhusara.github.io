@@ -25,6 +25,33 @@ body {
     display: block;
 }
 
+/* Vertical grid overlay – subtle lines, Andre Ribeiro–style */
+.grid-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.grid-overlay__inner {
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+}
+
+.grid-overlay__col {
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.grid-overlay__col--last {
+    border-right: none;
+}
+
 /* Circular name logo – top right */
 .name-logo {
     position: fixed;
@@ -63,14 +90,18 @@ body {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-    padding-left: 100px;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    row-gap: 80px;
+    padding: 0;
 }
 
 .intro {
     margin-bottom: 0;
+    grid-column: 2 / -1;
 }
 
 .name-title {
@@ -83,6 +114,7 @@ main {
 
 .hero {
     margin-top: 0;
+    grid-column: 2 / -1;
 }
 
 .hero-text {
@@ -95,13 +127,18 @@ main {
 }
 
 .about {
-    display: flex;
-    gap: 60px;
-    align-items: flex-start;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+}
+
+.about .section-label {
+    grid-column: 1;
 }
 
 .about-content {
-    flex: 1;
+    grid-column: 2 / -1;
     max-width: 560px;
 }
 
@@ -141,9 +178,18 @@ main {
 }
 
 .featured-projects {
-    display: flex;
-    gap: 60px;
-    align-items: flex-start;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+}
+
+.featured-projects .section-label {
+    grid-column: 1;
+}
+
+.featured-projects .projects-list {
+    grid-column: 2 / -1;
 }
 
 .section-label {
@@ -196,9 +242,18 @@ main {
 }
 
 .experience {
-    display: flex;
-    gap: 60px;
-    align-items: flex-start;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+}
+
+.experience .section-label {
+    grid-column: 1;
+}
+
+.experience .experience-list {
+    grid-column: 2 / -1;
 }
 
 .experience-list {
@@ -252,9 +307,18 @@ main {
 }
 
 .contact {
-    display: flex;
-    gap: 24px;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
     align-items: baseline;
+}
+
+.contact .section-label {
+    grid-column: 1;
+}
+
+.contact .social-links {
+    grid-column: 2 / -1;
 }
 
 .social-links {
@@ -277,12 +341,20 @@ main {
 
 /* Case studies */
 .case-studies {
-    margin-top: 80px;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    margin-top: 0;
 }
 
-.case-studies-header {
+.case-studies .case-studies-header {
+    grid-column: 2 / -1;
     margin-bottom: 40px;
     max-width: 520px;
+}
+
+.case-studies .case-grid {
+    grid-column: 2 / -1;
 }
 
 .case-title {
@@ -389,8 +461,15 @@ main {
 
 /* Footer */
 .footer {
-    margin-top: 80px;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    margin-top: 0;
     padding-bottom: 40px;
+}
+
+.footer .footer-inner {
+    grid-column: 2 / -1;
 }
 
 .footer-inner {
@@ -426,9 +505,28 @@ main {
     opacity: 1;
 }
 
+.footer-link--icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-icon {
+    width: 22px;
+    height: 22px;
+}
+
 @media (max-width: 968px) {
     body {
         padding: 24px;
+    }
+
+    .grid-overlay__col {
+        border-right-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .grid-overlay__inner {
+        padding: 0 24px;
     }
 
     .name-logo {
@@ -444,7 +542,13 @@ main {
     }
 
     main {
-        gap: 60px;
+        row-gap: 60px;
+        column-gap: 16px;
+    }
+
+    .intro,
+    .hero {
+        grid-column: 1 / -1;
     }
 
     .hero-text {
@@ -456,12 +560,37 @@ main {
     .experience,
     .contact,
     .footer {
+        display: flex;
         flex-direction: column;
         gap: 24px;
     }
 
+    .about .section-label,
+    .featured-projects .section-label,
+    .experience .section-label,
+    .contact .section-label {
+        grid-column: unset;
+    }
+
+    .about-content,
+    .featured-projects .projects-list,
+    .experience .experience-list,
+    .contact .social-links,
+    .footer .footer-inner {
+        grid-column: unset;
+    }
+
     .about-content {
         max-width: none;
+    }
+
+    .case-studies {
+        display: block;
+    }
+
+    .case-studies .case-studies-header,
+    .case-studies .case-grid {
+        grid-column: unset;
     }
 
     .case-grid {
@@ -470,7 +599,7 @@ main {
         gap: 12px;
     }
 
-    .case-studies-header {
+    .case-studies .case-studies-header {
         margin-bottom: 24px;
     }
 
