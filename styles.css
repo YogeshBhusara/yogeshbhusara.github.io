@@ -94,6 +94,52 @@ main {
     max-width: 900px;
 }
 
+.about {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.about-content {
+    flex: 1;
+    max-width: 560px;
+}
+
+.about-text {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1em;
+}
+
+.about-text:last-of-type {
+    margin-bottom: 1.25em;
+}
+
+.about-link {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: opacity 0.2s ease;
+}
+
+.about-link:hover {
+    opacity: 0.7;
+}
+
+.about-connect {
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.about-connect:hover {
+    opacity: 0.7;
+}
+
 .featured-projects {
     display: flex;
     gap: 60px;
@@ -158,31 +204,48 @@ main {
 .experience-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 32px;
     flex: 1;
 }
 
 .experience-item {
-    display: flex;
-    gap: 16px;
-    align-items: baseline;
-    font-size: 16px;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.experience-dates {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
     font-weight: 400;
 }
 
-.experience-item .company {
+.experience-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.experience-role {
+    font-size: 18px;
     font-weight: 500;
-    min-width: 200px;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: #fff;
 }
 
-.experience-item .dates {
-    min-width: 120px;
-    opacity: 0.7;
+.experience-company {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
 }
 
-.experience-item .role {
-    flex: 1;
-    opacity: 0.7;
+.experience-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0.75em 0 0;
 }
 
 .contact {
@@ -385,12 +448,17 @@ main {
         font-size: 48px;
     }
 
+    .about,
     .featured-projects,
     .experience,
     .contact,
     .footer {
         flex-direction: column;
         gap: 24px;
+    }
+
+    .about-content {
+        max-width: none;
     }
 
     .case-grid {
@@ -410,14 +478,8 @@ main {
     }
 
     .experience-item {
-        flex-direction: column;
-        gap: 4px;
-        align-items: flex-start;
-    }
-
-    .experience-item .company,
-    .experience-item .dates {
-        min-width: auto;
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 }
 
