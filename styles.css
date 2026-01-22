@@ -279,6 +279,7 @@ main {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.65);
     font-weight: 400;
+    white-space: nowrap;
 }
 
 .experience-detail {
