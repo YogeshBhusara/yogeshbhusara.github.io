@@ -288,6 +288,7 @@ main {
     flex-wrap: wrap;
     align-items: baseline;
     gap: 0 0.35em;
+    max-width: 90%;
 }
 
 .experience-role {
