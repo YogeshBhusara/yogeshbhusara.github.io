@@ -715,14 +715,23 @@ main {
 
     .intro-content {
         flex-direction: column;
-    }
-
-    .name-logo {
-        order: -1;
+        position: relative;
     }
 
     .intro-name-group {
-        order: 1;
+        position: relative;
+    }
+
+    .name-logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    .profile-image {
+        position: relative;
+        z-index: 1;
     }
 
     .project-link h3 {
