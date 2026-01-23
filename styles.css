@@ -85,12 +85,12 @@ main {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
     row-gap: 80px;
-    padding: 0;
+    padding: 0 20px;
 }
 
 .intro {
     margin-bottom: 0;
-    grid-column: 2 / -1;
+    grid-column: 2 / 6;
 }
 
 .intro-content {
@@ -140,7 +140,7 @@ main {
 
 .hero {
     margin-top: 0;
-    grid-column: 2 / -1;
+    grid-column: 2 / 6;
 }
 
 .hero-text {
@@ -164,8 +164,8 @@ main {
 }
 
 .about-content {
-    grid-column: 2 / -1;
-    max-width: 560px;
+    grid-column: 2 / 5;
+    max-width: none;
 }
 
 .about-text {
@@ -215,7 +215,7 @@ main {
 }
 
 .featured-projects .projects-list {
-    grid-column: 2 / -1;
+    grid-column: 2 / 6;
 }
 
 .section-label {
@@ -279,7 +279,7 @@ main {
 }
 
 .experience .experience-list {
-    grid-column: 2 / -1;
+    grid-column: 2 / 6;
 }
 
 .experience-list {
@@ -346,7 +346,7 @@ main {
 }
 
 .contact .social-links {
-    grid-column: 2 / -1;
+    grid-column: 2 / 5;
 }
 
 .social-links {
@@ -497,7 +497,7 @@ main {
 }
 
 .footer .footer-inner {
-    grid-column: 2 / -1;
+    grid-column: 2 / 6;
 }
 
 .footer-inner {
