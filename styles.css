@@ -108,11 +108,18 @@ main {
 }
 
 .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+    border: 20px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+        0 0 40px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .name-title {
@@ -582,8 +589,9 @@ main {
     }
 
     .profile-image {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
+        border-width: 12px;
     }
 
     .hero-text {
