@@ -101,9 +101,15 @@ main {
     flex-wrap: wrap;
 }
 
+.intro-name-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .profile-image {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
@@ -571,9 +577,13 @@ main {
         gap: 16px;
     }
 
+    .intro-name-group {
+        gap: 16px;
+    }
+
     .profile-image {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
 
     .hero-text {
