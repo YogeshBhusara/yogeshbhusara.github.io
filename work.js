@@ -95,38 +95,39 @@
 
     // Open work modal
     function openWorkModal() {
-        workModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
         renderWorkGrid();
         
-        // Animate in
-        if (typeof gsap !== 'undefined') {
-            gsap.fromTo(workModal, 
-                { opacity: 0 },
-                { opacity: 1, duration: 0.3 }
-            );
-            gsap.fromTo('.work-item',
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, delay: 0.2 }
-            );
-        }
+        // Use requestAnimationFrame for smooth transition
+        requestAnimationFrame(() => {
+            workModal.setAttribute('aria-hidden', 'false');
+            
+            // Animate work items with stagger
+            if (typeof gsap !== 'undefined') {
+                const items = document.querySelectorAll('.work-item');
+                gsap.fromTo(items,
+                    { opacity: 0, y: 15 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.4, 
+                        stagger: 0.05, 
+                        delay: 0.2,
+                        ease: 'power2.out'
+                    }
+                );
+            }
+        });
     }
 
     // Close work modal
     function closeWorkModal() {
-        if (typeof gsap !== 'undefined') {
-            gsap.to(workModal, {
-                opacity: 0,
-                duration: 0.3,
-                onComplete: () => {
-                    workModal.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = '';
-                }
-            });
-        } else {
-            workModal.setAttribute('aria-hidden', 'true');
+        workModal.setAttribute('aria-hidden', 'true');
+        
+        // Wait for transition to complete
+        setTimeout(() => {
             document.body.style.overflow = '';
-        }
+        }, 400);
     }
 
     // Render work grid
@@ -156,30 +157,38 @@
         const work = works.find(w => w.id === workId);
         if (!work) return;
 
-        // Close modal first
-        closeWorkModal();
+        // Close modal first if open
+        if (workModal && workModal.getAttribute('aria-hidden') === 'false') {
+            closeWorkModal();
+        }
 
         // Render detail
-        setTimeout(() => {
-            renderWorkDetail(work);
+        renderWorkDetail(work);
+        
+        // Use requestAnimationFrame for smooth transition
+        requestAnimationFrame(() => {
             workDetail.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
             
             // Scroll to top
             workDetailInner.scrollTop = 0;
             
-            // Animate in
+            // Animate content with stagger
             if (typeof gsap !== 'undefined') {
-                gsap.fromTo(workDetail,
-                    { opacity: 0 },
-                    { opacity: 1, duration: 0.3 }
-                );
-                gsap.fromTo('.work-detail-header, .work-detail-section',
-                    { opacity: 0, y: 30 },
-                    { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, delay: 0.2 }
+                const elements = document.querySelectorAll('.work-detail-header, .work-detail-section, .work-detail-image-wrapper, .work-detail-navigation');
+                gsap.fromTo(elements,
+                    { opacity: 0, y: 20 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.5, 
+                        stagger: 0.08, 
+                        delay: 0.15,
+                        ease: 'power2.out'
+                    }
                 );
             }
-        }, 300);
+        });
     }
 
     // Render work detail
@@ -225,34 +234,27 @@
             </div>
         `;
         
-        // Add event listener to next button
-        const nextButton = workDetailInner.querySelector('.work-detail-next');
-        if (nextButton) {
-            nextButton.addEventListener('click', () => {
-                const nextId = nextButton.dataset.nextId;
-                closeWorkDetail();
-                setTimeout(() => {
-                    openWorkDetail(nextId);
-                }, 300);
-            });
-        }
+            // Add event listener to next button
+            const nextButton = workDetailInner.querySelector('.work-detail-next');
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    const nextId = nextButton.dataset.nextId;
+                    closeWorkDetail();
+                    setTimeout(() => {
+                        openWorkDetail(nextId);
+                    }, 400);
+                });
+            }
     }
 
     // Close work detail
     function closeWorkDetail() {
-        if (typeof gsap !== 'undefined') {
-            gsap.to(workDetail, {
-                opacity: 0,
-                duration: 0.3,
-                onComplete: () => {
-                    workDetail.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = '';
-                }
-            });
-        } else {
-            workDetail.setAttribute('aria-hidden', 'true');
+        workDetail.setAttribute('aria-hidden', 'true');
+        
+        // Wait for transition to complete
+        setTimeout(() => {
             document.body.style.overflow = '';
-        }
+        }, 400);
     }
 
     // Event listeners
