@@ -106,10 +106,6 @@ main {
     border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.main-grid-line:last-child {
-    border-right: none;
-}
-
 .intro {
     margin-bottom: 0;
     grid-column: 2 / 5;
