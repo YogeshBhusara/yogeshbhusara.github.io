@@ -38,7 +38,7 @@
 
         currentSpeed += (targetSpeed - currentSpeed) * SPEED_EASE;
         rotation += currentSpeed * dt;
-        el.style.transform = `rotate(${rotation}deg)`;
+        el.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
 
         rafId = requestAnimationFrame(tick);
     }
