@@ -38,9 +38,9 @@ body {
     max-width: 1400px;
     height: 100%;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     column-gap: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -82,7 +82,7 @@ main {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
     row-gap: 80px;
     padding: 0;
@@ -550,7 +550,7 @@ main {
     }
 
     .grid-overlay__inner {
-        padding: 0 24px;
+        padding: 0;
         column-gap: 0;
     }
 
@@ -664,7 +664,7 @@ main {
     }
 
     .grid-overlay__inner {
-        padding: 0 16px;
+        padding: 0;
         column-gap: 0;
     }
 
