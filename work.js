@@ -184,6 +184,10 @@
 
     // Render work detail
     function renderWorkDetail(work) {
+        const currentIndex = works.findIndex(w => w.id === work.id);
+        const nextIndex = (currentIndex + 1) % works.length;
+        const nextWork = works[nextIndex];
+        
         workDetailInner.innerHTML = `
             <div class="work-detail-header">
                 <h1 class="work-detail-title">${work.title}</h1>
@@ -213,7 +217,25 @@
                     <img src="${img}" alt="${work.title}" class="work-detail-image" loading="lazy">
                 </div>
             `).join('')}
+            
+            <div class="work-detail-navigation">
+                <button class="work-detail-next" data-next-id="${nextWork.id}">
+                    Next Project →
+                </button>
+            </div>
         `;
+        
+        // Add event listener to next button
+        const nextButton = workDetailInner.querySelector('.work-detail-next');
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                const nextId = nextButton.dataset.nextId;
+                closeWorkDetail();
+                setTimeout(() => {
+                    openWorkDetail(nextId);
+                }, 300);
+            });
+        }
     }
 
     // Close work detail
