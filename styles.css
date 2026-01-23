@@ -63,6 +63,12 @@ body {
     cursor: pointer;
     transform-origin: 50% 50%;
     z-index: 10;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.name-logo:hover {
+    opacity: 1;
 }
 
 .name-logo span {
