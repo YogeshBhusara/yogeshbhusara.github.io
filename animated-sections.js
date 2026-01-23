@@ -29,8 +29,9 @@
     const triggerStart = 'top ' + startPct + '%';
 
     const triggers = [];
+    const lastIndex = sections.length - 1;
 
-    sections.forEach(function (el) {
+    sections.forEach(function (el, i) {
         gsap.set(el, {
             [axis]: offset,
             scale: config.scale,
@@ -47,9 +48,13 @@
             ease: config.ease
         });
 
+        let start = triggerStart;
+        if (i === lastIndex) {
+            start = 'bottom bottom';
+        }
         const st = ScrollTrigger.create({
             trigger: el,
-            start: triggerStart,
+            start: start,
             once: true,
             onEnter: function () { tl.play(); }
         });
