@@ -51,10 +51,8 @@ body {
 
 /* Circular name logo – top right */
 .name-logo {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    z-index: 10;
+    position: relative;
+    flex-shrink: 0;
     width: 130px;
     height: 130px;
     margin: 0;
@@ -93,6 +91,14 @@ main {
 .intro {
     margin-bottom: 0;
     grid-column: 2 / -1;
+}
+
+.intro-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 
 .name-title {
@@ -535,9 +541,6 @@ main {
     .name-logo {
         width: 100px;
         height: 100px;
-        top: 16px;
-        right: 16px;
-        font-size: 10px;
     }
 
     .name-logo span {
@@ -552,6 +555,12 @@ main {
     .intro,
     .hero {
         grid-column: 1 / -1;
+    }
+
+    .intro-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
 
     .hero-text {
