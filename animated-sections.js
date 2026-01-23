@@ -11,15 +11,15 @@
     if (!sections.length) return;
 
     const config = {
-        distance: 40,
+        distance: 30,
         direction: 'vertical',
         reverse: false,
-        duration: 1.4,
+        duration: 1.2,
         ease: 'power2.out',
         initialOpacity: 0,
         animateOpacity: true,
         scale: 1,
-        threshold: 0.1,
+        threshold: 0.15,
         delay: 0
     };
 

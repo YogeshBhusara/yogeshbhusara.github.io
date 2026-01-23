@@ -91,9 +91,11 @@ main {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     column-gap: 0;
-    row-gap: 80px;
+    row-gap: 60px;
     padding: 0 20px;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 /* Vertical grid lines inside main */
@@ -122,6 +124,7 @@ main {
 .intro-content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 24px;
     flex-wrap: wrap;
 }
@@ -605,7 +608,7 @@ main {
     }
 
     main {
-        row-gap: 60px;
+        row-gap: 40px;
         column-gap: 0;
     }
 
@@ -730,9 +733,324 @@ main {
 
     .intro-content {
         flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .work-button {
+        align-self: flex-end;
+        margin-top: 16px;
     }
 
     .project-link h3 {
         font-size: 20px;
+    }
+}
+
+/* Work Button */
+.work-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 12px 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.work-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Work Modal */
+.work-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.work-modal[aria-hidden="false"] {
+    display: block;
+    opacity: 1;
+}
+
+.work-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 4, 4, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.work-modal-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 80px 20px;
+}
+
+.work-modal-close {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.work-modal-close:hover {
+    opacity: 0.6;
+}
+
+/* Work Grid - Bento Style */
+.work-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    grid-auto-rows: 200px;
+}
+
+.work-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.work-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+.work-item--wide {
+    grid-column: span 6;
+}
+
+.work-item--tall {
+    grid-row: span 2;
+}
+
+.work-item--large {
+    grid-column: span 6;
+    grid-row: span 2;
+}
+
+.work-item--small {
+    grid-column: span 3;
+}
+
+.work-item-content {
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.work-item-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 0 8px;
+}
+
+.work-item-meta {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+/* Work Detail Page */
+.work-detail {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.work-detail[aria-hidden="false"] {
+    display: block;
+    opacity: 1;
+}
+
+.work-detail-overlay {
+    position: absolute;
+    inset: 0;
+    background: #040404;
+}
+
+.work-detail-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 80px 20px;
+}
+
+.work-detail-close {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 2001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.work-detail-close:hover {
+    opacity: 0.6;
+}
+
+.work-detail-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.work-detail-header {
+    margin-bottom: 80px;
+}
+
+.work-detail-title {
+    font-size: 64px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 24px;
+    line-height: 1.1;
+}
+
+.work-detail-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.work-detail-tag {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.work-detail-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+}
+
+.work-detail-section {
+    margin-bottom: 120px;
+}
+
+.work-detail-section-title {
+    font-size: 32px;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 0 40px;
+}
+
+.work-detail-section-content {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.work-detail-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 40px;
+    display: block;
+}
+
+@media (max-width: 968px) {
+    .work-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .work-item--wide {
+        grid-column: span 6;
+    }
+
+    .work-item--small {
+        grid-column: span 3;
+    }
+
+    .work-detail-title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .work-button {
+        font-size: 12px;
+        padding: 10px 20px;
+        align-self: stretch;
+        text-align: center;
+    }
+
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .work-item--wide,
+    .work-item--small {
+        grid-column: span 2;
+    }
+
+    .work-item--large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .work-detail-title {
+        font-size: 36px;
+    }
+
+    .work-modal-content,
+    .work-detail-content {
+        padding: 60px 16px;
+    }
+
+    .work-modal-close,
+    .work-detail-close {
+        top: 20px;
+        right: 20px;
     }
 }

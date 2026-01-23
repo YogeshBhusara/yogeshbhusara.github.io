@@ -36,6 +36,7 @@
                         <p class="name-designation">UI/UX Designer</p>
                     </div>
                 </div>
+                <button class="work-button" id="work-button">Work</button>
             </div>
         </section>
 
@@ -155,10 +156,33 @@
         </section>
     </main>
 
+    <!-- Work Modal/Grid -->
+    <div class="work-modal" id="work-modal" aria-hidden="true">
+        <div class="work-modal-overlay"></div>
+        <div class="work-modal-content">
+            <button class="work-modal-close" id="work-modal-close" aria-label="Close">×</button>
+            <div class="work-grid" id="work-grid">
+                <!-- Work items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Work Detail Page -->
+    <div class="work-detail" id="work-detail" aria-hidden="true">
+        <div class="work-detail-overlay"></div>
+        <div class="work-detail-content">
+            <button class="work-detail-close" id="work-detail-close" aria-label="Close">×</button>
+            <div class="work-detail-inner" id="work-detail-inner">
+                <!-- Detail content will be populated here -->
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
     <script src="animated-sections.js"></script>
     <script src="distort.js"></script>
+    <script src="work.js"></script>
 </body>
 </html>
