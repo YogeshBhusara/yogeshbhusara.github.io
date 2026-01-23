@@ -137,14 +137,14 @@ main {
 
 .profile-image-wrapper {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     flex-shrink: 0;
 }
 
 .profile-image {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 
@@ -626,8 +626,13 @@ main {
     }
 
     .profile-image {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .profile-image-wrapper {
+        width: 60px;
+        height: 60px;
     }
 
     .hero-text {
