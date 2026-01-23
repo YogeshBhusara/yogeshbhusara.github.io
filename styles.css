@@ -40,7 +40,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     column-gap: 0;
 }
 
@@ -81,8 +81,8 @@ main {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 24px;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 0;
     row-gap: 80px;
     padding: 0 20px;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
@@ -96,8 +96,8 @@ main {
     right: 20px;
     bottom: 0;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 24px;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 0;
     pointer-events: none;
     z-index: 0;
 }
@@ -112,7 +112,7 @@ main {
 
 .intro {
     margin-bottom: 0;
-    grid-column: 2 / 6;
+    grid-column: 2 / 5;
 }
 
 .intro-content {
@@ -162,7 +162,7 @@ main {
 
 .hero {
     margin-top: 0;
-    grid-column: 2 / 6;
+    grid-column: 2 / 5;
 }
 
 .hero-text {
@@ -237,7 +237,7 @@ main {
 }
 
 .featured-projects .projects-list {
-    grid-column: 2 / 6;
+    grid-column: 2 / 5;
 }
 
 .section-label {
@@ -301,7 +301,7 @@ main {
 }
 
 .experience .experience-list {
-    grid-column: 2 / 6;
+    grid-column: 2 / 5;
 }
 
 .experience-list {
@@ -519,7 +519,7 @@ main {
 }
 
 .footer .footer-inner {
-    grid-column: 2 / 6;
+    grid-column: 2 / 5;
 }
 
 .footer-inner {
@@ -595,7 +595,7 @@ main {
 
     main {
         row-gap: 60px;
-        column-gap: 16px;
+        column-gap: 0;
     }
 
     .intro,
@@ -702,7 +702,7 @@ main {
     }
 
     main {
-        column-gap: 12px;
+        column-gap: 0;
     }
 
     .hero-text {
