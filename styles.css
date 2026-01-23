@@ -41,7 +41,7 @@ body {
     padding: 0 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 24px;
+    column-gap: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -551,7 +551,7 @@ main {
 
     .grid-overlay__inner {
         padding: 0 24px;
-        column-gap: 16px;
+        column-gap: 0;
     }
 
     .grid-overlay__inner,
@@ -665,7 +665,7 @@ main {
 
     .grid-overlay__inner {
         padding: 0 16px;
-        column-gap: 12px;
+        column-gap: 0;
     }
 
     .grid-overlay__inner,
