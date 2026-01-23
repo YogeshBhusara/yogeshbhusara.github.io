@@ -101,6 +101,14 @@ main {
     flex-wrap: wrap;
 }
 
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
 .name-title {
     font-size: 22px;
     font-weight: 600;
@@ -561,6 +569,11 @@ main {
         flex-direction: column;
         align-items: flex-start;
         gap: 16px;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
     }
 
     .hero-text {
