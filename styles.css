@@ -42,11 +42,10 @@ body {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     column-gap: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .grid-overlay__col {
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    /* No borders - lines moved to main */
 }
 
 /* Circular name logo – top right */
@@ -86,6 +85,29 @@ main {
     column-gap: 24px;
     row-gap: 80px;
     padding: 0 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Vertical grid lines inside main */
+.main-grid-lines {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main-grid-line {
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.main-grid-line:last-child {
+    border-right: none;
 }
 
 .intro {
@@ -554,9 +576,12 @@ main {
         column-gap: 0;
     }
 
-    .grid-overlay__inner,
-    .grid-overlay__col {
+    .main-grid-line {
         border-color: rgba(255, 255, 255, 0.04);
+    }
+
+    main {
+        border-left-color: rgba(255, 255, 255, 0.04);
     }
 
     .name-logo {
@@ -668,9 +693,12 @@ main {
         column-gap: 0;
     }
 
-    .grid-overlay__inner,
-    .grid-overlay__col {
+    .main-grid-line {
         border-color: rgba(255, 255, 255, 0.03);
+    }
+
+    main {
+        border-left-color: rgba(255, 255, 255, 0.03);
     }
 
     main {
