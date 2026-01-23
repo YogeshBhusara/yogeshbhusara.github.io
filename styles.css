@@ -713,6 +713,18 @@ main {
         font-size: 13px;
     }
 
+    .intro-content {
+        flex-direction: column;
+    }
+
+    .name-logo {
+        order: -1;
+    }
+
+    .intro-name-group {
+        order: 1;
+    }
+
     .project-link h3 {
         font-size: 20px;
     }
