@@ -194,17 +194,24 @@
                 <p class="work-detail-description">${work.description}</p>
             </div>
             
-            ${work.sections.map(section => `
+            ${work.sections.map((section, index) => `
                 <div class="work-detail-section">
                     <h2 class="work-detail-section-title">${section.title}</h2>
                     <div class="work-detail-section-content">
                         <p>${section.content}</p>
                     </div>
                 </div>
+                ${work.images[index] ? `
+                    <div class="work-detail-image-wrapper">
+                        <img src="${work.images[index]}" alt="${work.title}" class="work-detail-image" loading="lazy">
+                    </div>
+                ` : ''}
             `).join('')}
             
-            ${work.images.map(img => `
-                <img src="${img}" alt="${work.title}" class="work-detail-image" loading="lazy">
+            ${work.images.slice(work.sections.length).map(img => `
+                <div class="work-detail-image-wrapper">
+                    <img src="${img}" alt="${work.title}" class="work-detail-image" loading="lazy">
+                </div>
             `).join('')}
         `;
     }
