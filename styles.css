@@ -50,43 +50,48 @@ body {
     /* No borders - lines moved to main */
 }
 
-/* Circular name logo – footer section label */
-.name-logo {
-    margin: 0;
-    border-radius: 50%;
-    font-weight: 900;
-    color: #fff;
-    text-align: center;
-    cursor: pointer;
-    transform-origin: 50% 50%;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
+/* CurvedLoop – footer curved marquee (replaces logo) */
+.curved-loop {
+    visibility: hidden;
+    cursor: grab;
+    overflow: hidden;
 }
 
-.name-logo:hover {
-    opacity: 1;
+.curved-loop:active,
+.curved-loop.is-dragging {
+    cursor: grabbing;
 }
 
-.name-logo span {
+.curved-loop-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 80px;
+}
+
+.curved-loop-font {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.curved-loop-text {
+    fill: #fff;
+}
+
+.curved-loop-measure {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     position: absolute;
-    display: inline-block;
-    left: 50%;
-    top: 50%;
-    letter-spacing: 0.02em;
-    transform-origin: 50% 50%;
 }
 
-.name-logo--footer {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    grid-column: 1;
-    flex-shrink: 0;
+.curved-loop--footer {
+    grid-column: 1 / -1;
     align-self: start;
-}
-
-.name-logo--footer span {
-    font-size: 8px;
+    max-width: 100%;
 }
 
 main > section {
@@ -540,8 +545,8 @@ main {
     padding-bottom: 40px;
 }
 
-.footer .name-logo--footer {
-    grid-column: 1;
+.footer #curved-loop {
+    grid-column: 1 / -1;
 }
 
 .footer .footer-inner {
@@ -614,15 +619,6 @@ main {
         border-left-color: rgba(255, 255, 255, 0.04);
     }
 
-    .name-logo--footer {
-        width: 80px;
-        height: 80px;
-    }
-
-    .name-logo--footer span {
-        font-size: 8px;
-    }
-
     main {
         row-gap: 40px;
         column-gap: 0;
@@ -678,6 +674,7 @@ main {
     .featured-projects .projects-list,
     .experience .experience-list,
     .contact .social-links,
+    .footer #curved-loop,
     .footer .footer-inner {
         grid-column: unset;
     }
