@@ -50,13 +50,8 @@ body {
     /* No borders - lines moved to main */
 }
 
-/* Circular name logo – top right */
+/* Circular name logo – footer section label */
 .name-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120px;
-    height: 120px;
     margin: 0;
     border-radius: 50%;
     font-weight: 900;
@@ -64,7 +59,6 @@ body {
     text-align: center;
     cursor: pointer;
     transform-origin: 50% 50%;
-    z-index: 10;
     opacity: 0.6;
     transition: opacity 0.3s ease;
 }
@@ -78,9 +72,21 @@ body {
     display: inline-block;
     left: 50%;
     top: 50%;
-    font-size: 11px;
     letter-spacing: 0.02em;
     transform-origin: 50% 50%;
+}
+
+.name-logo--footer {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    grid-column: 1;
+    flex-shrink: 0;
+    align-self: start;
+}
+
+.name-logo--footer span {
+    font-size: 8px;
 }
 
 main > section {
@@ -534,6 +540,10 @@ main {
     padding-bottom: 40px;
 }
 
+.footer .name-logo--footer {
+    grid-column: 1;
+}
+
 .footer .footer-inner {
     grid-column: 2 / 5;
 }
@@ -604,13 +614,13 @@ main {
         border-left-color: rgba(255, 255, 255, 0.04);
     }
 
-    .name-logo {
-        width: 120px;
-        height: 120px;
+    .name-logo--footer {
+        width: 80px;
+        height: 80px;
     }
 
-    .name-logo span {
-        font-size: 9px;
+    .name-logo--footer span {
+        font-size: 8px;
     }
 
     main {

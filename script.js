@@ -17,7 +17,7 @@
     let rafId = null;
 
     function layout() {
-        const size = el.offsetWidth || 130;
+        const size = el.offsetWidth || (el.classList.contains('name-logo--footer') ? 80 : 120);
         const radius = size * 0.4;
         el.innerHTML = '';
         letters.forEach((letter, i) => {
@@ -38,7 +38,10 @@
 
         currentSpeed += (targetSpeed - currentSpeed) * SPEED_EASE;
         rotation += currentSpeed * dt;
-        el.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+        const transform = el.classList.contains('name-logo--footer')
+            ? `rotate(${rotation}deg)`
+            : `translate(-50%, -50%) rotate(${rotation}deg)`;
+        el.style.transform = transform;
 
         rafId = requestAnimationFrame(tick);
     }
