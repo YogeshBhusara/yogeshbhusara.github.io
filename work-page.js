@@ -225,4 +225,13 @@
 
     // Initialize
     renderWorkList();
+
+    // Check if we need to open a specific work detail from carousel
+    const openWorkId = sessionStorage.getItem('openWorkId');
+    if (openWorkId) {
+        sessionStorage.removeItem('openWorkId');
+        setTimeout(() => {
+            openWorkDetail(openWorkId);
+        }, 100);
+    }
 })();
