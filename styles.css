@@ -10,7 +10,7 @@ body {
     color: #fff;
     line-height: 1.5;
     padding: 40px;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     position: relative;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
@@ -37,12 +37,12 @@ body {
 
 .grid-overlay__inner {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     height: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 0;
 }
 
@@ -91,35 +91,34 @@ body {
 
 main > section {
     visibility: hidden;
+    margin-bottom: 120px;
 }
 
 main {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: 0;
-    row-gap: 60px;
-    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 0 0;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
 
-/* Vertical grid lines on body */
+/* Vertical grid lines on body - simplified 3-column system */
 .body-grid-lines {
     position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 0;
     pointer-events: none;
     z-index: 0;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
 .body-grid-line {
@@ -133,9 +132,9 @@ main {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     z-index: 100;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
 .nav-inner {
@@ -170,11 +169,11 @@ main {
 
 /* Index Section (Homepage) */
 .index {
-    grid-column: 2 / 5;
-    margin-bottom: 0;
+    margin-bottom: 120px;
     min-height: 80vh;
     display: flex;
     align-items: center;
+    padding: 0 40px;
 }
 
 .index-content {
@@ -328,9 +327,11 @@ main {
 }
 
 .about {
-    grid-column: 1 / -1;
+    margin-bottom: 120px;
+    padding: 0 40px;
     display: grid;
-    grid-template-columns: subgrid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
     align-items: start;
 }
 
@@ -339,8 +340,8 @@ main {
 }
 
 .about-content {
-    grid-column: 2 / 5;
-    max-width: none;
+    grid-column: 2;
+    max-width: 700px;
 }
 
 .about-text {
@@ -460,9 +461,11 @@ main {
 }
 
 .experience {
-    grid-column: 1 / -1;
+    margin-bottom: 120px;
+    padding: 0 40px;
     display: grid;
-    grid-template-columns: subgrid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
     align-items: start;
 }
 
@@ -471,7 +474,8 @@ main {
 }
 
 .experience .experience-list {
-    grid-column: 2 / 5;
+    grid-column: 2;
+    max-width: 700px;
 }
 
 .experience-list {
@@ -483,8 +487,8 @@ main {
 
 .experience-item {
     display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 24px;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
     align-items: start;
 }
 
@@ -527,9 +531,11 @@ main {
 }
 
 .contact {
-    grid-column: 1 / -1;
+    margin-bottom: 120px;
+    padding: 0 40px;
     display: grid;
-    grid-template-columns: subgrid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
     align-items: start;
 }
 
@@ -538,7 +544,8 @@ main {
 }
 
 .contact-content {
-    grid-column: 2 / 5;
+    grid-column: 2;
+    max-width: 700px;
 }
 
 .contact-text {
@@ -701,11 +708,12 @@ main {
 
 /* Footer */
 .footer {
-    grid-column: 1 / -1;
+    margin-bottom: 0;
+    padding: 0 40px 40px;
     display: grid;
-    grid-template-columns: subgrid;
-    margin-top: 0;
-    padding-bottom: 40px;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    align-items: start;
 }
 
 .footer .name-logo--footer {
@@ -713,7 +721,8 @@ main {
 }
 
 .footer .footer-inner {
-    grid-column: 2 / 5;
+    grid-column: 2;
+    max-width: 700px;
 }
 
 .footer-inner {
@@ -792,18 +801,32 @@ main {
     }
 
     main {
-        row-gap: 40px;
-        column-gap: 0;
+        padding-top: 100px;
+    }
+
+    main > section {
+        margin-bottom: 80px;
     }
 
     .index {
-        grid-column: 1 / -1;
         min-height: auto;
+        padding: 0 24px;
+        margin-bottom: 80px;
+    }
+
+    .about,
+    .experience,
+    .contact {
+        margin-bottom: 80px;
     }
 
     .main-nav {
         top: 24px;
-        padding: 0;
+        padding: 0 24px;
+    }
+
+    .body-grid-lines {
+        padding: 0 24px;
     }
 
     .nav-inner {
@@ -853,7 +876,7 @@ main {
 
     .main-nav {
         top: 16px;
-        padding: 0;
+        padding: 0 16px;
     }
 
     .nav-inner {
@@ -863,6 +886,21 @@ main {
 
     .nav-link {
         font-size: 12px;
+    }
+
+    main {
+        padding-top: 80px;
+    }
+
+    main > section {
+        margin-bottom: 60px;
+    }
+
+    .index,
+    .about,
+    .experience,
+    .contact {
+        margin-bottom: 60px;
     }
 
     .about-content,
@@ -896,11 +934,6 @@ main {
         margin-bottom: 24px;
     }
 
-    .section-label {
-        writing-mode: initial;
-        text-orientation: initial;
-        transform: none;
-    }
 
     .experience-item {
         grid-template-columns: 1fr;
@@ -1145,17 +1178,15 @@ main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: 0;
-    row-gap: 60px;
-    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;
     transform: translateY(20px);
     opacity: 0;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform, opacity;
     -webkit-transform: translateZ(0);
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .work-detail[aria-hidden="false"] .work-detail-content {
@@ -1167,14 +1198,17 @@ main {
 .work-detail-grid-lines {
     position: absolute;
     top: 0;
-    left: 20px;
-    right: 20px;
-    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 0;
     pointer-events: none;
     z-index: 0;
+    padding: 0 40px;
 }
 
 .work-detail-grid-line {
@@ -1204,16 +1238,19 @@ main {
 }
 
 .work-detail-inner {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: subgrid;
-    align-items: start;
     padding: 80px 0;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .work-detail-header {
-    grid-column: 2 / 5;
+    grid-column: 2;
     margin-bottom: 0;
+    max-width: 700px;
 }
 
 .work-detail-title {
@@ -1246,8 +1283,9 @@ main {
 }
 
 .work-detail-section {
-    grid-column: 2 / 5;
+    grid-column: 2;
     margin-bottom: 0;
+    max-width: 700px;
 }
 
 .work-detail-section-title {
@@ -1272,15 +1310,17 @@ main {
 }
 
 .work-detail-image-wrapper {
-    grid-column: 2 / 5;
+    grid-column: 1 / -1;
     margin-bottom: 0;
+    max-width: 100%;
 }
 
 .work-detail-navigation {
-    grid-column: 2 / 5;
+    grid-column: 2;
     margin-top: 40px;
     padding-top: 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 700px;
 }
 
 .work-detail-next {
@@ -1319,13 +1359,27 @@ main {
     }
 
     .work-detail-content {
-        row-gap: 40px;
+        padding: 0 24px;
+    }
+
+    .work-detail-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 60px 0;
     }
 
     .work-detail-header,
     .work-detail-section,
+    .work-detail-navigation {
+        grid-column: 1;
+    }
+
     .work-detail-image-wrapper {
-        grid-column: 1 / -1;
+        grid-column: 1;
+    }
+
+    .work-detail-grid-lines {
+        padding: 0 24px;
     }
 
     .work-detail-grid-line {
@@ -1374,18 +1428,23 @@ main {
 
     .work-detail-content {
         padding: 0 16px;
-        row-gap: 40px;
     }
 
     .work-detail-inner {
-        padding: 60px 0;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 0;
     }
 
     .work-detail-header,
     .work-detail-section,
     .work-detail-image-wrapper,
     .work-detail-navigation {
-        grid-column: 1 / -1;
+        grid-column: 1;
+    }
+
+    .work-detail-grid-lines {
+        padding: 0 16px;
     }
 
     .work-modal-close,
