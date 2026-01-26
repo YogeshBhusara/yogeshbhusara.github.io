@@ -275,113 +275,6 @@ main {
     opacity: 0.6;
 }
 
-/* Work Carousel */
-.index-work-carousel {
-    margin: 0 0 40px;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    height: 280px;
-}
-
-.work-carousel__track {
-    display: flex;
-    width: max-content;
-    will-change: transform;
-    user-select: none;
-    gap: 32px;
-    height: 100%;
-    position: relative;
-}
-
-.work-carousel__item {
-    flex: 0 0 auto;
-    width: 280px;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.work-carousel__item:hover {
-    transform: translateY(-4px);
-}
-
-.work-carousel__thumbnail {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.work-carousel__thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.work-carousel__item:hover .work-carousel__thumbnail img {
-    transform: scale(1.05);
-}
-
-.work-carousel__info {
-    padding: 0 4px;
-}
-
-.work-carousel__title {
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    margin: 0 0 6px;
-    color: #fff;
-}
-
-.work-carousel__meta {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0;
-}
-
-@media (max-width: 968px) {
-    .index-work-carousel {
-        height: 240px;
-    }
-
-    .work-carousel__item {
-        width: 240px;
-    }
-
-    .work-carousel__thumbnail {
-        height: 160px;
-    }
-}
-
-@media (max-width: 640px) {
-    .index-work-carousel {
-        height: 200px;
-    }
-
-    .work-carousel__item {
-        width: 200px;
-    }
-
-    .work-carousel__thumbnail {
-        height: 140px;
-    }
-
-    .work-carousel__title {
-        font-size: 16px;
-    }
-
-    .work-carousel__meta {
-        font-size: 11px;
-    }
-}
 
 .intro-content {
     display: flex;
@@ -678,8 +571,8 @@ main {
     max-width: 700px;
 }
 
-/* Work Page */
-.work-page {
+/* Work Section */
+.work {
     margin-bottom: 80px;
     padding: 0 40px;
     min-height: 80vh;
@@ -689,7 +582,7 @@ main {
     align-items: start;
 }
 
-.work-page .section-label {
+.work .section-label {
     grid-column: 1;
 }
 
@@ -698,35 +591,38 @@ main {
     max-width: 700px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
 }
 
-.work-list-item {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.work-item {
+    cursor: pointer;
     transition: opacity 0.3s ease;
+    padding: 0;
+    border: none;
+    background: none;
+    text-align: left;
 }
 
-.work-list-item:hover {
-    opacity: 0.7;
+.work-item:hover {
+    opacity: 0.6;
 }
 
-.work-list-item:last-child {
-    border-bottom: none;
+.work-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.work-list-item-title {
-    font-size: 20px;
-    font-weight: 500;
+.work-item-title {
+    font-size: 24px;
+    font-weight: 400;
     letter-spacing: -0.02em;
-    margin: 0 0 8px;
+    margin: 0;
     color: #fff;
+    line-height: 1.3;
 }
 
-.work-list-item-meta {
+.work-item-meta {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
@@ -999,7 +895,7 @@ main {
     .about,
     .experience,
     .contact,
-    .work-page {
+    .work {
         margin-bottom: 80px;
         padding: 0 24px;
         min-height: auto;
@@ -1044,7 +940,7 @@ main {
     .about,
     .experience,
     .contact,
-    .work-page {
+    .work {
         padding: 0 24px;
     }
 
@@ -1074,7 +970,7 @@ main {
     .about,
     .experience,
     .contact,
-    .work-page {
+    .work {
         grid-template-columns: 1fr;
         gap: 24px;
     }
@@ -1083,7 +979,7 @@ main {
     .featured-projects .section-label,
     .experience .section-label,
     .contact .section-label,
-    .work-page .section-label {
+    .work .section-label {
         grid-column: unset;
     }
 
@@ -1119,7 +1015,7 @@ main {
     .about,
     .experience,
     .contact,
-    .work-page {
+    .work {
         margin-bottom: 60px;
         padding: 0 16px;
     }
@@ -1127,7 +1023,7 @@ main {
     .about,
     .experience,
     .contact,
-    .work-page {
+    .work {
         grid-template-columns: 1fr;
         gap: 24px;
     }
@@ -1135,7 +1031,7 @@ main {
     .about .section-label,
     .experience .section-label,
     .contact .section-label,
-    .work-page .section-label {
+    .work .section-label {
         grid-column: unset;
     }
 
@@ -1227,7 +1123,7 @@ main {
     .about,
     .experience,
     .contact,
-    .work-page {
+    .work {
         padding: 0 16px;
     }
 
