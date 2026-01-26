@@ -34,7 +34,6 @@
     const ANIMATION_CONFIG = { SMOOTH_TAU: 0.25, MIN_COPIES: 2, COPY_HEADROOM: 2 };
     const speed = 50;
     const gap = 32;
-    const itemWidth = 280;
 
     let trackRef = null;
     let seqWidth = 0;
@@ -44,6 +43,7 @@
     let offset = 0;
     let velocity = speed;
     let isHovered = false;
+    let isInitialized = false;
 
     function createCarouselItem(work) {
         const item = document.createElement('div');
@@ -74,21 +74,6 @@
         track.className = 'work-carousel__track';
         trackRef = track;
 
-        // Calculate sequence width
-        seqWidth = works.length * (itemWidth + gap);
-        
-        // Calculate copies needed
-        const containerWidth = carouselContainer.clientWidth || window.innerWidth;
-        copyCount = Math.max(ANIMATION_CONFIG.MIN_COPIES, Math.ceil(containerWidth / seqWidth) + ANIMATION_CONFIG.COPY_HEADROOM);
-
-        // Create items and copies
-        for (let i = 0; i < copyCount; i++) {
-            works.forEach(work => {
-                const item = createCarouselItem(work);
-                track.appendChild(item);
-            });
-        }
-
         carouselContainer.appendChild(track);
 
         // Setup hover handlers
@@ -99,44 +84,97 @@
             isHovered = false;
         });
 
-        // Wait for images to load, then start animation
-        const images = track.querySelectorAll('img');
-        let loadedCount = 0;
-        const totalImages = images.length;
+        // Build carousel after DOM is ready
+        buildCarousel();
+    }
 
-        if (totalImages === 0) {
-            animate();
-            return;
-        }
+    function buildCarousel() {
+        if (!trackRef || !carouselContainer) return;
 
-        images.forEach(img => {
-            if (img.complete) {
-                loadedCount++;
-                if (loadedCount === totalImages) {
+        // Clear existing items
+        trackRef.innerHTML = '';
+
+        // First, create a single sequence to measure actual width
+        works.forEach(work => {
+            const item = createCarouselItem(work);
+            trackRef.appendChild(item);
+        });
+
+        // Wait for layout to calculate actual dimensions
+        requestAnimationFrame(() => {
+            const firstItem = trackRef.querySelector('.work-carousel__item');
+            if (!firstItem) return;
+
+            // Measure actual item width
+            const actualItemWidth = firstItem.offsetWidth;
+            seqWidth = works.length * (actualItemWidth + gap);
+
+            // Calculate copies needed to fill viewport
+            const containerWidth = carouselContainer.clientWidth || window.innerWidth;
+            copyCount = Math.max(ANIMATION_CONFIG.MIN_COPIES, Math.ceil(containerWidth / seqWidth) + ANIMATION_CONFIG.COPY_HEADROOM);
+
+            // Clear and rebuild with all copies
+            trackRef.innerHTML = '';
+            for (let i = 0; i < copyCount; i++) {
+                works.forEach(work => {
+                    const item = createCarouselItem(work);
+                    trackRef.appendChild(item);
+                });
+            }
+
+            // Wait for images to load, then start animation
+            const images = trackRef.querySelectorAll('img');
+            let loadedCount = 0;
+            const totalImages = images.length;
+
+            const startAnimation = () => {
+                if (!isInitialized) {
+                    isInitialized = true;
+                    offset = 0;
+                    lastTimestamp = null;
                     animate();
                 }
-            } else {
-                img.addEventListener('load', () => {
-                    loadedCount++;
-                    if (loadedCount === totalImages) {
-                        animate();
-                    }
-                }, { once: true });
-                img.addEventListener('error', () => {
-                    loadedCount++;
-                    if (loadedCount === totalImages) {
-                        animate();
-                    }
-                }, { once: true });
+            };
+
+            if (totalImages === 0) {
+                startAnimation();
+                return;
             }
+
+            images.forEach(img => {
+                if (img.complete) {
+                    loadedCount++;
+                    if (loadedCount === totalImages) {
+                        startAnimation();
+                    }
+                } else {
+                    img.addEventListener('load', () => {
+                        loadedCount++;
+                        if (loadedCount === totalImages) {
+                            startAnimation();
+                        }
+                    }, { once: true });
+                    img.addEventListener('error', () => {
+                        loadedCount++;
+                        if (loadedCount === totalImages) {
+                            startAnimation();
+                        }
+                    }, { once: true });
+                }
+            });
         });
     }
 
     function animate(timestamp) {
-        if (!trackRef) return;
+        if (!trackRef || seqWidth <= 0) {
+            rafId = requestAnimationFrame(animate);
+            return;
+        }
 
         if (lastTimestamp === null) {
             lastTimestamp = timestamp;
+            rafId = requestAnimationFrame(animate);
+            return;
         }
 
         const deltaTime = Math.max(0, timestamp - lastTimestamp) / 1000;
@@ -146,15 +184,16 @@
         const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
         velocity += (target - velocity) * easingFactor;
 
-        if (seqWidth > 0) {
+        if (velocity > 0) {
             offset += velocity * deltaTime;
+            
             // Reset offset when it exceeds sequence width for seamless loop
-            if (offset >= seqWidth) {
-                offset = offset % seqWidth;
+            while (offset >= seqWidth) {
+                offset -= seqWidth;
             }
-
-            trackRef.style.transform = `translate3d(${-offset}px, 0, 0)`;
         }
+
+        trackRef.style.transform = `translate3d(${-offset}px, 0, 0)`;
 
         rafId = requestAnimationFrame(animate);
     }
@@ -165,18 +204,14 @@
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             if (trackRef && carouselContainer) {
-                const containerWidth = carouselContainer.clientWidth;
-                const newCopyCount = Math.max(ANIMATION_CONFIG.MIN_COPIES, Math.ceil(containerWidth / seqWidth) + ANIMATION_CONFIG.COPY_HEADROOM);
-                if (newCopyCount !== copyCount) {
-                    copyCount = newCopyCount;
-                    trackRef.innerHTML = '';
-                    for (let i = 0; i < copyCount; i++) {
-                        works.forEach(work => {
-                            const item = createCarouselItem(work);
-                            trackRef.appendChild(item);
-                        });
-                    }
+                isInitialized = false;
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
                 }
+                lastTimestamp = null;
+                offset = 0;
+                buildCarousel();
             }
         }, 100);
     });

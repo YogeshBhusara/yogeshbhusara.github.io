@@ -79,7 +79,7 @@ main {
     z-index: 1;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0;
+    padding: 40px 0 0;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
@@ -291,6 +291,7 @@ main {
     user-select: none;
     gap: 32px;
     height: 100%;
+    position: relative;
 }
 
 .work-carousel__item {
@@ -982,7 +983,7 @@ main {
     }
 
     main {
-        padding-top: 100px;
+        padding-top: 40px;
     }
 
     main > section {
@@ -1107,7 +1108,7 @@ main {
     }
 
     main {
-        padding-top: 80px;
+        padding-top: 40px;
     }
 
     main > section {
