@@ -94,6 +94,11 @@
 
         // Clear existing items
         trackRef.innerHTML = '';
+        isInitialized = false;
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
 
         // First, create a single sequence to measure actual width
         works.forEach(work => {
@@ -101,91 +106,146 @@
             trackRef.appendChild(item);
         });
 
-        // Wait for layout to calculate actual dimensions
+        // Wait for layout to calculate actual dimensions - use double RAF for reliable measurement
         requestAnimationFrame(() => {
-            const firstItem = trackRef.querySelector('.work-carousel__item');
-            if (!firstItem) return;
-
-            // Measure actual item width
-            const actualItemWidth = firstItem.offsetWidth || itemWidth;
-            seqWidth = works.length * (actualItemWidth + gap);
-
-            // Calculate copies needed to fill viewport
-            const containerWidth = carouselContainer.clientWidth || window.innerWidth;
-            copyCount = Math.max(ANIMATION_CONFIG.MIN_COPIES, Math.ceil(containerWidth / seqWidth) + ANIMATION_CONFIG.COPY_HEADROOM);
-
-            // Clear and rebuild with all copies
-            trackRef.innerHTML = '';
-            for (let i = 0; i < copyCount; i++) {
-                works.forEach(work => {
-                    const item = createCarouselItem(work);
-                    trackRef.appendChild(item);
-                });
-            }
-
-            // Wait for images to load, then start animation
-            const images = trackRef.querySelectorAll('img');
-            let loadedCount = 0;
-            const totalImages = images.length;
-
-            const startAnimation = () => {
-                if (!isInitialized) {
-                    isInitialized = true;
-                    offset = 0;
-                    lastTimestamp = null;
-                    animate();
-                }
-            };
-
-            if (totalImages === 0) {
-                startAnimation();
-                return;
-            }
-
-            images.forEach(img => {
-                if (img.complete) {
-                    loadedCount++;
-                    if (loadedCount === totalImages) {
-                        startAnimation();
-                    }
+            requestAnimationFrame(() => {
+                const firstItem = trackRef.querySelector('.work-carousel__item');
+                if (!firstItem) {
+                    // Fallback: use default values
+                    seqWidth = works.length * (itemWidth + gap);
                 } else {
-                    img.addEventListener('load', () => {
-                        loadedCount++;
-                        if (loadedCount === totalImages) {
-                            startAnimation();
-                        }
-                    }, { once: true });
-                    img.addEventListener('error', () => {
-                        loadedCount++;
-                        if (loadedCount === totalImages) {
-                            startAnimation();
-                        }
-                    }, { once: true });
+                    // Measure actual item width
+                    const actualItemWidth = firstItem.offsetWidth || itemWidth;
+                    seqWidth = works.length * (actualItemWidth + gap);
                 }
+
+                // Ensure seqWidth is valid
+                if (seqWidth <= 0) {
+                    seqWidth = works.length * (itemWidth + gap);
+                }
+
+                // Calculate copies needed to fill viewport
+                const containerWidth = carouselContainer.clientWidth || window.innerWidth;
+                copyCount = Math.max(ANIMATION_CONFIG.MIN_COPIES, Math.ceil(containerWidth / seqWidth) + ANIMATION_CONFIG.COPY_HEADROOM);
+
+                // Clear and rebuild with all copies
+                trackRef.innerHTML = '';
+                for (let i = 0; i < copyCount; i++) {
+                    works.forEach(work => {
+                        const item = createCarouselItem(work);
+                        trackRef.appendChild(item);
+                    });
+                }
+
+                // Wait for images to load, then start animation
+                const images = trackRef.querySelectorAll('img');
+                let loadedCount = 0;
+                const totalImages = images.length;
+                let animationStarted = false;
+
+                const startAnimation = () => {
+                    if (animationStarted) return;
+                    animationStarted = true;
+                    
+                    // Recalculate seqWidth after all items are rendered
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            const firstItem = trackRef.querySelector('.work-carousel__item');
+                            if (firstItem) {
+                                const actualItemWidth = firstItem.offsetWidth || itemWidth;
+                                seqWidth = works.length * (actualItemWidth + gap);
+                            }
+                            
+                            // Ensure seqWidth is valid
+                            if (seqWidth <= 0) {
+                                seqWidth = works.length * (itemWidth + gap);
+                            }
+                            
+                            if (!isInitialized && seqWidth > 0) {
+                                isInitialized = true;
+                                offset = 0;
+                                lastTimestamp = null;
+                                velocity = speed;
+                                animate();
+                            }
+                        });
+                    });
+                };
+
+                // Timeout fallback - start animation after 2 seconds even if images aren't loaded
+                const timeoutId = setTimeout(() => {
+                    startAnimation();
+                }, 2000);
+
+                if (totalImages === 0) {
+                    clearTimeout(timeoutId);
+                    startAnimation();
+                    return;
+                }
+
+                images.forEach(img => {
+                    if (img.complete) {
+                        loadedCount++;
+                        if (loadedCount === totalImages) {
+                            clearTimeout(timeoutId);
+                            startAnimation();
+                        }
+                    } else {
+                        img.addEventListener('load', () => {
+                            loadedCount++;
+                            if (loadedCount === totalImages) {
+                                clearTimeout(timeoutId);
+                                startAnimation();
+                            }
+                        }, { once: true });
+                        img.addEventListener('error', () => {
+                            loadedCount++;
+                            if (loadedCount === totalImages) {
+                                clearTimeout(timeoutId);
+                                startAnimation();
+                            }
+                        }, { once: true });
+                    }
+                });
             });
         });
     }
 
     function animate(timestamp) {
-        if (!trackRef || seqWidth <= 0) {
-            rafId = requestAnimationFrame(animate);
+        if (!trackRef) {
+            rafId = null;
             return;
+        }
+
+        if (seqWidth <= 0) {
+            // If seqWidth is not ready, try to recalculate
+            const firstItem = trackRef.querySelector('.work-carousel__item');
+            if (firstItem) {
+                const actualItemWidth = firstItem.offsetWidth || itemWidth;
+                seqWidth = works.length * (actualItemWidth + gap);
+            }
+            
+            if (seqWidth <= 0) {
+                rafId = requestAnimationFrame(animate);
+                return;
+            }
         }
 
         if (lastTimestamp === null) {
-            lastTimestamp = timestamp;
+            lastTimestamp = timestamp || performance.now();
             rafId = requestAnimationFrame(animate);
             return;
         }
 
-        const deltaTime = Math.max(0, timestamp - lastTimestamp) / 1000;
-        lastTimestamp = timestamp;
+        const currentTime = timestamp || performance.now();
+        const deltaTime = Math.max(0, (currentTime - lastTimestamp) / 1000);
+        lastTimestamp = currentTime;
 
         const target = isHovered ? 0 : speed;
         const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
         velocity += (target - velocity) * easingFactor;
 
-        if (velocity > 0) {
+        if (velocity > 0 && seqWidth > 0) {
             offset += velocity * deltaTime;
             
             // Reset offset when it exceeds sequence width for seamless loop
