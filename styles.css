@@ -71,7 +71,7 @@ body {
 
 main > section {
     visibility: hidden;
-    margin-bottom: 120px;
+    margin-bottom: 80px;
 }
 
 main {
@@ -176,7 +176,7 @@ main {
 
 /* Index Section (Homepage) */
 .index {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
     min-height: 80vh;
     display: flex;
     align-items: center;
@@ -341,7 +341,7 @@ main {
 }
 
 .about {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
     padding: 0 40px;
     min-height: 80vh;
     display: grid;
@@ -479,7 +479,7 @@ main {
 }
 
 .experience {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
     padding: 0 40px;
     min-height: 80vh;
     display: grid;
@@ -552,7 +552,7 @@ main {
 }
 
 .contact {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
     padding: 0 40px;
     min-height: 80vh;
     display: grid;
@@ -572,7 +572,7 @@ main {
 
 /* Work Page */
 .work-page {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
     padding: 0 40px;
     min-height: 80vh;
     display: grid;
@@ -809,21 +809,13 @@ main {
     flex-wrap: wrap;
 }
 
-.footer-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 .footer-label {
     font-size: 13px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     opacity: 0.5;
+    white-space: nowrap;
 }
 
 .footer-links {
@@ -901,6 +893,8 @@ main {
     .contact,
     .work-page {
         margin-bottom: 80px;
+        padding: 0 24px;
+        min-height: auto;
     }
 
     .main-nav {
@@ -940,15 +934,41 @@ main {
     }
 
     .about,
-    .featured-projects,
     .experience,
     .contact,
+    .work-page {
+        padding: 0 24px;
+    }
+
     .footer {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         gap: 24px;
-        flex-wrap: wrap;
+    }
+
+    .footer .name-logo--footer {
+        flex-shrink: 0;
+    }
+
+    .footer .footer-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .footer-label {
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    .about,
+    .experience,
+    .contact,
+    .work-page {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
     .about .section-label,
@@ -956,6 +976,13 @@ main {
     .experience .section-label,
     .contact .section-label,
     .work-page .section-label {
+        grid-column: unset;
+    }
+
+    .about-content,
+    .experience .experience-list,
+    .contact-content,
+    .work-list {
         grid-column: unset;
     }
 
@@ -986,16 +1013,51 @@ main {
     .contact,
     .work-page {
         margin-bottom: 60px;
+        padding: 0 16px;
+    }
+
+    .about,
+    .experience,
+    .contact,
+    .work-page {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .about .section-label,
+    .experience .section-label,
+    .contact .section-label,
+    .work-page .section-label {
+        grid-column: unset;
     }
 
     .about-content,
-    .featured-projects .projects-list,
     .experience .experience-list,
     .contact-content,
-    .work-list,
+    .work-list {
+        grid-column: unset;
+    }
+
+    .footer {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .footer .name-logo--footer {
+        flex-shrink: 0;
+    }
+
     .footer .footer-inner {
-        align-items: center;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .footer-label {
+        white-space: normal;
+        line-height: 1.4;
+        max-width: 200px;
     }
 
     .about-content {
@@ -1048,6 +1110,17 @@ main {
 
     main {
         column-gap: 0;
+    }
+
+    .index {
+        padding: 0 16px;
+    }
+
+    .about,
+    .experience,
+    .contact,
+    .work-page {
+        padding: 0 16px;
     }
 
     .index-greeting {
