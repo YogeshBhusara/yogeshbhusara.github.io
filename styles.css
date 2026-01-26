@@ -86,32 +86,6 @@ main {
     transform: translateZ(0);
 }
 
-/* Vertical grid lines on body - simplified 3-column system */
-.body-grid-lines {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 1600px;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 0;
-    pointer-events: none;
-    z-index: 0;
-    padding: 0 40px;
-    border-left: 1px solid rgba(255, 255, 255, 0.06);
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.body-grid-line {
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.body-grid-line:last-child {
-    border-right: none;
-}
 
 /* Navigation */
 .main-nav {
@@ -216,15 +190,6 @@ body[data-theme="light"] #distort-canvas {
     background-color: #ffffff;
 }
 
-body[data-theme="light"] .body-grid-line,
-body[data-theme="light"] .body-grid-lines {
-    border-color: rgba(4, 4, 4, 0.1);
-}
-
-body[data-theme="light"] .body-grid-lines {
-    border-left-color: rgba(4, 4, 4, 0.1);
-    border-right-color: rgba(4, 4, 4, 0.1);
-}
 
 body[data-theme="light"] .nav-link,
 body[data-theme="light"] .index-greeting,
@@ -1136,29 +1101,8 @@ body[data-theme="light"] .work-detail-navigation {
         padding: 24px;
     }
 
-    .body-grid-lines {
-        padding: 0 20px;
-    }
-
-
-    .body-grid-line {
-        border-color: rgba(255, 255, 255, 0.04);
-    }
-
     body {
         border-left-color: rgba(255, 255, 255, 0.04);
-    }
-
-    body[data-theme="light"] .body-grid-line {
-        border-color: rgba(4, 4, 4, 0.08);
-    }
-
-    body[data-theme="light"] body {
-        border-left-color: rgba(4, 4, 4, 0.08);
-    }
-
-    body[data-theme="light"] .body-grid-line {
-        border-color: rgba(4, 4, 4, 0.08);
     }
 
     body[data-theme="light"] body {
@@ -1199,9 +1143,6 @@ body[data-theme="light"] .work-detail-navigation {
         padding: 24px 24px 0;
     }
 
-    .body-grid-lines {
-        padding: 0 24px;
-    }
 
     .nav-inner {
         gap: 24px;
@@ -1402,15 +1343,6 @@ body[data-theme="light"] .work-detail-navigation {
 @media (max-width: 640px) {
     body {
         padding: 16px;
-    }
-
-    .body-grid-lines {
-        padding: 0 20px;
-    }
-
-
-    .body-grid-line {
-        border-color: rgba(255, 255, 255, 0.03);
     }
 
     body {
