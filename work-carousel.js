@@ -34,7 +34,7 @@
     const ANIMATION_CONFIG = { SMOOTH_TAU: 0.25, MIN_COPIES: 2, COPY_HEADROOM: 2 };
     const speed = 50;
     const gap = 32;
-    const itemWidth = 350;
+    const itemWidth = 403;
 
     let trackRef = null;
     let seqWidth = 0;
