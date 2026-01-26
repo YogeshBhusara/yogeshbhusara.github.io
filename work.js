@@ -1,6 +1,9 @@
 // Work showcase system
 (function() {
-    const workList = document.getElementById('work-list');
+    const workButton = document.getElementById('work-button');
+    const workModal = document.getElementById('work-modal');
+    const workModalClose = document.getElementById('work-modal-close');
+    const workGrid = document.getElementById('work-grid');
     const workDetail = document.getElementById('work-detail');
     const workDetailClose = document.getElementById('work-detail-close');
     const workDetailInner = document.getElementById('work-detail-inner');
@@ -90,26 +93,62 @@
         }
     ];
 
-    // Render work list
-    function renderWorkList() {
-        if (!workList) return;
+    // Open work modal
+    function openWorkModal() {
+        document.body.style.overflow = 'hidden';
+        renderWorkGrid();
         
-        workList.innerHTML = '';
+        // Use requestAnimationFrame for smooth transition
+        requestAnimationFrame(() => {
+            workModal.setAttribute('aria-hidden', 'false');
+            
+            // Animate work items with stagger
+            if (typeof gsap !== 'undefined') {
+                const items = document.querySelectorAll('.work-item');
+                gsap.fromTo(items,
+                    { opacity: 0, y: 15 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.4, 
+                        stagger: 0.05, 
+                        delay: 0.2,
+                        ease: 'power2.out'
+                    }
+                );
+            }
+        });
+    }
+
+    // Close work modal
+    function closeWorkModal() {
+        workModal.setAttribute('aria-hidden', 'true');
+        
+        // Wait for transition to complete
+        setTimeout(() => {
+            document.body.style.overflow = '';
+        }, 400);
+    }
+
+    // Render work grid
+    function renderWorkGrid() {
+        workGrid.innerHTML = '';
         works.forEach(work => {
             const item = document.createElement('div');
-            item.className = 'work-item';
+            item.className = `work-item work-item--${work.size}`;
             item.dataset.workId = work.id;
             
             item.innerHTML = `
                 <div class="work-item-content">
-                    <h3 class="work-item-title">${work.title}</h3>
-                    <p class="work-item-meta">${work.meta}</p>
+                    <div>
+                        <h3 class="work-item-title">${work.title}</h3>
+                        <p class="work-item-meta">${work.meta}</p>
+                    </div>
                 </div>
             `;
             
             item.addEventListener('click', () => openWorkDetail(work.id));
-            
-            workList.appendChild(item);
+            workGrid.appendChild(item);
         });
     }
 
@@ -118,13 +157,23 @@
         const work = works.find(w => w.id === workId);
         if (!work) return;
 
+        // Close modal first if open
+        if (workModal && workModal.getAttribute('aria-hidden') === 'false') {
+            closeWorkModal();
+        }
+
+        // Render detail
         renderWorkDetail(work);
         
+        // Use requestAnimationFrame for smooth transition
         requestAnimationFrame(() => {
             workDetail.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+            
+            // Scroll to top
             workDetailInner.scrollTop = 0;
             
+            // Animate content with stagger
             if (typeof gsap !== 'undefined') {
                 const elements = document.querySelectorAll('.work-detail-header, .work-detail-section, .work-detail-image-wrapper, .work-detail-navigation');
                 gsap.fromTo(elements,
@@ -185,29 +234,54 @@
             </div>
         `;
         
-        const nextButton = workDetailInner.querySelector('.work-detail-next');
-        if (nextButton) {
-            nextButton.addEventListener('click', () => {
-                const nextId = nextButton.dataset.nextId;
-                closeWorkDetail();
-                setTimeout(() => {
-                    openWorkDetail(nextId);
-                }, 400);
-            });
-        }
+            // Add event listener to next button
+            const nextButton = workDetailInner.querySelector('.work-detail-next');
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    const nextId = nextButton.dataset.nextId;
+                    closeWorkDetail();
+                    setTimeout(() => {
+                        openWorkDetail(nextId);
+                    }, 400);
+                });
+            }
     }
 
     // Close work detail
     function closeWorkDetail() {
         workDetail.setAttribute('aria-hidden', 'true');
+        
+        // Wait for transition to complete
         setTimeout(() => {
             document.body.style.overflow = '';
         }, 400);
     }
 
     // Event listeners
+    if (workButton) {
+        workButton.addEventListener('click', openWorkModal);
+    }
+
+    // Index "See My Work" button
+    const indexWorkButton = document.getElementById('index-work-button');
+    if (indexWorkButton) {
+        indexWorkButton.addEventListener('click', openWorkModal);
+    }
+
+    if (workModalClose) {
+        workModalClose.addEventListener('click', closeWorkModal);
+    }
+
     if (workDetailClose) {
         workDetailClose.addEventListener('click', closeWorkDetail);
+    }
+
+    // Close on overlay click
+    if (workModal) {
+        const overlay = workModal.querySelector('.work-modal-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', closeWorkModal);
+        }
     }
 
     if (workDetail) {
@@ -217,23 +291,14 @@
         }
     }
 
+    // Close on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && workDetail && workDetail.getAttribute('aria-hidden') === 'false') {
-            closeWorkDetail();
+        if (e.key === 'Escape') {
+            if (workDetail && workDetail.getAttribute('aria-hidden') === 'false') {
+                closeWorkDetail();
+            } else if (workModal && workModal.getAttribute('aria-hidden') === 'false') {
+                closeWorkModal();
+            }
         }
     });
-
-    // Check if we need to open a specific work detail from hash
-    function checkHash() {
-        const hash = window.location.hash.replace('#', '');
-        if (hash && works.find(w => w.id === hash)) {
-            openWorkDetail(hash);
-        }
-    }
-
-    window.addEventListener('hashchange', checkHash);
-    
-    // Initialize
-    renderWorkList();
-    checkHash();
 })();

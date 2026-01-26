@@ -13,12 +13,12 @@
     <canvas id="distort-canvas"></canvas>
     <nav class="main-nav" id="main-nav">
         <div class="nav-inner">
-            <a href="#index" class="nav-link nav-link--active nav-link--profile">
+            <a href="index.html" class="nav-link nav-link--active nav-link--profile">
                 <img src="assets/profile-image.png" alt="Yogesh Bhusara" class="nav-profile-image">
             </a>
-            <a href="#work" class="nav-link">Work</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="work.html" class="nav-link">Work</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
         </div>
     </nav>
 
@@ -35,79 +35,16 @@
                     <p class="index-current">Currently Sr. UI/UX Designer at <a href="https://www.mangoapps.com" target="_blank" rel="noopener" class="index-link">MangoApps</a>.</p>
                     <p class="index-location">Based in Pune, India.</p>
                 </div>
-                <a href="#work" class="index-work-button">See My Work</a>
+                <div class="index-work-carousel" id="index-work-carousel" aria-label="Featured work">
+                    <!-- Work carousel items will be populated here -->
+                </div>
+                <a href="work.html" class="index-work-button">See My Work</a>
                 <p class="index-connect">Always open to new projects and collaborations — <a href="mailto:yogesh.bhusara@outlook.com" class="index-link">drop a line</a> if you'd like to connect.</p>
                 <div class="index-social">
                     <a href="https://www.linkedin.com/in/yogeshbhusara/" target="_blank" rel="noopener" class="index-social-link">LinkedIn</a>
                     <a href="https://www.behance.net/yogeshbhusara" target="_blank" rel="noopener" class="index-social-link">Behance</a>
                     <a href="https://instagram.com/yogeshbhusara" target="_blank" rel="noopener" class="index-social-link">Instagram</a>
                 </div>
-            </div>
-        </section>
-
-        <section class="work" id="work">
-            <h2 class="section-label">Work</h2>
-            <div class="work-list" id="work-list">
-                <!-- Work items will be populated here -->
-            </div>
-        </section>
-
-        <section class="about" id="about">
-            <h2 class="section-label">About</h2>
-            <div class="about-content">
-                <p class="about-text">Over 12 years of hands-on experience in UI/UX design, I specialize in creating scalable, user-centric digital solutions—primarily in enterprise collaboration and productivity platforms. My core strength lies in transforming complex requirements into intuitive, elegant experiences that drive user adoption and business value.</p>
-                <p class="about-text">At MangoApps, where I've spent the majority of my career, I've led the design for a wide range of modules—from communication hubs and task management tools to learning systems and AI-driven features. I've been instrumental in shaping the design direction, improving usability across the product suite, and supporting a design culture rooted in consistency and innovation.</p>
-                <p class="about-text">I thrive in fast-paced, purpose-driven teams and am always exploring how emerging technologies like AI can amplify good design. <a href="https://www.linkedin.com/in/yogeshbhusara/" target="_blank" rel="noopener" class="about-connect">Let's connect</a> if you're working on building thoughtful digital experiences.</p>
-            </div>
-        </section>
-
-        <section class="experience">
-            <h2 class="section-label">Experience</h2>
-            <div class="experience-list">
-                <article class="experience-item">
-                    <span class="experience-dates">Jan 2022 — Present</span>
-                    <div class="experience-detail">
-                        <h3 class="experience-role">Sr. UI/UX Designer</h3>
-                        <span class="experience-company">/ MangoApps</span>
-                    </div>
-                </article>
-                <article class="experience-item">
-                    <span class="experience-dates">Dec 2020 — Jan 2022</span>
-                    <div class="experience-detail">
-                        <h3 class="experience-role">User Experience Designer</h3>
-                        <span class="experience-company">/ Tata Communications</span>
-                    </div>
-                </article>
-                <article class="experience-item">
-                    <span class="experience-dates">Sep 2015 — Dec 2020</span>
-                    <div class="experience-detail">
-                        <h3 class="experience-role">Sr. UI/UX Designer</h3>
-                        <span class="experience-company">/ MangoApps Inc</span>
-                    </div>
-                </article>
-                <article class="experience-item">
-                    <span class="experience-dates">Jan 2015 — Aug 2015</span>
-                    <div class="experience-detail">
-                        <h3 class="experience-role">UI/UX Designer</h3>
-                        <span class="experience-company">/ Appnocrat Technology Pvt. Ltd.</span>
-                    </div>
-                </article>
-                <article class="experience-item">
-                    <span class="experience-dates">Aug 2012 — 2014</span>
-                    <div class="experience-detail">
-                        <h3 class="experience-role">UI/UX Designer</h3>
-                        <span class="experience-company">/ Probity Venture</span>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="contact" id="contact">
-            <h2 class="section-label">Contact</h2>
-            <div class="contact-content">
-                <p class="contact-text">Open to meaningful connections and creative opportunities.</p>
-                <p class="contact-text">Have a question, feedback, or a collaboration in mind? Drop a message below.</p>
-                <a href="mailto:yogesh.bhusara@outlook.com" class="contact-email">yogesh.bhusara@outlook.com</a>
             </div>
         </section>
 
@@ -156,7 +93,6 @@
     <script src="script.js"></script>
     <script src="animated-sections.js"></script>
     <script src="distort.js"></script>
-    <script src="work.js"></script>
-    <script src="navigation.js"></script>
+    <script src="work-carousel.js"></script>
 </body>
 </html>

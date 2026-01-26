@@ -1,12 +1,12 @@
 // Navigation functionality
 (function() {
-    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
     const sections = document.querySelectorAll('main > section[id]');
 
     function scrollToSection(sectionId) {
         const section = document.getElementById(sectionId);
         if (section) {
-            const offset = 100; // Account for nav
+            const offset = 80; // Account for fixed nav
             const elementPosition = section.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -20,26 +20,29 @@
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const href = link.getAttribute('href');
+            const section = link.getAttribute('data-section');
             
-            if (href.startsWith('#')) {
-                const sectionId = href.substring(1);
-                if (sectionId === 'index') {
-                    // Scroll to top
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    scrollToSection(sectionId);
+            if (section === 'work') {
+                // Open work modal
+                const workButton = document.getElementById('index-work-button') || document.getElementById('work-button');
+                if (workButton) {
+                    workButton.click();
                 }
+            } else if (section === 'index') {
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                scrollToSection(section);
             }
         });
     });
 
     // Update active nav link on scroll
     function updateActiveNav() {
-        const scrollPos = window.scrollY + 150;
+        const scrollPos = window.scrollY + 100;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -48,10 +51,9 @@
 
             if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                 navLinks.forEach(link => {
-                    const href = link.getAttribute('href');
-                    if (href === `#${sectionId}`) {
+                    if (link.getAttribute('data-section') === sectionId) {
                         link.style.opacity = '1';
-                    } else if (href && href.startsWith('#')) {
+                    } else {
                         link.style.opacity = '0.6';
                     }
                 });
@@ -61,10 +63,9 @@
         // Check if at top (index section)
         if (scrollPos < 200) {
             navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === '#index' || (href && href.includes('index.html'))) {
+                if (link.getAttribute('data-section') === 'index') {
                     link.style.opacity = '1';
-                } else if (href && href.startsWith('#')) {
+                } else {
                     link.style.opacity = '0.6';
                 }
             });
