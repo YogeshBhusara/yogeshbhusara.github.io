@@ -99,10 +99,16 @@ main {
     pointer-events: none;
     z-index: 0;
     padding: 0 40px;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .body-grid-line {
     border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.body-grid-line:last-child {
+    border-right: none;
 }
 
 /* Navigation */
@@ -341,7 +347,7 @@ main {
     display: grid;
     grid-template-columns: 120px 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: start;
 }
 
 .about .section-label {
@@ -479,7 +485,7 @@ main {
     display: grid;
     grid-template-columns: 120px 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: start;
 }
 
 .experience .section-label {
@@ -552,7 +558,7 @@ main {
     display: grid;
     grid-template-columns: 120px 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: start;
 }
 
 .contact .section-label {
@@ -572,7 +578,7 @@ main {
     display: grid;
     grid-template-columns: 120px 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: start;
 }
 
 .work-page .section-label {
@@ -783,10 +789,12 @@ main {
 /* Footer */
 .footer {
     margin-bottom: 0;
-    padding: 0 40px 40px;
+    padding: 0 40px;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 40px;
 }
 
