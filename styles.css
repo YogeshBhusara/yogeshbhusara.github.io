@@ -145,6 +145,25 @@ main {
     opacity: 1;
 }
 
+.nav-link--profile {
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.nav-link--profile:hover .nav-profile-image {
+    opacity: 0.7;
+}
+
 .nav-link--work {
     /* Same as nav-link */
 }
@@ -318,10 +337,11 @@ main {
 .about {
     margin-bottom: 120px;
     padding: 0 40px;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: 120px 1fr;
     gap: 40px;
-    align-items: start;
+    align-items: center;
 }
 
 .about .section-label {
@@ -455,10 +475,11 @@ main {
 .experience {
     margin-bottom: 120px;
     padding: 0 40px;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: 120px 1fr;
     gap: 40px;
-    align-items: start;
+    align-items: center;
 }
 
 .experience .section-label {
@@ -527,10 +548,11 @@ main {
 .contact {
     margin-bottom: 120px;
     padding: 0 40px;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: 120px 1fr;
     gap: 40px;
-    align-items: start;
+    align-items: center;
 }
 
 .contact .section-label {
@@ -546,10 +568,11 @@ main {
 .work-page {
     margin-bottom: 120px;
     padding: 0 40px;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: 120px 1fr;
     gap: 40px;
-    align-items: start;
+    align-items: center;
 }
 
 .work-page .section-label {
@@ -761,26 +784,31 @@ main {
 .footer {
     margin-bottom: 0;
     padding: 0 40px 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 40px;
-    align-items: start;
 }
 
 .footer .name-logo--footer {
-    grid-column: 1;
+    align-self: center;
 }
 
 .footer .footer-inner {
-    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
     max-width: 700px;
 }
 
 .footer-inner {
     display: flex;
+    flex-direction: column;
     gap: 24px;
-    align-items: baseline;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -912,6 +940,7 @@ main {
     .footer {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 24px;
     }
 
@@ -958,7 +987,8 @@ main {
     .contact-content,
     .work-list,
     .footer .footer-inner {
-        grid-column: unset;
+        align-items: center;
+        text-align: center;
     }
 
     .about-content {
