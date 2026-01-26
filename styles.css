@@ -5,15 +5,17 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: #040404;
     color: #fff;
     line-height: 1.5;
     padding: 40px;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     position: relative;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Background canvas */
@@ -27,28 +29,6 @@ body {
     display: block;
 }
 
-/* Vertical grid overlay – 5 subtle lines (4 columns), Andre Ribeiro–style */
-.grid-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.grid-overlay__inner {
-    width: 100%;
-    max-width: 1200px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 0;
-}
-
-.grid-overlay__col {
-    /* No borders - lines moved to main */
-}
 
 /* Circular name logo – footer section label */
 .name-logo {
@@ -97,9 +77,9 @@ main > section {
 main {
     position: relative;
     z-index: 1;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 120px 0 0;
+    padding: 0;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
@@ -111,7 +91,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 1200px;
+    max-width: 1600px;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -127,14 +107,12 @@ main {
 
 /* Navigation */
 .main-nav {
-    position: fixed;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 40px 40px 0;
     z-index: 100;
-    padding: 0 40px;
 }
 
 .nav-inner {
@@ -147,10 +125,10 @@ main {
 .nav-link {
     color: #fff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     transition: opacity 0.3s ease;
     background: transparent;
     border: none;
@@ -161,6 +139,10 @@ main {
 
 .nav-link:hover {
     opacity: 0.6;
+}
+
+.nav-link--active {
+    opacity: 1;
 }
 
 .nav-link--work {
@@ -182,15 +164,15 @@ main {
 
 .index-greeting {
     font-size: 48px;
-    font-weight: 400;
-    line-height: 1.3;
+    font-weight: 300;
+    line-height: 1.2;
     color: #fff;
     margin: 0 0 40px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 .index-name {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .index-info {
@@ -200,9 +182,11 @@ main {
 .index-current,
 .index-location {
     font-size: 16px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
 }
 
 .index-link {
@@ -220,16 +204,17 @@ main {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     padding: 12px 24px;
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     transition: all 0.3s ease;
     font-family: inherit;
     margin-bottom: 40px;
     display: inline-block;
+    text-decoration: none;
 }
 
 .index-work-button:hover {
@@ -239,9 +224,11 @@ main {
 
 .index-connect {
     font-size: 16px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
     margin: 0 0 32px;
+    letter-spacing: -0.01em;
 }
 
 .index-social {
@@ -253,8 +240,10 @@ main {
 .index-social-link {
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 400;
     transition: opacity 0.2s ease;
+    letter-spacing: -0.01em;
 }
 
 .index-social-link:hover {
@@ -346,9 +335,11 @@ main {
 
 .about-text {
     font-size: 16px;
-    line-height: 1.65;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0 0 1em;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 1.5em;
+    letter-spacing: -0.01em;
 }
 
 .about-text:last-of-type {
@@ -412,14 +403,15 @@ main {
 }
 
 .section-label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
     white-space: nowrap;
+    color: rgba(255, 255, 255, 0.5);
     margin: 0;
     padding: 0;
 }
@@ -493,10 +485,11 @@ main {
 }
 
 .experience-dates {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 400;
     white-space: nowrap;
+    letter-spacing: -0.01em;
 }
 
 .experience-detail {
@@ -509,17 +502,18 @@ main {
 }
 
 .experience-role {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     margin: 0;
     color: #fff;
 }
 
 .experience-company {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
     font-weight: 400;
+    letter-spacing: -0.01em;
 }
 
 .experience-desc {
@@ -548,11 +542,68 @@ main {
     max-width: 700px;
 }
 
+/* Work Page */
+.work-page {
+    margin-bottom: 120px;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.work-page .section-label {
+    grid-column: 1;
+}
+
+.work-list {
+    grid-column: 2;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.work-list-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s ease;
+}
+
+.work-list-item:hover {
+    opacity: 0.7;
+}
+
+.work-list-item:last-child {
+    border-bottom: none;
+}
+
+.work-list-item-title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    color: #fff;
+}
+
+.work-list-item-meta {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+
 .contact-text {
     font-size: 16px;
+    font-weight: 400;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0 0 16px;
+    letter-spacing: -0.01em;
 }
 
 .contact-email {
@@ -734,10 +785,11 @@ main {
 }
 
 .footer-label {
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    opacity: 0.6;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
 }
 
 .footer-links {
@@ -778,10 +830,6 @@ main {
         padding: 0 20px;
     }
 
-    .grid-overlay__inner {
-        padding: 0;
-        column-gap: 0;
-    }
 
     .body-grid-line {
         border-color: rgba(255, 255, 255, 0.04);
@@ -816,13 +864,13 @@ main {
 
     .about,
     .experience,
-    .contact {
+    .contact,
+    .work-page {
         margin-bottom: 80px;
     }
 
     .main-nav {
-        top: 24px;
-        padding: 0 24px;
+        padding: 24px 24px 0;
     }
 
     .body-grid-lines {
@@ -870,13 +918,13 @@ main {
     .about .section-label,
     .featured-projects .section-label,
     .experience .section-label,
-    .contact .section-label {
+    .contact .section-label,
+    .work-page .section-label {
         grid-column: unset;
     }
 
     .main-nav {
-        top: 16px;
-        padding: 0 16px;
+        padding: 16px 16px 0;
     }
 
     .nav-inner {
@@ -899,7 +947,8 @@ main {
     .index,
     .about,
     .experience,
-    .contact {
+    .contact,
+    .work-page {
         margin-bottom: 60px;
     }
 
@@ -907,6 +956,7 @@ main {
     .featured-projects .projects-list,
     .experience .experience-list,
     .contact-content,
+    .work-list,
     .footer .footer-inner {
         grid-column: unset;
     }
@@ -950,10 +1000,6 @@ main {
         padding: 0 20px;
     }
 
-    .grid-overlay__inner {
-        padding: 0;
-        column-gap: 0;
-    }
 
     .body-grid-line {
         border-color: rgba(255, 255, 255, 0.03);
@@ -1085,7 +1131,7 @@ main {
 
 /* Work Grid - Bento Style */
 .work-grid {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -1179,7 +1225,7 @@ main {
     height: 100%;
     overflow-y: auto;
     padding: 0 40px;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     transform: translateY(20px);
     opacity: 0;
@@ -1201,7 +1247,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    max-width: 1200px;
+    max-width: 1600px;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1243,7 +1289,7 @@ main {
     grid-template-columns: 120px 1fr;
     gap: 40px;
     align-items: start;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 

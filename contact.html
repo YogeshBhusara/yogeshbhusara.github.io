@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yogesh Bhusara. UI/UX Designer.</title>
+    <title>Contact — Yogesh Bhusara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,10 +13,10 @@
     <canvas id="distort-canvas"></canvas>
     <nav class="main-nav" id="main-nav">
         <div class="nav-inner">
-            <a href="index.html" class="nav-link nav-link--active">Index</a>
+            <a href="index.html" class="nav-link">Index</a>
             <a href="work.html" class="nav-link">Work</a>
             <a href="about.html" class="nav-link">About</a>
-            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="contact.html" class="nav-link nav-link--active">Contact</a>
         </div>
     </nav>
 
@@ -26,20 +26,11 @@
     </div>
 
     <main>
-        <section class="index" id="index">
-            <div class="index-content">
-                <h1 class="index-greeting">Hey 👋, I'm <span class="index-name">Yogesh Bhusara</span>—UI/UX Designer with over 12 years of experience focused on creating scalable, user-centric digital solutions.</h1>
-                <div class="index-info">
-                    <p class="index-current">Currently Sr. UI/UX Designer at <a href="https://www.mangoapps.com" target="_blank" rel="noopener" class="index-link">MangoApps</a>.</p>
-                    <p class="index-location">Based in Pune, Maharashtra, India.</p>
-                </div>
-                <a href="work.html" class="index-work-button">See My Work</a>
-                <p class="index-connect">Always open to new projects and collaborations — <a href="mailto:yogesh.bhusara@outlook.com" class="index-link">drop a line</a> if you'd like to connect.</p>
-                <div class="index-social">
-                    <a href="https://www.linkedin.com/in/yogeshbhusara/" target="_blank" rel="noopener" class="index-social-link">LinkedIn</a>
-                    <a href="https://www.behance.net/yogeshbhusara" target="_blank" rel="noopener" class="index-social-link">Behance</a>
-                    <a href="https://instagram.com/yogeshbhusara" target="_blank" rel="noopener" class="index-social-link">Instagram</a>
-                </div>
+        <section class="contact" id="contact">
+            <h2 class="section-label">Contact</h2>
+            <div class="contact-content">
+                <p class="contact-text">Always open to new projects and collaborations.</p>
+                <a href="mailto:yogesh.bhusara@outlook.com" class="contact-email">yogesh.bhusara@outlook.com</a>
             </div>
         </section>
 
@@ -67,21 +58,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Work Detail Page -->
-    <div class="work-detail" id="work-detail" aria-hidden="true">
-        <div class="work-detail-overlay"></div>
-        <div class="work-detail-content">
-            <div class="work-detail-grid-lines" aria-hidden="true">
-                <div class="work-detail-grid-line"></div>
-                <div class="work-detail-grid-line"></div>
-            </div>
-            <button class="work-detail-close" id="work-detail-close" aria-label="Close">×</button>
-            <div class="work-detail-inner" id="work-detail-inner">
-                <!-- Detail content will be populated here -->
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

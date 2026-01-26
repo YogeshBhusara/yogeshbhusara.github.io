@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yogesh Bhusara. UI/UX Designer.</title>
+    <title>About — Yogesh Bhusara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,9 +13,9 @@
     <canvas id="distort-canvas"></canvas>
     <nav class="main-nav" id="main-nav">
         <div class="nav-inner">
-            <a href="index.html" class="nav-link nav-link--active">Index</a>
+            <a href="index.html" class="nav-link">Index</a>
             <a href="work.html" class="nav-link">Work</a>
-            <a href="about.html" class="nav-link">About</a>
+            <a href="about.html" class="nav-link nav-link--active">About</a>
             <a href="contact.html" class="nav-link">Contact</a>
         </div>
     </nav>
@@ -26,20 +26,53 @@
     </div>
 
     <main>
-        <section class="index" id="index">
-            <div class="index-content">
-                <h1 class="index-greeting">Hey 👋, I'm <span class="index-name">Yogesh Bhusara</span>—UI/UX Designer with over 12 years of experience focused on creating scalable, user-centric digital solutions.</h1>
-                <div class="index-info">
-                    <p class="index-current">Currently Sr. UI/UX Designer at <a href="https://www.mangoapps.com" target="_blank" rel="noopener" class="index-link">MangoApps</a>.</p>
-                    <p class="index-location">Based in Pune, Maharashtra, India.</p>
-                </div>
-                <a href="work.html" class="index-work-button">See My Work</a>
-                <p class="index-connect">Always open to new projects and collaborations — <a href="mailto:yogesh.bhusara@outlook.com" class="index-link">drop a line</a> if you'd like to connect.</p>
-                <div class="index-social">
-                    <a href="https://www.linkedin.com/in/yogeshbhusara/" target="_blank" rel="noopener" class="index-social-link">LinkedIn</a>
-                    <a href="https://www.behance.net/yogeshbhusara" target="_blank" rel="noopener" class="index-social-link">Behance</a>
-                    <a href="https://instagram.com/yogeshbhusara" target="_blank" rel="noopener" class="index-social-link">Instagram</a>
-                </div>
+        <section class="about" id="about">
+            <h2 class="section-label">About</h2>
+            <div class="about-content">
+                <p class="about-text">Over 12 years of hands-on experience in UI/UX design, I specialize in creating scalable, user-centric digital solutions—primarily in enterprise collaboration and productivity platforms. My core strength lies in transforming complex requirements into intuitive, elegant experiences that drive user adoption and business value.</p>
+                <p class="about-text">At MangoApps, where I've spent the majority of my career, I've led the design for a wide range of modules—from communication hubs and task management tools to learning systems and AI-driven features. I've been instrumental in shaping the design direction, improving usability across the product suite, and supporting a design culture rooted in consistency and innovation.</p>
+                <p class="about-text">I thrive in fast-paced, purpose-driven teams and am always exploring how emerging technologies like AI can amplify good design. <a href="https://www.linkedin.com/in/yogeshbhusara/" target="_blank" rel="noopener" class="about-connect">Let's connect</a> if you're working on building thoughtful digital experiences.</p>
+            </div>
+        </section>
+
+        <section class="experience">
+            <h2 class="section-label">Experience</h2>
+            <div class="experience-list">
+                <article class="experience-item">
+                    <span class="experience-dates">Jan 2022 — Present</span>
+                    <div class="experience-detail">
+                        <h3 class="experience-role">Sr. UI/UX Designer</h3>
+                        <span class="experience-company">/ MangoApps</span>
+                    </div>
+                </article>
+                <article class="experience-item">
+                    <span class="experience-dates">Dec 2020 — Jan 2022</span>
+                    <div class="experience-detail">
+                        <h3 class="experience-role">User Experience Designer</h3>
+                        <span class="experience-company">/ Tata Communications</span>
+                    </div>
+                </article>
+                <article class="experience-item">
+                    <span class="experience-dates">Sep 2015 — Dec 2020</span>
+                    <div class="experience-detail">
+                        <h3 class="experience-role">Sr. UI/UX Designer</h3>
+                        <span class="experience-company">/ MangoApps Inc</span>
+                    </div>
+                </article>
+                <article class="experience-item">
+                    <span class="experience-dates">Jan 2015 — Aug 2015</span>
+                    <div class="experience-detail">
+                        <h3 class="experience-role">UI/UX Designer</h3>
+                        <span class="experience-company">/ Appnocrat Technology Pvt. Ltd.</span>
+                    </div>
+                </article>
+                <article class="experience-item">
+                    <span class="experience-dates">Aug 2012 — 2014</span>
+                    <div class="experience-detail">
+                        <h3 class="experience-role">UI/UX Designer</h3>
+                        <span class="experience-company">/ Probity Venture</span>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -67,21 +100,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Work Detail Page -->
-    <div class="work-detail" id="work-detail" aria-hidden="true">
-        <div class="work-detail-overlay"></div>
-        <div class="work-detail-content">
-            <div class="work-detail-grid-lines" aria-hidden="true">
-                <div class="work-detail-grid-line"></div>
-                <div class="work-detail-grid-line"></div>
-            </div>
-            <button class="work-detail-close" id="work-detail-close" aria-label="Close">×</button>
-            <div class="work-detail-inner" id="work-detail-inner">
-                <!-- Detail content will be populated here -->
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
