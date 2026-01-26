@@ -41,6 +41,10 @@
     SHADING: true,
     COLOR_UPDATE_SPEED: 8, // Slower color changes
     BACK_COLOR: { r: 0.5, g: 0, b: 0 },
+    getTheme: () => {
+      const theme = document.body.getAttribute('data-theme') || 'dark';
+      return theme === 'light' ? { r: 1, g: 1, b: 1 } : { r: 0.5, g: 0, b: 0 };
+    },
     TRANSPARENT: true,
     PAUSED: false
   };

@@ -34,6 +34,7 @@
     const ANIMATION_CONFIG = { SMOOTH_TAU: 0.25, MIN_COPIES: 2, COPY_HEADROOM: 2 };
     const speed = 50;
     const gap = 32;
+    const itemWidth = 350;
 
     let trackRef = null;
     let seqWidth = 0;
@@ -106,7 +107,7 @@
             if (!firstItem) return;
 
             // Measure actual item width
-            const actualItemWidth = firstItem.offsetWidth;
+            const actualItemWidth = firstItem.offsetWidth || itemWidth;
             seqWidth = works.length * (actualItemWidth + gap);
 
             // Calculate copies needed to fill viewport
