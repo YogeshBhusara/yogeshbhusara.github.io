@@ -262,6 +262,12 @@
         workButton.addEventListener('click', openWorkModal);
     }
 
+    // Index "See My Work" button
+    const indexWorkButton = document.getElementById('index-work-button');
+    if (indexWorkButton) {
+        indexWorkButton.addEventListener('click', openWorkModal);
+    }
+
     if (workModalClose) {
         workModalClose.addEventListener('click', closeWorkModal);
     }
