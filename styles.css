@@ -233,6 +233,13 @@ body[data-theme="light"] .section-label {
     color: rgba(4, 4, 4, 0.5);
 }
 
+body[data-theme="light"] .about .section-label,
+body[data-theme="light"] .experience .section-label,
+body[data-theme="light"] .contact .section-label,
+body[data-theme="light"] .work-page .section-label {
+    color: #040404;
+}
+
 body[data-theme="light"] .footer-label {
     opacity: 0.5;
     color: #040404;
@@ -595,18 +602,23 @@ body[data-theme="light"] .work-detail-navigation {
 .about {
     margin-bottom: 80px;
     padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .about .section-label {
-    grid-column: 1;
+    writing-mode: horizontal-tb;
+    text-orientation: unset;
+    transform: none;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0;
 }
 
 .about-content {
-    grid-column: 2;
     max-width: 700px;
 }
 
@@ -732,18 +744,23 @@ body[data-theme="light"] .work-detail-navigation {
 .experience {
     margin-bottom: 80px;
     padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .experience .section-label {
-    grid-column: 1;
+    writing-mode: horizontal-tb;
+    text-orientation: unset;
+    transform: none;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0;
 }
 
 .experience .experience-list {
-    grid-column: 2;
     max-width: 700px;
 }
 
@@ -804,18 +821,23 @@ body[data-theme="light"] .work-detail-navigation {
 .contact {
     margin-bottom: 80px;
     padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .contact .section-label {
-    grid-column: 1;
+    writing-mode: horizontal-tb;
+    text-orientation: unset;
+    transform: none;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0;
 }
 
 .contact-content {
-    grid-column: 2;
     max-width: 700px;
 }
 
@@ -823,18 +845,23 @@ body[data-theme="light"] .work-detail-navigation {
 .work-page {
     margin-bottom: 80px;
     padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .work-page .section-label {
-    grid-column: 1;
+    writing-mode: horizontal-tb;
+    text-orientation: unset;
+    transform: none;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0;
 }
 
 .work-list {
-    grid-column: 2;
     max-width: 700px;
     display: flex;
     flex-direction: column;
@@ -1204,27 +1231,11 @@ body[data-theme="light"] .work-detail-navigation {
         line-height: 1.4;
     }
 
-    .about,
-    .experience,
-    .contact,
-    .work-page {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
     .about .section-label,
-    .featured-projects .section-label,
     .experience .section-label,
     .contact .section-label,
     .work-page .section-label {
-        grid-column: unset;
-    }
-
-    .about-content,
-    .experience .experience-list,
-    .contact-content,
-    .work-list {
-        grid-column: unset;
+        font-size: 24px;
     }
 
     .main-nav {
@@ -1266,26 +1277,11 @@ body[data-theme="light"] .work-detail-navigation {
         padding: 0 16px;
     }
 
-    .about,
-    .experience,
-    .contact,
-    .work-page {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
     .about .section-label,
     .experience .section-label,
     .contact .section-label,
     .work-page .section-label {
-        grid-column: unset;
-    }
-
-    .about-content,
-    .experience .experience-list,
-    .contact-content,
-    .work-list {
-        grid-column: unset;
+        font-size: 22px;
     }
 
     .footer {
