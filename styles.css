@@ -636,7 +636,7 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .about-content p.about-text:first-of-type {
-    text-indent: 1.5em;
+    text-indent: 10em;
 }
 
 .about-content p.about-text:nth-of-type(2),
