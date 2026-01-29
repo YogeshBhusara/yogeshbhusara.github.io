@@ -251,12 +251,14 @@ body[data-theme="light"] .work-detail-overlay {
     border-color: rgba(4, 4, 4, 0.1);
 }
 
-body[data-theme="light"] .index-work-button {
+body[data-theme="light"] .index-work-button,
+body[data-theme="light"] .experience-cv-button {
     border-color: rgba(4, 4, 4, 0.2);
     color: #040404;
 }
 
-body[data-theme="light"] .index-work-button:hover {
+body[data-theme="light"] .index-work-button:hover,
+body[data-theme="light"] .experience-cv-button:hover {
     background: rgba(4, 4, 4, 0.1);
     border-color: rgba(4, 4, 4, 0.4);
 }
@@ -621,7 +623,7 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .about-text {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.7);
@@ -762,6 +764,30 @@ body[data-theme="light"] .work-detail-navigation {
 .experience .experience-list {
     grid-column: 2;
     max-width: 700px;
+}
+
+.experience-cv-button {
+    grid-column: 2;
+    align-self: start;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 12px 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    margin-top: 8px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.experience-cv-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .experience-list {
@@ -906,7 +932,7 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .contact-text {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.7);
@@ -917,7 +943,7 @@ body[data-theme="light"] .work-detail-navigation {
 .contact-email {
     color: #fff;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 24px;
     font-weight: 500;
     transition: opacity 0.2s ease;
     display: inline-block;
@@ -1179,7 +1205,8 @@ body[data-theme="light"] .work-detail-navigation {
     .about-content,
     .contact-content,
     .work-list,
-    .experience .experience-list {
+    .experience .experience-list,
+    .experience-cv-button {
         grid-column: 1;
     }
 
@@ -1304,7 +1331,8 @@ body[data-theme="light"] .work-detail-navigation {
     .about-content,
     .contact-content,
     .work-list,
-    .experience .experience-list {
+    .experience .experience-list,
+    .experience-cv-button {
         grid-column: 1;
     }
 
