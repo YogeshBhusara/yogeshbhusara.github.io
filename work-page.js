@@ -86,7 +86,13 @@
         }
     ];
 
-    // Render work list
+    // Truncate description to one line for card
+    function truncateDescription(text, maxLength) {
+        if (!text || text.length <= maxLength) return text || '';
+        return text.slice(0, maxLength).trim().replace(/\s+\S*$/, '') + '…';
+    }
+
+    // Render work list (Showcasy-style card grid)
     function renderWorkList() {
         if (!workList) return;
         
@@ -97,10 +103,20 @@
             item.className = 'work-list-item';
             item.dataset.workId = work.id;
             
+            const thumb = work.images && work.images[0]
+                ? `<div class="work-list-item-thumb"><img src="${work.images[0]}" alt="${work.title}" loading="lazy"></div>`
+                : '';
+            const shortDesc = truncateDescription(work.description, 72);
+            const tags = [work.category, work.meta.split(' · ')[0]].filter(Boolean);
+            const tagsHtml = tags.map(t => `<span class="work-list-item-tag">${t}</span>`).join('');
+            
             item.innerHTML = `
-                <div class="work-list-item-content">
+                ${thumb}
+                <div class="work-list-item-body">
                     <h3 class="work-list-item-title">${work.title}</h3>
-                    <p class="work-list-item-meta">${work.meta}</p>
+                    <p class="work-list-item-date">${work.year}</p>
+                    <p class="work-list-item-desc">${shortDesc}</p>
+                    <div class="work-list-item-tags">${tagsHtml}</div>
                 </div>
             `;
             

@@ -263,8 +263,36 @@ body[data-theme="light"] .experience-cv-button:hover {
     border-color: rgba(4, 4, 4, 0.4);
 }
 
+body[data-theme="light"] .work-page-headline {
+    color: #040404;
+}
+
 body[data-theme="light"] .work-list-item {
-    border-bottom-color: rgba(4, 4, 4, 0.1);
+    background: rgba(4, 4, 4, 0.03);
+    border-color: rgba(4, 4, 4, 0.08);
+}
+
+body[data-theme="light"] .work-list-item:hover {
+    background: rgba(4, 4, 4, 0.06);
+    border-color: rgba(4, 4, 4, 0.15);
+}
+
+body[data-theme="light"] .work-list-item-thumb {
+    background: rgba(4, 4, 4, 0.04);
+}
+
+body[data-theme="light"] .work-list-item-title {
+    color: #040404;
+}
+
+body[data-theme="light"] .work-list-item-date,
+body[data-theme="light"] .work-list-item-desc {
+    color: rgba(4, 4, 4, 0.6);
+}
+
+body[data-theme="light"] .work-list-item-tag {
+    color: rgba(4, 4, 4, 0.6);
+    background: rgba(4, 4, 4, 0.08);
 }
 
 body[data-theme="light"] .work-detail-content {
@@ -879,7 +907,7 @@ body[data-theme="light"] .work-detail-navigation {
     max-width: 700px;
 }
 
-/* Work Page */
+/* Work Page - Showcasy-style card grid */
 .work-page {
     margin-bottom: 80px;
     padding: 0 40px;
@@ -900,37 +928,114 @@ body[data-theme="light"] .work-detail-navigation {
     margin-bottom: 0;
 }
 
+.work-page-header {
+    grid-column: 2;
+    margin-bottom: 48px;
+    max-width: 700px;
+}
+
+.work-page-headline {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: #fff;
+    margin: 0;
+}
+
 .work-list {
     grid-column: 2;
-    max-width: 700px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 40px;
 }
 
 .work-list-item {
-    display: block;
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     color: inherit;
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: opacity 0.3s ease;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
 .work-list-item:hover {
-    opacity: 0.7;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
 }
 
-.work-list-item:last-child {
-    border-bottom: none;
+.work-list-item-thumb {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.work-list-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.work-list-item:hover .work-list-item-thumb img {
+    transform: scale(1.03);
+}
+
+.work-list-item-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .work-list-item-title {
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
     letter-spacing: -0.02em;
-    margin: 0 0 8px;
+    margin: 0;
     color: #fff;
+    line-height: 1.25;
+}
+
+.work-list-item-date {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+.work-list-item-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.work-list-item-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.work-list-item-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
 }
 
 .work-list-item-meta {
@@ -1214,10 +1319,15 @@ body[data-theme="light"] .work-detail-navigation {
 
     .about-content,
     .contact-content,
+    .work-page-header,
     .work-list,
     .experience .experience-list,
     .experience-cv-button {
         grid-column: 1;
+    }
+
+    .work-list {
+        grid-template-columns: 1fr;
     }
 
     .main-nav {
@@ -1340,10 +1450,16 @@ body[data-theme="light"] .work-detail-navigation {
 
     .about-content,
     .contact-content,
+    .work-page-header,
     .work-list,
     .experience .experience-list,
     .experience-cv-button {
         grid-column: 1;
+    }
+
+    .work-list {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
     .about .section-label,
