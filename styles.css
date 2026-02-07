@@ -1060,6 +1060,11 @@ body[data-theme="light"] .work-detail-navigation {
     border-color: rgba(255, 255, 255, 0.4);
 }
 
+.work-list-item-cta-arrow {
+    margin-left: 6px;
+    flex-shrink: 0;
+}
+
 .work-list-item-meta {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.5);
