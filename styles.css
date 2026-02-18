@@ -110,6 +110,28 @@ main {
     transform: translateZ(0);
 }
 
+/* All pages: site-nav left, content right (Nat-style side-by-side) */
+main:has(.site-nav) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 48px;
+    align-items: start;
+}
+
+main:has(.site-nav) > .site-nav {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0 var(--content-padding) 24px 0;
+    margin: 0;
+}
+
+main:has(.site-nav) > section:not(.footer) {
+    grid-column: 2;
+}
+
+main:has(.site-nav) > .footer {
+    grid-column: 1 / -1;
+}
 
 /* Navigation */
 .main-nav {
@@ -1452,15 +1474,6 @@ body[data-theme="light"] .blog-card__desc {
     gap: 32px;
 }
 
-.footer-top {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
 .footer .name-logo--footer {
     flex-shrink: 0;
 }
@@ -1495,15 +1508,6 @@ body[data-theme="light"] .blog-card__desc {
     font-weight: 400;
     color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.02em;
-}
-
-/* Fallback: pages with old footer (no .footer-top) still display as row */
-.footer:not(:has(.footer-top)) {
-    flex-direction: row;
-}
-
-.footer:not(:has(.footer-top)) .footer-bottom {
-    display: none;
 }
 
 .footer-label {
@@ -1576,8 +1580,14 @@ body[data-theme="light"] .blog-card__desc {
         gap: 24px;
     }
 
-    .footer-top {
-        gap: 24px;
+    main:has(.site-nav) {
+        grid-template-columns: 1fr;
+    }
+
+    main:has(.site-nav) > .site-nav,
+    main:has(.site-nav) > section:not(.footer) {
+        grid-column: auto;
+        grid-row: auto;
     }
 
     .footer-bottom {
@@ -1661,11 +1671,6 @@ body[data-theme="light"] .blog-card__desc {
 
     .footer .name-logo--footer {
         flex-shrink: 0;
-    }
-
-    .footer .footer-top {
-        flex-direction: column;
-        align-items: flex-start;
     }
 
     .footer .footer-links {
@@ -1759,11 +1764,6 @@ body[data-theme="light"] .blog-card__desc {
 
     .footer .name-logo--footer {
         flex-shrink: 0;
-    }
-
-    .footer .footer-top {
-        flex-direction: column;
-        align-items: flex-start;
     }
 
     .footer .footer-links {
