@@ -59,13 +59,17 @@ function readComponent(name) {
 }
 
 function getNavWithActive(activePage) {
-  const activeClass = 'nav-link--active';
-  const pages = ['index', 'work', 'about', 'blog', 'contact'];
-  let nav = readComponent('nav');
+  return readComponent('nav');
+}
+
+function getSiteNavWithActive(activePage) {
+  const activeClass = 'site-nav__link--active';
+  const pages = ['work', 'about', 'blog', 'contact'];
+  let siteNav = readComponent('site-nav');
   pages.forEach((p) => {
-    nav = nav.replace(new RegExp('\\{\\{ACTIVE_' + p.toUpperCase() + '\\}\\}', 'g'), p === activePage ? activeClass : '');
+    siteNav = siteNav.replace(new RegExp('\\{\\{ACTIVE_' + p.toUpperCase() + '\\}\\}', 'g'), p === activePage ? activeClass : '');
   });
-  return nav;
+  return siteNav;
 }
 
 function getSeoMeta(pageFile) {
@@ -119,6 +123,11 @@ function injectNav(html, activePage) {
   return html.replace(navBlock, getNavWithActive(activePage));
 }
 
+function injectSiteNav(html, activePage) {
+  const placeholder = /<!-- SITE_NAV -->/;
+  return html.replace(placeholder, getSiteNavWithActive(activePage));
+}
+
 function injectFooter(html) {
   const footerBlock = /<section class="footer"[^>]*>[\s\S]*?<\/section>(?=\s*<\/main>)/;
   return html.replace(footerBlock, readComponent('footer'));
@@ -148,6 +157,7 @@ function build() {
     const activePage = PAGE_CONFIG[pageFile]?.active || 'index';
 
     html = injectNav(html, activePage);
+    html = injectSiteNav(html, activePage);
     html = injectFooter(html);
 
     if (pageFile === 'index.html' || pageFile === 'work.html') {
