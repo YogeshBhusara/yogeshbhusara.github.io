@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog — Yogesh Bhusara</title>
@@ -41,13 +42,17 @@
 
 
     <main>
-        <section class="about" id="blog">
-            <div class="about-content">
+        <section class="blog-page" id="blog">
+            <div class="about-content blog-intro">
                 <p class="about-text">I regularly share thoughts on design, product thinking, and career lessons on Medium.</p>
                 <p class="about-text">You can read all of my latest posts, deep dives, and experiments here — they’re the best place to follow my ongoing work and thinking beyond case studies.</p>
                 <p class="about-text">
                     <a href="https://medium.com/@bhusara89.yogesh" target="_blank" rel="noopener" class="about-connect">Read my writing on Medium</a>
                 </p>
+            </div>
+            <div class="blog-posts" id="blog-posts" aria-label="Latest posts">
+                <p class="blog-loading" id="blog-loading">Loading posts…</p>
+                <p class="blog-error" id="blog-error" hidden>Couldn't load posts. <a href="https://medium.com/@bhusara89.yogesh" target="_blank" rel="noopener" class="about-connect">View on Medium</a></p>
             </div>
         </section>
 
@@ -84,6 +89,7 @@
     <script src="script.js"></script>
     <script src="animated-sections.js"></script>
     <script src="distort.js"></script>
+    <script src="blog.js"></script>
     <script src="theme-toggle.js"></script>
 </body>
 </html>
