@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yogesh Bhusara. UI/UX Designer.</title>
+    <title>Blog — Yogesh Bhusara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,12 +13,12 @@
     <canvas id="distort-canvas"></canvas>
     <nav class="main-nav" id="main-nav">
         <div class="nav-inner">
-            <a href="index.html" class="nav-link nav-link--active nav-link--profile">
+            <a href="index.html" class="nav-link nav-link--profile">
                 <img src="assets/profile-image.png" alt="Yogesh Bhusara" class="nav-profile-image">
             </a>
             <a href="work.html" class="nav-link">Work</a>
             <a href="about.html" class="nav-link">About</a>
-            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="blog.html" class="nav-link nav-link--active">Blog</a>
             <a href="contact.html" class="nav-link">Contact</a>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                 <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -41,15 +41,13 @@
 
 
     <main>
-        <section class="index" id="index">
-            <div class="index-content">
-                <h1 class="index-greeting">Namaste 🙏, I'm <span class="index-name">Yogesh Bhusara</span> —<br>A Designer with over 12 years of experience focused on creating scalable, user-centric digital solutions.</h1>
-                <div class="index-info">
-                    <p class="index-current">Currently working as Sr. UI/UX Designer at <a href="https://www.mangoapps.com" target="_blank" rel="noopener" class="index-link">MangoApps</a>.</p>
-                    <p class="index-location">Based in Pune, India.</p>
-                </div>
-                <a href="work.html" class="index-work-button">See My Work</a>
-                <p class="index-connect">Always open to new projects and collaborations — <a href="mailto:yogesh.bhusara@outlook.com" class="index-link">drop a line</a> if you'd like to connect.</p>
+        <section class="about" id="blog">
+            <div class="about-content">
+                <p class="about-text">I regularly share thoughts on design, product thinking, and career lessons on Medium.</p>
+                <p class="about-text">You can read all of my latest posts, deep dives, and experiments here — they’re the best place to follow my ongoing work and thinking beyond case studies.</p>
+                <p class="about-text">
+                    <a href="https://medium.com/@bhusara89.yogesh" target="_blank" rel="noopener" class="about-connect">Read my writing on Medium</a>
+                </p>
             </div>
         </section>
 
@@ -81,17 +79,6 @@
         </section>
     </main>
 
-    <!-- Work Detail Page -->
-    <div class="work-detail" id="work-detail" aria-hidden="true">
-        <div class="work-detail-overlay"></div>
-        <div class="work-detail-content">
-            <button class="work-detail-close" id="work-detail-close" aria-label="Close">×</button>
-            <div class="work-detail-inner" id="work-detail-inner">
-                <!-- Detail content will be populated here -->
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
@@ -100,3 +87,4 @@
     <script src="theme-toggle.js"></script>
 </body>
 </html>
+
