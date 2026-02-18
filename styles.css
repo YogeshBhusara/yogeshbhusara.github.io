@@ -4,13 +4,33 @@
     box-sizing: border-box;
 }
 
+:root {
+    --content-padding: 40px;
+    --section-spacing: 80px;
+    --content-max-width: 1600px;
+}
+
+@media (max-width: 968px) {
+    :root {
+        --content-padding: 24px;
+        --section-spacing: 72px;
+    }
+}
+
+@media (max-width: 640px) {
+    :root {
+        --content-padding: 16px;
+        --section-spacing: 56px;
+    }
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: #040404;
     color: #fff;
     line-height: 1.5;
-    padding: 40px;
-    max-width: 1600px;
+    padding: var(--content-padding);
+    max-width: var(--content-max-width);
     margin: 0 auto;
     position: relative;
     border-left: 1px solid rgba(255, 255, 255, 0.06);
@@ -73,13 +93,17 @@ body {
 
 main > section {
     visibility: hidden;
-    margin-bottom: 80px;
+    margin-bottom: var(--section-spacing);
+}
+
+main > section:last-child {
+    margin-bottom: 0;
 }
 
 main {
     position: relative;
     z-index: 1;
-    max-width: 1600px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
     padding: 100px 0 0;
     -webkit-transform: translateZ(0);
@@ -91,9 +115,9 @@ main {
 .main-nav {
     position: relative;
     width: 100%;
-    max-width: 1600px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
-    padding: 40px 40px 0;
+    padding: var(--content-padding) var(--content-padding) 0;
     z-index: 100;
 }
 
@@ -359,10 +383,9 @@ body[data-theme="light"] .work-detail-navigation {
 
 /* Index Section (Homepage) */
 .index {
-    margin-bottom: 80px;
     display: flex;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 var(--content-padding);
 }
 
 .index-content {
@@ -631,12 +654,8 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .about {
-    margin-bottom: 80px;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    padding: 0 var(--content-padding);
+    display: block;
 }
 
 .about .section-label {
@@ -651,7 +670,6 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .about-content {
-    grid-column: 2;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -786,12 +804,8 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .experience {
-    margin-bottom: 80px;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    padding: 0 var(--content-padding);
+    display: block;
 }
 
 .experience .section-label {
@@ -806,15 +820,13 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .experience .experience-list {
-    grid-column: 2;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .experience-cv-button {
-    grid-column: 2;
-    align-self: start;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
@@ -894,12 +906,8 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .contact {
-    margin-bottom: 80px;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    padding: 0 var(--content-padding);
+    display: block;
 }
 
 .contact .section-label {
@@ -914,7 +922,6 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .contact-content {
-    grid-column: 2;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -922,17 +929,14 @@ body[data-theme="light"] .work-detail-navigation {
 
 /* Blog Page */
 .blog-page {
-    margin-bottom: 80px;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    padding: 0 var(--content-padding);
+    display: block;
 }
 
 .blog-intro {
-    grid-column: 2;
     max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .blog-intro p.about-text:first-of-type {
@@ -940,7 +944,6 @@ body[data-theme="light"] .work-detail-navigation {
 }
 
 .blog-posts {
-    grid-column: 2;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -1057,12 +1060,8 @@ body[data-theme="light"] .blog-card__desc {
 
 /* Work Page - Showcasy-style card grid */
 .work-page {
-    margin-bottom: 80px;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 40px;
-    align-items: start;
+    padding: 0 var(--content-padding);
+    display: block;
 }
 
 .work-page .section-label {
@@ -1077,7 +1076,6 @@ body[data-theme="light"] .blog-card__desc {
 }
 
 .work-page-header {
-    grid-column: 2;
     margin-bottom: 48px;
     max-width: 700px;
     margin-left: auto;
@@ -1094,7 +1092,6 @@ body[data-theme="light"] .blog-card__desc {
 }
 
 .work-list {
-    grid-column: 2;
     max-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1382,7 +1379,7 @@ body[data-theme="light"] .blog-card__desc {
 /* Footer */
 .footer {
     margin-bottom: 0;
-    padding: 0 40px 40px;
+    padding: 0 var(--content-padding) var(--content-padding);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1446,10 +1443,6 @@ body[data-theme="light"] .blog-card__desc {
 
 @media (max-width: 968px) {
     body {
-        padding: 24px;
-    }
-
-    body {
         border-left-color: rgba(255, 255, 255, 0.04);
     }
 
@@ -1470,35 +1463,8 @@ body[data-theme="light"] .blog-card__desc {
         padding-top: 100px;
     }
 
-    main > section {
-        margin-bottom: 80px;
-    }
-
-    .index {
-        padding: 0 24px;
-        margin-bottom: 80px;
-    }
-
-    .about,
-    .experience,
-    .contact,
-    .blog-page,
-    .work-page {
-        margin-bottom: 80px;
-        padding: 0 24px;
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .about-content,
-    .contact-content,
-    .blog-intro,
-    .blog-posts,
-    .work-page-header,
-    .work-list,
-    .experience .experience-list,
-    .experience-cv-button {
-        grid-column: 1;
+    .main-nav {
+        padding: var(--content-padding) var(--content-padding) 0;
     }
 
     .blog-card {
@@ -1525,11 +1491,6 @@ body[data-theme="light"] .blog-card__desc {
     .work-list {
         grid-template-columns: 1fr;
     }
-
-    .main-nav {
-        padding: 24px 24px 0;
-    }
-
 
     .nav-inner {
         gap: 24px;
@@ -1604,7 +1565,7 @@ body[data-theme="light"] .blog-card__desc {
     }
 
     .main-nav {
-        padding: 16px 16px 0;
+        padding: var(--content-padding) var(--content-padding) 0;
     }
 
     .nav-inner {
@@ -1631,29 +1592,6 @@ body[data-theme="light"] .blog-card__desc {
 
     main > section {
         margin-bottom: 60px;
-    }
-
-    .index,
-    .about,
-    .experience,
-    .contact,
-    .blog-page,
-    .work-page {
-        margin-bottom: 60px;
-        padding: 0 16px;
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .about-content,
-    .contact-content,
-    .blog-intro,
-    .blog-posts,
-    .work-page-header,
-    .work-list,
-    .experience .experience-list,
-    .experience-cv-button {
-        grid-column: 1;
     }
 
     .blog-card {
@@ -1751,9 +1689,6 @@ body[data-theme="light"] .blog-card__desc {
 }
 
 @media (max-width: 640px) {
-    body {
-        padding: 16px;
-    }
 
     body {
         border-left-color: rgba(255, 255, 255, 0.03);
@@ -1763,16 +1698,13 @@ body[data-theme="light"] .blog-card__desc {
         column-gap: 0;
     }
 
-    .index {
-        padding: 0 16px;
-    }
-
+    .index,
     .about,
     .experience,
     .contact,
     .blog-page,
     .work-page {
-        padding: 0 16px;
+        padding: 0 var(--content-padding);
     }
 
     .index-greeting {
@@ -2151,7 +2083,7 @@ body[data-theme="light"] .work-detail-overlay {
     }
 
     .work-detail-content {
-        padding: 0 24px;
+        padding: 0 var(--content-padding);
     }
 
     .work-detail-inner {
@@ -2207,11 +2139,11 @@ body[data-theme="light"] .work-detail-overlay {
     }
 
     .work-modal-content {
-        padding: 60px 16px;
+        padding: 60px var(--content-padding);
     }
 
     .work-detail-content {
-        padding: 0 16px;
+        padding: 0 var(--content-padding);
     }
 
     .work-detail-inner {
