@@ -41,20 +41,25 @@
         const grid = document.createElement('div');
         grid.className = 'blog-grid';
 
-        posts.forEach(function (post) {
+        posts.forEach(function (post, index) {
             const card = document.createElement('a');
             card.href = post.link;
             card.target = '_blank';
             card.rel = 'noopener';
             card.className = 'blog-card';
 
+            const imageNum = index + 1;
+            const imageSrc = 'assets/' + imageNum + '.webp';
+            const thumbHtml = '<div class="blog-card__thumb">' +
+                '<img src="' + imageSrc + '" alt="" loading="lazy">' +
+                '</div>';
+
             card.innerHTML =
-                '<div class="blog-card__thumb blog-card__thumb--placeholder"></div>' +
                 '<div class="blog-card__body">' +
                 '<h3 class="blog-card__title">' + escapeHtml(post.title) + '</h3>' +
                 (post.description ? '<p class="blog-card__desc">' + escapeHtml(post.description) + '</p>' : '') +
-                '<span class="blog-card__cta">Read on Medium</span>' +
-                '</div>';
+                '</div>' +
+                thumbHtml;
 
             grid.appendChild(card);
         });
