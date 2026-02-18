@@ -2,7 +2,7 @@
 (function initNameLogo() {
     const el = document.getElementById('name-logo');
     if (!el) return;
-    const text = (el.getAttribute('data-text') || 'VIBE*CODE*').trim();
+    const text = (el.getAttribute('data-text') || 'DESIGN*VIBECODE*REPEAT').trim();
     const letters = Array.from(text);
     const tau = Math.PI * 2;
 
