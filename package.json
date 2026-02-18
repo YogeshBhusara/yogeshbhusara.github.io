@@ -1,0 +1,7 @@
+{
+  "name": "yogesh-bhusara-portfolio",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  }
+}
