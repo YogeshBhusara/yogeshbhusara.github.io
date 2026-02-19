@@ -452,79 +452,11 @@ body[data-theme="light"] .work-detail-navigation {
     /* Same as nav-link */
 }
 
-/* Index Section (Homepage) – flex container with boxes (Nat-style) */
+/* Index Section (Homepage) – left-aligned in content column (Nat-style) */
 .index {
     display: block;
     padding: 0 var(--content-padding) 0 0;
-    min-width: 0;
-}
-
-.index-boxes {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 48px;
-    flex-wrap: wrap;
-}
-
-.index-box {
-    flex: 1 1 auto;
-    min-width: 0;
-}
-
-.index-box--intro {
     max-width: 720px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 28px 32px;
-}
-
-.index-box--pills {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
-}
-
-.index-pills {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
-}
-
-.index-pill {
-    display: inline-block;
-    padding: 12px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 999px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    transition: background 0.2s ease, border-color 0.2s ease;
-    white-space: nowrap;
-}
-
-.index-pill:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.35);
-}
-
-body[data-theme="light"] .index-box--intro {
-    border-color: rgba(4, 4, 4, 0.1);
-}
-
-body[data-theme="light"] .index-pill {
-    border-color: rgba(4, 4, 4, 0.2);
-    color: #040404;
-}
-
-body[data-theme="light"] .index-pill:hover {
-    background: rgba(4, 4, 4, 0.06);
-    border-color: rgba(4, 4, 4, 0.35);
 }
 
 .index-content {
@@ -1668,19 +1600,6 @@ body[data-theme="light"] .blog-card__desc {
     .footer-bottom .footer-label {
         max-width: 200px;
         white-space: normal;
-    }
-
-    .index-boxes {
-        flex-direction: column;
-        gap: 32px;
-    }
-
-    .index-box--pills {
-        align-items: flex-start;
-    }
-
-    .index-pills {
-        align-items: flex-start;
     }
 
     .blog-card {
