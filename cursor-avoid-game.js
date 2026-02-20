@@ -20,6 +20,7 @@
         startTime: 0,
         timerId: null,
         moveId: null,
+        resetTimeoutId: null,
         lastX: 0.5,
         lastY: 0.5
     };
@@ -72,7 +73,7 @@
             card.classList.add('caught');
             card.classList.remove('won');
             setStatus('Caught!');
-            setTimeout(reset, RESET_DELAY_MS);
+            state.resetTimeoutId = setTimeout(reset, RESET_DELAY_MS);
         }
     }
 
@@ -87,8 +88,31 @@
             card.classList.add('won');
             card.classList.remove('caught');
             setStatus('You survived ' + SURVIVE_SEC + 's!');
-            setTimeout(reset, RESET_DELAY_MS);
+            state.resetTimeoutId = setTimeout(reset, RESET_DELAY_MS);
         }
+    }
+
+    function stopAndReset() {
+        if (state.resetTimeoutId) {
+            clearTimeout(state.resetTimeoutId);
+            state.resetTimeoutId = null;
+        }
+        if (state.timerId) {
+            clearInterval(state.timerId);
+            state.timerId = null;
+        }
+        if (state.moveId) {
+            clearInterval(state.moveId);
+            state.moveId = null;
+        }
+        state.playing = false;
+        state.caught = false;
+        state.won = false;
+        card.classList.remove('caught', 'won');
+        setStatus('Move cursor away from the dot!');
+        dot.style.left = '50%';
+        dot.style.top = '50%';
+        dot.style.transform = 'translate(-50%, -50%)';
     }
 
     function reset() {
@@ -115,8 +139,12 @@
         checkCollision(e.clientX, e.clientY);
     }
 
-    arena.addEventListener('mouseenter', function () {
+    card.addEventListener('mouseenter', function () {
         if (!state.playing && !state.caught && !state.won) reset();
+    });
+
+    card.addEventListener('mouseleave', function () {
+        stopAndReset();
     });
 
     document.addEventListener('mousemove', onMouseMove);

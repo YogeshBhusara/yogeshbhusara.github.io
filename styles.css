@@ -421,8 +421,9 @@ body[data-theme="light"] .bento-card:hover {
 .bento-card__game-arena {
     position: relative;
     flex: 1;
-    min-height: 80px;
-    border-radius: 12px;
+    min-height: 120px;
+    margin: 0 calc(-1 * var(--bento-card-padding, 28px)) calc(-1 * var(--bento-card-padding, 28px));
+    border-radius: 0 0 var(--bento-radius) var(--bento-radius);
     background: var(--bento-accent);
     overflow: hidden;
 }
