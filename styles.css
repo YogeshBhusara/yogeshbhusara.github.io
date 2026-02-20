@@ -638,10 +638,8 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
     flex-shrink: 0;
 }
 
-.bento-card--medium .bento-card__blog-list {
-    list-style: none;
+.bento-card--medium .bento-card__blog-featured {
     margin: 12px 0 0;
-    padding: 0;
     flex: 1;
     min-height: 0;
     display: flex;
@@ -649,25 +647,34 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
     gap: 6px;
 }
 
-.bento-card--medium .bento-card__blog-item a,
-.bento-card--medium .bento-card__blog-list-fallback,
-.bento-card--medium .bento-card__blog-list-loading {
-    font-size: 0.8125rem;
+.bento-card--medium .bento-card__blog-featured-title {
+    font-size: 0.875rem;
+    font-weight: 600;
     color: var(--bento-text);
-    opacity: 0.9;
+    opacity: 0.95;
     text-decoration: none;
-    display: block;
     line-height: 1.35;
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.bento-card--medium .bento-card__blog-item a:hover {
+.bento-card--medium .bento-card__blog-featured-title:hover {
     text-decoration: underline;
     color: var(--bento-text);
+}
+
+.bento-card--medium .bento-card__blog-featured-desc {
+    font-size: 0.8125rem;
+    color: var(--bento-text);
+    opacity: 0.85;
+    line-height: 1.4;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .bento-card--medium .bento-card__cta--link {

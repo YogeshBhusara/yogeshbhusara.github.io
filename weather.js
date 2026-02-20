@@ -80,16 +80,17 @@
 
     setText('weather-desc', 'Loading…');
 
-    Promise.all([
-      fetch(WEATHER_URL).then(function (r) { return r.json(); }),
-      fetch(AQI_URL).then(function (r) { return r.json(); })
-    ])
-      .then(function (results) {
-        renderWeather(results[0], results[1]);
+    fetch(WEATHER_URL)
+      .then(function (r) {
+        if (!r.ok) throw new Error('Weather API error');
+        return r.json();
+      })
+      .then(function (weather) {
+        renderWeather(weather, null);
       })
       .catch(function () {
-        setText('weather-desc', 'Unable to load');
         setText('weather-temp', '--');
+        setText('weather-desc', '--');
         setText('weather-feels', '--');
         setText('weather-humidity', '--');
         setText('weather-wind', '--');
