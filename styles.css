@@ -658,8 +658,8 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
 /* Now card – location time */
 #weather-card .bento-card__now-time {
     margin: 8px 0 0;
-    font-size: 1.125rem;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 400;
     letter-spacing: 0.02em;
     color: var(--bento-text);
     opacity: 0.95;
@@ -668,7 +668,7 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
 /* Now card – location temperature */
 #weather-card .bento-card__now-temp {
     margin: 12px 0 0;
-    font-size: 1rem;
+    font-size: 30px;
     line-height: 1.4;
     color: var(--bento-text);
     opacity: 0.9;
@@ -677,6 +677,7 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
 #weather-card .bento-card__now-unit {
     margin-left: 2px;
     font-weight: 500;
+    font-size: 30px;
 }
 
 #weather-card .bento-card__now-desc {
@@ -777,7 +778,86 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     color: rgba(255, 255, 255, 0.95);
 }
 
-/* Social link cards (LinkedIn, Behance, Dribbble, Instagram) */
+/* Social hub: one square card made of 4 small cards */
+.bento-card--social-hub {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding: 0;
+    display: flex;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.bento-card--social-hub:hover {
+    transform: none;
+}
+
+.bento-card__social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+    flex: 1;
+    min-height: 0;
+    background: var(--bento-card-border);
+}
+
+.bento-card__social-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    background: var(--bento-card-bg);
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.bento-card__social-cell:hover {
+    opacity: 0.92;
+    filter: brightness(1.08);
+}
+
+/* LinkedIn – brand gradient */
+.bento-card__social-cell--linkedin {
+    background: linear-gradient(145deg, #0a66c2 0%, #004182 50%, #002850 100%);
+}
+
+/* Behance – brand gradient */
+.bento-card__social-cell--behance {
+    background: linear-gradient(145deg, #1769ff 0%, #0d47d1 50%, #002171 100%);
+}
+
+/* Dribbble – brand gradient */
+.bento-card__social-cell--dribbble {
+    background: linear-gradient(145deg, #ea4c89 0%, #c73e6b 50%, #9e2952 100%);
+}
+
+/* Instagram – brand gradient (icon colors) */
+.bento-card__social-cell--instagram {
+    background: linear-gradient(145deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.bento-card__social-hub .bento-card__social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.bento-card__social-hub .bento-card__social-cell .bento-card__social-icon svg {
+    fill: currentColor;
+}
+
+.bento-card__social-hub .bento-card__social-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 6px;
+    letter-spacing: -0.02em;
+}
+
+/* Standalone social link cards (kept for any reuse) */
 .bento-card--social {
     justify-content: center;
     align-items: center;
