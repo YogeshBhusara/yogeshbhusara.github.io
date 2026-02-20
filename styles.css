@@ -404,6 +404,51 @@ body[data-theme="light"] .bento-card:hover {
     grid-row: span 2;
 }
 
+/* Avoid the cursor – mini game card */
+.bento-card--game {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-card__game-status {
+    font-size: 0.8125rem;
+    color: var(--bento-text-muted);
+    margin: 0 0 10px;
+}
+
+.bento-card__game-arena {
+    position: relative;
+    flex: 1;
+    min-height: 80px;
+    border-radius: 12px;
+    background: var(--bento-accent);
+    overflow: hidden;
+}
+
+.bento-card__game-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--bento-text);
+    box-shadow: 0 0 0 2px var(--bento-card-border);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.4s ease, top 0.4s ease;
+    pointer-events: none;
+}
+
+.bento-card--game.caught .bento-card__game-dot {
+    background: #e53935;
+}
+
+.bento-card--game.won .bento-card__game-dot {
+    background: #43a047;
+}
+
 /* Bento card content */
 .bento-card__title {
     font-size: 1.25rem;
