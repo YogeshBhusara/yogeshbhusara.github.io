@@ -41,8 +41,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <canvas id="distort-canvas" class="darkveil-canvas" aria-hidden="true"></canvas>
-
     <main>
         <header class="bento-header">
             <a href="index.html" class="bento-logo" aria-label="Home">YB</a>
@@ -76,6 +74,8 @@
         <section class="bento-grid" aria-label="Portfolio overview">
             <!-- Intro card (large) -->
             <article class="bento-card bento-card--intro">
+                <canvas id="distort-canvas" class="darkveil-canvas" aria-hidden="true"></canvas>
+                <div class="bento-card__intro-content">
                 <div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 16px;">
                     <img src="assets/profile-image.png" alt="" width="80" height="80" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
                     <div>
@@ -86,6 +86,7 @@
                 <p class="bento-card__desc">I believe design is how we make complex systems feel simple. With over 12 years of experience, I focus on scalable, user-centric digital solutions—enterprise collaboration, product design, and AI-driven experiences.</p>
                 <p class="bento-card__desc" style="margin-bottom: 0;">Currently at <a href="https://www.mangoapps.com" target="_blank" rel="noopener" class="bento-card__link" style="display: inline; margin-top: 0;">MangoApps</a>. Based in Pune, India.</p>
                 <a href="about.html" class="bento-card__link">About me →</a>
+                </div>
             </article>
 
             <!-- Location / Now -->
@@ -153,7 +154,7 @@
 
             <!-- Name logo (circular DESIGN*VIBECODE*REPEAT) -->
             <article class="bento-card bento-card--logo" aria-label="Design Vibe Code Repeat">
-                <div id="name-logo" class="name-logo name-logo--footer name-logo--bento" data-text="DESIGN * VIBECODE * REPEAT * " aria-hidden="true"></div>
+                <div id="name-logo" class="name-logo name-logo--footer name-logo--bento" data-text=" DESIGN * VIBECODE * REPEAT * " aria-hidden="true"></div>
             </article>
 
             <!-- Project card (wide) -->

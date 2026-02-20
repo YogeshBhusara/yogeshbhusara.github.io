@@ -151,8 +151,9 @@ void main(){
   let animationId = null;
 
   function resize() {
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
+    const parent = canvas.parentElement;
+    const w = parent ? parent.clientWidth : canvas.clientWidth || 1;
+    const h = parent ? parent.clientHeight : canvas.clientHeight || 1;
     const scale = Math.min(window.devicePixelRatio || 1, 2) * config.resolutionScale;
     const width = Math.floor(w * scale);
     const height = Math.floor(h * scale);

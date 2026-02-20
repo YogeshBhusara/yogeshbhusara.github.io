@@ -56,15 +56,26 @@ body {
 }
 
 /* Background canvas */
-#distort-canvas,
-.darkveil-canvas {
-    position: fixed;
+/* DarkVeil only inside intro card (not full-page) */
+.bento-card--intro {
+    position: relative;
+    overflow: hidden;
+}
+
+.bento-card--intro .darkveil-canvas {
+    position: absolute;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    z-index: 0;
     pointer-events: none;
     display: block;
+}
+
+.bento-card--intro .bento-card__intro-content {
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -511,14 +522,17 @@ body[data-theme="light"] .bento-card--has-thumb .bento-card__content {
 
 /* Name logo grid cell: no box, just centered logo */
 .bento-card--logo {
+    display: flex;
     justify-content: center;
     align-items: center;
+    place-content: center;
     padding: 0;
     background: transparent;
     border: none;
     box-shadow: none;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
+    min-height: 100%;
 }
 
 .bento-card--logo:hover {
@@ -532,6 +546,8 @@ body[data-theme="light"] .bento-card--has-thumb .bento-card__content {
     flex-shrink: 0;
     width: 150px;
     height: 150px;
+    margin: auto;
+    display: block;
 }
 
 .bento-card--logo .name-logo span {
@@ -656,11 +672,6 @@ body[data-theme="light"] {
     color: #0a0a0a;
     border-left-color: rgba(4, 4, 4, 0.08);
 }
-
-body[data-theme="light"] #distort-canvas {
-    background-color: #ffffff;
-}
-
 
 body[data-theme="light"] .nav-link,
 body[data-theme="light"] .index-greeting,
