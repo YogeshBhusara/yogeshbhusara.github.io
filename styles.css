@@ -683,6 +683,128 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
     opacity: 1;
 }
 
+/* Now card – location time */
+#weather-card .bento-card__now-time {
+    margin: 8px 0 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--bento-text);
+    opacity: 0.95;
+}
+
+/* Now card – location temperature */
+#weather-card .bento-card__now-temp {
+    margin: 12px 0 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--bento-text);
+    opacity: 0.9;
+}
+
+#weather-card .bento-card__now-unit {
+    margin-left: 2px;
+    font-weight: 500;
+}
+
+#weather-card .bento-card__now-desc {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 0.875rem;
+    text-transform: capitalize;
+    opacity: 0.85;
+}
+
+/* Now card – time-of-day gradient backgrounds (dark theme) */
+#weather-card.bento-card--now[data-time-of-day="night"] {
+    background: linear-gradient(165deg, #1e1b2e 0%, #16213e 40%, #0f0f1a 100%);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+#weather-card.bento-card--now[data-time-of-day="dawn"] {
+    background: linear-gradient(165deg, #2d1f3d 0%, #1a1a2e 50%, #0f0f1a 100%);
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+#weather-card.bento-card--now[data-time-of-day="morning"] {
+    background: linear-gradient(165deg, #2c2416 0%, #1e2a1e 45%, #14181c 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+#weather-card.bento-card--now[data-time-of-day="noon"] {
+    background: linear-gradient(165deg, #1a2a3a 0%, #1e2d3d 50%, #15202b 100%);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+#weather-card.bento-card--now[data-time-of-day="afternoon"] {
+    background: linear-gradient(165deg, #2a2418 0%, #1e2a20 50%, #141a18 100%);
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+#weather-card.bento-card--now[data-time-of-day="evening"] {
+    background: linear-gradient(165deg, #2e1f2a 0%, #1e1a2e 50%, #151520 100%);
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+#weather-card.bento-card--now[data-time-of-day="dusk"] {
+    background: linear-gradient(165deg, #251a1e 0%, #1a1525 45%, #0f0f18 100%);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Now card – time-of-day gradients (light theme) */
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] {
+    background: linear-gradient(165deg, #2a2740 0%, #1e2a45 50%, #161b2e 100%);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] {
+    background: linear-gradient(165deg, #4a3a5c 0%, #3d3d5c 50%, #2a2a40 100%);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="morning"] {
+    background: linear-gradient(165deg, #e8dcc4 0%, #c9d4b8 50%, #a8b8b0 100%);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="noon"] {
+    background: linear-gradient(165deg, #b8d4e8 0%, #a8c8dc 50%, #90b0c8 100%);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="afternoon"] {
+    background: linear-gradient(165deg, #e0d4a8 0%, #d0c898 50%, #b8b088 100%);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="evening"] {
+    background: linear-gradient(165deg, #d8b8a8 0%, #c8a8b8 50%, #a890a8 100%);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] {
+    background: linear-gradient(165deg, #906868 0%, #685878 50%, #404058 100%);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__meta,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__title,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__now-time,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__now-temp,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__desc,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__meta,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__title,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__now-time,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__now-temp,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__desc,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__meta,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__title,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__now-time,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__now-temp,
+body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__desc {
+    color: rgba(255, 255, 255, 0.95);
+}
+
 .bento-card--theme {
     justify-content: center;
     align-items: center;

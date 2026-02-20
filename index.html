@@ -89,10 +89,15 @@
                 </div>
             </article>
 
-            <!-- Now – Pune, India -->
-            <article class="bento-card bento-card--tall" aria-label="Now – Pune, India">
+            <!-- Now – Pune, India + time + temperature + time-of-day gradient -->
+            <article class="bento-card bento-card--tall bento-card--now" id="weather-card" data-time-of-day="noon" aria-label="Now – Pune, India – current time and weather">
                 <p class="bento-card__meta">Now</p>
                 <h2 class="bento-card__title" style="margin-top: 8px;">Pune, India</h2>
+                <p class="bento-card__now-time" id="now-location-time" aria-live="polite">--:-- IST</p>
+                <p class="bento-card__now-temp">
+                    <span id="weather-temp">--</span><span class="bento-card__now-unit">°C</span>
+                    <span id="weather-desc" class="bento-card__now-desc">Loading…</span>
+                </p>
                 <p class="bento-card__desc" style="margin-top: auto;">Based here. Building product experiences that matter.</p>
             </article>
 
@@ -196,6 +201,8 @@
     <script defer src="animated-sections.js"></script>
     <script defer src="darkveil.js"></script>
     <script defer src="theme-toggle.js"></script>
+    <script defer src="weather.js"></script>
+    <script defer src="now-card.js"></script>
     <script defer src="work-page.js"></script>
     <script defer src="medium-blogs.js"></script>
 </body>
