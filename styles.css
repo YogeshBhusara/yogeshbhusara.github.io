@@ -520,7 +520,7 @@ body[data-theme="light"] .bento-card--has-thumb .bento-card__content {
     align-items: center;
 }
 
-/* Name logo grid cell: no box, just centered logo */
+/* Name logo grid cell: no box, no shadow, no hover */
 .bento-card--logo {
     display: flex;
     justify-content: center;
@@ -529,17 +529,19 @@ body[data-theme="light"] .bento-card--has-thumb .bento-card__content {
     padding: 0;
     background: transparent;
     border: none;
-    box-shadow: none;
+    box-shadow: none !important;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     min-height: 100%;
+    transition: none;
 }
 
 .bento-card--logo:hover {
     background: transparent;
     border: none;
-    box-shadow: none;
+    box-shadow: none !important;
     transform: none;
+    border-color: transparent;
 }
 
 .bento-card--logo .name-logo--bento {

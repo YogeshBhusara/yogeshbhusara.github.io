@@ -25,6 +25,7 @@ uniform float uScan;
 uniform float uScanFreq;
 uniform float uWarp;
 uniform float uLightMode;
+uniform float uAlpha;
 #define iTime uTime
 #define iResolution uResolution
 
@@ -79,7 +80,7 @@ void main(){
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
     col.rgb=clamp(col.rgb,0.0,1.0);
     if(uLightMode>0.5){ col.rgb=col.rgb*0.4+vec3(0.6); }
-    gl_FragColor=vec4(col.rgb,0.1);
+    gl_FragColor=vec4(col.rgb,uAlpha);
 }
 `;
 
@@ -135,13 +136,14 @@ void main(){
   const uScanFreq = gl.getUniformLocation(program, 'uScanFreq');
   const uWarp = gl.getUniformLocation(program, 'uWarp');
   const uLightMode = gl.getUniformLocation(program, 'uLightMode');
+  const uAlpha = gl.getUniformLocation(program, 'uAlpha');
 
-  // Config (matches usage: all 0 except speed 0.1)
+  // Config (matches usage: all 0 except speed 0.3)
   const config = {
     hueShift: 0,
     noiseIntensity: 0,
     scanlineIntensity: 0,
-    speed: 0.1,
+    speed: 0.3,
     scanlineFrequency: 0,
     warpAmount: 0,
     resolutionScale: 1
@@ -178,6 +180,7 @@ void main(){
     gl.uniform1f(uWarp, config.warpAmount);
     const isLight = document.body.getAttribute('data-theme') === 'light';
     gl.uniform1f(uLightMode, isLight ? 1 : 0);
+    gl.uniform1f(uAlpha, isLight ? 0.4 : 0.1);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.enableVertexAttribArray(positionLoc);
