@@ -54,7 +54,8 @@ body {
 }
 
 /* Background canvas */
-#distort-canvas {
+#distort-canvas,
+.darkveil-canvas {
     position: fixed;
     inset: 0;
     width: 100vw;
@@ -62,7 +63,6 @@ body {
     z-index: -1;
     pointer-events: none;
     display: block;
-    transition: background-color 0.3s ease;
 }
 
 
@@ -124,7 +124,7 @@ main {
     z-index: 1;
     max-width: var(--content-max-width);
     margin: 0 auto;
-    padding: 100px 0 0;
+    padding: 0;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
@@ -493,6 +493,16 @@ body[data-theme="light"] .bento-card:hover {
     align-items: center;
 }
 
+.bento-card--logo {
+    justify-content: center;
+    align-items: center;
+    padding: 28px;
+}
+
+.bento-card--logo .name-logo--bento {
+    flex-shrink: 0;
+}
+
 @media (max-width: 968px) {
     .bento-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -561,7 +571,7 @@ main:has(.bento-grid) .site-nav {
     display: none;
 }
 
-/* Any page with bento header: use same header, hide side nav */
+/* Any page with bento header: use same header, hide side nav, no extra top padding */
 main:has(.bento-header) {
     display: block;
     grid-template-columns: unset;
@@ -1943,11 +1953,7 @@ body[data-theme="light"] .blog-card__desc {
     }
 
     main {
-        padding-top: 100px;
-    }
-
-    .main-nav {
-        padding: var(--content-padding) var(--content-padding) 0;
+        padding-top: 0;
     }
 
     .site-nav {
@@ -2088,7 +2094,7 @@ body[data-theme="light"] .blog-card__desc {
     }
 
     main {
-        padding-top: 100px;
+        padding-top: 0;
     }
 
     main > section {

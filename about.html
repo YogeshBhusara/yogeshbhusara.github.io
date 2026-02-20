@@ -23,31 +23,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <canvas id="distort-canvas"></canvas>
-    <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main">
-    <div class="nav-inner">
-        <a href="index.html" class="nav-link nav-link--profile">
-            <img src="assets/profile-image.png" alt="Yogesh Bhusara" class="nav-profile-image" width="40" height="40" fetchpriority="high">
-        </a>
-        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark and light theme">
-            <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-        </button>
-    </div>
-</nav>
-
+    <canvas id="distort-canvas" class="darkveil-canvas" aria-hidden="true"></canvas>
 
     <main>
         <header class="bento-header">
@@ -113,7 +89,6 @@
                 </article>
             </div>
             <a href="assets/cv.pdf" download class="experience-cv-button">Download CV</a>
-            <div id="name-logo" class="name-logo name-logo--footer" data-text="DESIGN*VIBECODE*REPEAT" aria-label="Design Vibe Code Repeat"></div>
         </section>
 
         <section class="footer" aria-label="Site footer">
@@ -128,7 +103,7 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script defer src="script.js"></script>
     <script defer src="animated-sections.js"></script>
-    <script defer src="distort.js"></script>
+    <script defer src="darkveil.js"></script>
     <script defer src="theme-toggle.js"></script>
 </body>
 </html>

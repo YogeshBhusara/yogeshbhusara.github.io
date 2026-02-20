@@ -16,16 +16,7 @@
         document.documentElement.setAttribute('data-theme', theme);
         document.body.setAttribute('data-theme', theme);
         localStorage.setItem(THEME_KEY, theme);
-        
-        // Update canvas background if it exists
-        const canvas = document.getElementById('distort-canvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            if (ctx) {
-                ctx.fillStyle = theme === 'light' ? '#ffffff' : '#0b0b0b';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-            }
-        }
+        // DarkVeil background reads data-theme in its loop for light/dark tint
     }
 
     // Toggle theme
