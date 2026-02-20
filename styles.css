@@ -624,57 +624,22 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
     opacity: 0.9;
 }
 
-.bento-card--medium .bento-card__title {
-    margin-top: 8px;
+.bento-card--medium .bento-card__medium-brand {
+    flex-shrink: 0;
     margin-bottom: 4px;
 }
 
-.bento-card--medium .bento-card__desc {
-    font-size: 0.875rem;
-    margin: 0;
+.bento-card--medium .bento-card__title {
+    margin-top: 0;
 }
 
-.bento-card--medium .bento-card__medium-brand {
-    flex-shrink: 0;
-}
-
-.bento-card--medium .bento-card__blog-featured {
-    margin: 12px 0 0;
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.bento-card--medium .bento-card__blog-featured-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--bento-text);
-    opacity: 0.95;
+.bento-card__title-link {
+    color: inherit;
     text-decoration: none;
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
-.bento-card--medium .bento-card__blog-featured-title:hover {
+.bento-card__title-link:hover {
     text-decoration: underline;
-    color: var(--bento-text);
-}
-
-.bento-card--medium .bento-card__blog-featured-desc {
-    font-size: 0.8125rem;
-    color: var(--bento-text);
-    opacity: 0.85;
-    line-height: 1.4;
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .bento-card--medium .bento-card__cta--link {
@@ -810,6 +775,29 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
 body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__now-temp,
 body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__desc {
     color: rgba(255, 255, 255, 0.95);
+}
+
+/* Social link cards (LinkedIn, Behance, Dribbble, Instagram) */
+.bento-card--social {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.bento-card--social .bento-card__social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bento-text);
+    opacity: 0.9;
+}
+
+.bento-card--social .bento-card__social-label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bento-text);
+    margin-top: 8px;
+    letter-spacing: -0.02em;
 }
 
 .bento-card--theme {
