@@ -1,7 +1,7 @@
 // Theme toggle functionality
 (function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    if (!themeToggle) return;
+    const toggles = document.querySelectorAll('.theme-toggle');
+    if (!toggles.length) return;
 
     const THEME_KEY = 'portfolio-theme';
     const DEFAULT_THEME = 'dark';
@@ -41,8 +41,10 @@
         setTheme(savedTheme);
     }
 
-    // Event listener
-    themeToggle.addEventListener('click', toggleTheme);
+    // Event listeners (main nav + bento header)
+    toggles.forEach(function(btn) {
+        btn.addEventListener('click', toggleTheme);
+    });
 
     // Initialize on load
     if (document.readyState === 'loading') {

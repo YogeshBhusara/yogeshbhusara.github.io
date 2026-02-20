@@ -235,6 +235,15 @@
     // Initialize
     renderWorkList();
 
+    // Bento / index: open work detail when clicking any [data-work-id]
+    document.body.addEventListener('click', function(e) {
+        const el = e.target.closest('a[data-work-id], [data-work-id]');
+        if (el && el.dataset.workId) {
+            e.preventDefault();
+            openWorkDetail(el.dataset.workId);
+        }
+    });
+
     // Check if we need to open a specific work detail from carousel
     const openWorkId = sessionStorage.getItem('openWorkId');
     if (openWorkId) {
