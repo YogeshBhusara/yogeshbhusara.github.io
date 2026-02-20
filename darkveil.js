@@ -79,7 +79,7 @@ void main(){
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
     col.rgb=clamp(col.rgb,0.0,1.0);
     if(uLightMode>0.5){ col.rgb=col.rgb*0.4+vec3(0.6); }
-    gl_FragColor=vec4(col.rgb,1.0);
+    gl_FragColor=vec4(col.rgb,0.1);
 }
 `;
 

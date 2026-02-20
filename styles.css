@@ -16,12 +16,14 @@
     --bento-bg: #040404;
     --bento-text: #fff;
     --bento-text-muted: rgba(255, 255, 255, 0.75);
-    --bento-card-bg: rgba(255, 255, 255, 0.04);
-    --bento-card-border: rgba(255, 255, 255, 0.08);
+    --bento-card-bg: rgba(255, 255, 255, 0.06);
+    --bento-card-border: rgba(255, 255, 255, 0.12);
     --bento-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-    --bento-card-hover-bg: rgba(255, 255, 255, 0.06);
-    --bento-card-hover-border: rgba(255, 255, 255, 0.14);
+    --bento-card-hover-bg: rgba(255, 255, 255, 0.1);
+    --bento-card-hover-border: rgba(255, 255, 255, 0.18);
     --bento-accent: rgba(255, 255, 255, 0.08);
+    --bento-glass-blur: 12px;
+    --bento-glass-saturate: 180%;
 }
 
 @media (max-width: 968px) {
@@ -338,11 +340,13 @@ main:has(.site-nav) > .footer {
 
 .bento-card {
     background: var(--bento-card-bg);
+    -webkit-backdrop-filter: blur(var(--bento-glass-blur)) saturate(var(--bento-glass-saturate));
+    backdrop-filter: blur(var(--bento-glass-blur)) saturate(var(--bento-glass-saturate));
     border: 1px solid var(--bento-card-border);
     border-radius: var(--bento-radius);
     padding: 28px;
-    box-shadow: var(--bento-card-shadow);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s ease, border-color 0.2s ease;
+    box-shadow: var(--bento-card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s ease, border-color 0.2s ease, backdrop-filter 0.25s ease;
     display: flex;
     flex-direction: column;
     min-height: 0;
@@ -350,13 +354,17 @@ main:has(.site-nav) > .footer {
 
 .bento-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     background: var(--bento-card-hover-bg);
     border-color: var(--bento-card-hover-border);
 }
 
+body[data-theme="light"] .bento-card {
+    box-shadow: var(--bento-card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
 body[data-theme="light"] .bento-card:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* Bento card spans */
@@ -486,6 +494,14 @@ body[data-theme="light"] .bento-card:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    background: linear-gradient(to top, rgba(4, 4, 4, 0.75) 0%, rgba(4, 4, 4, 0.2) 70%, transparent 100%);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 0 0 var(--bento-radius) var(--bento-radius);
+}
+
+body[data-theme="light"] .bento-card--has-thumb .bento-card__content {
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.3) 70%, transparent 100%);
 }
 
 .bento-card--theme {
@@ -493,14 +509,33 @@ body[data-theme="light"] .bento-card:hover {
     align-items: center;
 }
 
+/* Name logo grid cell: no box, just centered logo */
 .bento-card--logo {
     justify-content: center;
     align-items: center;
-    padding: 28px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.bento-card--logo:hover {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transform: none;
 }
 
 .bento-card--logo .name-logo--bento {
     flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+}
+
+.bento-card--logo .name-logo span {
+    font-size: 13px;
 }
 
 @media (max-width: 968px) {
@@ -775,12 +810,14 @@ body[data-theme="light"] {
     --bento-bg: #fafaf9;
     --bento-text: #0a0a0a;
     --bento-text-muted: rgba(4, 4, 4, 0.7);
-    --bento-card-bg: rgba(4, 4, 4, 0.03);
-    --bento-card-border: rgba(4, 4, 4, 0.08);
+    --bento-card-bg: rgba(255, 255, 255, 0.5);
+    --bento-card-border: rgba(4, 4, 4, 0.1);
     --bento-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    --bento-card-hover-bg: rgba(4, 4, 4, 0.06);
-    --bento-card-hover-border: rgba(4, 4, 4, 0.14);
+    --bento-card-hover-bg: rgba(255, 255, 255, 0.7);
+    --bento-card-hover-border: rgba(4, 4, 4, 0.15);
     --bento-accent: rgba(4, 4, 4, 0.06);
+    --bento-glass-blur: 16px;
+    --bento-glass-saturate: 180%;
 }
 
 body[data-theme="light"] .name-logo {
