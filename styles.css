@@ -829,21 +829,31 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     padding: 0;
     display: flex;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;
+    background: unset;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    box-sizing: content-box;
 }
 
 .bento-card--social-hub:hover {
     transform: none;
+    background: unset;
+    border: none;
+    box-shadow: none;
 }
 
 .bento-card__social-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 8px;
+    gap: 20px;
     flex: 1;
     min-height: 0;
-    padding: 12px;
+    padding: 0;
+    box-sizing: content-box;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .bento-card__social-cell {
@@ -852,7 +862,7 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     justify-content: center;
     text-decoration: none;
     background: #f5e6dc;
-    border-radius: 16px;
+    border-radius: 24px;
     transition: opacity 0.2s ease, background 0.2s ease;
 }
 
