@@ -959,6 +959,7 @@ body[data-theme="light"] .bento-card--social-hub:hover {
     background: linear-gradient(135deg, rgba(131, 58, 180, 0.35) 0%, rgba(253, 29, 29, 0.2) 50%, rgba(252, 175, 69, 0.2) 100%);
 }
 
+/* Social hub icons: white in dark mode, dark in light mode */
 .bento-card__social-hub .bento-card__social-icon {
     display: flex;
     align-items: center;
@@ -966,14 +967,23 @@ body[data-theme="light"] .bento-card--social-hub:hover {
     color: #fff;
 }
 
-.bento-card__social-hub .bento-card__social-cell .bento-card__social-icon svg {
+.bento-card__social-hub .bento-card__social-icon svg,
+.bento-card__social-hub .bento-card__social-icon svg path {
     fill: currentColor;
+}
+
+.bento-card__social-hub .bento-card__social-cell .bento-card__social-icon svg {
     width: 22px;
     height: 22px;
 }
 
 body[data-theme="light"] .bento-card__social-hub .bento-card__social-icon {
-    color: rgba(0, 0, 0, 0.75);
+    color: #040404;
+}
+
+body[data-theme="light"] .bento-card__social-hub .bento-card__social-icon svg,
+body[data-theme="light"] .bento-card__social-hub .bento-card__social-icon svg path {
+    fill: currentColor;
 }
 
 body[data-theme="light"] .bento-card__social-cell--linkedin,
