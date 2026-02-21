@@ -912,7 +912,7 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.95);
+    color: #fff;
 }
 
 .bento-card__social-hub .bento-card__social-cell .bento-card__social-icon svg {
