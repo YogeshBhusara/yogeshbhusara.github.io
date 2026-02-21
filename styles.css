@@ -4,14 +4,60 @@
     box-sizing: border-box;
 }
 
+/*
+   Design system – structure for multi-team use
+   --------------------------------------------
+   1. Tokens ( :root )     – spacing scale, motion, bento/layout vars
+   2. Base                 – body, main, section spacing
+   3. Component: Name logo – .name-logo, .name-logo--*
+   4. Layout               – main:has(.site-nav), grid
+   5. Component: Nav       – .main-nav, .nav-*, .site-nav, .site-nav__*
+   6. Component: Bento     – .bento-header, .bento-grid, .bento-card*
+   7. Component: Theme toggle – .theme-toggle
+   8. Component: Footer    – .footer, .footer-*
+   9. Page sections        – .index-*, .about-*, .contact-*, .blog-*, .work-*
+   Naming: BEM (block__element--modifier) for components; tokens for spacing/motion.
+*/
+
+/* ==========================================================================
+   Design system tokens – shared across components and pages
+   ========================================================================== */
+
 :root {
+    /* Layout */
     --content-padding: 40px;
     --section-spacing: 80px;
     --content-max-width: 1600px;
+
+    /* Spacing scale (4px base) – use for margin, padding, gap */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-14: 56px;
+    --space-20: 80px;
+
+    /* Motion – duration and easing */
+    --duration-instant: 0.15s;
+    --duration-fast: 0.2s;
+    --duration-normal: 0.25s;
+    --duration-slow: 0.35s;
+    --duration-slower: 0.4s;
+    --ease-default: ease;
+    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
     /* Bento grid – layout */
-    --bento-gap: 20px;
-    --bento-radius: 24px;
+    --bento-gap: var(--space-5);
+    --bento-radius: var(--space-6);
     --bento-row-height: 200px;
+    --bento-card-padding: 28px;
+
     /* Bento colors (dark default); light overrides below */
     --bento-bg: #040404;
     --bento-text: #fff;
@@ -52,10 +98,9 @@ body {
     border-left: 1px solid rgba(255, 255, 255, 0.06);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--duration-slow) var(--ease-default), color var(--duration-slow) var(--ease-default);
 }
 
-/* Background canvas */
 /* DarkVeil only inside intro card (not full-page) */
 .bento-card--intro {
     position: relative;
@@ -78,8 +123,7 @@ body {
     z-index: 1;
 }
 
-
-/* Circular name logo – footer section label */
+/* ========== Component: Name logo (circular label) ========== */
 .name-logo {
     margin: 0;
     border-radius: 50%;
@@ -89,7 +133,7 @@ body {
     cursor: pointer;
     transform-origin: 50% 50%;
     opacity: 0.6;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--duration-slow) var(--ease-default);
 }
 
 .name-logo:hover {
@@ -146,7 +190,7 @@ main {
 main:has(.site-nav) {
     display: grid;
     grid-template-columns: minmax(100px, auto) 1fr;
-    gap: 0 56px;
+    gap: 0 var(--space-14);
     align-items: start;
     max-width: 100%;
 }
@@ -154,7 +198,7 @@ main:has(.site-nav) {
 main:has(.site-nav) > .site-nav {
     grid-column: 1;
     grid-row: 1;
-    padding: 0 var(--content-padding) 24px 0;
+    padding: 0 var(--content-padding) var(--space-6) 0;
     margin: 0;
 }
 
@@ -180,7 +224,7 @@ main:has(.site-nav) > .footer {
 
 .nav-inner {
     display: flex;
-    gap: 32px;
+    gap: var(--space-8);
     align-items: center;
     justify-content: space-between;
 }
@@ -192,7 +236,7 @@ main:has(.site-nav) > .footer {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--duration-slow) var(--ease-default);
     background: transparent;
     border: none;
     cursor: pointer;
@@ -220,20 +264,21 @@ main:has(.site-nav) > .footer {
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--duration-slow) var(--ease-default);
 }
 
 .nav-link--profile:hover .nav-profile-image {
     opacity: 0.7;
 }
 
-/* Site navigation (Work, About, Blog, Contact) – right-aligned, text only, on every page except work detail */
+/* ========== Component: Site nav ========== */
+/* Work, About, Blog, Contact – vertical list in content column */
 .site-nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    padding: 0 var(--content-padding) 24px 0;
+    gap: var(--space-3);
+    padding: 0 var(--content-padding) var(--space-6) 0;
     max-width: var(--content-max-width);
     margin: 0 auto;
 }
@@ -245,7 +290,7 @@ main:has(.site-nav) > .footer {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--duration-slow) var(--ease-default);
 }
 
 .site-nav__link:hover {
@@ -256,13 +301,13 @@ main:has(.site-nav) > .footer {
     opacity: 1;
 }
 
-/* ========== Bento layout (homepage) ========== */
+/* ========== Component: Bento layout (homepage) ========== */
 .bento-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
-    padding: var(--content-padding) 0 32px;
+    gap: var(--space-6);
+    padding: var(--content-padding) 0 var(--space-8);
     margin: 0 auto;
     max-width: var(--content-max-width);
 }
@@ -280,7 +325,7 @@ main:has(.site-nav) > .footer {
     font-weight: 700;
     letter-spacing: -0.02em;
     text-decoration: none;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    transition: background var(--duration-fast) var(--ease-default), border-color var(--duration-fast) var(--ease-default);
 }
 
 .bento-logo:hover {
@@ -291,18 +336,18 @@ main:has(.site-nav) > .footer {
 .bento-nav {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
 }
 
 .bento-nav__link {
-    padding: 8px 14px;
+    padding: var(--space-2) 14px;
     border-radius: 9999px;
     color: var(--bento-text);
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.02em;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background var(--duration-fast) var(--ease-default), color var(--duration-fast) var(--ease-default);
 }
 
 .bento-nav__link:hover {
@@ -318,7 +363,7 @@ main:has(.site-nav) > .footer {
 .bento-header-right {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: var(--space-4);
 }
 
 .bento-header-right .theme-toggle {
@@ -330,9 +375,9 @@ main:has(.site-nav) > .footer {
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
-    padding: 8px 14px;
+    padding: var(--space-2) 14px;
     border-radius: 9999px;
-    transition: background 0.2s ease, opacity 0.2s ease;
+    transition: background var(--duration-fast) var(--ease-default), opacity var(--duration-fast) var(--ease-default);
 }
 
 .bento-contact-link:hover {
@@ -355,9 +400,9 @@ main:has(.site-nav) > .footer {
     backdrop-filter: blur(var(--bento-glass-blur)) saturate(var(--bento-glass-saturate));
     border: 1px solid var(--bento-card-border);
     border-radius: var(--bento-radius);
-    padding: 28px;
+    padding: var(--bento-card-padding);
     box-shadow: var(--bento-card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s ease, border-color 0.2s ease, backdrop-filter 0.25s ease;
+    transition: transform var(--duration-normal) var(--ease-default), box-shadow var(--duration-normal) var(--ease-default), background var(--duration-fast) var(--ease-default), border-color var(--duration-fast) var(--ease-default), backdrop-filter var(--duration-normal) var(--ease-default);
     display: flex;
     flex-direction: column;
     min-height: 0;
@@ -389,7 +434,8 @@ body[data-theme="light"] .bento-card:hover {
 }
 
 /* Weather (Now) card: single row, column 4; Focus card: directly below it */
-#weather-card {
+/* Now (weather/location) card – grid placement; id="weather-card" kept for JS */
+.bento-card--now {
     grid-column: 4;
     grid-row: 1;
 }
@@ -426,14 +472,14 @@ body[data-theme="light"] .bento-card:hover {
 .bento-card__game-status {
     font-size: 0.8125rem;
     color: var(--bento-text-muted);
-    margin: 0 0 10px;
+    margin: 0 0 10px; /* 10px off-scale for legibility */
 }
 
 .bento-card__game-arena {
     position: relative;
     flex: 1;
     min-height: 120px;
-    margin: 0 calc(-1 * var(--bento-card-padding, 28px)) calc(-1 * var(--bento-card-padding, 28px));
+    margin: 0 calc(-1 * var(--bento-card-padding)) calc(-1 * var(--bento-card-padding));
     border-radius: 0 0 var(--bento-radius) var(--bento-radius);
     background: var(--bento-accent);
     overflow: hidden;
@@ -449,7 +495,7 @@ body[data-theme="light"] .bento-card:hover {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    transition: left 0.4s ease, top 0.4s ease;
+    transition: left var(--duration-slower) var(--ease-default), top var(--duration-slower) var(--ease-default);
     pointer-events: none;
 }
 
@@ -462,7 +508,7 @@ body[data-theme="light"] .bento-card:hover {
 }
 
 @media (max-width: 768px) {
-    #cursor-avoid-game {
+    .bento-card--game {
         display: none;
     }
 }
@@ -472,7 +518,7 @@ body[data-theme="light"] .bento-card:hover {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--bento-text);
-    margin: 0 0 8px;
+    margin: 0 0 var(--space-2);
     letter-spacing: -0.02em;
 }
 
@@ -480,7 +526,7 @@ body[data-theme="light"] .bento-card:hover {
     font-size: 0.9375rem;
     line-height: 1.55;
     color: var(--bento-text-muted);
-    margin: 0 0 16px;
+    margin: 0 0 var(--space-4);
 }
 
 .bento-card__meta {
@@ -494,13 +540,13 @@ body[data-theme="light"] .bento-card:hover {
 .bento-card__link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 6px; /* 6px off-scale for tight link icon spacing */
     color: var(--bento-text);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     margin-top: auto;
-    transition: opacity 0.2s ease;
+    transition: opacity var(--duration-fast) var(--ease-default);
 }
 
 .bento-card__link:hover {
@@ -520,7 +566,7 @@ body[data-theme="light"] .bento-card:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.35s ease;
+    transition: transform var(--duration-slow) var(--ease-default);
 }
 
 .bento-card:hover .bento-card__thumb img {
@@ -529,10 +575,10 @@ body[data-theme="light"] .bento-card:hover {
 
 .bento-card__cta {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    bottom: var(--space-5);
+    right: var(--space-5);
+    width: var(--space-10);
+    height: var(--space-10);
     border-radius: 50%;
     background: var(--bento-card-bg);
     border: 1px solid var(--bento-card-border);
@@ -541,7 +587,7 @@ body[data-theme="light"] .bento-card:hover {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    transition: background var(--duration-fast) var(--ease-default), border-color var(--duration-fast) var(--ease-default);
 }
 
 .bento-card__cta:hover {
@@ -563,7 +609,7 @@ body[data-theme="light"] .bento-card:hover {
 .bento-card--has-thumb .bento-card__content {
     position: relative;
     z-index: 1;
-    padding: 20px;
+    padding: var(--space-5);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -600,7 +646,7 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-bg {
 .bento-card--weather .bento-card__weather-content {
     position: relative;
     z-index: 1;
-    padding: 24px;
+    padding: var(--space-6);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -615,7 +661,7 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
 }
 
 .bento-card--weather .bento-card__weather-main {
-    margin-bottom: 16px;
+    margin-bottom: var(--space-4);
 }
 
 .bento-card--weather .bento-card__weather-temp {
@@ -644,13 +690,13 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
 .bento-card--weather .bento-card__weather-details {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-2);
 }
 
 .bento-card--weather .bento-card__weather-row {
     display: flex;
     align-items: baseline;
-    gap: 8px;
+    gap: var(--space-2);
     font-size: 0.8125rem;
     color: var(--bento-text-muted);
 }
@@ -707,8 +753,8 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
 
 .bento-card--medium .bento-card__cta--link {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: var(--space-5);
+    right: var(--space-5);
     color: var(--bento-text);
     opacity: 0.8;
     text-decoration: none;
@@ -719,8 +765,8 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
 }
 
 /* Now card – location time */
-#weather-card .bento-card__now-time {
-    margin: 8px 0 0;
+.bento-card--now .bento-card__now-time {
+    margin: var(--space-2) 0 0;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -729,115 +775,115 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
 }
 
 /* Now card – location temperature */
-#weather-card .bento-card__now-temp {
-    margin: 12px 0 0;
+.bento-card--now .bento-card__now-temp {
+    margin: var(--space-3) 0 0;
     font-size: 30px;
     line-height: 1.4;
     color: var(--bento-text);
     opacity: 0.9;
 }
 
-#weather-card .bento-card__now-unit {
+.bento-card--now .bento-card__now-unit {
     margin-left: 2px;
     font-weight: 500;
     font-size: 30px;
 }
 
-#weather-card .bento-card__now-desc {
+.bento-card--now .bento-card__now-desc {
     display: inline-block;
-    margin-left: 8px;
+    margin-left: var(--space-2);
     font-size: 0.875rem;
     text-transform: capitalize;
     opacity: 0.85;
 }
 
 /* Now card – time-of-day gradient backgrounds (dark theme) */
-#weather-card.bento-card--now[data-time-of-day="night"] {
+.bento-card--now[data-time-of-day="night"] {
     background: linear-gradient(165deg, #1e1b2e 0%, #16213e 40%, #0f0f1a 100%);
     border-color: rgba(255, 255, 255, 0.06);
 }
 
-#weather-card.bento-card--now[data-time-of-day="dawn"] {
+.bento-card--now[data-time-of-day="dawn"] {
     background: linear-gradient(165deg, #2d1f3d 0%, #1a1a2e 50%, #0f0f1a 100%);
     border-color: rgba(255, 255, 255, 0.07);
 }
 
-#weather-card.bento-card--now[data-time-of-day="morning"] {
+.bento-card--now[data-time-of-day="morning"] {
     background: linear-gradient(165deg, #2c2416 0%, #1e2a1e 45%, #14181c 100%);
     border-color: rgba(255, 255, 255, 0.08);
 }
 
-#weather-card.bento-card--now[data-time-of-day="noon"] {
+.bento-card--now[data-time-of-day="noon"] {
     background: linear-gradient(165deg, #1a2a3a 0%, #1e2d3d 50%, #15202b 100%);
     border-color: rgba(255, 255, 255, 0.08);
 }
 
-#weather-card.bento-card--now[data-time-of-day="afternoon"] {
+.bento-card--now[data-time-of-day="afternoon"] {
     background: linear-gradient(165deg, #2a2418 0%, #1e2a20 50%, #141a18 100%);
     border-color: rgba(255, 255, 255, 0.07);
 }
 
-#weather-card.bento-card--now[data-time-of-day="evening"] {
+.bento-card--now[data-time-of-day="evening"] {
     background: linear-gradient(165deg, #2e1f2a 0%, #1e1a2e 50%, #151520 100%);
     border-color: rgba(255, 255, 255, 0.07);
 }
 
-#weather-card.bento-card--now[data-time-of-day="dusk"] {
+.bento-card--now[data-time-of-day="dusk"] {
     background: linear-gradient(165deg, #251a1e 0%, #1a1525 45%, #0f0f18 100%);
     border-color: rgba(255, 255, 255, 0.06);
 }
 
 /* Now card – time-of-day gradients (light theme) */
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] {
+body[data-theme="light"] .bento-card--now[data-time-of-day="night"] {
     background: linear-gradient(165deg, #2a2740 0%, #1e2a45 50%, #161b2e 100%);
     border-color: rgba(0, 0, 0, 0.08);
 }
 
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] {
+body[data-theme="light"] .bento-card--now[data-time-of-day="dawn"] {
     background: linear-gradient(165deg, #4a3a5c 0%, #3d3d5c 50%, #2a2a40 100%);
     border-color: rgba(0, 0, 0, 0.08);
 }
 
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="morning"] {
+body[data-theme="light"] .bento-card--now[data-time-of-day="morning"] {
     background: linear-gradient(165deg, #e8dcc4 0%, #c9d4b8 50%, #a8b8b0 100%);
     border-color: rgba(0, 0, 0, 0.1);
 }
 
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="noon"] {
+body[data-theme="light"] .bento-card--now[data-time-of-day="noon"] {
     background: linear-gradient(165deg, #b8d4e8 0%, #a8c8dc 50%, #90b0c8 100%);
     border-color: rgba(0, 0, 0, 0.1);
 }
 
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="afternoon"] {
+body[data-theme="light"] .bento-card--now[data-time-of-day="afternoon"] {
     background: linear-gradient(165deg, #e0d4a8 0%, #d0c898 50%, #b8b088 100%);
     border-color: rgba(0, 0, 0, 0.1);
 }
 
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="evening"] {
+body[data-theme="light"] .bento-card--now[data-time-of-day="evening"] {
     background: linear-gradient(165deg, #d8b8a8 0%, #c8a8b8 50%, #a890a8 100%);
     border-color: rgba(0, 0, 0, 0.08);
 }
 
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] {
+body[data-theme="light"] .bento-card--now[data-time-of-day="dusk"] {
     background: linear-gradient(165deg, #906868 0%, #685878 50%, #404058 100%);
     border-color: rgba(0, 0, 0, 0.08);
 }
 
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__meta,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__title,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__now-time,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__now-temp,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="night"] .bento-card__desc,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__meta,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__title,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__now-time,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__now-temp,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dawn"] .bento-card__desc,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__meta,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__title,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__now-time,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__now-temp,
-body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] .bento-card__desc {
+body[data-theme="light"] .bento-card--now[data-time-of-day="night"] .bento-card__meta,
+body[data-theme="light"] .bento-card--now[data-time-of-day="night"] .bento-card__title,
+body[data-theme="light"] .bento-card--now[data-time-of-day="night"] .bento-card__now-time,
+body[data-theme="light"] .bento-card--now[data-time-of-day="night"] .bento-card__now-temp,
+body[data-theme="light"] .bento-card--now[data-time-of-day="night"] .bento-card__desc,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dawn"] .bento-card__meta,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dawn"] .bento-card__title,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dawn"] .bento-card__now-time,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dawn"] .bento-card__now-temp,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dawn"] .bento-card__desc,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dusk"] .bento-card__meta,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dusk"] .bento-card__title,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dusk"] .bento-card__now-time,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dusk"] .bento-card__now-temp,
+body[data-theme="light"] .bento-card--now[data-time-of-day="dusk"] .bento-card__desc {
     color: rgba(255, 255, 255, 0.95);
 }
 
@@ -861,11 +907,16 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     box-shadow: none;
 }
 
+body[data-theme="light"] .bento-card--social-hub,
+body[data-theme="light"] .bento-card--social-hub:hover {
+    box-shadow: none;
+}
+
 .bento-card__social-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 20px;
+    gap: var(--space-5);
     flex: 1;
     min-height: 0;
     padding: 0;
@@ -881,7 +932,7 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     border: 1px solid var(--bento-card-border);
     border-radius: var(--bento-radius);
     box-shadow: var(--bento-card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease, opacity 0.2s ease;
+    transition: transform var(--duration-normal) var(--ease-default), box-shadow var(--duration-normal) var(--ease-default), border-color var(--duration-fast) var(--ease-default), opacity var(--duration-fast) var(--ease-default);
 }
 
 .bento-card__social-cell:hover {
@@ -1016,7 +1067,7 @@ body[data-theme="light"] .bento-card__social-cell:hover {
     .bento-card--tall {
         grid-row: span 2;
     }
-    #weather-card,
+    .bento-card--now,
     .bento-card--focus {
         grid-column: auto;
         grid-row: auto;
@@ -1030,10 +1081,10 @@ body[data-theme="light"] .bento-card__social-cell:hover {
         grid-row: span 2;
     }
     .bento-nav {
-        gap: 4px;
+        gap: var(--space-1);
     }
     .bento-nav__link {
-        padding: 6px 10px;
+        padding: 6px 10px; /* 6px/10px off-scale for compact nav */
         font-size: 12px;
     }
 }
@@ -1042,7 +1093,7 @@ body[data-theme="light"] .bento-card__social-cell:hover {
     .bento-grid {
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
-        gap: 16px;
+        gap: var(--space-4);
     }
     .bento-card,
     .bento-card--intro,
@@ -1051,7 +1102,7 @@ body[data-theme="light"] .bento-card__social-cell:hover {
     .bento-card--article,
     .bento-card--project,
     .bento-card--newsletter,
-    #weather-card,
+    .bento-card--now,
     .bento-card--focus {
         grid-column: auto;
         grid-row: auto;
@@ -1059,7 +1110,7 @@ body[data-theme="light"] .bento-card__social-cell:hover {
     }
     .bento-header {
         flex-wrap: wrap;
-        padding-bottom: 24px;
+        padding-bottom: var(--space-6);
     }
     .bento-nav {
         order: 3;
@@ -1090,17 +1141,17 @@ main:has(.bento-header) > .site-nav {
     display: none;
 }
 
-/* Theme Toggle */
+/* ========== Component: Theme toggle ========== */
 .theme-toggle {
     background: transparent;
     border: none;
     color: #fff;
     cursor: pointer;
-    padding: 8px;
+    padding: var(--space-2);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--duration-slow) var(--ease-default);
     margin-left: auto;
 }
 
@@ -1112,7 +1163,7 @@ main:has(.bento-header) > .site-nav {
     width: 20px;
     height: 20px;
     stroke: currentColor;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity var(--duration-slow) var(--ease-default), transform var(--duration-slow) var(--ease-default);
 }
 
 .theme-icon--sun {
@@ -1356,7 +1407,7 @@ body[data-theme="light"] .bento-contact-link:hover {
     font-weight: 700;
     line-height: 1.15;
     color: #fff;
-    margin: 0 0 24px;
+    margin: 0 0 var(--space-6);
     letter-spacing: -0.03em;
 }
 
@@ -1369,13 +1420,13 @@ body[data-theme="light"] .bento-contact-link:hover {
     font-weight: 400;
     line-height: 1.65;
     color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 32px;
+    margin: 0 0 var(--space-8);
     letter-spacing: -0.01em;
     max-width: 52ch;
 }
 
 .index-info {
-    margin-bottom: 24px;
+    margin-bottom: var(--space-6);
 }
 
 .index-current,
@@ -1392,7 +1443,7 @@ body[data-theme="light"] .bento-contact-link:hover {
     color: #fff;
     text-decoration: underline;
     text-underline-offset: 0.2em;
-    transition: opacity 0.2s ease;
+    transition: opacity var(--duration-fast) var(--ease-default);
 }
 
 .index-link:hover {
@@ -1410,12 +1461,12 @@ body[data-theme="light"] .bento-contact-link:hover {
 
 .index-social {
     display: flex;
-    gap: 24px;
+    gap: var(--space-6);
     flex-wrap: wrap;
 }
 
 .index-social--home {
-    gap: 20px;
+    gap: var(--space-5);
 }
 
 .index-social--home .footer-links {
@@ -2361,13 +2412,14 @@ body[data-theme="light"] .blog-card__desc {
     margin: 0;
 }
 
-/* Footer – Nat-style: top row (logo + links), bottom row (tagline left, copyright right) */
+/* ========== Component: Footer ========== */
+/* Nat-style: top row (logo + links), bottom row (tagline left, copyright right) */
 .footer {
     margin-bottom: 0;
-    padding: 32px var(--content-padding) 40px;
+    padding: var(--space-8) var(--content-padding) var(--space-10);
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--space-8);
 }
 
 .footer .name-logo--footer {
@@ -2378,8 +2430,8 @@ body[data-theme="light"] .blog-card__desc {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    gap: 24px;
-    padding-top: 24px;
+    gap: var(--space-6);
+    padding-top: var(--space-6);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -2411,7 +2463,7 @@ body[data-theme="light"] .blog-card__desc {
 
 .footer-links {
     display: flex;
-    gap: 16px;
+    gap: var(--space-4);
     flex-wrap: wrap;
     margin-left: auto;
 }
@@ -2421,7 +2473,7 @@ body[data-theme="light"] .blog-card__desc {
     text-decoration: none;
     font-size: 14px;
     opacity: 0.7;
-    transition: opacity 0.2s ease;
+    transition: opacity var(--duration-fast) var(--ease-default);
 }
 
 .footer-link:hover {
