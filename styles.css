@@ -388,6 +388,17 @@ body[data-theme="light"] .bento-card:hover {
     grid-row: span 2;
 }
 
+/* Weather (Now) card: single row, column 4; Focus card: directly below it */
+#weather-card {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.bento-card--focus {
+    grid-column: 4;
+    grid-row: 2;
+}
+
 .bento-card--wide {
     grid-column: span 2;
 }
@@ -442,24 +453,18 @@ body[data-theme="light"] .bento-card:hover {
     pointer-events: none;
 }
 
-@keyframes bento-game-shake {
-    0%, 100% { transform: translateX(0); }
-    20% { transform: translateX(-4px); }
-    40% { transform: translateX(4px); }
-    60% { transform: translateX(-3px); }
-    80% { transform: translateX(3px); }
-}
-
-.bento-card--game.caught {
-    animation: bento-game-shake 0.35s ease-in-out;
-}
-
 .bento-card--game.caught .bento-card__game-dot {
     background: #e53935;
 }
 
 .bento-card--game.won .bento-card__game-dot {
     background: #43a047;
+}
+
+@media (max-width: 768px) {
+    #cursor-avoid-game {
+        display: none;
+    }
 }
 
 /* Bento card content */
@@ -873,27 +878,62 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    background: #f5e6dc;
-    border-radius: 24px;
-    transition: opacity 0.2s ease, background 0.2s ease;
+    border: 1px solid var(--bento-card-border);
+    border-radius: var(--bento-radius);
+    box-shadow: var(--bento-card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 
 .bento-card__social-cell:hover {
-    opacity: 0.9;
-    background: #efe0d5;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-color: var(--bento-card-hover-border);
+    opacity: 1;
+}
+
+/* Subtle gradient backgrounds – brand colors */
+.bento-card__social-cell--linkedin {
+    background: linear-gradient(135deg, rgba(10, 102, 194, 0.4) 0%, rgba(10, 102, 194, 0.12) 100%);
+}
+
+.bento-card__social-cell--behance {
+    background: linear-gradient(135deg, rgba(23, 105, 255, 0.4) 0%, rgba(23, 105, 255, 0.12) 100%);
+}
+
+.bento-card__social-cell--dribbble {
+    background: linear-gradient(135deg, rgba(234, 76, 137, 0.4) 0%, rgba(234, 76, 137, 0.12) 100%);
+}
+
+.bento-card__social-cell--instagram {
+    background: linear-gradient(135deg, rgba(131, 58, 180, 0.35) 0%, rgba(253, 29, 29, 0.2) 50%, rgba(252, 175, 69, 0.2) 100%);
 }
 
 .bento-card__social-hub .bento-card__social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #c45c3e;
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .bento-card__social-hub .bento-card__social-cell .bento-card__social-icon svg {
     fill: currentColor;
     width: 22px;
     height: 22px;
+}
+
+body[data-theme="light"] .bento-card__social-hub .bento-card__social-icon {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+body[data-theme="light"] .bento-card__social-cell--linkedin,
+body[data-theme="light"] .bento-card__social-cell--behance,
+body[data-theme="light"] .bento-card__social-cell--dribbble,
+body[data-theme="light"] .bento-card__social-cell--instagram {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+body[data-theme="light"] .bento-card__social-cell:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .bento-card__social-hub .bento-card__social-label {
@@ -976,6 +1016,11 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     .bento-card--tall {
         grid-row: span 2;
     }
+    #weather-card,
+    .bento-card--focus {
+        grid-column: auto;
+        grid-row: auto;
+    }
     .bento-card--wide,
     .bento-card--article,
     .bento-card--project {
@@ -1005,7 +1050,9 @@ body[data-theme="light"] #weather-card.bento-card--now[data-time-of-day="dusk"] 
     .bento-card--wide,
     .bento-card--article,
     .bento-card--project,
-    .bento-card--newsletter {
+    .bento-card--newsletter,
+    #weather-card,
+    .bento-card--focus {
         grid-column: auto;
         grid-row: auto;
         min-height: 180px;

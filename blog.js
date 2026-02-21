@@ -45,7 +45,7 @@
             const card = document.createElement('a');
             card.href = post.link;
             card.target = '_blank';
-            card.rel = 'noopener';
+            card.rel = 'noopener noreferrer';
             card.className = 'blog-card';
 
             const imageNum = index + 1;
