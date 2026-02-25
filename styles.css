@@ -92,12 +92,27 @@ html {
     --mouse-y: 50%;
 }
 
-/* Spotlight overlay: fixed, behind content, gradient follows cursor */
-.cursor-glow {
+/* Background effects: particles + cursor glow – behind all interactive content */
+.bg-effects {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
+    overflow: hidden;
+}
+
+.particles-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Spotlight overlay: gradient follows cursor, above particles */
+.bg-effects .cursor-glow {
+    position: absolute;
+    inset: 0;
     background: radial-gradient(
         circle 70vmax at var(--mouse-x) var(--mouse-y),
         rgba(255, 255, 255, 0.06) 0%,
@@ -107,7 +122,7 @@ html {
     transition: opacity var(--duration-slow) var(--ease-default);
 }
 
-body[data-theme="light"] .cursor-glow {
+body[data-theme="light"] .bg-effects .cursor-glow {
     background: radial-gradient(
         circle 70vmax at var(--mouse-x) var(--mouse-y),
         rgba(0, 0, 0, 0.03) 0%,
@@ -116,7 +131,7 @@ body[data-theme="light"] .cursor-glow {
     );
 }
 
-.no-cursor-glow .cursor-glow {
+.no-cursor-glow .bg-effects .cursor-glow {
     opacity: 0;
 }
 
