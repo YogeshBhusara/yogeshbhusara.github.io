@@ -86,55 +86,6 @@
     }
 }
 
-/* Cursor-following spotlight (Antigravity-style); fallback when JS not run */
-html {
-    --mouse-x: 50%;
-    --mouse-y: 50%;
-}
-
-/* Background effects: particles + cursor glow – behind all interactive content */
-.bg-effects {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.particles-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-/* Spotlight overlay: gradient follows cursor, above particles */
-.bg-effects .cursor-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle 70vmax at var(--mouse-x) var(--mouse-y),
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0.02) 35%,
-        transparent 60%
-    );
-    transition: opacity var(--duration-slow) var(--ease-default);
-}
-
-body[data-theme="light"] .bg-effects .cursor-glow {
-    background: radial-gradient(
-        circle 70vmax at var(--mouse-x) var(--mouse-y),
-        rgba(0, 0, 0, 0.03) 0%,
-        rgba(0, 0, 0, 0.01) 35%,
-        transparent 60%
-    );
-}
-
-.no-cursor-glow .bg-effects .cursor-glow {
-    opacity: 0;
-}
-
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: #040404;
@@ -170,6 +121,14 @@ body {
 .bento-card--intro .bento-card__intro-content {
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.bento-card--intro .bento-card__link {
+    margin-top: auto;
 }
 
 /* ========== Component: Name logo (circular label) ========== */
@@ -583,7 +542,7 @@ body[data-theme="light"] .bento-card:hover {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--bento-text-muted);
-    margin-top: auto;
+    margin: 0 0 var(--space-2);
 }
 
 .bento-card__link {
@@ -595,6 +554,7 @@ body[data-theme="light"] .bento-card:hover {
     font-size: 14px;
     font-weight: 500;
     margin-top: auto;
+    align-self: flex-start;
     transition: opacity var(--duration-fast) var(--ease-default);
 }
 
