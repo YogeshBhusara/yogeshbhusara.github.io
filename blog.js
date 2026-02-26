@@ -1,5 +1,8 @@
-// Blog cards from static content (Medium links)
+/**
+ * blog.js — Renders blog cards from static post list (Medium links) into #blog-posts.
+ */
 (function () {
+    'use strict';
     const posts = [
         {
             title: 'Develop First, Design Later (I\'m Still Figuring This Out)',

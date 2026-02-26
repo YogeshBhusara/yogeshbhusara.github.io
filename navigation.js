@@ -1,4 +1,6 @@
-// Navigation functionality
+/**
+ * navigation.js — Section nav links (scroll-to), and opening work modal from nav.
+ */
 (function() {
     const navLinks = document.querySelectorAll('.nav-link[data-section]');
     const sections = document.querySelectorAll('main > section[id]');

@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build script: ensures script tags use defer for faster loading.
- * All page content (nav, footer, etc.) lives in the HTML files in this folder.
- * Run: node build.js  (optional)
+ * build.js — Adds defer to script tags in all HTML pages. Run: node build.js (optional).
  */
 
 const fs = require('fs');

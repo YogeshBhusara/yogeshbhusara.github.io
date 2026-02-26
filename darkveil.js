@@ -1,6 +1,5 @@
 /**
- * DarkVeil – CPPN-style WebGL background (vanilla JS port from React/OGL)
- * Full-screen animated gradient background. Replaces cursor brush effect.
+ * darkveil.js — CPPN-style WebGL gradient background for intro card (#distort-canvas).
  */
 (function () {
   'use strict';
@@ -79,7 +78,8 @@ void main(){
     col.rgb*=1.-(scanline_val*scanline_val)*uScan;
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
     col.rgb=clamp(col.rgb,0.0,1.0);
-    if(uLightMode>0.5){ col.rgb=col.rgb*0.4+vec3(0.6); }
+    // In light mode, keep things subtle but with a bit more contrast
+    if(uLightMode>0.5){ col.rgb=col.rgb*0.55+vec3(0.45); }
     gl_FragColor=vec4(col.rgb,uAlpha);
 }
 `;
@@ -180,7 +180,7 @@ void main(){
     gl.uniform1f(uWarp, config.warpAmount);
     const isLight = document.body.getAttribute('data-theme') === 'light';
     gl.uniform1f(uLightMode, isLight ? 1 : 0);
-    gl.uniform1f(uAlpha, isLight ? 0.4 : 0.1);
+    gl.uniform1f(uAlpha, isLight ? 0.55 : 0.1);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.enableVertexAttribArray(positionLoc);

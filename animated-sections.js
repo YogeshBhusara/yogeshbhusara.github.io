@@ -1,6 +1,5 @@
 /**
- * Scroll-triggered section animations (AnimatedContent-style).
- * Uses GSAP + ScrollTrigger. Sections animate in as they enter the viewport.
+ * animated-sections.js — Scroll-triggered section animations (GSAP + ScrollTrigger) as sections enter the viewport.
  */
 (function () {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;

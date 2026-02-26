@@ -1,19 +1,22 @@
+/**
+ * cursor-avoid-game.js — Mini game in bento card: avoid the cursor for 5s; dot moves periodically.
+ */
 (function () {
     'use strict';
 
-    var SURVIVE_SEC = 5;
-    var CATCH_RADIUS = 24;
-    var MOVE_INTERVAL_MS = 1200;
-    var RESET_DELAY_MS = 2000;
+    const SURVIVE_SEC = 5;
+    const CATCH_RADIUS = 24;
+    const MOVE_INTERVAL_MS = 1200;
+    const RESET_DELAY_MS = 2000;
 
-    var card = document.getElementById('cursor-avoid-game');
-    var arena = document.getElementById('cursor-avoid-arena');
-    var dot = document.getElementById('cursor-avoid-dot');
-    var statusEl = document.getElementById('cursor-avoid-status');
+    const card = document.getElementById('cursor-avoid-game');
+    const arena = document.getElementById('cursor-avoid-arena');
+    const dot = document.getElementById('cursor-avoid-dot');
+    const statusEl = document.getElementById('cursor-avoid-status');
 
     if (!card || !arena || !dot || !statusEl) return;
 
-    var state = {
+    const state = {
         playing: false,
         caught: false,
         won: false,
@@ -34,17 +37,17 @@
     }
 
     function randomInArena() {
-        var r = getArenaBounds();
-        var pad = 14;
-        var x = (r.left + pad) + Math.random() * (r.width - 2 * pad);
-        var y = (r.top + pad) + Math.random() * (r.height - 2 * pad);
+        const r = getArenaBounds();
+        const pad = 14;
+        const x = (r.left + pad) + Math.random() * (r.width - 2 * pad);
+        const y = (r.top + pad) + Math.random() * (r.height - 2 * pad);
         return { x: x, y: y };
     }
 
     function positionDotToPage(x, y) {
-        var r = getArenaBounds();
-        var px = ((x - r.left) / r.width) * 100;
-        var py = ((y - r.top) / r.height) * 100;
+        const r = getArenaBounds();
+        const px = ((x - r.left) / r.width) * 100;
+        const py = ((y - r.top) / r.height) * 100;
         dot.style.left = px + '%';
         dot.style.top = py + '%';
         dot.style.transform = 'translate(-50%, -50%)';
@@ -54,7 +57,7 @@
 
     function moveDot() {
         if (!state.playing || state.caught || state.won) return;
-        var p = randomInArena();
+        const p = randomInArena();
         positionDotToPage(p.x, p.y);
     }
 

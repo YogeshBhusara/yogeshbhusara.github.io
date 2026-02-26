@@ -1,3 +1,6 @@
+/**
+ * script.js — Name logo (circular text rotation) and smooth scroll for in-page hash links.
+ */
 // Circular name logo – build letter spans, place on circle, JS-driven rotation
 (function initNameLogo() {
     const el = document.getElementById('name-logo');
@@ -68,16 +71,20 @@
     });
 })();
 
-// Smooth scrolling for in-page anchors
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+// Smooth scrolling for in-page anchors (including dynamically added links)
+document.addEventListener('click', function (e) {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
+
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    e.preventDefault();
+    target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
     });
 });

@@ -121,14 +121,6 @@ body {
 .bento-card--intro .bento-card__intro-content {
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-}
-
-.bento-card--intro .bento-card__link {
-    margin-top: auto;
 }
 
 /* ========== Component: Name logo (circular label) ========== */
@@ -542,54 +534,23 @@ body[data-theme="light"] .bento-card:hover {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--bento-text-muted);
-    margin: 0 0 var(--space-2);
+    margin-top: auto;
 }
 
-/* Stripe-style link: arrow only by default; line fades in + chevron slides right on hover */
 .bento-card__link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 6px; /* 6px off-scale for tight link icon spacing */
     color: var(--bento-text);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     margin-top: auto;
-    align-self: flex-start;
     transition: opacity var(--duration-fast) var(--ease-default);
 }
 
-.bento-card__link-arrow {
-    display: inline-flex;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.bento-card__link-arrow svg {
-    display: block;
-}
-
-/* Line: hidden by default, fades in on hover */
-.bento-card__link-line {
-    opacity: 0;
-    transition: opacity var(--duration-fast) var(--ease-out);
-}
-
-.bento-card__link:hover .bento-card__link-line {
-    opacity: 1;
-}
-
-/* Chevron: slides right on hover */
-.bento-card__link-chevron {
-    transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.bento-card__link:hover .bento-card__link-chevron {
-    transform: translateX(3px);
-}
-
 .bento-card__link:hover {
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 .bento-card__thumb {
@@ -632,16 +593,6 @@ body[data-theme="light"] .bento-card:hover {
 .bento-card__cta:hover {
     background: var(--bento-card-hover-bg);
     border-color: var(--bento-card-hover-border);
-}
-
-/* Stripe-style: CTA arrow slides right on card/link hover */
-.bento-card__cta svg {
-    transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.bento-card:hover .bento-card__cta svg,
-.bento-card__cta:hover svg {
-    transform: translateX(3px);
 }
 
 .bento-card--has-thumb {

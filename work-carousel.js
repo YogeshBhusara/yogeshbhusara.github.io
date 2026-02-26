@@ -1,4 +1,6 @@
-// Work carousel functionality - adapted from LogoLoop
+/**
+ * work-carousel.js — Horizontal work carousel on homepage (#index-work-carousel).
+ */
 (function() {
     const carouselContainer = document.getElementById('index-work-carousel');
     if (!carouselContainer) return;

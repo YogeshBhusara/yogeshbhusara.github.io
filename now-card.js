@@ -1,13 +1,13 @@
 /**
- * Now card: current time in Pune (Asia/Kolkata) and time-of-day gradient.
+ * now-card.js — Now card: Pune time (Asia/Kolkata) and time-of-day gradient on #weather-card.
  */
 (function () {
   'use strict';
 
-  var CARD_ID = 'weather-card';
-  var TIME_ID = 'now-location-time';
-  var TIMEZONE = 'Asia/Kolkata';
-  var UPDATE_MS = 60000; // 1 minute
+  const CARD_ID = 'weather-card';
+  const TIME_ID = 'now-location-time';
+  const TIMEZONE = 'Asia/Kolkata';
+  const UPDATE_MS = 60000; // 1 minute
 
   function getCard() {
     return document.getElementById(CARD_ID);
@@ -18,7 +18,7 @@
   }
 
   function getHourInPune() {
-    var str = new Date().toLocaleString('en-GB', { timeZone: TIMEZONE, hour: '2-digit', hour12: false });
+    const str = new Date().toLocaleString('en-GB', { timeZone: TIMEZONE, hour: '2-digit', hour12: false });
     return parseInt(str, 10) || 12;
   }
 
@@ -43,12 +43,12 @@
   }
 
   function updateTime() {
-    var el = getTimeEl();
+    const el = getTimeEl();
     if (el) el.textContent = formatTime() + ' IST';
   }
 
   function updateTimeOfDay() {
-    var card = getCard();
+    const card = getCard();
     if (!card) return;
     var hour = getHourInPune();
     var tod = getTimeOfDay(hour);

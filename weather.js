@@ -1,5 +1,5 @@
 /**
- * Pune weather card – fetches current weather and AQI from Open-Meteo (no API key).
+ * weather.js — Pune weather + AQI from Open-Meteo (no API key). Updates #weather-card elements.
  */
 (function () {
   'use strict';
@@ -80,13 +80,26 @@
 
     setText('weather-desc', 'Loading…');
 
-    fetch(WEATHER_URL)
+    const weatherPromise = fetch(WEATHER_URL).then(function (r) {
+      if (!r.ok) throw new Error('Weather API error');
+      return r.json();
+    });
+
+    const aqiPromise = fetch(AQI_URL)
       .then(function (r) {
-        if (!r.ok) throw new Error('Weather API error');
+        if (!r.ok) throw new Error('AQI API error');
         return r.json();
       })
-      .then(function (weather) {
-        renderWeather(weather, null);
+      .catch(function () {
+        // AQI is optional; treat failure as null so weather can still render
+        return null;
+      });
+
+    Promise.all([weatherPromise, aqiPromise])
+      .then(function (results) {
+        const weather = results[0];
+        const aqi = results[1];
+        renderWeather(weather, aqi);
       })
       .catch(function () {
         setText('weather-temp', '--');
@@ -95,6 +108,7 @@
         setText('weather-humidity', '--');
         setText('weather-wind', '--');
         setText('weather-aqi', '--');
+        setText('weather-aqi-label', '--');
       });
   }
 

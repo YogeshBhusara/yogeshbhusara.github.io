@@ -1,5 +1,8 @@
-// Theme toggle functionality
-(function() {
+/**
+ * theme-toggle.js — Dark/light theme toggle; persists to localStorage, syncs data-theme on body.
+ */
+(function () {
+    'use strict';
     const toggles = document.querySelectorAll('.theme-toggle');
     if (!toggles.length) return;
 

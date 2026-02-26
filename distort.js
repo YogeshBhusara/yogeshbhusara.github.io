@@ -1,6 +1,6 @@
-// Fluid cursor effect - converted from React component to vanilla JS
-// Portfolio-friendly configuration: subtle, elegant, professional
-
+/**
+ * distort.js — WebGL fluid cursor effect (optional; shares canvas with darkveil when used).
+ */
 (function() {
   'use strict';
 
