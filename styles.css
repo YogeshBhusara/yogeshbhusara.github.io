@@ -545,7 +545,7 @@ body[data-theme="light"] .bento-card:hover {
     margin: 0 0 var(--space-2);
 }
 
-/* Stripe-style link: arrow slides right on hover (hds-icon-hover-arrow–like) */
+/* Stripe-style link: arrow only by default; line fades in + chevron slides right on hover */
 .bento-card__link {
     display: inline-flex;
     align-items: center;
@@ -560,16 +560,36 @@ body[data-theme="light"] .bento-card:hover {
 }
 
 .bento-card__link-arrow {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.bento-card__link-arrow svg {
+    display: block;
+}
+
+/* Line: hidden by default, fades in on hover */
+.bento-card__link-line {
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.bento-card__link:hover .bento-card__link-line {
+    opacity: 1;
+}
+
+/* Chevron: slides right on hover */
+.bento-card__link-chevron {
     transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.bento-card__link:hover .bento-card__link-chevron {
+    transform: translateX(3px);
 }
 
 .bento-card__link:hover {
     opacity: 0.9;
-}
-
-.bento-card__link:hover .bento-card__link-arrow {
-    transform: translateX(4px);
 }
 
 .bento-card__thumb {
