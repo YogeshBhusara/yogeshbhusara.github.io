@@ -333,6 +333,13 @@ main:has(.site-nav) > .footer {
     border-color: var(--bento-card-hover-border);
 }
 
+.bento-logo__img {
+    display: block;
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+}
+
 .bento-nav {
     display: flex;
     align-items: center;
@@ -395,6 +402,8 @@ main:has(.site-nav) > .footer {
 }
 
 .bento-card {
+    position: relative;
+    overflow: hidden;
     background: var(--bento-card-bg);
     -webkit-backdrop-filter: blur(var(--bento-glass-blur)) saturate(var(--bento-glass-saturate));
     backdrop-filter: blur(var(--bento-glass-blur)) saturate(var(--bento-glass-saturate));
@@ -406,6 +415,10 @@ main:has(.site-nav) > .footer {
     display: flex;
     flex-direction: column;
     min-height: 0;
+    /* Glowing edge effect defaults */
+    --glow-start: 0;
+    --glow-spread: 24;
+    --glow-active: 0;
 }
 
 .bento-card:hover {
@@ -413,6 +426,52 @@ main:has(.site-nav) > .footer {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     background: var(--bento-card-hover-bg);
     border-color: var(--bento-card-hover-border);
+}
+
+/* Glowing edge effect – driven by JS via --glow-* variables */
+.bento-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    border: 1px solid transparent;
+    background:
+        radial-gradient(circle, #dd7bbb 10%, #dd7bbb00 20%),
+        radial-gradient(circle at 40% 40%, #d79f1e 5%, #d79f1e00 15%),
+        radial-gradient(circle at 60% 60%, #5a922c 10%, #5a922c00 20%),
+        radial-gradient(circle at 40% 60%, #4c7894 10%, #4c789400 20%),
+        conic-gradient(
+            from 236.84deg at 50% 50%,
+            #dd7bbb 0deg,
+            #d79f1e 90deg,
+            #5a922c 180deg,
+            #4c7894 270deg,
+            #dd7bbb 360deg
+        );
+    background-attachment: fixed;
+    opacity: var(--glow-active);
+    transition: opacity var(--duration-normal) var(--ease-out);
+    /* Reveal only a moving arc around the card border */
+    mask-image:
+        linear-gradient(#0000, #0000),
+        conic-gradient(
+            from calc((var(--glow-start) - var(--glow-spread)) * 1deg),
+            #0000 0deg,
+            #ffffff,
+            #0000 calc(var(--glow-spread) * 2deg)
+        );
+    mask-clip: padding-box, border-box;
+    mask-composite: intersect;
+    -webkit-mask-image:
+        linear-gradient(#0000, #0000),
+        conic-gradient(
+            from calc((var(--glow-start) - var(--glow-spread)) * 1deg),
+            #0000 0deg,
+            #ffffff,
+            #0000 calc(var(--glow-spread) * 2deg)
+        );
+    -webkit-mask-clip: padding-box, border-box;
 }
 
 body[data-theme="light"] .bento-card {
@@ -1973,6 +2032,61 @@ body[data-theme="light"] .bento-contact-link:hover {
     margin-right: auto;
 }
 
+/* Sitemap Page */
+.sitemap-section {
+    padding: var(--section-spacing) var(--content-padding) 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sitemap-title {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--bento-text);
+    margin-bottom: var(--space-2);
+}
+
+.sitemap-desc {
+    font-size: 16px;
+    color: var(--bento-text-muted);
+    margin-bottom: var(--space-6);
+}
+
+.sitemap-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.sitemap-list a {
+    color: var(--bento-text);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color var(--duration-fast) var(--ease-default);
+}
+
+.sitemap-list a:hover {
+    color: var(--bento-text-muted);
+}
+
+.sitemap-meta {
+    margin-top: var(--space-8);
+    font-size: 14px;
+    color: var(--bento-text-muted);
+}
+
+.sitemap-meta a {
+    color: var(--bento-text);
+    text-decoration: underline;
+}
+
+.sitemap-meta a:hover {
+    color: var(--bento-text-muted);
+}
+
 /* Blog Page */
 .blog-page {
     padding: 0 var(--content-padding);
@@ -2460,6 +2574,15 @@ body[data-theme="light"] .blog-card__desc {
     font-weight: 400;
     color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.02em;
+}
+
+.footer-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
 }
 
 .footer-label {
