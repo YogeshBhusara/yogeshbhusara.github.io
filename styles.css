@@ -508,6 +508,27 @@ body[data-theme="light"] .bento-card:hover {
     grid-column: span 2;
 }
 
+/* Live Commit Graph – wide card with embedded GitHub chart */
+.bento-card--commit-graph {
+    grid-column: span 2;
+}
+
+.bento-card__commit-graph-wrap {
+    flex: 1;
+    min-height: 0;
+    margin-top: var(--space-3);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bento-accent);
+}
+
+.bento-card__commit-graph-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
 .bento-card--article {
     grid-column: span 2;
 }
@@ -1143,7 +1164,8 @@ body[data-theme="light"] .bento-card__social-cell:hover {
     }
     .bento-card--wide,
     .bento-card--article,
-    .bento-card--project {
+    .bento-card--project,
+    .bento-card--commit-graph {
         grid-column: span 2;
     }
     .bento-card--newsletter {
@@ -1170,6 +1192,7 @@ body[data-theme="light"] .bento-card__social-cell:hover {
     .bento-card--wide,
     .bento-card--article,
     .bento-card--project,
+    .bento-card--commit-graph,
     .bento-card--newsletter,
     .bento-card--now,
     .bento-card--focus {
