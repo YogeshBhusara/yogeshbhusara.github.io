@@ -508,9 +508,9 @@ body[data-theme="light"] .bento-card:hover {
     grid-column: span 2;
 }
 
-/* Live Commit Graph – GitHub-style contribution calendar (data from API) */
+/* Live Commit Graph – same size as newsletter (tall, single column) */
 .bento-card--commit-graph {
-    grid-column: span 2;
+    grid-row: span 2;
 }
 
 .bento-card__commit-graph-wrap {
@@ -1278,7 +1278,7 @@ body[data-theme="light"] .bento-card__social-cell:hover {
     .bento-card--article,
     .bento-card--project,
     .bento-card--commit-graph {
-        grid-column: span 2;
+        grid-row: span 2;
     }
     .bento-card--newsletter {
         grid-row: span 2;
