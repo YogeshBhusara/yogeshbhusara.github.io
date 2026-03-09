@@ -140,16 +140,36 @@
                 <div id="name-logo" class="name-logo name-logo--footer name-logo--bento" data-text="DESIGN*VIBECODE*REPEAT*" aria-hidden="true"></div>
             </article>
 
-            <!-- Live Commit Graph -->
-            <a href="https://github.com/yogeshbhusara" target="_blank" rel="noopener noreferrer" class="bento-card bento-card--commit-graph" style="text-decoration: none; color: inherit;" aria-label="Live GitHub commit graph – view profile">
+            <!-- Live Commit Graph (GitHub-style, data fetched from API) -->
+            <article class="bento-card bento-card--commit-graph" aria-label="Live GitHub commit graph">
                 <p class="bento-card__meta">GitHub</p>
                 <h2 class="bento-card__title">Live Commit Graph</h2>
                 <p class="bento-card__desc">A GitHub commit graph visualizes how frequently you commit code over time.</p>
                 <div class="bento-card__commit-graph-wrap">
-                    <img src="https://ghchart.rshah.org/yogeshbhusara" alt="GitHub contribution graph for yogeshbhusara" class="bento-card__commit-graph-img" loading="lazy" />
+                    <div class="commit-graph" id="commit-graph" data-username="yogeshbhusara">
+                        <div class="commit-graph__months" id="commit-graph-months" aria-hidden="true"></div>
+                        <div class="commit-graph__body">
+                            <div class="commit-graph__day-labels" aria-hidden="true">
+                                <span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span><span></span>
+                            </div>
+                            <div class="commit-graph__grid" id="commit-graph-grid" role="img" aria-label="Contribution calendar"></div>
+                        </div>
+                        <div class="commit-graph__footer">
+                            <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/managing-your-profile-readme/about-your-profile#about-the-profile-activity-graph" target="_blank" rel="noopener noreferrer" class="commit-graph__learn-link">Learn how we count contributions</a>
+                            <div class="commit-graph__legend">
+                                <span class="commit-graph__legend-text">Less</span>
+                                <span class="commit-graph__legend-cell" data-level="0"></span>
+                                <span class="commit-graph__legend-cell" data-level="1"></span>
+                                <span class="commit-graph__legend-cell" data-level="2"></span>
+                                <span class="commit-graph__legend-cell" data-level="3"></span>
+                                <span class="commit-graph__legend-cell" data-level="4"></span>
+                                <span class="commit-graph__legend-text">More</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <span class="bento-card__link" style="margin-top: auto;">View on GitHub →</span>
-            </a>
+                <a href="https://github.com/yogeshbhusara" target="_blank" rel="noopener noreferrer" class="bento-card__link" style="margin-top: auto;">View on GitHub →</a>
+            </article>
 
             <!-- Project card (wide) -->
             <a href="#" class="bento-card bento-card--project bento-card--has-thumb" data-work-id="flower-app" style="text-decoration: none; color: inherit;">
@@ -238,5 +258,6 @@
     <script defer src="work-page.js"></script>
     <script defer src="cursor-avoid-game.js"></script>
     <script defer src="glow-bento-cards.js"></script>
+    <script defer src="commit-graph.js"></script>
 </body>
 </html>
