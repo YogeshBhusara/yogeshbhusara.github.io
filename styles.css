@@ -403,7 +403,7 @@ main:has(.site-nav) > .footer {
 
 .bento-card {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     background: var(--bento-card-bg);
     -webkit-backdrop-filter: blur(var(--bento-glass-blur)) saturate(var(--bento-glass-saturate));
     backdrop-filter: blur(var(--bento-glass-blur)) saturate(var(--bento-glass-saturate));
@@ -417,7 +417,7 @@ main:has(.site-nav) > .footer {
     min-height: 0;
     /* Glowing edge effect defaults */
     --glow-start: 0;
-    --glow-spread: 24;
+    --glow-spread: 40;
     --glow-active: 0;
 }
 
@@ -695,6 +695,7 @@ body[data-theme="light"] .commit-graph__legend-cell[data-level="4"] { background
 }
 
 .bento-card--newsletter {
+    grid-column: span 2;
     grid-row: span 2;
 }
 
