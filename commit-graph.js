@@ -5,15 +5,6 @@
 (function () {
   const GITHUB_GRAPHQL = "https://api.github.com/graphql";
 
-  // GitHub-style green levels (dark theme)
-  const LEVEL_COLORS = [
-    "#161b22", // 0 – none
-    "#0e4429", // 1
-    "#006d32", // 2
-    "#26a641", // 3
-    "#39d353", // 4 – most
-  ];
-
   function getLevel(count) {
     if (count <= 0) return 0;
     if (count <= 1) return 1;
@@ -122,7 +113,6 @@
             const count = day ? day.contributionCount : 0;
             const level = getLevel(count);
             cell.setAttribute("data-level", String(level));
-            cell.style.backgroundColor = LEVEL_COLORS[level];
             cell.setAttribute("title", day ? `${day.date}: ${count} contributions` : "No contributions");
             gridEl.appendChild(cell);
           }
