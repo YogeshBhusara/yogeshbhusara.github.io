@@ -1,7 +1,12 @@
 // Glowing edge effect for .bento-card elements (vanilla JS version)
 
 (function () {
-  const cards = Array.from(document.querySelectorAll(".bento-card"));
+  // Apply glow only to regular bento cards, not logo or social hub
+  const cards = Array.from(
+    document.querySelectorAll(
+      ".bento-card:not(.bento-card--logo):not(.bento-card--social-hub)"
+    )
+  );
   if (!cards.length) return;
 
   const inactiveZone = 0.7; // fraction of card radius in which glow stays off
