@@ -5,12 +5,6 @@
     'use strict';
     const posts = [
         {
-            title: 'Vibe to Visual: Building SwiftUI Effects from Pure Ideas',
-            description: 'Complex visual effects aren’t blockers anymore—they’re starting points.',
-            link: 'https://medium.com/@bhusara89.yogesh/vibe-to-visual-building-swiftui-effects-from-pure-ideas-5214b32673fe',
-            image: null // no thumbnail image for this post
-        },
-        {
             title: 'Develop First, Design Later',
             // Keep the full subtitle text separate so the card title can omit it.
             subtitle: 'I\'m Still Figuring This Out',
@@ -31,6 +25,12 @@
             title: 'Built a Semantic Search for Our Figma Library — And Learned RAG Along the Way',
             description: 'A side project to fix my own "where did we do this before?" problem, built with Cursor, and how it could scale for the full design team.',
             link: 'https://medium.com/@bhusara89.yogesh/built-a-semantic-search-for-our-figma-library-and-learned-rag-along-the-way-1de2f43e3d44'
+        },
+        {
+            title: 'Vibe to Visual: Building SwiftUI Effects from Pure Ideas',
+            description: 'Complex visual effects aren’t blockers anymore—they’re starting points.',
+            link: 'https://medium.com/@bhusara89.yogesh/vibe-to-visual-building-swiftui-effects-from-pure-ideas-5214b32673fe',
+            image: null // no thumbnail image for this post
         }
     ];
 
@@ -57,13 +57,14 @@
             card.href = post.link;
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
-            card.className = 'blog-card';
+            const hasImage = post.image !== null && post.image !== undefined;
+            card.className = hasImage ? 'blog-card' : 'blog-card blog-card--no-thumb';
 
             const imageNum = index + 1;
             let thumbHtml = '';
 
-            if (post.image === null) {
-                thumbHtml = '<div class="blog-card__thumb blog-card__thumb--placeholder"></div>';
+            if (!hasImage) {
+                thumbHtml = '';
             } else {
                 const imageSrc = post.image || ('assets/' + imageNum + '.webp');
                 thumbHtml =

@@ -2414,6 +2414,16 @@ body:not(:has(.bento-grid)) .blog-posts {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
 }
 
+/* No thumbnail: expand text area to full card width */
+.blog-card--no-thumb .blog-card__thumb {
+    display: none;
+}
+
+.blog-card--no-thumb .blog-card__body {
+    width: 100%;
+    padding: 28px 32px;
+}
+
 .blog-card__body {
     flex: 1;
     padding: 32px 40px;
