@@ -108,11 +108,17 @@ body {
     transition: background-color var(--duration-slow) var(--ease-default), color var(--duration-slow) var(--ease-default);
 }
 
-/* Apply page max width to main content on non-home pages */
-body:not(:has(.bento-grid)) main,
-body:not(:has(.bento-grid)) .bento-header,
-body:not(:has(.bento-grid)) main > section {
+/* Apply page max width to main content on non-home pages (exclude header/footer) */
+body:not(:has(.bento-grid)) main > section:not(.footer) {
     max-width: var(--page-max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Header + footer should match homepage width */
+body:not(:has(.bento-grid)) .bento-header,
+body:not(:has(.bento-grid)) .footer {
+    max-width: var(--content-max-width);
     margin-left: auto;
     margin-right: auto;
 }
@@ -135,8 +141,7 @@ body:not(:has(.bento-grid)) .experience,
 body:not(:has(.bento-grid)) .contact,
 body:not(:has(.bento-grid)) .blog-page,
 body:not(:has(.bento-grid)) .work-page,
-body:not(:has(.bento-grid)) .sitemap-section,
-body:not(:has(.bento-grid)) .footer {
+body:not(:has(.bento-grid)) .sitemap-section {
     padding-left: 0;
     padding-right: 0;
 }
