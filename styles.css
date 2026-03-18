@@ -151,6 +151,11 @@ body:not(:has(.bento-grid)) .experience-list {
     max-width: var(--page-max-width);
 }
 
+/* Keep About content aligned with the 800px container */
+body:not(:has(.bento-grid)) .about-content {
+    max-width: var(--page-max-width);
+}
+
 /* DarkVeil only inside intro card (not full-page) */
 .bento-card--intro {
     position: relative;
