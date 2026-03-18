@@ -53,12 +53,8 @@
         {
           title: 'Impact',
           content:
-            '<div class="work-impact">\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Time to first save</div></div>\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Return usage</div></div>\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Qualitative feedback</div></div>\n' +
-            '</div>\n' +
-            '<p>Impact numbers are placeholders for now. We’ll replace these with real metrics when you’re ready.</p>'
+            'Clean, Readable Exports: Main columns display user-friendly names/labels without appended IDs.\n\n' +
+            'Comprehensive Data Access: Separate identifier columns support integrations, lookups, and technical processing when needed.'
         }
       ],
       images: [
@@ -114,12 +110,8 @@
         {
           title: 'Impact',
           content:
-            '<div class="work-impact">\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Search-to-shortlist</div></div>\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Booking completion</div></div>\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Support tickets</div></div>\n' +
-            '</div>\n' +
-            '<p>Impact numbers are placeholders for now. We’ll replace these with real metrics when you’re ready.</p>'
+            'Clean, Readable Exports: Main columns display user-friendly names/labels without appended IDs.\n\n' +
+            'Comprehensive Data Access: Separate identifier columns support integrations, lookups, and technical processing when needed.'
         }
       ],
       images: [
@@ -174,12 +166,8 @@
         {
           title: 'Impact',
           content:
-            '<div class="work-impact">\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Reported issues</div></div>\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Conversation starts</div></div>\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Profile completion</div></div>\n' +
-            '</div>\n' +
-            '<p>Impact numbers are placeholders for now. We’ll replace these with real metrics when you’re ready.</p>'
+            'Clean, Readable Exports: Main columns display user-friendly names/labels without appended IDs.\n\n' +
+            'Comprehensive Data Access: Separate identifier columns support integrations, lookups, and technical processing when needed.'
         }
       ],
       images: [
@@ -234,12 +222,8 @@
         {
           title: 'Impact',
           content:
-            '<div class="work-impact">\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Time to insight</div></div>\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Adoption</div></div>\n' +
-            '  <div class="work-impact__metric"><div class="work-impact__value">—</div><div class="work-impact__label">Decision confidence</div></div>\n' +
-            '</div>\n' +
-            '<p>Impact numbers are placeholders for now. We’ll replace these with real metrics when you’re ready.</p>'
+            'Clean, Readable Exports: Main columns display user-friendly names/labels without appended IDs.\n\n' +
+            'Comprehensive Data Access: Separate identifier columns support integrations, lookups, and technical processing when needed.'
         }
       ],
       images: [

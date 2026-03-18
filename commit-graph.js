@@ -127,7 +127,18 @@
         const wrap = gridEl.closest(".bento-card__commit-graph-wrap");
         if (wrap) {
           const username = root.getAttribute("data-username") || "yogeshbhusara";
-          wrap.innerHTML = "<img src=\"https://ghchart.rshah.org/" + username + "\" alt=\"GitHub contribution graph\" class=\"commit-graph__fallback-img\" loading=\"lazy\" />";
+          // If the API fetch fails, ghchart fallback needs a dark base color in dark mode
+          // to avoid "white blocks" looking wrong on the dark card.
+          const isLightMode = document?.body?.getAttribute("data-theme") === "light";
+          const darkBaseHex = "161b22"; // GitHub dark empty-cell color
+          const chartUrl = isLightMode
+            ? "https://ghchart.rshah.org/" + username
+            : "https://ghchart.rshah.org/" + darkBaseHex + "/" + username;
+
+          wrap.innerHTML =
+            "<img src=\"" +
+            chartUrl +
+            "\" alt=\"GitHub contribution graph\" class=\"commit-graph__fallback-img\" loading=\"lazy\" />";
         } else {
           gridEl.innerHTML = "<span class='commit-graph__error'>Unable to load contribution data.</span>";
         }
