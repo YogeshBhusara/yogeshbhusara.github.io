@@ -33,7 +33,11 @@
                         <h3 class="work-list-item-title">${work.title}</h3>
                         <p class="work-list-item-category">${category}</p>
                     </div>
-                    <span class="work-list-item-cta">View <svg class="work-list-item-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <span class="work-list-item-cta" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
                 </div>
             `;
             

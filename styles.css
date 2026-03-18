@@ -2620,26 +2620,23 @@ body[data-theme="light"] .blog-card__desc {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 400;
-    padding: 12px 24px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    transition: all 0.3s ease;
-    font-family: inherit;
+    width: var(--space-10);
+    height: var(--space-10);
+    border-radius: 50%;
+    background: var(--bento-card-bg);
+    border: 1px solid var(--bento-card-border);
+    color: var(--bento-text);
+    text-decoration: none;
+    transition: background var(--duration-fast) var(--ease-default), border-color var(--duration-fast) var(--ease-default);
 }
 
 .work-list-item:hover .work-list-item-cta {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: var(--bento-card-hover-bg);
+    border-color: var(--bento-card-hover-border);
 }
 
 .work-list-item-cta-arrow {
-    margin-left: 6px;
-    flex-shrink: 0;
+    display: none;
 }
 
 .work-list-item-meta {
