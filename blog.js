@@ -57,7 +57,9 @@
             card.href = post.link;
             card.target = '_blank';
             card.rel = 'noopener noreferrer';
-            const hasImage = post.image !== null && post.image !== undefined;
+            // Only `image: null` means "no thumbnail".
+            // If `image` is undefined, we fall back to assets/{index+1}.webp.
+            const hasImage = post.image !== null;
             card.className = hasImage ? 'blog-card' : 'blog-card blog-card--no-thumb';
 
             const imageNum = index + 1;
@@ -69,7 +71,7 @@
                 const imageSrc = post.image || ('assets/' + imageNum + '.webp');
                 thumbHtml =
                     '<div class="blog-card__thumb">' +
-                    '<img src="' + imageSrc + '" alt="' + escapeHtml(post.title) + '" loading="lazy" width="400" height="300">' +
+                    '<img src="' + imageSrc + '" alt="' + escapeHtml(post.title) + '" loading="eager" width="400" height="300">' +
                     '</div>';
             }
 
