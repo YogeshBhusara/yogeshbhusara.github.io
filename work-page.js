@@ -75,11 +75,44 @@
         });
     }
 
+    function slugify(value) {
+        return String(value || '')
+            .toLowerCase()
+            .trim()
+            .replace(/&/g, 'and')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
+    function renderRichText(content) {
+        const raw = (content == null ? '' : String(content)).trim();
+        if (!raw) return '';
+
+        // If author provided HTML, trust it (portfolio-controlled content).
+        if (raw.startsWith('<')) return raw;
+
+        // Otherwise treat as plain text with paragraph breaks.
+        const paragraphs = raw
+            .split(/\n\s*\n/g)
+            .map(p => p.trim())
+            .filter(Boolean);
+
+        return paragraphs.map(p => `<p>${p}</p>`).join('');
+    }
+
     // Render work detail
     function renderWorkDetail(work) {
         const currentIndex = works.findIndex(w => w.id === work.id);
         const nextIndex = (currentIndex + 1) % works.length;
         const nextWork = works[nextIndex];
+
+        const sections = Array.isArray(work.sections) ? work.sections : [];
+        const toc = sections
+            .map((section) => {
+                const id = `section-${slugify(section.title)}`;
+                return `<a href="#${id}" class="work-detail-toc__link">${section.title}</a>`;
+            })
+            .join('');
         
         workDetailInner.innerHTML = `
             <div class="work-detail-header">
@@ -90,22 +123,33 @@
                 </div>
                 <p class="work-detail-description">${work.description}</p>
             </div>
+
+            ${toc ? `
+                <nav class="work-detail-toc" aria-label="Case study sections">
+                    ${toc}
+                </nav>
+            ` : ''}
             
-            ${work.sections.map((section, index) => `
-                <div class="work-detail-section">
-                    <h2 class="work-detail-section-title">${section.title}</h2>
-                    <div class="work-detail-section-content">
-                        <p>${section.content}</p>
+            ${sections.map((section, index) => {
+                const sectionId = `section-${slugify(section.title)}`;
+                const bodyHtml = renderRichText(section.content);
+
+                return `
+                    <div class="work-detail-section" id="${sectionId}">
+                        <h2 class="work-detail-section-title">${section.title}</h2>
+                        <div class="work-detail-section-content">
+                            ${bodyHtml}
+                        </div>
                     </div>
-                </div>
-                ${work.images[index] ? `
-                    <div class="work-detail-image-wrapper">
-                        <img src="${work.images[index]}" alt="${work.title}" class="work-detail-image" loading="lazy">
-                    </div>
-                ` : ''}
-            `).join('')}
+                    ${work.images && work.images[index] ? `
+                        <div class="work-detail-image-wrapper">
+                            <img src="${work.images[index]}" alt="${work.title}" class="work-detail-image" loading="lazy">
+                        </div>
+                    ` : ''}
+                `;
+            }).join('')}
             
-            ${work.images.slice(work.sections.length).map(img => `
+            ${(Array.isArray(work.images) ? work.images : []).slice(sections.length).map(img => `
                 <div class="work-detail-image-wrapper">
                     <img src="${img}" alt="${work.title}" class="work-detail-image" loading="lazy">
                 </div>

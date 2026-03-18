@@ -1628,6 +1628,31 @@ body[data-theme="light"] .work-detail-navigation {
     border-top-color: rgba(4, 4, 4, 0.1);
 }
 
+body[data-theme="light"] .work-detail-toc__link {
+    color: rgba(4, 4, 4, 0.65);
+    border-color: rgba(4, 4, 4, 0.16);
+    background: rgba(4, 4, 4, 0.03);
+}
+
+body[data-theme="light"] .work-detail-toc__link:hover {
+    color: rgba(4, 4, 4, 0.9);
+    border-color: rgba(4, 4, 4, 0.24);
+    background: rgba(4, 4, 4, 0.06);
+}
+
+body[data-theme="light"] .work-impact__metric {
+    border-color: rgba(4, 4, 4, 0.12);
+    background: rgba(4, 4, 4, 0.03);
+}
+
+body[data-theme="light"] .work-impact__value {
+    color: rgba(4, 4, 4, 0.92);
+}
+
+body[data-theme="light"] .work-impact__label {
+    color: rgba(4, 4, 4, 0.6);
+}
+
 body[data-theme="light"] .bento-logo,
 body[data-theme="light"] .bento-nav__link,
 body[data-theme="light"] .bento-contact-link {
@@ -3395,6 +3420,79 @@ body[data-theme="light"] .work-detail-overlay {
     max-width: none;
 }
 
+/* Work detail table of contents (matches case study section rhythm) */
+.work-detail-toc {
+    grid-column: 2;
+    margin: 0;
+    padding: 0 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 700px;
+    justify-self: start;
+    align-self: start;
+}
+
+.work-detail-toc__link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    transition: background var(--duration-fast) var(--ease-default), border-color var(--duration-fast) var(--ease-default), color var(--duration-fast) var(--ease-default);
+}
+
+.work-detail-toc__link:hover {
+    color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.work-detail-section-content p {
+    margin: 0 0 18px;
+}
+
+.work-detail-section-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Impact metrics block (dummy placeholders now, real metrics later) */
+.work-impact {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 18px;
+}
+
+.work-impact__metric {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 14px 14px 12px;
+}
+
+.work-impact__value {
+    font-size: 26px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+}
+
+.work-impact__label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.65);
+}
+
 .work-detail-section {
     grid-column: 2;
     margin-bottom: 0;
@@ -3482,9 +3580,14 @@ body[data-theme="light"] .work-detail-overlay {
     }
 
     .work-detail-header,
+    .work-detail-toc,
     .work-detail-section,
     .work-detail-navigation {
         grid-column: 1;
+    }
+
+    .work-impact {
+        grid-template-columns: 1fr;
     }
 
     .work-detail-image-wrapper {
