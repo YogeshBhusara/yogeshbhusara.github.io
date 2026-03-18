@@ -5,7 +5,15 @@
     'use strict';
     const posts = [
         {
-            title: 'Develop First, Design Later (I\'m Still Figuring This Out)',
+            title: 'Vibe to Visual: Building SwiftUI Effects from Pure Ideas',
+            description: 'Complex visual effects aren’t blockers anymore—they’re starting points.',
+            link: 'https://medium.com/@bhusara89.yogesh/vibe-to-visual-building-swiftui-effects-from-pure-ideas-5214b32673fe',
+            image: null // no thumbnail image for this post
+        },
+        {
+            title: 'Develop First, Design Later',
+            // Keep the full subtitle text separate so the card title can omit it.
+            subtitle: 'I\'m Still Figuring This Out',
             description: 'What Happens When a Designer Builds Before Designing?',
             link: 'https://medium.com/@bhusara89.yogesh/develop-first-design-later-im-still-figuring-this-out-53e4885bcf00'
         },
@@ -52,10 +60,17 @@
             card.className = 'blog-card';
 
             const imageNum = index + 1;
-            const imageSrc = 'assets/' + imageNum + '.webp';
-            const thumbHtml = '<div class="blog-card__thumb">' +
-                '<img src="' + imageSrc + '" alt="' + escapeHtml(post.title) + '" loading="lazy" width="400" height="300">' +
-                '</div>';
+            let thumbHtml = '';
+
+            if (post.image === null) {
+                thumbHtml = '<div class="blog-card__thumb blog-card__thumb--placeholder"></div>';
+            } else {
+                const imageSrc = post.image || ('assets/' + imageNum + '.webp');
+                thumbHtml =
+                    '<div class="blog-card__thumb">' +
+                    '<img src="' + imageSrc + '" alt="' + escapeHtml(post.title) + '" loading="lazy" width="400" height="300">' +
+                    '</div>';
+            }
 
             card.innerHTML =
                 '<div class="blog-card__body">' +

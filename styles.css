@@ -146,6 +146,11 @@ body:not(:has(.bento-grid)) .sitemap-section {
     padding-right: 0;
 }
 
+/* Keep Experience content aligned with the 800px container */
+body:not(:has(.bento-grid)) .experience-list {
+    max-width: var(--page-max-width);
+}
+
 /* DarkVeil only inside intro card (not full-page) */
 .bento-card--intro {
     position: relative;
@@ -2364,26 +2369,9 @@ body[data-theme="light"] .bento-contact-link:hover {
     width: 100%;
 }
 
-/* Non-home pages: blog fits 700px column */
+/* Non-home pages: blog fits container column width */
 body:not(:has(.bento-grid)) .blog-posts {
     max-width: var(--page-max-width);
-}
-
-body:not(:has(.bento-grid)) .blog-card {
-    flex-direction: column;
-    min-height: auto;
-}
-
-body:not(:has(.bento-grid)) .blog-card__thumb {
-    width: 100%;
-    height: 220px;
-    margin-right: 0;
-    margin-bottom: 0;
-    border-radius: 0;
-}
-
-body:not(:has(.bento-grid)) .blog-card__body {
-    padding: 24px;
 }
 
 .blog-loading,
@@ -2406,7 +2394,7 @@ body:not(:has(.bento-grid)) .blog-card__body {
 
 .blog-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-decoration: none;
     color: inherit;
     background: rgba(255, 255, 255, 0.04);
@@ -2415,7 +2403,8 @@ body:not(:has(.bento-grid)) .blog-card__body {
     overflow: hidden;
     transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
-    align-items: stretch;
+    align-items: center;
+    min-height: 200px;
 }
 
 .blog-card:hover {
@@ -2427,7 +2416,7 @@ body:not(:has(.bento-grid)) .blog-card__body {
 
 .blog-card__body {
     flex: 1;
-    padding: 24px;
+    padding: 32px 40px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -2452,12 +2441,12 @@ body:not(:has(.bento-grid)) .blog-card__body {
 
 .blog-card__thumb {
     flex-shrink: 0;
-    width: 100%;
-    height: 220px;
+    width: 320px;
+    height: 200px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.06);
-    border-radius: 0;
-    margin-right: 0;
+    border-radius: 8px;
+    margin-right: 40px;
 }
 
 .blog-card__thumb img {
