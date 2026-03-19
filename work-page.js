@@ -114,11 +114,17 @@
         const toc = sections
             .map((section) => {
                 const id = `section-${slugify(section.title)}`;
-                return `<a href="#${id}" class="work-detail-toc__link">${section.title}</a>`;
+                return `<a href="#${id}" class="work-detail-toc__link" data-toc-target="${id}">${section.title}</a>`;
             })
             .join('');
         
         workDetailInner.innerHTML = `
+            ${toc ? `
+                <nav class="work-detail-toc" aria-label="Case study sections">
+                    ${toc}
+                </nav>
+            ` : ''}
+
             <div class="work-detail-header">
                 <h1 class="work-detail-title">${work.title}</h1>
                 <div class="work-detail-meta">
@@ -127,12 +133,6 @@
                 </div>
                 <p class="work-detail-description">${work.description}</p>
             </div>
-
-            ${toc ? `
-                <nav class="work-detail-toc" aria-label="Case study sections">
-                    ${toc}
-                </nav>
-            ` : ''}
             
             ${sections.map((section, index) => {
                 const sectionId = `section-${slugify(section.title)}`;
@@ -176,6 +176,77 @@
                 }, 400);
             });
         }
+
+        setupWorkDetailToc();
+    }
+
+    function setupWorkDetailToc() {
+        const toc = workDetailInner.querySelector('.work-detail-toc');
+        if (!toc) return;
+
+        const scrollRoot = workDetail ? workDetail.querySelector('.work-detail-content') : null;
+        const links = Array.from(toc.querySelectorAll('.work-detail-toc__link'));
+        const targets = links
+            .map((link) => {
+                const id = link.getAttribute('data-toc-target') || link.getAttribute('href')?.replace(/^#/, '');
+                if (!id) return null;
+                const el = workDetailInner.querySelector(`#${CSS.escape(id)}`);
+                return el ? { link, el, id } : null;
+            })
+            .filter(Boolean);
+
+        function setActiveLink(activeId) {
+            links.forEach((link) => {
+                const id = link.getAttribute('data-toc-target') || link.getAttribute('href')?.replace(/^#/, '');
+                const isActive = id === activeId;
+                link.classList.toggle('work-detail-toc__link--active', isActive);
+                if (isActive) {
+                    link.setAttribute('aria-current', 'true');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        // Click: scroll within modal (not window)
+        links.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                const id = link.getAttribute('data-toc-target') || link.getAttribute('href')?.replace(/^#/, '');
+                if (!id) return;
+                const el = workDetailInner.querySelector(`#${CSS.escape(id)}`);
+                if (!el || !scrollRoot) return;
+
+                e.preventDefault();
+                const top = el.offsetTop;
+                scrollRoot.scrollTo({ top, behavior: 'smooth' });
+                setActiveLink(id);
+            });
+        });
+
+        // Scrollspy: update active link while scrolling the modal
+        if (!scrollRoot || typeof IntersectionObserver === 'undefined' || targets.length === 0) {
+            if (targets[0]) setActiveLink(targets[0].id);
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            const visible = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => (a.boundingClientRect.top - b.boundingClientRect.top));
+
+            if (visible.length === 0) return;
+            const topMost = visible[0].target;
+            if (topMost && topMost.id) setActiveLink(topMost.id);
+        }, {
+            root: scrollRoot,
+            threshold: [0.15, 0.35, 0.55],
+            rootMargin: '-20% 0px -70% 0px'
+        });
+
+        targets.forEach(({ el }) => observer.observe(el));
+
+        // Default state
+        setActiveLink(targets[0].id);
     }
 
     // Close work detail
