@@ -1496,6 +1496,10 @@ body[data-theme="light"] .index-connect,
 body[data-theme="light"] .index-social-link,
 body[data-theme="light"] .index-link,
 body[data-theme="light"] .section-label,
+body[data-theme="light"] .about-headline {
+    color: #040404;
+}
+
 body[data-theme="light"] .about-text,
 body[data-theme="light"] .about-connect,
 body[data-theme="light"] .about-link,
@@ -2021,7 +2025,7 @@ body[data-theme="light"] .bento-contact-link:hover {
 }
 
 .about {
-    padding: 0;
+    padding: 0 var(--content-padding);
     display: block;
 }
 
@@ -2036,56 +2040,49 @@ body[data-theme="light"] .bento-contact-link:hover {
     margin-bottom: 0;
 }
 
-.about-hero {
-    position: relative;
-    min-height: calc(100vh - 140px);
-    border-radius: 28px;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-start;
-    padding: clamp(72px, 10vh, 120px) var(--content-padding);
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-}
-
-.about-hero-media {
-    position: absolute;
-    inset: 0;
-    background-image: url("assets/about-bg.png");
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 80% auto;
-    background-color: #040404;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-}
-
-.about-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(1200px 520px at 24% 20%, rgba(4, 4, 4, 0.58), rgba(4, 4, 4, 0) 65%),
-        linear-gradient(to bottom, rgba(4, 4, 4, 0.55), rgba(4, 4, 4, 0.92));
-    pointer-events: none;
-}
-
 .about-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    width: 100%;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    will-change: transform;
+}
+
+.about-intro {
+    overflow: hidden;
+}
+
+.about-photo-wrap {
+    float: left;
+    margin: 0 32px 24px 0;
+    shape-margin: 24px;
+}
+
+.about-photo {
+    display: block;
+    width: 280px;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.about-body {
+    overflow: hidden;
+}
+
+.about-headline {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0 0 1em;
 }
 
 .about-text {
     font-size: 24px;
     font-weight: 400;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0 0 1.5em;
     letter-spacing: -0.01em;
 }
@@ -2095,7 +2092,7 @@ body[data-theme="light"] .bento-contact-link:hover {
 }
 
 .about-content p.about-text:first-of-type {
-    text-indent: 10em;
+    text-indent: 0;
 }
 
 .about-content p.about-text:nth-of-type(2),
@@ -3172,6 +3169,21 @@ body[data-theme="light"] .blog-card__desc {
 
     .about-content {
         max-width: none;
+    }
+
+    .about-photo-wrap {
+        float: none;
+        margin: 0 auto 24px;
+    }
+
+    .about-photo {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .about-headline {
+        font-size: 22px;
     }
 
     .case-studies {
