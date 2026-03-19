@@ -2052,7 +2052,11 @@ body[data-theme="light"] .bento-contact-link:hover {
 .about-hero-media {
     position: absolute;
     inset: 0;
-    background: url("assets/about-bg.png") center / cover no-repeat;
+    background-image: url("assets/about-bg.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 80% auto;
+    background-color: #040404;
     transform: translate3d(0, 0, 0);
     will-change: transform;
 }
