@@ -755,58 +755,6 @@ body[data-theme="light"] .commit-graph__legend-cell[data-level="4"] { background
     grid-row: span 2;
 }
 
-/* Avoid the cursor – mini game card */
-.bento-card--game {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.bento-card__game-status {
-    font-size: 0.8125rem;
-    color: var(--bento-text-muted);
-    margin: 0 0 10px; /* 10px off-scale for legibility */
-}
-
-.bento-card__game-arena {
-    position: relative;
-    flex: 1;
-    min-height: 120px;
-    margin: 0 calc(-1 * var(--bento-card-padding)) calc(-1 * var(--bento-card-padding));
-    border-radius: 0 0 var(--bento-radius) var(--bento-radius);
-    background: var(--bento-accent);
-    overflow: hidden;
-}
-
-.bento-card__game-dot {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--bento-text);
-    box-shadow: 0 0 0 2px var(--bento-card-border);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: left var(--duration-slower) var(--ease-default), top var(--duration-slower) var(--ease-default);
-    pointer-events: none;
-}
-
-.bento-card--game.caught .bento-card__game-dot {
-    background: #e53935;
-}
-
-.bento-card--game.won .bento-card__game-dot {
-    background: #43a047;
-}
-
-@media (max-width: 768px) {
-    .bento-card--game {
-        display: none;
-    }
-}
-
 /* Bento card content */
 .bento-card__title {
     font-size: 1.25rem;
