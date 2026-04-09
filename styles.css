@@ -1233,6 +1233,98 @@ body[data-theme="light"] .bento-card__social-hub .bento-card__social-icon svg pa
     display: none;
 }
 
+/* Let's Connect – icon + link rows (replaces standalone social hub) */
+.bento-card__connect-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: var(--space-4);
+}
+
+.bento-card__connect-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--bento-text);
+    padding: 6px 4px;
+    border-radius: 12px;
+    transition: opacity var(--duration-fast) var(--ease-default), background var(--duration-fast) var(--ease-default);
+}
+
+.bento-card__connect-item:hover {
+    opacity: 0.92;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body[data-theme="light"] .bento-card__connect-item:hover {
+    background: rgba(4, 4, 4, 0.04);
+}
+
+.bento-card__connect-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+}
+
+.bento-card__connect-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.bento-card__connect-label {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: none;
+}
+
+body[data-theme="light"] .bento-card__connect-label {
+    color: rgba(4, 4, 4, 0.85);
+}
+
+.bento-card__connect-url {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: rgba(255, 255, 255, 0.95);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+body[data-theme="light"] .bento-card__connect-url {
+    color: rgba(4, 4, 4, 0.9);
+}
+
+.bento-card__connect-icon--email {
+    color: #ffffff;
+}
+
+.bento-card__connect-icon--linkedin {
+    color: #0A66C2;
+}
+
+.bento-card__connect-icon--medium {
+    color: #ffffff;
+}
+
+.bento-card__connect-icon--dribbble {
+    color: #ea4c89;
+}
+
+body[data-theme="light"] .bento-card__connect-icon--email,
+body[data-theme="light"] .bento-card__connect-icon--medium {
+    color: #040404;
+}
+
 /* Standalone social link cards (kept for any reuse) */
 .bento-card--social {
     justify-content: center;
