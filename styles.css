@@ -1287,7 +1287,7 @@ body[data-theme="light"] .bento-card__connect-label {
 }
 
 .bento-card__connect-url {
-    font-size: 1.25rem; /* match .bento-card__title */
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: -0.02em;
     color: rgba(255, 255, 255, 0.95);
