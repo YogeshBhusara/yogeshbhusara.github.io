@@ -2091,6 +2091,18 @@ body[data-theme="light"] .bento-contact-link:hover {
     border-radius: 8px;
 }
 
+.about-photo-note {
+    margin-top: 10px;
+    font-size: 10px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 280px;
+}
+
+body[data-theme="light"] .about-photo-note {
+    color: rgba(4, 4, 4, 0.55);
+}
+
 .about-body {
     overflow: hidden;
 }
