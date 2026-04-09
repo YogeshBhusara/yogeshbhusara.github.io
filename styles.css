@@ -1013,6 +1013,9 @@ body[data-theme="light"] .bento-card--weather .bento-card__weather-content {
     letter-spacing: 0.02em;
     color: var(--bento-text);
     opacity: 0.95;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* Now card – location temperature */

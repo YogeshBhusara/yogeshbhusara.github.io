@@ -7,7 +7,7 @@
   const CARD_ID = 'weather-card';
   const TIME_ID = 'now-location-time';
   const TIMEZONE = 'Asia/Kolkata';
-  const UPDATE_MS = 60000; // 1 minute
+  const UPDATE_MS = 1000; // 1 second
 
   function getCard() {
     return document.getElementById(CARD_ID);
@@ -38,6 +38,7 @@
       timeZone: TIMEZONE,
       hour: '2-digit',
       minute: '2-digit',
+      second: '2-digit',
       hour12: true
     });
   }
