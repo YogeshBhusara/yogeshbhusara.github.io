@@ -1237,7 +1237,7 @@ body[data-theme="light"] .bento-card__social-hub .bento-card__social-icon svg pa
 .bento-card__connect-list {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 0px;
     margin-top: var(--space-4);
 }
 
