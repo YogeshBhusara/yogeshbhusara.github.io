@@ -1604,19 +1604,8 @@ body[data-theme="light"] .experience-cv-button:hover {
 }
 
 body[data-theme="light"] .experience {
-    --timeline-badge-muted: rgba(4, 4, 4, 0.09);
     --timeline-ruler-line: rgba(4, 4, 4, 0.14);
     --timeline-ruler-tick: rgba(4, 4, 4, 0.38);
-}
-
-body[data-theme="light"] .experience .experience-logo {
-    color: #0a0a0a;
-    background: rgba(4, 4, 4, 0.06);
-    border-color: rgba(4, 4, 4, 0.12);
-}
-
-body[data-theme="light"] .experience .experience-role--badge-muted {
-    color: #0a0a0a;
 }
 
 body[data-theme="light"] .index-intro {
@@ -2274,8 +2263,6 @@ body[data-theme="light"] .about-photo-note {
 }
 
 .experience {
-    --timeline-lime: #dfff9e;
-    --timeline-badge-muted: rgba(255, 255, 255, 0.14);
     --timeline-ruler-line: rgba(255, 255, 255, 0.22);
     --timeline-ruler-tick: rgba(255, 255, 255, 0.5);
     padding: 0 var(--content-padding);
@@ -2419,31 +2406,14 @@ body[data-theme="light"] .about-photo-note {
 .experience-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
     min-width: 0;
-}
-
-.experience-logo {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 7px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: rgba(255, 255, 255, 0.92);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .experience-company-name {
     font-size: 14px;
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: #fff;
+    color: var(--bento-text);
     line-height: 1.25;
 }
 
@@ -2460,19 +2430,22 @@ body[data-theme="light"] .about-photo-note {
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.35;
-    padding: 7px 10px;
-    border-radius: 5px;
+    padding: 6px 10px;
+    border-radius: 8px;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 .experience-role--badge-muted {
-    background: var(--timeline-badge-muted);
-    color: rgba(255, 255, 255, 0.95);
+    background: var(--bento-card-bg);
+    border: 1px solid var(--bento-card-border);
+    color: var(--bento-text-muted);
 }
 
-.experience-role--badge-lime {
-    background: var(--timeline-lime);
-    color: #0a0a0a;
+.experience-role--badge-accent {
+    background: var(--bento-card-hover-bg);
+    border: 1px solid var(--bento-card-hover-border);
+    color: var(--bento-text);
 }
 
 .experience-detail {
