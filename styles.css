@@ -40,6 +40,9 @@
     --space-6: 24px;
     --space-8: 32px;
     --space-10: 40px;
+    /* Circular bento / work-list CTA hit target (70% of --space-10) */
+    --bento-cta-size: calc(var(--space-10) * 0.7);
+    --bento-cta-icon: calc(18px * 0.7);
     --space-12: 48px;
     --space-14: 56px;
     --space-20: 80px;
@@ -59,8 +62,6 @@
     --bento-radius: var(--space-6);
     --bento-row-height: 200px;
     --bento-card-padding: 28px;
-    /* Circular arrow / external-link control on bento + work list (half of former 40px) */
-    --bento-card-cta-size: calc(var(--space-10) / 2);
 
     /* Bento colors (dark default); light overrides below */
     --bento-bg: #040404;
@@ -823,8 +824,8 @@ body[data-theme="light"] .commit-graph__legend-cell[data-level="4"] { background
     right: var(--space-5);
     bottom: auto;
     z-index: 2;
-    width: var(--bento-card-cta-size);
-    height: var(--bento-card-cta-size);
+    width: var(--bento-cta-size);
+    height: var(--bento-cta-size);
     border-radius: 50%;
     background: var(--bento-card-bg);
     border: 1px solid var(--bento-card-border);
@@ -836,15 +837,15 @@ body[data-theme="light"] .commit-graph__legend-cell[data-level="4"] { background
     transition: background var(--duration-fast) var(--ease-default), border-color var(--duration-fast) var(--ease-default);
 }
 
-.bento-card__cta svg {
-    width: calc(18px / 2);
-    height: calc(18px / 2);
-    flex-shrink: 0;
-}
-
 .bento-card__cta:hover {
     background: var(--bento-card-hover-bg);
     border-color: var(--bento-card-hover-border);
+}
+
+.bento-card__cta svg {
+    width: var(--bento-cta-icon);
+    height: var(--bento-cta-icon);
+    flex-shrink: 0;
 }
 
 .bento-card--has-thumb {
@@ -2268,7 +2269,7 @@ body[data-theme="light"] .about-photo-note {
     font-weight: 500;
     letter-spacing: -0.02em;
     color: #fff;
-    margin-bottom: 0;
+    margin-bottom: var(--space-8);
 }
 
 .experience .experience-list {
@@ -2716,8 +2717,8 @@ body[data-theme="light"] .blog-card__desc {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--bento-card-cta-size);
-    height: var(--bento-card-cta-size);
+    width: var(--bento-cta-size);
+    height: var(--bento-cta-size);
     border-radius: 50%;
     background: var(--bento-card-bg);
     border: 1px solid var(--bento-card-border);
@@ -2732,8 +2733,8 @@ body[data-theme="light"] .blog-card__desc {
 }
 
 .work-list-item-cta svg {
-    width: calc(18px / 2);
-    height: calc(18px / 2);
+    width: var(--bento-cta-icon);
+    height: var(--bento-cta-icon);
     flex-shrink: 0;
 }
 
