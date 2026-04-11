@@ -75,6 +75,11 @@
     --bento-accent: rgba(255, 255, 255, 0.08);
     --bento-glass-blur: 12px;
     --bento-glass-saturate: 180%;
+
+    /* Page background + subtle dot grid (dark default) */
+    --page-bg-base: #040404;
+    --dot-grid-size: 22px;
+    --dot-grid-color: rgba(255, 255, 255, 0.072);
 }
 
 /* Non-home pages: keep content column to 700px */
@@ -98,7 +103,11 @@ body:not(:has(.bento-grid)) {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background-color: #040404;
+    min-height: 100vh;
+    background-color: var(--page-bg-base);
+    background-image: radial-gradient(circle, var(--dot-grid-color) 1px, transparent 1.25px);
+    background-size: var(--dot-grid-size) var(--dot-grid-size);
+    background-position: 0 0;
     color: #fff;
     line-height: 1.5;
     padding: var(--content-padding);
@@ -1520,7 +1529,9 @@ main:has(.bento-header) > .site-nav {
 
 /* Light Mode Styles */
 body[data-theme="light"] {
-    background-color: #fafaf9;
+    --page-bg-base: #fafaf9;
+    --dot-grid-color: rgba(4, 4, 4, 0.1);
+    background-color: var(--page-bg-base);
     color: #0a0a0a;
     border-left-color: rgba(4, 4, 4, 0.08);
 }
