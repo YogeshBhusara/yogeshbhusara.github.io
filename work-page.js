@@ -10,48 +10,73 @@
     // Work data (shared via work-data.js)
     const works = (window.PORTFOLIO_WORKS || []);
 
-    // Render work list (device-mockup style cards: image, title, category, arrow CTA)
+    function escapeHtml(str) {
+        if (str == null) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    // Render work list (same layout / classes as blog vertical list: text column + linked thumb)
     function renderWorkList() {
         if (!workList) return;
-        
+
         workList.innerHTML = '';
-        works.forEach(work => {
-            const item = document.createElement('a');
-            item.href = '#';
-            item.className = 'work-list-item';
-            item.dataset.workId = work.id;
-            
+        const ul = document.createElement('ul');
+        ul.className = 'blog-posts-list';
+
+        works.forEach((work) => {
+            const li = document.createElement('li');
+            li.className = 'blog-posts-item';
+
             const category = work.meta ? work.meta.split(' · ')[0] : work.category;
-            const thumb = work.images && work.images[0]
-                ? `<div class="work-list-item-thumb"><img src="${work.images[0]}" alt="${work.title}" loading="lazy"></div>`
-                : '<div class="work-list-item-thumb work-list-item-thumb--placeholder"></div>';
-            
-            item.innerHTML = `
-                ${thumb}
-                <div class="work-list-item-footer">
-                    <div class="work-list-item-info">
-                        <h3 class="work-list-item-title">${work.title}</h3>
-                        <p class="work-list-item-category">${category}</p>
-                    </div>
-                    <span class="work-list-item-cta" aria-hidden="true">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-                </div>
-            `;
-            
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                openWorkDetail(work.id);
-            });
-            
-            workList.appendChild(item);
+            const categoryHtml = category
+                ? '<span class="blog-posts-date">' + escapeHtml(category) + '</span>'
+                : '';
+            const desc = work.description
+                ? '<p class="blog-posts-desc">' + escapeHtml(work.description) + '</p>'
+                : '';
+
+            const imgSrc = work.images && work.images[0] ? work.images[0] : '';
+            const thumbInner = imgSrc
+                ? '<img class="blog-posts-thumb__img" src="' +
+                  escapeHtml(imgSrc) +
+                  '" alt="" loading="lazy" decoding="async" width="220" height="160">'
+                : '<div class="blog-posts-thumb__grad" aria-hidden="true"></div>';
+
+            const thumbLabel = 'Open ' + work.title;
+            const thumb =
+                '<a href="#" class="blog-posts-thumb" data-work-id="' +
+                escapeHtml(work.id) +
+                '" aria-label="' +
+                escapeHtml(thumbLabel) +
+                '">' +
+                thumbInner +
+                '</a>';
+
+            li.innerHTML =
+                '<div class="blog-posts-main">' +
+                categoryHtml +
+                '<a href="#" class="blog-posts-link" data-work-id="' +
+                escapeHtml(work.id) +
+                '">' +
+                escapeHtml(work.title) +
+                '</a>' +
+                desc +
+                '</div>' +
+                thumb;
+
+            ul.appendChild(li);
         });
+
+        workList.appendChild(ul);
     }
 
     // Open work detail
     function openWorkDetail(workId) {
+        if (!workDetail || !workDetailInner) return;
         const work = works.find(w => w.id === workId);
         if (!work) return;
 
@@ -111,10 +136,11 @@
         const nextWork = works[nextIndex];
 
         const sections = Array.isArray(work.sections) ? work.sections : [];
+        const headerDescription = (work.detailDescription || work.description || '');
         const toc = sections
             .map((section) => {
                 const id = `section-${slugify(section.title)}`;
-                return `<a href="#${id}" class="work-detail-toc__link" data-toc-target="${id}">${section.title}</a>`;
+                return `<a href="#${id}" class="work-detail-toc__link" data-toc-target="${id}">${escapeHtml(section.title)}</a>`;
             })
             .join('');
         
@@ -126,12 +152,12 @@
             ` : ''}
 
             <div class="work-detail-header">
-                <h1 class="work-detail-title">${work.title}</h1>
+                <h1 class="work-detail-title" id="work-detail-title">${escapeHtml(work.title)}</h1>
                 <div class="work-detail-meta">
-                    <span class="work-detail-tag">${work.year}</span>
-                    <span class="work-detail-tag">${work.category}</span>
+                    <span class="work-detail-tag">${escapeHtml(work.year)}</span>
+                    <span class="work-detail-tag">${escapeHtml(work.category)}</span>
                 </div>
-                <p class="work-detail-description">${work.description}</p>
+                <p class="work-detail-description">${escapeHtml(headerDescription)}</p>
             </div>
             
             ${sections.map((section, index) => {
@@ -140,14 +166,14 @@
 
                 return `
                     <div class="work-detail-section" id="${sectionId}">
-                        <h2 class="work-detail-section-title">${section.title}</h2>
+                        <h2 class="work-detail-section-title">${escapeHtml(section.title)}</h2>
                         <div class="work-detail-section-content">
                             ${bodyHtml}
                         </div>
                     </div>
                     ${work.images && work.images[index] ? `
                         <div class="work-detail-image-wrapper">
-                            <img src="${work.images[index]}" alt="${work.title}" class="work-detail-image" loading="lazy">
+                            <img src="${escapeHtml(work.images[index])}" alt="${escapeHtml(work.title)}" class="work-detail-image" loading="lazy">
                         </div>
                     ` : ''}
                 `;
@@ -155,12 +181,12 @@
             
             ${(Array.isArray(work.images) ? work.images : []).slice(sections.length).map(img => `
                 <div class="work-detail-image-wrapper">
-                    <img src="${img}" alt="${work.title}" class="work-detail-image" loading="lazy">
+                    <img src="${escapeHtml(img)}" alt="${escapeHtml(work.title)}" class="work-detail-image" loading="lazy">
                 </div>
             `).join('')}
             
             <div class="work-detail-navigation">
-                <button class="work-detail-next" data-next-id="${nextWork.id}">
+                <button class="work-detail-next" data-next-id="${escapeHtml(nextWork.id)}">
                     Next Project →
                 </button>
             </div>
@@ -251,6 +277,7 @@
 
     // Close work detail
     function closeWorkDetail() {
+        if (!workDetail) return;
         workDetail.setAttribute('aria-hidden', 'true');
         setTimeout(() => {
             document.body.style.overflow = '';
@@ -258,7 +285,7 @@
     }
 
     // Event listeners
-    if (workDetailClose) {
+    if (workDetailClose && workDetail) {
         workDetailClose.addEventListener('click', closeWorkDetail);
     }
 
@@ -275,8 +302,43 @@
         }
     });
 
+    function renderHomeProjectList() {
+        const el = document.getElementById('home-project-list');
+        if (!el || !works.length) return;
+        el.innerHTML = '';
+        el.className = 'home-projects-scroller';
+        works.forEach((work) => {
+            const category = work.meta ? work.meta.split(' · ')[0] : (work.category || '');
+            const imgSrc = work.images && work.images[0] ? work.images[0] : '';
+            const a = document.createElement('a');
+            a.href = '#';
+            a.className = 'home-project-card';
+            a.dataset.workId = work.id;
+            a.setAttribute('role', 'listitem');
+
+            const media = imgSrc
+                ? '<div class="home-project-card__media"><img src="' +
+                  escapeHtml(imgSrc) +
+                  '" alt="' +
+                  escapeHtml(work.title) +
+                  '" width="480" height="360" loading="lazy" decoding="async"></div>'
+                : '<div class="home-project-card__media home-project-card__media--placeholder" aria-hidden="true"></div>';
+
+            a.innerHTML =
+                media +
+                '<div class="home-project-card__body">' +
+                (category
+                    ? '<span class="home-project-card__meta">' + escapeHtml(category) + '</span>'
+                    : '') +
+                '<span class="home-project-card__title">' + escapeHtml(work.title) + '</span></div>';
+
+            el.appendChild(a);
+        });
+    }
+
     // Initialize
     renderWorkList();
+    renderHomeProjectList();
 
     // Bento / index: open work detail when clicking any [data-work-id]
     document.body.addEventListener('click', function(e) {

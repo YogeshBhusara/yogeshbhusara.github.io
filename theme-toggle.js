@@ -14,12 +14,14 @@
         return localStorage.getItem(THEME_KEY) || DEFAULT_THEME;
     }
 
-    // Set theme
+    // Light mode = html.light; default (no class) = dark tokens in :root — avoids flash before JS.
     function setTheme(theme) {
+        const isLight = theme === 'light';
+        document.documentElement.classList.toggle('light', isLight);
         document.documentElement.setAttribute('data-theme', theme);
         document.body.setAttribute('data-theme', theme);
         localStorage.setItem(THEME_KEY, theme);
-        // DarkVeil background reads data-theme in its loop for light/dark tint
+        document.dispatchEvent(new Event('themechange'));
     }
 
     // Toggle theme

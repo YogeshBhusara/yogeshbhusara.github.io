@@ -1,92 +1,113 @@
 /**
- * blog.js — Renders blog cards from static post list (Medium links) into #blog-posts.
+ * blog.js — Home: horizontal article cards. Blog page: vertical list.
  */
 (function () {
-    'use strict';
-    const posts = [
-        {
-            title: 'Develop First, Design Later',
-            // Keep the full subtitle text separate so the card title can omit it.
-            subtitle: 'I\'m Still Figuring This Out',
-            description: 'What Happens When a Designer Builds Before Designing?',
-            link: 'https://medium.com/@bhusara89.yogesh/develop-first-design-later-im-still-figuring-this-out-53e4885bcf00'
-        },
-        {
-            title: 'Learning SwiftUI by Building My Camera App (with Cursor)',
-            description: 'I learn best when I build things that I personally care about.',
-            link: 'https://medium.com/@bhusara89.yogesh/learning-swiftui-by-building-my-camera-app-with-cursor-1726c1ebc282'
-        },
-        {
-            title: 'Code Can Be Generic, But Design Can\'t',
-            description: 'There\'s a quiet truth most product teams learn over time: code scales, design differentiates.',
-            link: 'https://medium.com/@bhusara89.yogesh/code-can-be-generic-but-design-cant-b1ef5f0d8e59'
-        },
-        {
-            title: 'Built a Semantic Search for Our Figma Library — And Learned RAG Along the Way',
-            description: 'A side project to fix my own "where did we do this before?" problem, built with Cursor, and how it could scale for the full design team.',
-            link: 'https://medium.com/@bhusara89.yogesh/built-a-semantic-search-for-our-figma-library-and-learned-rag-along-the-way-1de2f43e3d44'
-        },
-        {
-            title: 'Vibe to Visual: Building SwiftUI Effects from Pure Ideas',
-            description: 'Complex visual effects aren’t blockers anymore—they’re starting points.',
-            link: 'https://medium.com/@bhusara89.yogesh/vibe-to-visual-building-swiftui-effects-from-pure-ideas-5214b32673fe',
-            image: null // no thumbnail image for this post
-        }
-    ];
+  'use strict';
 
-    const container = document.getElementById('blog-posts');
+  const posts = window.BLOG_POSTS || [];
 
-    function escapeHtml(str) {
-        if (!str) return '';
-        return String(str)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;');
-    }
+  const container = document.getElementById('blog-posts');
+  const homeArticles = document.getElementById('home-articles');
 
-    function renderCards() {
-        if (!container) return;
-        container.innerHTML = '';
+  function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 
-        const grid = document.createElement('div');
-        grid.className = 'blog-grid';
+  function renderBlogPageList() {
+    if (!container) return;
+    container.innerHTML = '';
+    const ul = document.createElement('ul');
+    ul.className = 'blog-posts-list';
 
-        posts.forEach(function (post, index) {
-            const card = document.createElement('a');
-            card.href = post.link;
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
-            // Only `image: null` means "no thumbnail".
-            // If `image` is undefined, we fall back to assets/{index+1}.webp.
-            const hasImage = post.image !== null;
-            card.className = hasImage ? 'blog-card' : 'blog-card blog-card--no-thumb';
+    posts.forEach(function (post) {
+      const li = document.createElement('li');
+      li.className = 'blog-posts-item';
+      const date = post.date
+        ? '<span class="blog-posts-date">' + escapeHtml(post.date) + '</span>'
+        : '';
+      const desc = post.description
+        ? '<p class="blog-posts-desc">' + escapeHtml(post.description) + '</p>'
+        : '';
+      const imgSrc =
+        typeof post.image === 'string' && post.image.length > 0 ? post.image : '';
+      const thumbInner = imgSrc
+        ? '<img class="blog-posts-thumb__img" src="' +
+          escapeHtml(imgSrc) +
+          '" alt="" loading="lazy" decoding="async" width="220" height="160">'
+        : '<div class="blog-posts-thumb__grad" aria-hidden="true"></div>';
 
-            const imageNum = index + 1;
-            let thumbHtml = '';
+      const thumbLabel = post.title + ' — open article';
+      const thumb =
+        '<a href="' +
+        escapeHtml(post.link) +
+        '" class="blog-posts-thumb" target="_blank" rel="noopener noreferrer" aria-label="' +
+        escapeHtml(thumbLabel) +
+        '">' +
+        thumbInner +
+        '</a>';
 
-            if (!hasImage) {
-                thumbHtml = '';
-            } else {
-                const imageSrc = post.image || ('assets/' + imageNum + '.webp');
-                thumbHtml =
-                    '<div class="blog-card__thumb">' +
-                    '<img src="' + imageSrc + '" alt="' + escapeHtml(post.title) + '" loading="eager" width="400" height="300">' +
-                    '</div>';
-            }
+      li.innerHTML =
+        '<div class="blog-posts-main">' +
+        date +
+        '<a href="' +
+        escapeHtml(post.link) +
+        '" class="blog-posts-link" target="_blank" rel="noopener noreferrer">' +
+        escapeHtml(post.title) +
+        '</a>' +
+        desc +
+        '</div>' +
+        thumb;
+      ul.appendChild(li);
+    });
 
-            card.innerHTML =
-                '<div class="blog-card__body">' +
-                '<h3 class="blog-card__title">' + escapeHtml(post.title) + '</h3>' +
-                (post.description ? '<p class="blog-card__desc">' + escapeHtml(post.description) + '</p>' : '') +
-                '</div>' +
-                thumbHtml;
+    container.appendChild(ul);
+  }
 
-            grid.appendChild(card);
-        });
+  function renderHomeArticles() {
+    if (!homeArticles || !posts.length) return;
+    homeArticles.innerHTML = '';
+    homeArticles.className = 'home-articles-scroller';
 
-        container.appendChild(grid);
-    }
+    posts.slice(0, 5).forEach(function (post) {
+      const imgSrc =
+        typeof post.image === 'string' && post.image.length > 0 ? post.image : '';
 
-    if (container) renderCards();
+      const a = document.createElement('a');
+      a.href = post.link;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'home-article-card';
+      a.setAttribute('role', 'listitem');
+
+      const media = imgSrc
+        ? '<div class="home-article-card__media"><img src="' +
+          escapeHtml(imgSrc) +
+          '" alt="' +
+          escapeHtml(post.title) +
+          '" width="480" height="360" loading="lazy" decoding="async"></div>'
+        : '<div class="home-article-card__media home-article-card__media--placeholder" aria-hidden="true"></div>';
+
+      const dateHtml = post.date
+        ? '<span class="home-article-card__meta">' + escapeHtml(post.date) + '</span>'
+        : '<span class="home-article-card__meta">Article</span>';
+
+      a.innerHTML =
+        media +
+        '<div class="home-article-card__body">' +
+        dateHtml +
+        '<span class="home-article-card__title">' +
+        escapeHtml(post.title) +
+        '</span></div>';
+
+      homeArticles.appendChild(a);
+    });
+  }
+
+  renderBlogPageList();
+  renderHomeArticles();
 })();

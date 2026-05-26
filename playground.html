@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="assets/y_logo.svg" type="image/svg+xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Playground — Honeycomb grid explorations and visual experiments by Yogesh Bhusara.">
+    <meta name="author" content="Yogesh Bhusara">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#07060a">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="canonical" href="https://yogeshbhusara.com/playground.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yogeshbhusara.com/playground.html">
+    <meta property="og:title" content="Playground — Yogesh Bhusara">
+    <meta property="og:description" content="Playground — Honeycomb grid explorations and visual experiments by Yogesh Bhusara.">
+    <meta property="og:site_name" content="Yogesh Bhusara">
+    <meta property="og:image" content="https://yogeshbhusara.com/assets/og-image.svg">
+    <meta property="og:image:alt" content="Playground — Yogesh Bhusara">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Playground — Yogesh Bhusara">
+    <meta name="twitter:description" content="Playground — Honeycomb grid explorations and visual experiments by Yogesh Bhusara.">
+    <meta name="twitter:image" content="https://yogeshbhusara.com/assets/og-image.svg">
+    <title>Playground — Yogesh Bhusara</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="playground-honeycomb.css">
+</head>
+<body>
+    <main class="editorial-shell">
+        <header class="bento-header" role="banner">
+            <div class="bento-header__pill">
+                <div class="bento-header__brand">
+                    <a href="index.html" class="bento-logo" aria-label="Home">
+                        <svg class="bento-logo__img" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path d="M7.38477 9.47656L-6.12934e-07 4.97754L-6.9946e-07 2.99805L9.1543 8.55762L9.15918 8.55762L3.94531 -1.72451e-07L6.08496 -2.65982e-07L10.5664 7.38574L15.0654 -6.58531e-07L17.0449 -7.45054e-07L11.8467 8.55957L11.875 8.55957L21 3L21 5.13965L13.6143 9.62207L21 14.1201L21 16.0996L12.0068 10.6396L17.1016 19L14.9619 19L10.4795 11.6152L5.98145 19L4.00195 19L9.14062 10.5381L9.12402 10.5381L-1.26858e-07 16.0977L-2.20392e-07 13.958L7.38477 9.47656Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="bento-header__end">
+                    <nav class="bento-nav" aria-label="Site navigation">
+                        <a href="index.html" class="bento-nav__link">Home</a>
+                        <a href="work.html" class="bento-nav__link">Work</a>
+                        <a href="blog.html" class="bento-nav__link">Blog</a>
+                        <a href="about.html" class="bento-nav__link">About Me</a>
+                        <a href="playground.html" class="bento-nav__link bento-nav__link--active">Playground</a>
+                    </nav>
+                    <div class="bento-header-right">
+                        <button type="button" class="theme-toggle" aria-label="Toggle dark and light theme">
+                            <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="editorial-page">
+            <section class="playground-page editorial-glow-block" id="playground">
+                <h1 class="work-page-headline">Playground</h1>
+                <p class="playground-lede">Just a space for visual exploration—blending interaction, motion, and experimental components into thoughtful experiences.</p>
+
+                <div class="editorial-separator editorial-separator--playground" aria-hidden="true"></div>
+
+                <div class="playground-honeycomb-track reveal">
+                    <div class="playground-honeycomb__stage">
+                        <div class="hc-canvas" id="hcCanvas" aria-label="Honeycomb canvas">
+                            <div class="hc-scrollport" id="hcScrollport" tabindex="0" aria-label="Pan and explore the honeycomb">
+                                <div class="hc-pan" id="hcPan">
+                                    <div class="hc-grid" id="hcGrid" role="list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="editorial-separator editorial-separator--playground" aria-hidden="true"></div>
+            </section>
+
+            <section class="editorial-section" aria-labelledby="contact-heading">
+                <h2 id="contact-heading" class="editorial-section-title">Contact</h2>
+                <div class="editorial-contact-split">
+                    <div class="editorial-contact-main">
+                        <p class="editorial-contact-lede">Interested in product design, systems, or tooling for design teams? I’m always happy to hear from people building thoughtful products.</p>
+                        <div class="editorial-social editorial-social--stacked">
+                            <a href="mailto:yogesh.bhusara@outlook.com" class="editorial-social-link editorial-social-link--stacked">
+                                <svg class="editorial-social-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                                    <path d="M6 8l6 5 6-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="editorial-social-label">Email</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/yogeshbhusara/" class="editorial-social-link editorial-social-link--stacked" target="_blank" rel="noopener noreferrer">
+                                <svg class="editorial-social-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path
+                                        d="M5.2 4.6h13.6A1.6 1.6 0 0 1 20.4 6.2v11.6a1.6 1.6 0 0 1-1.6 1.6H5.2a1.6 1.6 0 0 1-1.6-1.6V6.2a1.6 1.6 0 0 1 1.6-1.6Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path d="M8.2 10.2V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                    <path d="M8.2 8.1h.02" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                    <path
+                                        d="M11.4 17v-3.9c0-1.2 1-2.2 2.2-2.2 1.2 0 2.2 1 2.2 2.2V17"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <span class="editorial-social-label">LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/yogeshbhusara" class="editorial-social-link editorial-social-link--stacked" target="_blank" rel="noopener noreferrer">
+                                <svg class="editorial-social-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path
+                                        d="M12 3c-4.97 0-9 3.58-9 8 0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.77-.01-1.39-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.996 8.996 0 0 0 21 11c0-4.42-4.03-8-9-8Z"
+                                        fill="currentColor"
+                                    />
+                                </svg>
+                                <span class="editorial-social-label">GitHub</span>
+                            </a>
+                            <a href="https://medium.com/@bhusara89.yogesh" class="editorial-social-link editorial-social-link--stacked" target="_blank" rel="noopener noreferrer">
+                                <svg class="editorial-social-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                                    <path d="M9 9h6M9 12h6M9 15h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                                <span class="editorial-social-label">Medium</span>
+                            </a>
+                            <a href="https://dribbble.com/YBhusara" class="editorial-social-link editorial-social-link--stacked" target="_blank" rel="noopener noreferrer">
+                                <svg class="editorial-social-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+                                    <path
+                                        d="M6.8 16.6c1.9-3.6 5.6-6.2 9.8-6.6"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linecap="round"
+                                    />
+                                    <path
+                                        d="M8.6 8.8c1.4 2.2 2.2 4.8 2.4 7.6"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                                <span class="editorial-social-label">Dribbble</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <aside class="bento-card bento-card--logo" aria-label="Design Vibe Code Repeat">
+                        <div id="name-logo" class="name-logo name-logo--bento" data-text="DESIGN*VIBECODE*REPEAT*" aria-hidden="true"></div>
+                    </aside>
+                </div>
+            </section>
+
+            <div class="editorial-separator" aria-hidden="true"></div>
+
+            <footer class="editorial-footer" aria-label="Site footer">
+                <p class="editorial-footer-tagline">Built with vibe coding, curiosity and too many iterations.</p>
+                <p class="editorial-footer-copy">Yogesh Bhusara © 2026</p>
+            </footer>
+        </div>
+    </main>
+
+    <div
+        class="hc-modal"
+        id="hcModal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Image preview"
+        hidden
+    >
+        <div class="hc-modal__backdrop" id="hcModalBackdrop" tabindex="-1"></div>
+        <div class="hc-modal__panel">
+            <div class="hc-modal__media">
+                <img id="hcModalImage" class="hc-modal__image" alt="" />
+                <div class="hc-modal__chrome">
+                    <p class="hc-modal__hint" aria-hidden="true">
+                        <kbd class="hc-modal__kbd">Esc</kbd>
+                        <span class="hc-modal__hint-text">to close</span>
+                    </p>
+                    <button type="button" class="hc-modal__close" id="hcModalClose" aria-label="Close preview (Escape)">
+                        <svg class="hc-modal__close-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                fill="currentColor"
+                                d="M6.4 19L5 17.6l5.6-5.6L5 6.4 6.4 5l5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6-5.6 5.6Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="script.js"></script>
+    <script defer src="theme-toggle.js"></script>
+    <script defer src="playground-honeycomb.js"></script>
+</body>
+</html>
