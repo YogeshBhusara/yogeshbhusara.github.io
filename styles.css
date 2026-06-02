@@ -348,6 +348,7 @@ main.editorial-shell::after {
   box-shadow: var(--nav-pill-shadow);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   transition: box-shadow 0.35s var(--ease-out), border-color 0.25s var(--ease),
     transform 0.35s var(--ease-out);
 }
@@ -385,13 +386,206 @@ main.editorial-shell::after {
   box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--nav-pill-border) 60%, transparent);
 }
 
-.bento-header__pill:hover {
+/* ——— Nav liquid glass (jeantimex/glass-effect-webgpu-inspired layers) ——— */
+.bento-header__pill.nav-glass {
+  overflow: visible;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transform-origin: center center;
+  transition:
+    transform 0.55s cubic-bezier(0.34, 1.45, 0.64, 1),
+    filter 0.35s var(--ease-out);
+}
+
+.bento-header__pill.nav-glass::before,
+.bento-header__pill.nav-glass::after {
+  display: none;
+}
+
+.bento-header__pill.nav-glass.nav-glass--pressed {
+  transform: scale(0.988, 0.968);
+  filter: brightness(1.04);
+}
+
+.bento-header__pill.nav-glass:hover .nav-glass__stack {
+  border-color: color-mix(in oklab, var(--nav-pill-border) 80%, var(--color-brand));
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.32),
+    0 4px 14px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.24);
+}
+
+html.light .bento-header__pill.nav-glass:hover .nav-glass__stack {
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.12),
+    0 4px 14px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(20, 18, 27, 0.08);
+}
+
+.nav-glass__stack {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: var(--nav-pill-shadow);
+  border: 1px solid var(--nav-pill-border);
+  transition: box-shadow 0.35s var(--ease-out), border-color 0.25s var(--ease);
+}
+
+.nav-glass__blur,
+.nav-glass__tint,
+.nav-glass__bezel,
+.nav-glass__specular,
+.nav-glass__chromatic {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.nav-glass__blur--base {
+  -webkit-backdrop-filter: blur(24px) saturate(1.85) brightness(1.06);
+  backdrop-filter: blur(24px) saturate(1.85) brightness(1.06);
+  background: rgba(8, 6, 14, 0.06);
+}
+
+html.light .nav-glass__blur--base {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(24px) saturate(1.7) brightness(1.03);
+  backdrop-filter: blur(24px) saturate(1.7) brightness(1.03);
+}
+
+/* Progressive blur — stronger at edges (edge falloff) */
+.nav-glass__blur--edge {
+  -webkit-backdrop-filter: blur(44px) saturate(2);
+  backdrop-filter: blur(44px) saturate(2);
+  mask-image: radial-gradient(
+    ellipse 115% 140% at 50% 50%,
+    transparent 42%,
+    rgba(0, 0, 0, 0.55) 72%,
+    black 100%
+  );
+  opacity: 0.75;
+}
+
+.nav-glass__tint {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.02) 38%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+}
+
+html.light .nav-glass__tint {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.12) 40%,
+    rgba(20, 18, 27, 0.03) 100%
+  );
+}
+
+/* Bezel rim */
+.nav-glass__bezel {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    inset 1px 0 0 rgba(255, 255, 255, 0.08),
+    inset -1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+html.light .nav-glass__bezel {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(20, 18, 27, 0.06);
+}
+
+/* Layered specular — rim + cursor-following highlight */
+.nav-glass__specular--rim {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    transparent 42%
+  );
+  mix-blend-mode: soft-light;
+}
+
+.nav-glass__specular--layer {
+  background: radial-gradient(
+    circle at var(--glass-light-x, 28%) var(--glass-light-y, 18%),
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.14) 18%,
+    transparent 48%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 0.85;
+  transition: opacity 0.25s var(--ease);
+}
+
+.bento-header__pill.nav-glass:hover .nav-glass__specular--layer {
+  opacity: 1;
+}
+
+/* Subtle chromatic fringe at highlight edge */
+.nav-glass__chromatic {
+  background:
+    radial-gradient(
+      circle at var(--glass-light-x, 28%) var(--glass-light-y, 18%),
+      rgba(255, 80, 120, 0.07) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at calc(var(--glass-light-x, 28%) + 4%) calc(var(--glass-light-y, 18%) + 2%),
+      rgba(80, 180, 255, 0.06) 0%,
+      transparent 36%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+.nav-glass__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(0.75rem, 3vw, 1.75rem);
+  width: 100%;
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-header__pill.nav-glass {
+    transition: none;
+  }
+
+  .bento-header__pill.nav-glass.nav-glass--pressed {
+    transform: none;
+    filter: none;
+  }
+
+  .nav-glass__specular--layer {
+    transition: none;
+  }
+}
+
+.bento-header__pill:not(.nav-glass):hover {
   box-shadow: 0 14px 48px rgba(0, 0, 0, 0.38), 0 4px 16px rgba(0, 0, 0, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
   border-color: color-mix(in oklab, var(--nav-pill-border) 80%, var(--color-brand));
 }
 
-html.light .bento-header__pill:hover {
+html.light .bento-header__pill:not(.nav-glass):hover {
   box-shadow: 0 14px 48px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
   border-color: color-mix(in oklab, var(--nav-pill-border) 75%, var(--color-brand));
