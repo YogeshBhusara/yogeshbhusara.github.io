@@ -76,11 +76,12 @@
   --glass-bg: color-mix(in oklab, var(--smooth-100) 50%, transparent);
 
   /* Floating glass nav (pill) */
-  --nav-pill-bg: rgba(0, 0, 0, 0.38);
-  --nav-pill-border: rgba(255, 255, 255, 0.14);
-  --nav-pill-highlight: rgba(255, 255, 255, 0.08);
-  --nav-pill-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), 0 2px 12px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --nav-pill-bg: rgba(10, 8, 16, 0.14);
+  --nav-pill-border: rgba(255, 255, 255, 0.18);
+  --nav-pill-highlight: rgba(255, 255, 255, 0.12);
+  --nav-pill-specular: rgba(255, 255, 255, 0.5);
+  --nav-pill-shadow: 0 12px 40px rgba(0, 0, 0, 0.28), 0 2px 10px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px rgba(0, 0, 0, 0.22);
   --nav-pill-link: rgba(255, 255, 255, 0.78);
   --nav-pill-link-active: #ffffff;
   --nav-pill-title: rgba(255, 255, 255, 0.95);
@@ -110,12 +111,12 @@ html.light {
   --accent-soft: color-mix(in oklab, var(--fg-base) 6%, transparent);
   --glass-bg: color-mix(in oklab, var(--smooth-100) 50%, transparent);
 
-  --nav-pill-bg: rgba(255, 255, 255, 0.58);
-  --nav-pill-border: rgba(20, 18, 27, 0.12);
-  --nav-pill-highlight: rgba(255, 255, 255, 0.7);
-  --nav-pill-specular: rgba(255, 255, 255, 0.75);
-  --nav-pill-shadow: 0 14px 44px rgba(0, 0, 0, 0.12), 0 2px 12px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  --nav-pill-bg: rgba(255, 255, 255, 0.22);
+  --nav-pill-border: rgba(20, 18, 27, 0.1);
+  --nav-pill-highlight: rgba(255, 255, 255, 0.6);
+  --nav-pill-specular: rgba(255, 255, 255, 0.85);
+  --nav-pill-shadow: 0 14px 44px rgba(0, 0, 0, 0.1), 0 2px 12px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 1px rgba(20, 18, 27, 0.06);
   --nav-pill-link: color-mix(in oklab, var(--fg-base) 68%, transparent);
   --nav-pill-link-active: var(--fg-base);
   --nav-pill-title: var(--fg-base);
@@ -353,9 +354,9 @@ main.editorial-shell::after {
 
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .bento-header__pill {
-    background: color-mix(in oklab, var(--nav-pill-bg) 92%, transparent);
-    -webkit-backdrop-filter: blur(22px) saturate(1.6) contrast(1.05);
-    backdrop-filter: blur(22px) saturate(1.6) contrast(1.05);
+    background: var(--nav-pill-bg);
+    -webkit-backdrop-filter: blur(28px) saturate(1.8) brightness(1.08);
+    backdrop-filter: blur(28px) saturate(1.8) brightness(1.08);
   }
 }
 
