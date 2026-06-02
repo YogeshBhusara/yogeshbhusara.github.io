@@ -27,6 +27,7 @@
     stack.innerHTML =
       '<div class="nav-glass__blur nav-glass__blur--base"></div>' +
       '<div class="nav-glass__blur nav-glass__blur--edge"></div>' +
+      '<div class="nav-glass__surface nav-glass__surface--dome"></div>' +
       '<div class="nav-glass__tint"></div>' +
       '<div class="nav-glass__bezel"></div>' +
       '<div class="nav-glass__specular nav-glass__specular--rim"></div>' +
@@ -44,8 +45,13 @@
 
     pill.style.setProperty('--glass-light-x', '28%');
     pill.style.setProperty('--glass-light-y', '18%');
+    pill.style.setProperty('--glass-squash-x', '0');
+    pill.style.setProperty('--glass-squash-y', '0');
 
     if (reduced) return;
+
+    let pressOriginX = 0;
+    let pressOriginY = 0;
 
     function setLight(clientX, clientY) {
       const rect = pill.getBoundingClientRect();
@@ -56,11 +62,29 @@
       pill.style.setProperty('--glass-light-y', y.toFixed(1) + '%');
     }
 
+    function setDragSquash(clientX, clientY) {
+      const rect = pill.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const dx = (clientX - pressOriginX) / rect.width;
+      const dy = (clientY - pressOriginY) / rect.height;
+      const dragSquash = parseFloat(getComputedStyle(pill).getPropertyValue('--glass-drag-squash')) || 1;
+      pill.style.setProperty('--glass-squash-x', (dx * 0.045 * dragSquash).toFixed(4));
+      pill.style.setProperty('--glass-squash-y', (Math.abs(dy) * 0.06 * dragSquash).toFixed(4));
+    }
+
+    function resetSquash() {
+      pill.style.setProperty('--glass-squash-x', '0');
+      pill.style.setProperty('--glass-squash-y', '0');
+    }
+
     pill.addEventListener(
       'pointermove',
       (e) => {
         if (e.pointerType === 'touch') return;
         setLight(e.clientX, e.clientY);
+        if (pill.classList.contains('nav-glass--pressed')) {
+          setDragSquash(e.clientX, e.clientY);
+        }
       },
       { passive: true }
     );
@@ -74,12 +98,22 @@
       'pointerdown',
       (e) => {
         if (e.button !== 0) return;
+        pressOriginX = e.clientX;
+        pressOriginY = e.clientY;
+        resetSquash();
         pill.classList.add('nav-glass--pressed');
       },
       { passive: true }
     );
 
     function releasePress() {
+      const releaseSquash = parseFloat(getComputedStyle(pill).getPropertyValue('--glass-release-squash')) || 1;
+      if (releaseSquash > 0) {
+        pill.style.setProperty('--glass-squash-y', (0.018 * releaseSquash).toFixed(4));
+        window.setTimeout(resetSquash, 180 / (parseFloat(getComputedStyle(pill).getPropertyValue('--glass-speed')) || 1));
+      } else {
+        resetSquash();
+      }
       pill.classList.remove('nav-glass--pressed');
     }
 

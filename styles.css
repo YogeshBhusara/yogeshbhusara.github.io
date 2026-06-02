@@ -386,8 +386,38 @@ main.editorial-shell::after {
   box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--nav-pill-border) 60%, transparent);
 }
 
-/* ——— Nav liquid glass (jeantimex/glass-effect-webgpu-inspired layers) ——— */
+/* ——— Nav liquid glass (tuned to jeantimex/glass-effect-webgpu demo values) ——— */
 .bento-header__pill.nav-glass {
+  /* Geometry */
+  --glass-bezel-width: 45;
+  --glass-thickness: 1;
+  --glass-refractive-index: 1.5;
+  --glass-refraction-level: 1;
+  --glass-magnify: 0;
+  /* Background */
+  --glass-bg-brightness: 1;
+  /* Optics */
+  --glass-blur: 30px;
+  --glass-blur-opacity: 1;
+  --glass-progressive-blur: 0.2;
+  --glass-chromatic-strength: 0.5;
+  --glass-chromatic-base: 1;
+  /* Glass theme · color white · bg opacity 0 */
+  --glass-color: 255, 255, 255;
+  --glass-bg-opacity: 0;
+  --glass-pressed-bg-opacity: 0;
+  /* Liquid interaction */
+  --glass-press-scale: 1.16;
+  --glass-press-refraction: 1.28;
+  --glass-speed: 1;
+  --glass-click-squash: 1;
+  --glass-drag-squash: 1;
+  --glass-release-squash: 1;
+  --glass-squash-x: 0;
+  --glass-squash-y: 0;
+  --glass-bezel-inset: calc(var(--glass-bezel-width) * 0.05px);
+  --glass-motion: calc(0.45s / var(--glass-speed));
+
   overflow: visible;
   background: transparent;
   border-color: transparent;
@@ -396,8 +426,8 @@ main.editorial-shell::after {
   backdrop-filter: none;
   transform-origin: center center;
   transition:
-    transform 0.55s cubic-bezier(0.34, 1.45, 0.64, 1),
-    filter 0.35s var(--ease-out);
+    transform var(--glass-motion) cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter calc(0.35s / var(--glass-speed)) var(--ease-out);
 }
 
 .bento-header__pill.nav-glass::before,
@@ -406,8 +436,24 @@ main.editorial-shell::after {
 }
 
 .bento-header__pill.nav-glass.nav-glass--pressed {
-  transform: scale(0.988, 0.968);
-  filter: brightness(1.04);
+  transform: scale(
+      calc(1 + (var(--glass-press-scale) - 1) * 0.08 * var(--glass-click-squash) + var(--glass-squash-x)),
+      calc(1 + (var(--glass-press-scale) - 1) * 0.12 - var(--glass-squash-y))
+    );
+  filter: brightness(calc(1 + (var(--glass-press-scale) - 1) * 0.04));
+}
+
+.bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__surface--dome {
+  opacity: calc(var(--glass-refraction-level) * 0.14 * var(--glass-press-refraction));
+}
+
+.bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__blur--base,
+.bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__tint {
+  background: rgba(var(--glass-color), var(--glass-pressed-bg-opacity));
+}
+
+html.light .bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__surface--dome {
+  opacity: calc(var(--glass-refraction-level) * 0.1 * var(--glass-press-refraction));
 }
 
 .bento-header__pill.nav-glass:hover .nav-glass__stack {
@@ -436,10 +482,14 @@ html.light .bento-header__pill.nav-glass:hover .nav-glass__stack {
   z-index: 0;
   box-shadow: var(--nav-pill-shadow);
   border: 1px solid var(--nav-pill-border);
-  transition: box-shadow 0.35s var(--ease-out), border-color 0.25s var(--ease);
+  transition:
+    box-shadow calc(0.35s / var(--glass-speed, 1)) var(--ease-out),
+    border-color calc(0.25s / var(--glass-speed, 1)) var(--ease),
+    opacity var(--glass-motion, 0.45s) var(--ease-out);
 }
 
 .nav-glass__blur,
+.nav-glass__surface,
 .nav-glass__tint,
 .nav-glass__bezel,
 .nav-glass__specular,
@@ -450,64 +500,105 @@ html.light .bento-header__pill.nav-glass:hover .nav-glass__stack {
   pointer-events: none;
 }
 
+/* Blur 30 · opacity 1.0 · glass background opacity 0 */
 .nav-glass__blur--base {
-  -webkit-backdrop-filter: blur(24px) saturate(1.85) brightness(1.06);
-  backdrop-filter: blur(24px) saturate(1.85) brightness(1.06);
-  background: rgba(8, 6, 14, 0.06);
+  opacity: var(--glass-blur-opacity);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(calc(var(--glass-refractive-index) * 1.1))
+    brightness(var(--glass-bg-brightness));
+  backdrop-filter: blur(var(--glass-blur)) saturate(calc(var(--glass-refractive-index) * 1.1))
+    brightness(var(--glass-bg-brightness));
+  background: rgba(var(--glass-color), var(--glass-bg-opacity));
 }
 
 html.light .nav-glass__blur--base {
-  background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(24px) saturate(1.7) brightness(1.03);
-  backdrop-filter: blur(24px) saturate(1.7) brightness(1.03);
+  background: rgba(var(--glass-color), var(--glass-bg-opacity));
 }
 
-/* Progressive blur — stronger at edges (edge falloff) */
+/* Progressive blur 0.20 · mode: edge falloff */
 .nav-glass__blur--edge {
-  -webkit-backdrop-filter: blur(44px) saturate(2);
-  backdrop-filter: blur(44px) saturate(2);
+  opacity: calc(var(--glass-blur-opacity) * var(--glass-progressive-blur));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 2)) saturate(calc(var(--glass-refractive-index) * 1.2))
+    brightness(var(--glass-bg-brightness));
+  backdrop-filter: blur(calc(var(--glass-blur) * 2)) saturate(calc(var(--glass-refractive-index) * 1.2))
+    brightness(var(--glass-bg-brightness));
   mask-image: radial-gradient(
-    ellipse 115% 140% at 50% 50%,
-    transparent 42%,
-    rgba(0, 0, 0, 0.55) 72%,
+    ellipse 118% 155% at 50% 50%,
+    transparent calc(50% - var(--glass-progressive-blur) * 18%),
+    rgba(0, 0, 0, 0.45) calc(72% - var(--glass-progressive-blur) * 8%),
     black 100%
   );
-  opacity: 0.75;
+}
+
+/* Surface profile 4 — convex dome displacement (refraction level 1.0) */
+.nav-glass__surface--dome {
+  opacity: calc(var(--glass-refraction-level) * 0.14);
+  transition: opacity var(--glass-motion, 0.45s) cubic-bezier(0.34, 1.56, 0.64, 1);
+  background:
+    radial-gradient(
+      ellipse 88% 160% at 50% 28%,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.04) 38%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 105% 130% at 50% 100%,
+      rgba(0, 0, 0, 0.06) 0%,
+      transparent 52%
+    );
+  mix-blend-mode: soft-light;
+}
+
+html.light .nav-glass__surface--dome {
+  opacity: calc(var(--glass-refraction-level) * 0.1);
+  background:
+    radial-gradient(
+      ellipse 88% 160% at 50% 28%,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.08) 38%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 105% 130% at 50% 100%,
+      rgba(20, 18, 27, 0.04) 0%,
+      transparent 52%
+    );
 }
 
 .nav-glass__tint {
+  opacity: var(--glass-bg-opacity);
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.02) 38%,
-    rgba(0, 0, 0, 0.04) 100%
+    rgba(var(--glass-color), 0.12) 0%,
+    rgba(var(--glass-color), 0.02) 40%,
+    rgba(var(--glass-color), 0) 100%
   );
 }
 
 html.light .nav-glass__tint {
+  opacity: var(--glass-bg-opacity);
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.12) 40%,
-    rgba(20, 18, 27, 0.03) 100%
+    rgba(var(--glass-color), 0.45) 0%,
+    rgba(var(--glass-color), 0.1) 42%,
+    rgba(var(--glass-color), 0) 100%
   );
 }
 
-/* Bezel rim */
+/* Bezel width 45 */
 .nav-glass__bezel {
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.32),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
-    inset 1px 0 0 rgba(255, 255, 255, 0.08),
-    inset -1px 0 0 rgba(255, 255, 255, 0.08);
+    inset 0 0 0 var(--glass-bezel-inset) rgba(255, 255, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, calc(0.28 + var(--glass-bezel-width) * 0.002)),
+    inset 0 -1px 0 rgba(0, 0, 0, calc(0.12 + var(--glass-bezel-width) * 0.0015)),
+    inset 1px 0 0 rgba(255, 255, 255, calc(0.06 + var(--glass-bezel-width) * 0.0008)),
+    inset -1px 0 0 rgba(255, 255, 255, calc(0.06 + var(--glass-bezel-width) * 0.0008));
 }
 
 html.light .nav-glass__bezel {
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 0 rgba(20, 18, 27, 0.06);
+    inset 0 0 0 var(--glass-bezel-inset) rgba(255, 255, 255, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(20, 18, 27, calc(0.04 + var(--glass-bezel-width) * 0.0004));
 }
 
 /* Layered specular — rim + cursor-following highlight */
@@ -529,28 +620,33 @@ html.light .nav-glass__bezel {
   );
   mix-blend-mode: soft-light;
   opacity: 0.85;
-  transition: opacity 0.25s var(--ease);
+  transition: opacity calc(0.25s / var(--glass-speed, 1)) var(--ease);
 }
 
 .bento-header__pill.nav-glass:hover .nav-glass__specular--layer {
   opacity: 1;
 }
 
-/* Subtle chromatic fringe at highlight edge */
+/* Chromatic aberration · strength 0.5 · base 1.0 */
 .nav-glass__chromatic {
+  opacity: calc(var(--glass-chromatic-strength) * var(--glass-chromatic-base));
   background:
     radial-gradient(
       circle at var(--glass-light-x, 28%) var(--glass-light-y, 18%),
-      rgba(255, 80, 120, 0.07) 0%,
-      transparent 38%
+      rgba(255, 72, 98, calc(0.35 * var(--glass-chromatic-strength))) 0%,
+      transparent 34%
     ),
     radial-gradient(
-      circle at calc(var(--glass-light-x, 28%) + 4%) calc(var(--glass-light-y, 18%) + 2%),
-      rgba(80, 180, 255, 0.06) 0%,
-      transparent 36%
+      circle at calc(var(--glass-light-x, 28%) + 3%) calc(var(--glass-light-y, 18%) + 1.5%),
+      rgba(72, 168, 255, calc(0.3 * var(--glass-chromatic-strength))) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at calc(var(--glass-light-x, 28%) - 2%) var(--glass-light-y, 18%),
+      rgba(120, 255, 160, calc(0.12 * var(--glass-chromatic-strength))) 0%,
+      transparent 28%
     );
   mix-blend-mode: screen;
-  opacity: 0.55;
 }
 
 .nav-glass__content {
