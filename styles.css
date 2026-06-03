@@ -397,15 +397,15 @@ main.editorial-shell::after {
   /* Background */
   --glass-bg-brightness: 1;
   /* Optics */
-  --glass-blur: 30px;
+  --glass-blur: 36px;
   --glass-blur-opacity: 1;
-  --glass-progressive-blur: 0.2;
-  --glass-chromatic-strength: 0.5;
+  --glass-progressive-blur: 0.45;
+  --glass-chromatic-strength: 0.55;
   --glass-chromatic-base: 1;
-  /* Glass theme · color white · bg opacity 0 */
+  /* Frosted tint — visible blur (was 0 = fully transparent) */
   --glass-color: 255, 255, 255;
-  --glass-bg-opacity: 0;
-  --glass-pressed-bg-opacity: 0;
+  --glass-bg-opacity: 0.14;
+  --glass-pressed-bg-opacity: 0.22;
   /* Liquid interaction */
   --glass-press-scale: 1.16;
   --glass-press-refraction: 1.28;
@@ -418,7 +418,7 @@ main.editorial-shell::after {
   --glass-bezel-inset: calc(var(--glass-bezel-width) * 0.05px);
   --glass-motion: calc(0.45s / var(--glass-speed));
 
-  overflow: visible;
+  overflow: hidden;
   background: transparent;
   border-color: transparent;
   box-shadow: none;
@@ -444,7 +444,7 @@ main.editorial-shell::after {
 }
 
 .bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__surface--dome {
-  opacity: calc(var(--glass-refraction-level) * 0.14 * var(--glass-press-refraction));
+  opacity: calc(var(--glass-refraction-level) * 0.28 * var(--glass-press-refraction));
 }
 
 .bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__blur--base,
@@ -473,6 +473,13 @@ html.light .bento-header__pill.nav-glass:hover .nav-glass__stack {
     inset 0 -1px 1px rgba(20, 18, 27, 0.08);
 }
 
+html.light .bento-header__pill.nav-glass {
+  --glass-bg-opacity: 0.38;
+  --glass-pressed-bg-opacity: 0.48;
+  --glass-chromatic-strength: 0.4;
+  --glass-blur: 32px;
+}
+
 .nav-glass__stack {
   position: absolute;
   inset: 0;
@@ -480,6 +487,9 @@ html.light .bento-header__pill.nav-glass:hover .nav-glass__stack {
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  background: var(--nav-pill-bg);
+  -webkit-backdrop-filter: blur(28px) saturate(1.75) brightness(1.06);
+  backdrop-filter: blur(28px) saturate(1.75) brightness(1.06);
   box-shadow: var(--nav-pill-shadow);
   border: 1px solid var(--nav-pill-border);
   transition:
@@ -500,14 +510,26 @@ html.light .bento-header__pill.nav-glass:hover .nav-glass__stack {
   pointer-events: none;
 }
 
-/* Blur 30 · opacity 1.0 · glass background opacity 0 */
+/* Layered blur + frosted tint */
 .nav-glass__blur--base {
   opacity: var(--glass-blur-opacity);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(calc(var(--glass-refractive-index) * 1.1))
-    brightness(var(--glass-bg-brightness));
-  backdrop-filter: blur(var(--glass-blur)) saturate(calc(var(--glass-refractive-index) * 1.1))
-    brightness(var(--glass-bg-brightness));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(calc(var(--glass-refractive-index) * 1.15))
+    contrast(1.04) brightness(var(--glass-bg-brightness));
+  backdrop-filter: blur(var(--glass-blur)) saturate(calc(var(--glass-refractive-index) * 1.15))
+    contrast(1.04) brightness(var(--glass-bg-brightness));
   background: rgba(var(--glass-color), var(--glass-bg-opacity));
+}
+
+.nav-glass__blur--base::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  pointer-events: none;
 }
 
 html.light .nav-glass__blur--base {
@@ -531,7 +553,7 @@ html.light .nav-glass__blur--base {
 
 /* Surface profile 4 — convex dome displacement (refraction level 1.0) */
 .nav-glass__surface--dome {
-  opacity: calc(var(--glass-refraction-level) * 0.14);
+  opacity: calc(var(--glass-refraction-level) * 0.22);
   transition: opacity var(--glass-motion, 0.45s) cubic-bezier(0.34, 1.56, 0.64, 1);
   background:
     radial-gradient(
@@ -565,22 +587,21 @@ html.light .nav-glass__surface--dome {
 }
 
 .nav-glass__tint {
-  opacity: var(--glass-bg-opacity);
+  opacity: 1;
   background: linear-gradient(
     180deg,
-    rgba(var(--glass-color), 0.12) 0%,
-    rgba(var(--glass-color), 0.02) 40%,
-    rgba(var(--glass-color), 0) 100%
+    rgba(var(--glass-color), 0.18) 0%,
+    rgba(var(--glass-color), 0.06) 42%,
+    rgba(var(--glass-color), 0.02) 100%
   );
 }
 
 html.light .nav-glass__tint {
-  opacity: var(--glass-bg-opacity);
   background: linear-gradient(
     180deg,
-    rgba(var(--glass-color), 0.45) 0%,
-    rgba(var(--glass-color), 0.1) 42%,
-    rgba(var(--glass-color), 0) 100%
+    rgba(var(--glass-color), 0.55) 0%,
+    rgba(var(--glass-color), 0.2) 42%,
+    rgba(var(--glass-color), 0.06) 100%
   );
 }
 
@@ -614,12 +635,12 @@ html.light .nav-glass__bezel {
 .nav-glass__specular--layer {
   background: radial-gradient(
     circle at var(--glass-light-x, 28%) var(--glass-light-y, 18%),
-    rgba(255, 255, 255, 0.42) 0%,
-    rgba(255, 255, 255, 0.14) 18%,
-    transparent 48%
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.18) 20%,
+    transparent 52%
   );
   mix-blend-mode: soft-light;
-  opacity: 0.85;
+  opacity: 0.92;
   transition: opacity calc(0.25s / var(--glass-speed, 1)) var(--ease);
 }
 
@@ -932,12 +953,55 @@ html.light .theme-icon--moon {
 }
 
 .editorial-hero {
-  --hero-overlap: 4%;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  gap: 20px;
   padding-top: 50px;
   padding-bottom: 50px;
   margin-bottom: 1.75rem;
+}
+
+.editorial-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.editorial-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-nav);
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
+.editorial-hero-meta-dot {
+  margin: 0 0.35em;
+  opacity: 0.65;
+}
+
+.editorial-hero-designation {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.editorial-hero-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.editorial-hero-location-icon {
+  flex-shrink: 0;
+  opacity: 0.9;
 }
 
 .editorial-hero::before,
@@ -982,8 +1046,7 @@ html.light .theme-icon--moon {
 
 .editorial-hero .editorial-name {
   margin: 0;
-  margin-left: calc(-1 * var(--hero-overlap));
-  padding-left: 0.25rem;
+  margin-bottom: 0;
 }
 
 .editorial-name {
@@ -1079,10 +1142,6 @@ html.light .theme-icon--moon {
   color: var(--color-brand-secondary);
   text-decoration: none !important;
   text-decoration-color: transparent !important;
-}
-
-.editorial-cta-line {
-  margin-top: 0.5rem !important;
 }
 
 .editorial-separator {
