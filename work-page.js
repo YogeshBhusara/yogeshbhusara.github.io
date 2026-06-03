@@ -123,6 +123,44 @@
             .replace(/^-+|-+$/g, '');
     }
 
+    /** Normalize sections for rendering; each case study supplies its own section list. */
+    function normalizeWorkSections(work) {
+        const raw = Array.isArray(work.sections) ? work.sections : [];
+        const usedIds = new Set();
+
+        return raw.map((section, index) => {
+            const title = section && section.title != null ? String(section.title) : '';
+            let id = section && section.id != null ? String(section.id).trim() : '';
+            if (id) {
+                id = slugify(id);
+            } else {
+                id = slugify(title) || `part-${index}`;
+            }
+            id = id.startsWith('section-') ? id : `section-${id}`;
+
+            let uniqueId = id;
+            let suffix = 2;
+            while (usedIds.has(uniqueId)) {
+                uniqueId = `${id}-${suffix++}`;
+            }
+            usedIds.add(uniqueId);
+
+            const inToc = section && section.inToc !== false;
+            const tocLabel =
+                section && section.tocLabel != null && String(section.tocLabel).trim()
+                    ? String(section.tocLabel).trim()
+                    : title;
+
+            return {
+                title,
+                content: section && section.content != null ? section.content : '',
+                id: uniqueId,
+                inToc,
+                tocLabel
+            };
+        });
+    }
+
     function renderRichText(content) {
         const raw = (content == null ? '' : String(content)).trim();
         if (!raw) return '';
@@ -145,15 +183,23 @@
         const nextIndex = (currentIndex + 1) % works.length;
         const nextWork = works[nextIndex];
 
-        const sections = Array.isArray(work.sections) ? work.sections : [];
+        const sections = normalizeWorkSections(work);
+        const tocSections = sections.filter((section) => section.inToc);
         const headerDescription = (work.detailDescription || work.description || '');
-        const toc = sections
+        const toc = tocSections
             .map((section) => {
-                const id = `section-${slugify(section.title)}`;
-                return `<a href="#${id}" class="work-detail-toc__link" data-toc-target="${id}">${escapeHtml(section.title)}</a>`;
+                return (
+                    '<a href="#' +
+                    escapeHtml(section.id) +
+                    '" class="work-detail-toc__link" data-toc-target="' +
+                    escapeHtml(section.id) +
+                    '">' +
+                    escapeHtml(section.tocLabel) +
+                    '</a>'
+                );
             })
             .join('');
-        
+
         workDetailInner.innerHTML = `
             ${toc ? `
                 <nav class="work-detail-toc" aria-label="Case study sections">
@@ -171,11 +217,10 @@
             </div>
             
             ${sections.map((section, index) => {
-                const sectionId = `section-${slugify(section.title)}`;
                 const bodyHtml = renderRichText(section.content);
 
                 return `
-                    <div class="work-detail-section" id="${sectionId}">
+                    <div class="work-detail-section" id="${escapeHtml(section.id)}">
                         <h2 class="work-detail-section-title">${escapeHtml(section.title)}</h2>
                         <div class="work-detail-section-content">
                             ${bodyHtml}
