@@ -10,6 +10,15 @@
     // Work data (shared via work-data.js)
     const works = (window.PORTFOLIO_WORKS || []);
 
+    function getWorkDetailScrollRoot() {
+        return workDetail ? workDetail.querySelector('.work-detail-content') : null;
+    }
+
+    function resetWorkDetailScroll() {
+        const scrollRoot = getWorkDetailScrollRoot();
+        if (scrollRoot) scrollRoot.scrollTop = 0;
+    }
+
     function escapeHtml(str) {
         if (str == null) return '';
         return String(str)
@@ -81,12 +90,13 @@
         if (!work) return;
 
         renderWorkDetail(work);
-        
+        resetWorkDetailScroll();
+
         requestAnimationFrame(() => {
             workDetail.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
-            workDetailInner.scrollTop = 0;
-            
+            resetWorkDetailScroll();
+
             if (typeof gsap !== 'undefined') {
                 const elements = document.querySelectorAll('.work-detail-header, .work-detail-section, .work-detail-image-wrapper, .work-detail-navigation');
                 gsap.fromTo(elements,
@@ -196,10 +206,7 @@
         if (nextButton) {
             nextButton.addEventListener('click', () => {
                 const nextId = nextButton.dataset.nextId;
-                closeWorkDetail();
-                setTimeout(() => {
-                    openWorkDetail(nextId);
-                }, 400);
+                if (nextId) openWorkDetail(nextId);
             });
         }
 
@@ -210,7 +217,7 @@
         const toc = workDetailInner.querySelector('.work-detail-toc');
         if (!toc) return;
 
-        const scrollRoot = workDetail ? workDetail.querySelector('.work-detail-content') : null;
+        const scrollRoot = getWorkDetailScrollRoot();
         const links = Array.from(toc.querySelectorAll('.work-detail-toc__link'));
         const targets = links
             .map((link) => {
@@ -279,6 +286,7 @@
     function closeWorkDetail() {
         if (!workDetail) return;
         workDetail.setAttribute('aria-hidden', 'true');
+        resetWorkDetailScroll();
         setTimeout(() => {
             document.body.style.overflow = '';
         }, 400);

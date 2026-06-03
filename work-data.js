@@ -94,6 +94,111 @@
       ]
     },
     {
+      id: 'user-segment-based-dashboards',
+      title: 'User Segment Based Dashboards',
+      meta: 'SAAS · FEATURE CASE STUDY',
+      size: 'wide',
+      description:
+        'Delivering personalized dashboard experiences for different employee groups within an enterprise intranet platform.',
+      detailDescription:
+        'A scalable dashboard management system — audience-targeted dashboards, delegated ownership, preview and publishing workflows, web and mobile experiences, and assignment hierarchy for users in multiple segments.',
+      year: '2024',
+      category: 'Product Design',
+      sections: [
+        {
+          title: 'Context',
+          content:
+            'Enterprise organizations often have a diverse workforce made up of executives, leadership teams, office employees, and frontline workers. While all employees use the same platform, the information they need on a daily basis varies significantly based on their role and responsibilities.\n\n' +
+            'MangoApps is an enterprise intranet platform where this challenge is especially acute: one homepage experience cannot serve every employee group equally well.\n\n' +
+            'The organization needed the ability to deliver different dashboard experiences to different groups of users. Leadership teams required access to strategic metrics and organizational insights, while frontline employees needed operational content, tasks, announcements, and resources relevant to their day-to-day work.\n\n' +
+            'The goal was to create a scalable dashboard management system that allows administrators to create multiple dashboards, assign them to specific user segments, and ensure each employee receives the most relevant dashboard experience.'
+        },
+        {
+          title: 'Problem',
+          content:
+            '<p>A single dashboard experience could not effectively serve the needs of every employee group across the organization. As organizations grow, different departments and user groups require different content, priorities, and layouts.</p>' +
+            '<p>Specific problems:</p>' +
+            '<ul>' +
+            '<li>Executives, office employees, and frontline workers all received the same dashboard experience</li>' +
+            '<li>Administrators had no way to create role-specific dashboard layouts</li>' +
+            '<li>Dashboard ownership and management could not be delegated to specific administrators</li>' +
+            '<li>Users belonging to multiple user segments required a clear dashboard assignment hierarchy</li>' +
+            '<li>Organizations needed stronger governance around dashboard publishing and administration</li>' +
+            '<li>Administrators lacked a way to preview dashboard experiences before publishing</li>' +
+            '<li>Dashboard customization needed to support both web and mobile experiences</li>' +
+            '<li>Enterprises required visibility into dashboard changes through audit logs and publishing records</li>' +
+            '</ul>'
+        },
+        {
+          title: 'Approach',
+          content:
+            '<p>The solution was built around the concept of dashboard-level audience targeting. Instead of creating a single universal dashboard, administrators can create multiple dashboards and assign each dashboard to a specific user segment.</p>' +
+            '<p>A dashboard becomes the primary experience layer, while existing widget-level visibility controls continue to determine which content is shown inside that dashboard.</p>' +
+            '<p>The design focused on four key principles:</p>' +
+            '<ul>' +
+            '<li><strong>Personalized experiences</strong> — Different employee groups should receive dashboards tailored to their needs and responsibilities</li>' +
+            '<li><strong>Scalable administration</strong> — Organizations should be able to create, manage, publish, and govern multiple dashboards from a centralized location</li>' +
+            '<li><strong>Flexible ownership</strong> — Dashboard administration should support delegated ownership without exposing every dashboard to every administrator</li>' +
+            '<li><strong>Enterprise governance</strong> — Publishing, auditing, previewing, and dashboard assignment should provide transparency and control at scale</li>' +
+            '</ul>'
+        },
+        {
+          title: 'Solution',
+          content:
+            '<p><strong>Dashboard Management</strong> — A dedicated dashboard management experience allows administrators to create and manage multiple dashboards from a single interface. Each dashboard includes a name, description, assigned user segment, ownership settings, status, and available actions. Administrators can create up to 25 dashboards within a domain.</p>' +
+            '<p><strong>System Dashboard</strong> — A default system dashboard serves as the baseline experience for all users. The Default Network Users Dashboard is assigned to All Network Users, cannot be deleted or disabled, and cannot have its core properties modified — while still supporting widget management and publishing. This dashboard acts as the foundational experience across the platform.</p>' +
+            '<p><strong>Custom Dashboards</strong> — Administrators can create audience-specific dashboards for different user groups — such as Executive, Finance, Customer Satisfaction, Sales Performance, Product Development, or Frontline Operations dashboards. Each dashboard is assigned to a single user segment, ensuring clear audience targeting and predictable behavior.</p>' +
+            '<p><strong>Dashboard Ownership &amp; Permissions</strong> — A new ownership model controls who can manage individual dashboards: all dashboard administrators, specific dashboard administrators only, or network administrators only. This enables distributed ownership while maintaining centralized governance.</p>' +
+            '<p><strong>Dashboard Creation Flow</strong> — Creating a dashboard includes name, description, user segment assignment, and ownership settings. User segment selection is limited to a single segment, ensuring a clear relationship between dashboards and their intended audience. New dashboards are created in an inactive state and can be enabled when ready.</p>' +
+            '<p><strong>Widget Visibility</strong> — Dashboard visibility and widget visibility work together to determine the final user experience. A user must first have access to a dashboard before widget visibility rules are evaluated. Widgets can still define their own visibility conditions, allowing highly targeted experiences within a dashboard while maintaining clear access boundaries.</p>' +
+            '<p><strong>Dashboard Preview</strong> — A dedicated preview mode allows administrators to validate dashboard experiences before publishing — including web and mobile previews, user segment simulation, and visibility validation — so admins understand exactly how dashboards will appear to different audiences.</p>' +
+            '<p><strong>Publishing Experience</strong> — Publishing was redesigned for greater transparency and control. Administrators can review pending dashboard changes, view change summaries, publish web and mobile dashboards independently, and configure dashboard behavior settings — ensuring updates can be reviewed before rollout.</p>' +
+            '<p><strong>Dashboard Configuration Modes</strong> — The system dashboard supports Fully Customizable mode (users can add, remove, resize, reposition, and duplicate widgets and customize titles) and Locked mode (only administrators can change layouts). Organizations choose the mode that matches their governance requirements.</p>' +
+            '<p><strong>Override Dashboard Experience</strong> — Administrators can choose whether dashboard updates should override existing user customizations. When enabled, user customizations are replaced and updated layouts apply across all applicable users. When disabled, existing customizations remain intact and updates only affect users without customized dashboards.</p>' +
+            '<p><strong>Dashboard Assignment Hierarchy</strong> — Users may belong to multiple user segments. Dashboards are evaluated from top to bottom; the first matching dashboard is assigned, then widget visibility rules are applied — creating a consistent assignment model across the platform.</p>' +
+            '<p><strong>User Dashboard Overrides</strong> — Under My Settings → Branding, Navigation &amp; Dashboard, users can follow the assigned dashboard experience or select an alternative dashboard available to them — balancing administrative control with individual flexibility.</p>' +
+            '<p><strong>Mobile Dashboard Experience</strong> — Dedicated support for mobile dashboards allows administrators to configure mobile-specific experiences, publish mobile updates independently, and preview mobile dashboards before publishing.</p>' +
+            '<p><strong>Audit Logs</strong> — Dashboard activities are tracked through dedicated audit logs covering publishing, deletion, override actions, and administrative changes — providing visibility into dashboard lifecycle management.</p>'
+        },
+        {
+          title: 'Collaboration',
+          content:
+            'The requirement was driven by customer needs around role-based dashboard experiences. I worked closely with the Product Manager to define how dashboard assignment, ownership, publishing, and visibility should function across different user groups.\n\n' +
+            'Multiple approaches were explored before finalizing the dashboard hierarchy and administration model.\n\n' +
+            'Throughout the process, I collaborated with engineering teams to understand platform constraints and ensure the solution integrated seamlessly with existing dashboard, widget, and publishing systems.'
+        },
+        {
+          title: 'Multi-surface design',
+          content:
+            'This feature spans several areas of the platform: Dashboard Administration, Dashboard Creation, Dashboard Management, Widget Configuration, Dashboard Preview, Dashboard Publishing, Mobile Dashboard Management, User Preferences, and Audit Logs.\n\n' +
+            'The experience was designed to maintain consistency across both administrative and end-user workflows while supporting web and mobile dashboard experiences.'
+        },
+        {
+          title: 'Impact',
+          content:
+            '<ul>' +
+            '<li>Enables personalized dashboard experiences for different employee groups</li>' +
+            '<li>Allows organizations to create role-specific dashboard strategies at scale</li>' +
+            '<li>Improves content relevance by delivering dashboards tailored to specific audiences</li>' +
+            '<li>Provides flexible ownership and administration controls for dashboard governance</li>' +
+            '<li>Supports both web and mobile dashboard experiences through a unified management system</li>' +
+            '<li>Reduces publishing risk through preview and validation workflows</li>' +
+            '<li>Establishes a predictable dashboard assignment model for users belonging to multiple user segments</li>' +
+            '<li>Strengthens governance through audit logging and publishing controls</li>' +
+            '<li>Creates a scalable framework for future personalization initiatives across the platform</li>' +
+            '</ul>'
+        }
+      ],
+      images: [
+        'assets/work/work-08.png',
+        'assets/work/work-10.png',
+        'assets/work/work-05.png',
+        'assets/work/work-06.png',
+        'assets/work/work-12.png',
+        'assets/work/work-15.png'
+      ]
+    },
+    {
       id: 'centralized-task-management',
       title: 'Centralized Task Management',
       meta: 'SAAS · FEATURE CASE STUDY',
