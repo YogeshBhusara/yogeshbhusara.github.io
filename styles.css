@@ -389,7 +389,7 @@ main.editorial-shell::after {
 /* ——— Nav liquid glass (tuned to jeantimex/glass-effect-webgpu demo values) ——— */
 .bento-header__pill.nav-glass {
   /* Geometry */
-  --glass-bezel-width: 45;
+  --glass-bezel-width: 0;
   --glass-thickness: 1;
   --glass-refractive-index: 1.5;
   --glass-refraction-level: 1;
@@ -605,7 +605,7 @@ html.light .nav-glass__tint {
   );
 }
 
-/* Bezel width 45 */
+/* Bezel width 0 = minimum rim */
 .nav-glass__bezel {
   box-shadow:
     inset 0 0 0 var(--glass-bezel-inset) rgba(255, 255, 255, 0.22),
@@ -1691,10 +1691,12 @@ a.editorial-more-link:focus-visible {
     background-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
-.editorial-toolkit-icon svg {
+.editorial-toolkit-icon svg,
+.editorial-toolkit-icon img {
   width: 1.35rem;
   height: 1.35rem;
   display: block;
+  object-fit: contain;
 }
 
 .editorial-toolkit-icon::after {

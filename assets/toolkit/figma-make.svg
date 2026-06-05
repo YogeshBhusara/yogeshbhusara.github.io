@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Figma Make">
+  <defs>
+    <linearGradient id="figma-make-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="0.5" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#figma-make-grad)"/>
+  <path fill="#fff" d="M12 6.2a.85.85 0 0 1 .8.55l.35 1.05 1.1.35a.85.85 0 0 1 0 1.6l-1.1.35-.35 1.05a.85.85 0 0 1-1.6 0l-.35-1.05-1.1-.35a.85.85 0 0 1 0-1.6l1.1-.35.35-1.05A.85.85 0 0 1 12 6.2Z"/>
+  <path fill="#fff" fill-opacity=".92" d="M15.6 14.2h1.9v1.9h-1.9v-1.9Zm-8.1 0h1.9v1.9H7.5v-1.9Z"/>
+</svg>
