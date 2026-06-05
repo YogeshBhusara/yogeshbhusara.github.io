@@ -386,7 +386,7 @@ main.editorial-shell::after {
   box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--nav-pill-border) 60%, transparent);
 }
 
-/* ——— Nav liquid glass (tuned to jeantimex/glass-effect-webgpu demo values) ——— */
+/* ——— Nav liquid glass (iOS UITabBar style — native_glass_navbar) ——— */
 .bento-header__pill.nav-glass {
   /* Geometry */
   --glass-bezel-width: 0;
@@ -394,18 +394,16 @@ main.editorial-shell::after {
   --glass-refractive-index: 1.5;
   --glass-refraction-level: 1;
   --glass-magnify: 0;
-  /* Background */
+  /* Background — UIBlurEffect dark/light */
   --glass-bg-brightness: 1;
   /* Optics */
-  --glass-blur: 36px;
+  --glass-blur: 24px;
   --glass-blur-opacity: 1;
-  --glass-progressive-blur: 0.45;
-  --glass-chromatic-strength: 0.55;
-  --glass-chromatic-base: 1;
-  /* Frosted tint — visible blur (was 0 = fully transparent) */
+  --glass-progressive-blur: 0.38;
+  /* Frosted tint */
   --glass-color: 255, 255, 255;
-  --glass-bg-opacity: 0.14;
-  --glass-pressed-bg-opacity: 0.22;
+  --glass-bg-opacity: 0.1;
+  --glass-pressed-bg-opacity: 0.18;
   /* Liquid interaction */
   --glass-press-scale: 1.16;
   --glass-press-refraction: 1.28;
@@ -474,10 +472,10 @@ html.light .bento-header__pill.nav-glass:hover .nav-glass__stack {
 }
 
 html.light .bento-header__pill.nav-glass {
-  --glass-bg-opacity: 0.38;
-  --glass-pressed-bg-opacity: 0.48;
-  --glass-chromatic-strength: 0.4;
-  --glass-blur: 32px;
+  --glass-bg-opacity: 0.42;
+  --glass-pressed-bg-opacity: 0.52;
+  --glass-blur: 20px;
+  --glass-bg-brightness: 1.06;
 }
 
 .nav-glass__stack {
@@ -487,9 +485,9 @@ html.light .bento-header__pill.nav-glass {
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  background: var(--nav-pill-bg);
-  -webkit-backdrop-filter: blur(28px) saturate(1.75) brightness(1.06);
-  backdrop-filter: blur(28px) saturate(1.75) brightness(1.06);
+  background: transparent;
+  -webkit-backdrop-filter: blur(20px) saturate(1.65) brightness(1.04);
+  backdrop-filter: blur(20px) saturate(1.65) brightness(1.04);
   box-shadow: var(--nav-pill-shadow);
   border: 1px solid var(--nav-pill-border);
   transition:
@@ -502,8 +500,7 @@ html.light .bento-header__pill.nav-glass {
 .nav-glass__surface,
 .nav-glass__tint,
 .nav-glass__bezel,
-.nav-glass__specular,
-.nav-glass__chromatic {
+.nav-glass__specular {
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -622,7 +619,7 @@ html.light .nav-glass__bezel {
     inset 0 -1px 0 rgba(20, 18, 27, calc(0.04 + var(--glass-bezel-width) * 0.0004));
 }
 
-/* Layered specular — rim + cursor-following highlight */
+/* Static top-edge specular */
 .nav-glass__specular--rim {
   background: linear-gradient(
     180deg,
@@ -630,44 +627,6 @@ html.light .nav-glass__bezel {
     transparent 42%
   );
   mix-blend-mode: soft-light;
-}
-
-.nav-glass__specular--layer {
-  background: radial-gradient(
-    circle at var(--glass-light-x, 28%) var(--glass-light-y, 18%),
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.18) 20%,
-    transparent 52%
-  );
-  mix-blend-mode: soft-light;
-  opacity: 0.92;
-  transition: opacity calc(0.25s / var(--glass-speed, 1)) var(--ease);
-}
-
-.bento-header__pill.nav-glass:hover .nav-glass__specular--layer {
-  opacity: 1;
-}
-
-/* Chromatic aberration · strength 0.5 · base 1.0 */
-.nav-glass__chromatic {
-  opacity: calc(var(--glass-chromatic-strength) * var(--glass-chromatic-base));
-  background:
-    radial-gradient(
-      circle at var(--glass-light-x, 28%) var(--glass-light-y, 18%),
-      rgba(255, 72, 98, calc(0.35 * var(--glass-chromatic-strength))) 0%,
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at calc(var(--glass-light-x, 28%) + 3%) calc(var(--glass-light-y, 18%) + 1.5%),
-      rgba(72, 168, 255, calc(0.3 * var(--glass-chromatic-strength))) 0%,
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at calc(var(--glass-light-x, 28%) - 2%) var(--glass-light-y, 18%),
-      rgba(120, 255, 160, calc(0.12 * var(--glass-chromatic-strength))) 0%,
-      transparent 28%
-    );
-  mix-blend-mode: screen;
 }
 
 .nav-glass__content {
@@ -689,10 +648,6 @@ html.light .nav-glass__bezel {
   .bento-header__pill.nav-glass.nav-glass--pressed {
     transform: none;
     filter: none;
-  }
-
-  .nav-glass__specular--layer {
-    transition: none;
   }
 }
 

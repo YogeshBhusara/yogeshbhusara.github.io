@@ -1,6 +1,6 @@
 /**
- * nav-glass.js — Liquid glass nav pill (inspired by jeantimex/glass-effect-webgpu).
- * CSS multi-layer glass + cursor specular + press squash. Falls back to backdrop-filter CSS alone.
+ * nav-glass.js — Liquid glass nav pill (inspired by TechSupportz/native_glass_navbar).
+ * CSS multi-layer glass + press squash. Falls back to backdrop-filter CSS alone.
  */
 (function initNavGlass() {
   'use strict';
@@ -30,9 +30,7 @@
       '<div class="nav-glass__surface nav-glass__surface--dome"></div>' +
       '<div class="nav-glass__tint"></div>' +
       '<div class="nav-glass__bezel"></div>' +
-      '<div class="nav-glass__specular nav-glass__specular--rim"></div>' +
-      '<div class="nav-glass__specular nav-glass__specular--layer"></div>' +
-      '<div class="nav-glass__chromatic"></div>';
+      '<div class="nav-glass__specular nav-glass__specular--rim"></div>';
 
     const content = document.createElement('div');
     content.className = 'nav-glass__content';
@@ -43,8 +41,6 @@
     pill.appendChild(stack);
     pill.appendChild(content);
 
-    pill.style.setProperty('--glass-light-x', '28%');
-    pill.style.setProperty('--glass-light-y', '18%');
     pill.style.setProperty('--glass-squash-x', '0');
     pill.style.setProperty('--glass-squash-y', '0');
 
@@ -53,21 +49,13 @@
     let pressOriginX = 0;
     let pressOriginY = 0;
 
-    function setLight(clientX, clientY) {
-      const rect = pill.getBoundingClientRect();
-      if (!rect.width || !rect.height) return;
-      const x = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
-      const y = Math.max(0, Math.min(100, ((clientY - rect.top) / rect.height) * 100));
-      pill.style.setProperty('--glass-light-x', x.toFixed(1) + '%');
-      pill.style.setProperty('--glass-light-y', y.toFixed(1) + '%');
-    }
-
     function setDragSquash(clientX, clientY) {
       const rect = pill.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
       const dx = (clientX - pressOriginX) / rect.width;
       const dy = (clientY - pressOriginY) / rect.height;
-      const dragSquash = parseFloat(getComputedStyle(pill).getPropertyValue('--glass-drag-squash')) || 1;
+      const dragSquash =
+        parseFloat(getComputedStyle(pill).getPropertyValue('--glass-drag-squash')) || 1;
       pill.style.setProperty('--glass-squash-x', (dx * 0.045 * dragSquash).toFixed(4));
       pill.style.setProperty('--glass-squash-y', (Math.abs(dy) * 0.06 * dragSquash).toFixed(4));
     }
@@ -81,18 +69,12 @@
       'pointermove',
       (e) => {
         if (e.pointerType === 'touch') return;
-        setLight(e.clientX, e.clientY);
         if (pill.classList.contains('nav-glass--pressed')) {
           setDragSquash(e.clientX, e.clientY);
         }
       },
       { passive: true }
     );
-
-    pill.addEventListener('pointerenter', (e) => {
-      if (e.pointerType === 'touch') return;
-      setLight(e.clientX, e.clientY);
-    });
 
     pill.addEventListener(
       'pointerdown',
@@ -107,10 +89,14 @@
     );
 
     function releasePress() {
-      const releaseSquash = parseFloat(getComputedStyle(pill).getPropertyValue('--glass-release-squash')) || 1;
+      const releaseSquash =
+        parseFloat(getComputedStyle(pill).getPropertyValue('--glass-release-squash')) || 1;
       if (releaseSquash > 0) {
         pill.style.setProperty('--glass-squash-y', (0.018 * releaseSquash).toFixed(4));
-        window.setTimeout(resetSquash, 180 / (parseFloat(getComputedStyle(pill).getPropertyValue('--glass-speed')) || 1));
+        window.setTimeout(
+          resetSquash,
+          180 / (parseFloat(getComputedStyle(pill).getPropertyValue('--glass-speed')) || 1)
+        );
       } else {
         resetSquash();
       }
