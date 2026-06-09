@@ -442,6 +442,9 @@ document.addEventListener('click', function (e) {
     const anchor = e.target.closest('a[href^="#"]');
     if (!anchor) return;
 
+    // Work detail modal scrolls its own container via work-page.js
+    if (anchor.closest('.work-detail-toc__link, .work-detail-toc')) return;
+
     const href = anchor.getAttribute('href');
     if (!href || href === '#') return;
 

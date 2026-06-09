@@ -258,7 +258,18 @@
         setupWorkDetailToc();
     }
 
+    let workDetailTocCleanup = null;
+
+    function getScrollOffsetWithinRoot(el, scrollRoot) {
+        return scrollRoot.scrollTop + el.getBoundingClientRect().top - scrollRoot.getBoundingClientRect().top;
+    }
+
     function setupWorkDetailToc() {
+        if (workDetailTocCleanup) {
+            workDetailTocCleanup();
+            workDetailTocCleanup = null;
+        }
+
         const toc = workDetailInner.querySelector('.work-detail-toc');
         if (!toc) return;
 
@@ -273,6 +284,10 @@
             })
             .filter(Boolean);
 
+        if (targets.length === 0) return;
+
+        let clickScrollLockUntil = 0;
+
         function setActiveLink(activeId) {
             links.forEach((link) => {
                 const id = link.getAttribute('data-toc-target') || link.getAttribute('href')?.replace(/^#/, '');
@@ -286,6 +301,88 @@
             });
         }
 
+        function getActiveSectionId() {
+            if (!scrollRoot) return targets[0].id;
+
+            const scrollBottom = scrollRoot.scrollTop + scrollRoot.clientHeight;
+            const nearBottom = scrollRoot.scrollHeight - scrollBottom <= 48;
+            if (nearBottom) return targets[targets.length - 1].id;
+
+            const rootRect = scrollRoot.getBoundingClientRect();
+            const viewportTop = rootRect.top;
+            const viewportBottom = rootRect.bottom;
+            let activeId = targets[0].id;
+            let maxVisible = -1;
+
+            targets.forEach(({ el, id }) => {
+                const rect = el.getBoundingClientRect();
+                const visible = Math.min(rect.bottom, viewportBottom) - Math.max(rect.top, viewportTop);
+                if (visible > maxVisible) {
+                    maxVisible = visible;
+                    activeId = id;
+                }
+            });
+
+            // Image-only gaps: no section intersects the viewport — use last section above focus line
+            if (maxVisible <= 0) {
+                const focus = scrollRoot.scrollTop + scrollRoot.clientHeight * 0.35;
+                targets.forEach(({ el, id }) => {
+                    if (getScrollOffsetWithinRoot(el, scrollRoot) <= focus) {
+                        activeId = id;
+                    }
+                });
+            }
+
+            return activeId;
+        }
+
+        function updateActiveFromScroll() {
+            if (Date.now() < clickScrollLockUntil) return;
+            setActiveLink(getActiveSectionId());
+        }
+
+        function releaseClickScrollLock() {
+            clickScrollLockUntil = 0;
+            updateActiveFromScroll();
+        }
+
+        function lockClickScrollUntilSettled() {
+            clickScrollLockUntil = Number.MAX_SAFE_INTEGER;
+            let lastTop = scrollRoot.scrollTop;
+            let stableFrames = 0;
+            let rafId = 0;
+            const startedAt = Date.now();
+
+            const watch = () => {
+                const currentTop = scrollRoot.scrollTop;
+                if (currentTop === lastTop) {
+                    stableFrames += 1;
+                } else {
+                    stableFrames = 0;
+                    lastTop = currentTop;
+                }
+
+                if (stableFrames >= 4 || Date.now() - startedAt > 1400) {
+                    releaseClickScrollLock();
+                    return;
+                }
+
+                rafId = requestAnimationFrame(watch);
+            };
+
+            if (typeof scrollRoot.onscrollend !== 'undefined') {
+                scrollRoot.addEventListener('scrollend', releaseClickScrollLock, { once: true });
+            }
+
+            rafId = requestAnimationFrame(watch);
+            return () => {
+                cancelAnimationFrame(rafId);
+                scrollRoot.removeEventListener('scrollend', releaseClickScrollLock);
+            };
+        }
+
+        let clickScrollWatchCleanup = null;
+
         // Click: scroll within modal (not window)
         links.forEach((link) => {
             link.addEventListener('click', (e) => {
@@ -295,36 +392,37 @@
                 if (!el || !scrollRoot) return;
 
                 e.preventDefault();
-                const top = el.offsetTop;
-                scrollRoot.scrollTo({ top, behavior: 'smooth' });
+                e.stopPropagation();
+
+                if (clickScrollWatchCleanup) {
+                    clickScrollWatchCleanup();
+                    clickScrollWatchCleanup = null;
+                }
+
+                const top = Math.max(0, getScrollOffsetWithinRoot(el, scrollRoot) - 16);
                 setActiveLink(id);
+                clickScrollWatchCleanup = lockClickScrollUntilSettled();
+                scrollRoot.scrollTo({ top, behavior: 'smooth' });
             });
         });
 
-        // Scrollspy: update active link while scrolling the modal
-        if (!scrollRoot || typeof IntersectionObserver === 'undefined' || targets.length === 0) {
-            if (targets[0]) setActiveLink(targets[0].id);
+        if (!scrollRoot) {
+            setActiveLink(targets[0].id);
             return;
         }
 
-        const observer = new IntersectionObserver((entries) => {
-            const visible = entries
-                .filter((entry) => entry.isIntersecting)
-                .sort((a, b) => (a.boundingClientRect.top - b.boundingClientRect.top));
+        const onScroll = () => updateActiveFromScroll();
+        scrollRoot.addEventListener('scroll', onScroll, { passive: true });
+        updateActiveFromScroll();
 
-            if (visible.length === 0) return;
-            const topMost = visible[0].target;
-            if (topMost && topMost.id) setActiveLink(topMost.id);
-        }, {
-            root: scrollRoot,
-            threshold: [0.15, 0.35, 0.55],
-            rootMargin: '-20% 0px -70% 0px'
-        });
-
-        targets.forEach(({ el }) => observer.observe(el));
-
-        // Default state
-        setActiveLink(targets[0].id);
+        workDetailTocCleanup = () => {
+            scrollRoot.removeEventListener('scroll', onScroll);
+            if (clickScrollWatchCleanup) {
+                clickScrollWatchCleanup();
+                clickScrollWatchCleanup = null;
+            }
+            clickScrollLockUntil = 0;
+        };
     }
 
     // Close work detail

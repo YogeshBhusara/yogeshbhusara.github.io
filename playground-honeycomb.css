@@ -279,9 +279,9 @@
   width: 44px;
   height: 44px;
   border-radius: 999px;
-  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
-  background: color-mix(in oklab, var(--bg) 55%, transparent);
-  color: var(--text);
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-text);
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
@@ -289,11 +289,14 @@
   place-items: center;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: background 0.2s var(--ease), transform 0.2s var(--ease-out);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease),
+    transform 0.2s var(--ease-out);
 }
 
 .hc-modal__close:hover {
-  background: color-mix(in oklab, var(--bg-elevated) 70%, transparent);
+  color: var(--text);
+  border-color: var(--btn-border-hover);
+  background: var(--btn-bg-hover);
   transform: scale(1.04);
 }
 
