@@ -2149,7 +2149,11 @@ html.light .editorial-build-tag--accent {
   font-size: 0.875rem;
   line-height: 1.55;
   color: var(--text-muted);
-  max-width: 52ch;
+  max-width: none;
+}
+
+.experience-item__details .experience-item__summary + .experience-item__summary {
+  margin-top: 0.5rem;
 }
 
 .experience-cv-button {
