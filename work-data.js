@@ -28,7 +28,7 @@
         {
           title: 'Background',
           content:
-            'MangoApps is an enterprise intranet and employee communication platform where admins and team managers publish posts to specific audiences — company-wide, team-specific, or targeted user segments.\n\n' +
+            'The product is an enterprise intranet and employee communication platform where admins and team managers publish posts to specific audiences — company-wide, team-specific, or targeted user segments.\n\n' +
             'Content publishing was already supported, but there was no way to plan, visualise, or coordinate what was going out, when, and to whom. Drafts and scheduled posts were buried in a Manage section, with no unified view across content states or teams.\n\n' +
             'This feature introduced a full content planning layer on top of the existing publishing system — a calendar view, a new Post Ideas content type, an unplanned holding area, drag-and-drop scheduling, and bulk import — all without changing the underlying publishing behaviour users already relied on.'
         },
@@ -122,7 +122,7 @@
           title: 'Background',
           content:
             'Enterprise organizations often have a diverse workforce made up of executives, leadership teams, office employees, and frontline workers. While all employees use the same platform, the information they need on a daily basis varies significantly based on their role and responsibilities.\n\n' +
-            'MangoApps is an enterprise intranet platform where this challenge is especially acute: one homepage experience cannot serve every employee group equally well.\n\n' +
+            'On an enterprise intranet platform, this challenge is especially acute: one homepage experience cannot serve every employee group equally well.\n\n' +
             'The organization needed the ability to deliver different dashboard experiences to different groups of users. Leadership teams required access to strategic metrics and organizational insights, while frontline employees needed operational content, tasks, announcements, and resources relevant to their day-to-day work.\n\n' +
             'The goal was to create a scalable dashboard management system that allows administrators to create multiple dashboards, assign them to specific user segments, and ensure each employee receives the most relevant dashboard experience.'
         },
@@ -229,7 +229,7 @@
         {
           title: 'Overview',
           content:
-            'Organizations often require content to be reviewed and approved before publication to ensure quality, accuracy, and compliance. While the MangoApps platform supported creating Posts, Pages, Wikis, Documents, and other content types, there was no unified approval framework that could govern all content consistently.\n\n' +
+            'Organizations often require content to be reviewed and approved before publication to ensure quality, accuracy, and compliance. While the platform supported creating Posts, Pages, Wikis, Documents, and other content types, there was no unified approval framework that could govern all content consistently.\n\n' +
             'The objective was to design a reusable approval system that could be configured once and applied across multiple content types while keeping the content creation experience simple for authors and efficient for approvers.'
         },
         {
@@ -310,7 +310,7 @@
       meta: 'SAAS · FEATURE CASE STUDY',
       size: 'wide',
       description:
-        'Enterprise task orchestration feature for a SaaS intranet platform (MangoApps), built for AutoZone&apos;s front-line workforce',
+        'Enterprise task orchestration for a SaaS intranet platform, built for a distributed front-line retail workforce',
       detailDescription:
         'V2 expansion of centralized task orchestration — tracker-to-task automation, user-level distribution, approval previews, role-scoped execution visibility, bulk audience selection, and admin-configurable task tabs — for distributed retail operations at scale.',
       year: '2024',
@@ -319,7 +319,7 @@
         {
           title: 'Background',
           content:
-            'MangoApps is an enterprise intranet platform used by large organisations with distributed workforces. AutoZone — a major automotive parts retailer with thousands of store locations — uses the platform to coordinate operations across their front-line teams.\n\n' +
+            'The platform is an enterprise intranet used by large organisations with distributed workforces. A major retail client with thousands of store locations uses it to coordinate operations across their front-line teams.\n\n' +
             'V1 of Centralized Task Management introduced the ability to push tasks to multiple store teams simultaneously from a central admin view. V2 was a significant expansion of that foundation, adding automation, user-level task distribution, approval workflows, richer visibility controls, bulk management, and a tracker-to-task pipeline that could eliminate manual task creation entirely.'
         },
         {
@@ -335,7 +335,7 @@
             '<li>Site managers and area heads had no role-appropriate view — they couldn&apos;t see completion status for only the stores under their hierarchy without seeing the entire organisation&apos;s data</li>' +
             '<li>Bulk user and team selection had no segment or site-based filtering, making large-scale task assignment slow and error-prone</li>' +
             '<li>No way to preview what a task would look like before approving it through an approval workflow — approvers were working blind</li>' +
-            '<li>Tab names, ordering, and visibility were fixed — enterprise customers like AutoZone with custom naming conventions had no way to adapt the interface to their terminology</li>' +
+            '<li>Tab names, ordering, and visibility were fixed — large enterprise customers with custom naming conventions had no way to adapt the interface to their terminology</li>' +
             '</ul>'
         },
         {
