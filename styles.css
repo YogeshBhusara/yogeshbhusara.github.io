@@ -1697,7 +1697,7 @@ a.editorial-more-link:focus-visible {
   box-shadow: 0 8px 24px color-mix(in oklab, var(--fg-base) 10%, transparent);
 }
 
-/* Home → Building with AI */
+/* Building with AI */
 .editorial-section-lede {
   margin-top: 0.35rem;
   font-size: 0.9375rem;
