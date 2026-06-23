@@ -71,6 +71,21 @@
     return match ? match[1].trim() : '';
   }
 
+  function makeSvgResponsive(svg) {
+    const widthAttr = svg.getAttribute('width');
+    const heightAttr = svg.getAttribute('height');
+    const width = widthAttr ? parseFloat(widthAttr) : svg.viewBox?.baseVal?.width;
+    const height = heightAttr ? parseFloat(heightAttr) : svg.viewBox?.baseVal?.height;
+
+    if (width && height && !svg.getAttribute('viewBox')) {
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    }
+
+    svg.setAttribute('width', '100%');
+    svg.removeAttribute('height');
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+  }
+
   async function loadInlineSvg() {
     const url = getUrl();
     const res = await fetch(url, { mode: 'cors', credentials: 'omit' });
@@ -149,6 +164,8 @@
         rect.setAttribute('fill-opacity', String(parsedEmpty.a));
       }
     });
+
+    makeSvgResponsive(svg);
 
     // Replace existing SVG (if any) and hide the <img> fallback.
     container.querySelector('svg')?.remove();

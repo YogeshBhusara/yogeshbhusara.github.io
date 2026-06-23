@@ -920,6 +920,7 @@ html.light .theme-icon--moon {
 .editorial-hero {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   gap: 20px;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -1016,7 +1017,7 @@ html.light .theme-icon--moon {
 
 .editorial-name {
   font-family: "Roboto Flex", var(--font-display);
-  font-size: clamp(var(--fs-h1-min), 6.6vw, var(--fs-h1-max));
+  font-size: clamp(calc(var(--fs-h1-min) * 0.7), 4.62vw, calc(var(--fs-h1-max) * 0.7));
   font-weight: 420;
   opacity: 0.8;
   line-height: 1.02;
@@ -1667,6 +1668,11 @@ a.editorial-more-link:focus-visible {
   object-fit: contain;
 }
 
+html:not(.light) .editorial-toolkit-icon img[src*="cursor.svg"] {
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
 .editorial-toolkit-icon::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -2190,45 +2196,26 @@ html.light .github-activity {
 
 .github-activity-embed {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   border-radius: 0.5rem;
   background: color-mix(in oklab, var(--bg) 70%, transparent);
   border: 1px dashed color-mix(in oklab, var(--border) 80%, transparent);
   padding: 0.75rem;
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in oklab, var(--fg-base) 25%, transparent) transparent;
-}
-
-.github-activity-embed::-webkit-scrollbar {
-  height: 6px;
-}
-
-.github-activity-embed::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.github-activity-embed::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--fg-base) 22%, transparent);
-  border-radius: 999px;
 }
 
 .github-activity-img {
   display: block;
-  height: auto;
-  min-width: 720px; /* keeps weeks readable; container scrolls on small screens */
   width: 100%;
-  max-width: none;
+  height: auto;
+  max-width: 100%;
   opacity: 0.92;
 }
 
 .github-activity-embed svg {
   display: block;
-  height: auto;
-  min-width: 720px; /* keeps weeks readable; container scrolls on small screens */
   width: 100%;
-  max-width: none;
+  height: auto;
+  max-width: 100%;
   opacity: 0.92;
 }
 
