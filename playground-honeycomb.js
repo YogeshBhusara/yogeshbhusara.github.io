@@ -22,6 +22,42 @@ const projects = [
   { id: "work-17", title: "Work item 17", image: "assets/work/work-17.png" },
   { id: "work-18", title: "Work item 18", image: "assets/work/work-18.png" },
   { id: "work-19", title: "Work item 19", image: "assets/work/work-19.png" },
+  {
+    id: "repo-bookshelf",
+    title: "Bookshelf",
+    image: "assets/playground/bookshelf.svg",
+    repo: "https://github.com/YogeshBhusara/bookshelf",
+  },
+  {
+    id: "repo-kaleidosense",
+    title: "KaleidoSense",
+    image: "assets/playground/kaleidosense.svg",
+    repo: "https://github.com/YogeshBhusara/KaleidoSense",
+  },
+  {
+    id: "repo-glass-effect",
+    title: "Glass Effect Playground",
+    image: "assets/playground/glass-effect-playground.svg",
+    repo: "https://github.com/YogeshBhusara/glass-effect-playground",
+  },
+  {
+    id: "repo-periodic-table",
+    title: "Periodic Table SwiftUI",
+    image: "assets/playground/periodic-table.svg",
+    repo: "https://github.com/YogeshBhusara/Periodic-Table-SwiftUI",
+  },
+  {
+    id: "repo-spendsense",
+    title: "SpendSense",
+    image: "assets/playground/spendsense.svg",
+    repo: "https://github.com/YogeshBhusara/SpendSense",
+  },
+  {
+    id: "repo-swiftui-effects",
+    title: "SwiftUI Effects",
+    image: "assets/playground/swiftui-effects.svg",
+    repo: "https://github.com/YogeshBhusara/SwiftUI-Effects",
+  },
 ];
 
 const scrollport = document.getElementById("hcScrollport");
@@ -31,6 +67,7 @@ const grid = document.getElementById("hcGrid");
 const modal = document.getElementById("hcModal");
 const modalBackdrop = document.getElementById("hcModalBackdrop");
 const modalClose = document.getElementById("hcModalClose");
+const modalRepo = document.getElementById("hcModalRepo");
 const modalImage = document.getElementById("hcModalImage");
 
 let modalReturnFocus = null;
@@ -79,6 +116,8 @@ const WHEEL_PAGE_RATIO = 0.9;
 const HEX_CENTER_SPACING = 1.3;
 /** Scale at corners / rim of the square (pinprick “more apps” dots, Watch-style). */
 const FISHEYE_MIN = 0.032;
+/** Outer-ring repo cells stay larger than default rim pinpricks so they remain discoverable. */
+const REPO_RIM_MIN_SCALE = 0.16;
 /** Desired scale at dead center (clamped per-frame by geometry so neighbors never overlap). */
 const FISHEYE_CENTER = 1.1;
 /** 0 = pure radial; higher blends square-ish distance so corners shrink like Apple Watch. */
@@ -218,9 +257,11 @@ function updateHoneycombScales() {
     let target = FISHEYE_MIN + z * (FISHEYE_CENTER - FISHEYE_MIN);
     target *= 1 + 0.055 * z * z * z;
     const scaleCap = maxHoneycombVisualScale(honeycombCellPx);
-    target = clamp(target, FISHEYE_MIN * 0.85, Math.min(FISHEYE_ABS_MAX, scaleCap));
+    const isRepo = el.classList.contains("hc-grid-cell--repo");
+    const rimMin = isRepo ? REPO_RIM_MIN_SCALE : FISHEYE_MIN * 0.85;
+    target = clamp(target, rimMin, Math.min(FISHEYE_ABS_MAX, scaleCap));
     const prev = el.__honeyScale ?? target;
-    const next = clamp(prev + (target - prev) * SCALE_LERP, FISHEYE_MIN * 0.85, scaleCap);
+    const next = clamp(prev + (target - prev) * SCALE_LERP, rimMin, scaleCap);
     el.__honeyScale = next;
     el.style.transform = `scale(${next})`;
     maxErr = Math.max(maxErr, Math.abs(next - target));
@@ -394,7 +435,7 @@ function rebuildHoneycomb() {
     const top = pad + (cy - cell / 2) - minEdgeY;
 
     const cellEl = document.createElement("div");
-    cellEl.className = "hc-grid-cell";
+    cellEl.className = project.repo ? "hc-grid-cell hc-grid-cell--repo" : "hc-grid-cell";
     cellEl.setAttribute("role", "listitem");
     cellEl.tabIndex = 0;
     cellEl.dataset.projectBaseId = project.id;
@@ -463,6 +504,18 @@ function projectFromCell(el) {
   return projects.find((p) => p.id === id) ?? null;
 }
 
+function syncModalRepoLink(project) {
+  if (!modalRepo) return;
+  if (project?.repo) {
+    modalRepo.href = project.repo;
+    modalRepo.setAttribute("aria-label", `View ${project.title} on GitHub`);
+    modalRepo.hidden = false;
+  } else {
+    modalRepo.removeAttribute("href");
+    modalRepo.hidden = true;
+  }
+}
+
 function clearMorphFallback() {
   if (morphFallbackTimer) {
     clearTimeout(morphFallbackTimer);
@@ -489,6 +542,8 @@ function openModalImmediate(project) {
   modalReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   modalImage.src = project.image;
   modalImage.alt = project.title ? `Preview: ${project.title}` : "Preview image";
+  syncModalRepoLink(project);
+  modal.setAttribute("aria-label", project.repo ? `${project.title} preview` : "Image preview");
   modal.classList.remove("hc-modal--entering");
   modal.removeAttribute("hidden");
   modalClose.focus({ preventScroll: true });
@@ -513,6 +568,8 @@ function openModalFromCell(cell, project) {
   modalReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   modalImage.src = project.image;
   modalImage.alt = project.title ? `Preview: ${project.title}` : "Preview image";
+  syncModalRepoLink(project);
+  modal.setAttribute("aria-label", project.repo ? `${project.title} preview` : "Image preview");
 
   modal.removeAttribute("hidden");
   modal.classList.add("hc-modal--entering");
@@ -593,6 +650,7 @@ function closeModalImmediate() {
   scrollport.style.pointerEvents = "";
   modal.classList.remove("hc-modal--entering");
   modal.setAttribute("hidden", "");
+  syncModalRepoLink(null);
   modalReturnFocus?.focus({ preventScroll: true });
   modalReturnFocus = null;
   lastOpenedCell = null;
