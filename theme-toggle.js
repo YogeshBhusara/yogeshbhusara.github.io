@@ -1,5 +1,7 @@
 /**
- * theme-toggle.js — Dark/light theme toggle; persists to localStorage, syncs data-theme on body.
+ * theme-toggle.js — Paper (light) by default; dark ink theme via html.dark.
+ * Persists to localStorage. An inline head snippet applies the saved theme
+ * before first paint to avoid a flash.
  */
 (function () {
     'use strict';
@@ -7,45 +9,32 @@
     if (!toggles.length) return;
 
     const THEME_KEY = 'portfolio-theme';
-    const DEFAULT_THEME = 'dark';
+    const DEFAULT_THEME = 'light';
 
-    // Get saved theme or default to dark
     function getTheme() {
-        return localStorage.getItem(THEME_KEY) || DEFAULT_THEME;
+        try {
+            return localStorage.getItem(THEME_KEY) || DEFAULT_THEME;
+        } catch (e) {
+            return DEFAULT_THEME;
+        }
     }
 
-    // Light mode = html.light; default (no class) = dark tokens in :root — avoids flash before JS.
     function setTheme(theme) {
-        const isLight = theme === 'light';
-        document.documentElement.classList.toggle('light', isLight);
+        const isDark = theme === 'dark';
+        document.documentElement.classList.toggle('dark', isDark);
         document.documentElement.setAttribute('data-theme', theme);
         document.body.setAttribute('data-theme', theme);
-        localStorage.setItem(THEME_KEY, theme);
+        try {
+            localStorage.setItem(THEME_KEY, theme);
+        } catch (e) { /* private mode */ }
         document.dispatchEvent(new Event('themechange'));
     }
 
-    // Toggle theme
-    function toggleTheme() {
-        const currentTheme = getTheme();
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    }
-
-    // Initialize theme on page load
-    function initTheme() {
-        const savedTheme = getTheme();
-        setTheme(savedTheme);
-    }
-
-    // Event listeners (main nav + bento header)
-    toggles.forEach(function(btn) {
-        btn.addEventListener('click', toggleTheme);
+    toggles.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+        });
     });
 
-    // Initialize on load
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initTheme);
-    } else {
-        initTheme();
-    }
+    setTheme(getTheme());
 })();

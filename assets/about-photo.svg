@@ -2,7 +2,7 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#2a1e41"/>
-      <stop offset="0.5" stop-color="#5e30eb"/>
+      <stop offset="0.5" stop-color="#9c4a21"/>
       <stop offset="1" stop-color="#0b0712"/>
     </linearGradient>
     <radialGradient id="sun" cx="30%" cy="25%" r="70%">

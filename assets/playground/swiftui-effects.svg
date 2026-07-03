@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="SwiftUI Effects">
-  <rect width="400" height="400" fill="#07060a"/>
-  <circle cx="120" cy="140" r="55" fill="#8b5cf6" opacity="0.85"/>
+  <rect width="400" height="400" fill="#faf8f3"/>
+  <circle cx="120" cy="140" r="55" fill="#9c4a21" opacity="0.85"/>
   <circle cx="200" cy="110" r="45" fill="#22d3ee" opacity="0.75"/>
   <circle cx="290" cy="150" r="50" fill="#f472b6" opacity="0.8"/>
   <circle cx="160" cy="220" r="40" fill="#fbbf24" opacity="0.7"/>

@@ -6,7 +6,7 @@
       <stop offset="100%" stop-color="#0f0a1a"/>
     </radialGradient>
   </defs>
-  <rect width="400" height="400" fill="#07060a"/>
+  <rect width="400" height="400" fill="#faf8f3"/>
   <circle cx="200" cy="200" r="160" fill="url(#glow)" opacity="0.9"/>
   <g transform="translate(200 200)">
     <polygon points="0,-120 104,60 -104,60" fill="#f472b6" opacity="0.85"/>

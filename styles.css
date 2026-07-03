@@ -36,7 +36,7 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --font-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   /* Desses-like: clean, modern, all-sans system */
   --font-display: var(--font-sans);
@@ -54,66 +54,25 @@
   --header-h: 3.5rem;
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --color-brand: #8b5cf6;
-  --color-brand-secondary: #6d28d9;
+  --color-brand: #9c4a21;
+  --color-brand-secondary: #7a3818;
 
-  /* Default = dark (reference educalvolopez .dark) — no class on html until toggle */
-  --bg-base: #07060a;
-  --fg-base: #f4f5f7;
-  --smooth-50: #07060a;
-  --smooth-100: #0c0a12;
-  --smooth-200: #120e1f;
+  /* Default = light (warm paper + near-black ink) */
+  --bg-base: #faf8f3;
+  --fg-base: #211e19;
+  --smooth-50: #faf8f3;
+  --smooth-100: #f2efe7;
+  --smooth-200: #ebe6dc;
   --bg: var(--bg-base);
   --bg-elevated: var(--smooth-100);
   --text: var(--fg-base);
-  --text-muted: color-mix(in oklab, var(--fg-base) 52%, transparent);
-  --border: color-mix(in oklab, var(--fg-base) 2.5%, transparent);
-  --separator-stroke: color-mix(in oklab, var(--fg-base) 16%, transparent);
-  --separator-stroke-strong: color-mix(in oklab, var(--fg-base) 28%, transparent);
+  --text-muted: #8a8478;
+  --border: #e2ddd1;
+  --separator-stroke: #e2ddd1;
+  --separator-stroke-strong: #c9c2b2;
   --link: var(--color-brand);
   --link-hover: var(--color-brand-secondary);
-  --accent-soft: color-mix(in oklab, var(--fg-base) 8%, transparent);
-  --glass-bg: color-mix(in oklab, var(--smooth-100) 50%, transparent);
-  --btn-border: color-mix(in oklab, var(--fg-base) 24%, transparent);
-  --btn-bg: color-mix(in oklab, var(--fg-base) 10%, var(--smooth-100));
-  --btn-text: color-mix(in oklab, var(--fg-base) 88%, transparent);
-  --btn-border-hover: color-mix(in oklab, var(--fg-base) 38%, transparent);
-  --btn-bg-hover: color-mix(in oklab, var(--fg-base) 14%, var(--smooth-100));
-
-  /* Floating glass nav (pill) */
-  --nav-pill-bg: rgba(10, 8, 16, 0.14);
-  --nav-pill-border: rgba(255, 255, 255, 0.18);
-  --nav-pill-highlight: rgba(255, 255, 255, 0.12);
-  --nav-pill-specular: rgba(255, 255, 255, 0.5);
-  --nav-pill-shadow: 0 12px 40px rgba(0, 0, 0, 0.28), 0 2px 10px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px rgba(0, 0, 0, 0.22);
-  --nav-pill-link: rgba(255, 255, 255, 0.78);
-  --nav-pill-link-active: #ffffff;
-  --nav-pill-title: rgba(255, 255, 255, 0.95);
-
-  --logo-color: #ffffff;
-
-  /* Background effects removed: no noise, no grid */
-}
-
-/* Light (reference warm paper) */
-html.light {
-  color-scheme: light;
-  --bg-base: #fbfbfe;
-  --fg-base: #14121b;
-  --smooth-50: #fbfbfe;
-  --smooth-100: #f5f5fb;
-  --smooth-200: #efeff8;
-  --bg: var(--bg-base);
-  --bg-elevated: var(--smooth-100);
-  --text: var(--fg-base);
-  --text-muted: color-mix(in oklab, var(--fg-base) 52%, transparent);
-  --border: color-mix(in oklab, var(--fg-base) 2.5%, transparent);
-  --separator-stroke: color-mix(in oklab, var(--fg-base) 10%, transparent);
-  --separator-stroke-strong: color-mix(in oklab, var(--fg-base) 20%, transparent);
-  --link: var(--color-brand);
-  --link-hover: var(--color-brand-secondary);
-  --accent-soft: color-mix(in oklab, var(--fg-base) 6%, transparent);
+  --accent-soft: rgba(156, 74, 33, 0.14);
   --glass-bg: color-mix(in oklab, var(--smooth-100) 50%, transparent);
   --btn-border: color-mix(in oklab, var(--fg-base) 16%, transparent);
   --btn-bg: color-mix(in oklab, var(--smooth-100) 94%, transparent);
@@ -121,19 +80,58 @@ html.light {
   --btn-border-hover: color-mix(in oklab, var(--fg-base) 26%, transparent);
   --btn-bg-hover: color-mix(in oklab, var(--smooth-100) 96%, var(--fg-base) 4%);
 
+  /* Floating glass nav (pill) */
   --nav-pill-bg: rgba(255, 255, 255, 0.22);
-  --nav-pill-border: rgba(20, 18, 27, 0.1);
+  --nav-pill-border: rgba(33, 30, 25, 0.1);
   --nav-pill-highlight: rgba(255, 255, 255, 0.6);
   --nav-pill-specular: rgba(255, 255, 255, 0.85);
   --nav-pill-shadow: 0 14px 44px rgba(0, 0, 0, 0.1), 0 2px 12px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 1px rgba(20, 18, 27, 0.06);
-  --nav-pill-link: color-mix(in oklab, var(--fg-base) 68%, transparent);
+    inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 1px rgba(33, 30, 25, 0.06);
+  --nav-pill-link: #5b564c;
   --nav-pill-link-active: var(--fg-base);
   --nav-pill-title: var(--fg-base);
 
   --logo-color: var(--fg-base);
+}
 
-  /* Background effects removed: no noise, no grid */
+/* Dark ink theme */
+html.dark {
+  color-scheme: dark;
+  --color-brand: #cf8355;
+  --color-brand-secondary: #e09a6a;
+  --bg-base: #18160f;
+  --fg-base: #eae5d8;
+  --smooth-50: #18160f;
+  --smooth-100: #201d15;
+  --smooth-200: #2d2a20;
+  --bg: var(--bg-base);
+  --bg-elevated: var(--smooth-100);
+  --text: var(--fg-base);
+  --text-muted: #7b7565;
+  --border: #2d2a20;
+  --separator-stroke: #2d2a20;
+  --separator-stroke-strong: #45402f;
+  --link: var(--color-brand);
+  --link-hover: var(--color-brand-secondary);
+  --accent-soft: rgba(207, 131, 85, 0.16);
+  --glass-bg: color-mix(in oklab, var(--smooth-100) 50%, transparent);
+  --btn-border: color-mix(in oklab, var(--fg-base) 24%, transparent);
+  --btn-bg: color-mix(in oklab, var(--fg-base) 10%, var(--smooth-100));
+  --btn-text: color-mix(in oklab, var(--fg-base) 88%, transparent);
+  --btn-border-hover: color-mix(in oklab, var(--fg-base) 38%, transparent);
+  --btn-bg-hover: color-mix(in oklab, var(--fg-base) 14%, var(--smooth-100));
+
+  --nav-pill-bg: rgba(24, 22, 15, 0.14);
+  --nav-pill-border: rgba(234, 229, 216, 0.18);
+  --nav-pill-highlight: rgba(234, 229, 216, 0.12);
+  --nav-pill-specular: rgba(234, 229, 216, 0.5);
+  --nav-pill-shadow: 0 12px 40px rgba(0, 0, 0, 0.28), 0 2px 10px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(234, 229, 216, 0.18), inset 0 -1px 1px rgba(0, 0, 0, 0.22);
+  --nav-pill-link: rgba(234, 229, 216, 0.78);
+  --nav-pill-link-active: #eae5d8;
+  --nav-pill-title: rgba(234, 229, 216, 0.95);
+
+  --logo-color: #eae5d8;
 }
 
 html {
@@ -152,39 +150,10 @@ body {
   transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
 }
 
-/* Global background finish (prevents blob band seam). */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.12;
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%20viewBox='0%200%20180%20180'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='.9'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='180'%20height='180'%20filter='url(%23n)'%20opacity='.55'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 240px 240px;
-  mix-blend-mode: overlay;
-  filter: contrast(130%) brightness(115%);
-}
-
+/* Paper theme: clean flat background (no noise or vignette overlays). */
+body::before,
 body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.55;
-  background:
-    radial-gradient(1200px 700px at 50% 0%, transparent 25%, color-mix(in oklab, var(--bg) 42%, transparent) 72%),
-    radial-gradient(1200px 700px at 50% 100%, transparent 18%, color-mix(in oklab, var(--bg) 55%, transparent) 74%);
-}
-
-html.light body::before {
-  opacity: 0.1;
-}
-
-html.light body::after {
-  opacity: 0.35;
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -290,7 +259,7 @@ html.light body::after {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--color-brand) 38%, transparent);
+  background: var(--accent-soft);
   color: var(--text);
 }
 
@@ -405,15 +374,15 @@ main.editorial-shell::after {
   --glass-refraction-level: 1;
   --glass-magnify: 0;
   /* Background — UIBlurEffect dark/light */
-  --glass-bg-brightness: 1;
+  --glass-bg-brightness: 1.06;
   /* Optics */
-  --glass-blur: 24px;
+  --glass-blur: 20px;
   --glass-blur-opacity: 1;
   --glass-progressive-blur: 0.38;
   /* Frosted tint */
   --glass-color: 255, 255, 255;
-  --glass-bg-opacity: 0.1;
-  --glass-pressed-bg-opacity: 0.18;
+  --glass-bg-opacity: 0.42;
+  --glass-pressed-bg-opacity: 0.52;
   /* Liquid interaction */
   --glass-press-scale: 1.16;
   --glass-press-refraction: 1.28;
@@ -452,7 +421,7 @@ main.editorial-shell::after {
 }
 
 .bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__surface--dome {
-  opacity: calc(var(--glass-refraction-level) * 0.28 * var(--glass-press-refraction));
+  opacity: calc(var(--glass-refraction-level) * 0.1 * var(--glass-press-refraction));
 }
 
 .bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__blur--base,
@@ -460,12 +429,20 @@ main.editorial-shell::after {
   background: rgba(var(--glass-color), var(--glass-pressed-bg-opacity));
 }
 
-html.light .bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__surface--dome {
-  opacity: calc(var(--glass-refraction-level) * 0.1 * var(--glass-press-refraction));
+html.dark .bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__surface--dome {
+  opacity: calc(var(--glass-refraction-level) * 0.28 * var(--glass-press-refraction));
 }
 
 .bento-header__pill.nav-glass:hover .nav-glass__stack {
   border-color: color-mix(in oklab, var(--nav-pill-border) 80%, var(--color-brand));
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.12),
+    0 4px 14px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(33, 30, 25, 0.08);
+}
+
+html.dark .bento-header__pill.nav-glass:hover .nav-glass__stack {
   box-shadow:
     0 16px 48px rgba(0, 0, 0, 0.32),
     0 4px 14px rgba(0, 0, 0, 0.2),
@@ -473,19 +450,11 @@ html.light .bento-header__pill.nav-glass.nav-glass--pressed .nav-glass__surface-
     inset 0 -1px 1px rgba(0, 0, 0, 0.24);
 }
 
-html.light .bento-header__pill.nav-glass:hover .nav-glass__stack {
-  box-shadow:
-    0 16px 44px rgba(0, 0, 0, 0.12),
-    0 4px 14px rgba(0, 0, 0, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px rgba(20, 18, 27, 0.08);
-}
-
-html.light .bento-header__pill.nav-glass {
-  --glass-bg-opacity: 0.42;
-  --glass-pressed-bg-opacity: 0.52;
-  --glass-blur: 20px;
-  --glass-bg-brightness: 1.06;
+html.dark .bento-header__pill.nav-glass {
+  --glass-bg-brightness: 1;
+  --glass-bg-opacity: 0.1;
+  --glass-pressed-bg-opacity: 0.18;
+  --glass-blur: 24px;
 }
 
 .nav-glass__stack {
@@ -538,11 +507,6 @@ html.light .bento-header__pill.nav-glass {
   background-size: 120px 120px;
   pointer-events: none;
 }
-
-html.light .nav-glass__blur--base {
-  background: rgba(var(--glass-color), var(--glass-bg-opacity));
-}
-
 /* Progressive blur 0.20 · mode: edge falloff */
 .nav-glass__blur--edge {
   opacity: calc(var(--glass-blur-opacity) * var(--glass-progressive-blur));
@@ -560,8 +524,25 @@ html.light .nav-glass__blur--base {
 
 /* Surface profile 4 — convex dome displacement (refraction level 1.0) */
 .nav-glass__surface--dome {
-  opacity: calc(var(--glass-refraction-level) * 0.22);
+  opacity: calc(var(--glass-refraction-level) * 0.1);
   transition: opacity var(--glass-motion, 0.45s) cubic-bezier(0.34, 1.56, 0.64, 1);
+  background:
+    radial-gradient(
+      ellipse 88% 160% at 50% 28%,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.08) 38%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 105% 130% at 50% 100%,
+      rgba(33, 30, 25, 0.04) 0%,
+      transparent 52%
+    );
+  mix-blend-mode: soft-light;
+}
+
+html.dark .nav-glass__surface--dome {
+  opacity: calc(var(--glass-refraction-level) * 0.22);
   background:
     radial-gradient(
       ellipse 88% 160% at 50% 28%,
@@ -574,36 +555,10 @@ html.light .nav-glass__blur--base {
       rgba(0, 0, 0, 0.06) 0%,
       transparent 52%
     );
-  mix-blend-mode: soft-light;
-}
-
-html.light .nav-glass__surface--dome {
-  opacity: calc(var(--glass-refraction-level) * 0.1);
-  background:
-    radial-gradient(
-      ellipse 88% 160% at 50% 28%,
-      rgba(255, 255, 255, 0.35) 0%,
-      rgba(255, 255, 255, 0.08) 38%,
-      transparent 58%
-    ),
-    radial-gradient(
-      ellipse 105% 130% at 50% 100%,
-      rgba(20, 18, 27, 0.04) 0%,
-      transparent 52%
-    );
 }
 
 .nav-glass__tint {
   opacity: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(var(--glass-color), 0.18) 0%,
-    rgba(var(--glass-color), 0.06) 42%,
-    rgba(var(--glass-color), 0.02) 100%
-  );
-}
-
-html.light .nav-glass__tint {
   background: linear-gradient(
     180deg,
     rgba(var(--glass-color), 0.55) 0%,
@@ -612,21 +567,30 @@ html.light .nav-glass__tint {
   );
 }
 
+html.dark .nav-glass__tint {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--glass-color), 0.18) 0%,
+    rgba(var(--glass-color), 0.06) 42%,
+    rgba(var(--glass-color), 0.02) 100%
+  );
+}
+
 /* Bezel width 0 = minimum rim */
 .nav-glass__bezel {
+  box-shadow:
+    inset 0 0 0 var(--glass-bezel-inset) rgba(255, 255, 255, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(33, 30, 25, calc(0.04 + var(--glass-bezel-width) * 0.0004));
+}
+
+html.dark .nav-glass__bezel {
   box-shadow:
     inset 0 0 0 var(--glass-bezel-inset) rgba(255, 255, 255, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, calc(0.28 + var(--glass-bezel-width) * 0.002)),
     inset 0 -1px 0 rgba(0, 0, 0, calc(0.12 + var(--glass-bezel-width) * 0.0015)),
     inset 1px 0 0 rgba(255, 255, 255, calc(0.06 + var(--glass-bezel-width) * 0.0008)),
     inset -1px 0 0 rgba(255, 255, 255, calc(0.06 + var(--glass-bezel-width) * 0.0008));
-}
-
-html.light .nav-glass__bezel {
-  box-shadow:
-    inset 0 0 0 var(--glass-bezel-inset) rgba(255, 255, 255, 0.82),
-    inset 0 1px 0 rgba(255, 255, 255, 0.96),
-    inset 0 -1px 0 rgba(20, 18, 27, calc(0.04 + var(--glass-bezel-width) * 0.0004));
 }
 
 /* Static top-edge specular */
@@ -662,15 +626,15 @@ html.light .nav-glass__bezel {
 }
 
 .bento-header__pill:not(.nav-glass):hover {
-  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.38), 0 4px 16px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
-  border-color: color-mix(in oklab, var(--nav-pill-border) 80%, var(--color-brand));
-}
-
-html.light .bento-header__pill:not(.nav-glass):hover {
   box-shadow: 0 14px 48px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
   border-color: color-mix(in oklab, var(--nav-pill-border) 75%, var(--color-brand));
+}
+
+html.dark .bento-header__pill:not(.nav-glass):hover {
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.38), 0 4px 16px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  border-color: color-mix(in oklab, var(--nav-pill-border) 80%, var(--color-brand));
 }
 
 .bento-header__brand {
@@ -778,11 +742,11 @@ html.light .bento-header__pill:not(.nav-glass):hover {
   height: 1.125rem;
 }
 
-html:not(.light) .theme-icon--sun {
+html:not(.dark) .theme-icon--sun {
   display: none;
 }
 
-html.light .theme-icon--moon {
+html.dark .theme-icon--moon {
   display: none;
 }
 
@@ -972,37 +936,7 @@ html.light .theme-icon--moon {
 
 .editorial-hero::before,
 .editorial-glow-block::before {
-  content: "";
-  position: absolute;
-  inset: -160px -22% -260px;
-  pointer-events: none;
-  z-index: -1;
-  background:
-    radial-gradient(
-      720px 420px at 10% 8%,
-      rgba(180, 140, 255, 0.22),
-      rgba(180, 140, 255, 0.08) 42%,
-      rgba(180, 140, 255, 0.03) 62%,
-      transparent 82%
-    ),
-    radial-gradient(
-      720px 420px at 90% 10%,
-      rgba(140, 100, 255, 0.16),
-      rgba(140, 100, 255, 0.06) 44%,
-      rgba(140, 100, 255, 0.02) 64%,
-      transparent 84%
-    ),
-    radial-gradient(
-      900px 520px at 52% 38%,
-      rgba(124, 77, 255, 0.08),
-      rgba(124, 77, 255, 0.03) 46%,
-      rgba(124, 77, 255, 0.01) 66%,
-      transparent 86%
-    );
-  opacity: 0.95;
-  will-change: transform, filter;
-  transform: translateZ(0);
-  animation: editorial-hero-warp 18s ease-in-out infinite;
+  display: none;
 }
 
 .editorial-hero .editorial-avatar {
@@ -1336,18 +1270,18 @@ html.light .theme-icon--moon {
   --cone-spread: 25;
   --fill-opacity: 0.45;
 
-  --glow-color: hsl(40deg 80% 80% / 100%);
-  --glow-color-60: hsl(40deg 80% 80% / 60%);
-  --glow-color-50: hsl(40deg 80% 80% / 50%);
-  --glow-color-40: hsl(40deg 80% 80% / 40%);
-  --glow-color-30: hsl(40deg 80% 80% / 30%);
-  --glow-color-20: hsl(40deg 80% 80% / 20%);
-  --glow-color-10: hsl(40deg 80% 80% / 10%);
+  --glow-color: hsl(24deg 55% 72% / 100%);
+  --glow-color-60: hsl(24deg 55% 72% / 60%);
+  --glow-color-50: hsl(24deg 55% 72% / 50%);
+  --glow-color-40: hsl(24deg 55% 72% / 40%);
+  --glow-color-30: hsl(24deg 55% 72% / 30%);
+  --glow-color-20: hsl(24deg 55% 72% / 20%);
+  --glow-color-10: hsl(24deg 55% 72% / 10%);
 
-  --gradient-one: radial-gradient(at 80% 55%, #c084fc 0px, transparent 50%);
-  --gradient-two: radial-gradient(at 69% 34%, #f472b6 0px, transparent 50%);
-  --gradient-three: radial-gradient(at 8% 6%, #38bdf8 0px, transparent 50%);
-  --gradient-four: radial-gradient(at 41% 38%, #c084fc 0px, transparent 50%);
+  --gradient-one: radial-gradient(at 80% 55%, #cf8355 0px, transparent 50%);
+  --gradient-two: radial-gradient(at 69% 34%, #d4a574 0px, transparent 50%);
+  --gradient-three: radial-gradient(at 8% 6%, #9c4a21 0px, transparent 50%);
+  --gradient-four: radial-gradient(at 41% 38%, #e09a6a 0px, transparent 50%);
   --gradient-five: radial-gradient(at 86% 85%, #f472b6 0px, transparent 50%);
   --gradient-six: radial-gradient(at 82% 18%, #38bdf8 0px, transparent 50%);
   --gradient-seven: radial-gradient(at 51% 4%, #f472b6 0px, transparent 50%);
@@ -1393,7 +1327,7 @@ html.light .theme-icon--moon {
   transform: translate3d(0, 0, 0.01px);
   display: grid;
   border: 1px solid rgb(140 140 140 / 15%);
-  background: var(--card-bg, #120f17);
+  background: var(--card-bg, var(--bg-elevated));
   overflow: visible;
   box-shadow:
     rgba(0, 0, 0, 0.1) 0px 1px 2px,
@@ -1430,7 +1364,7 @@ html.light .theme-icon--moon {
 .border-glow-card::before {
   border: 1px solid transparent;
   background:
-    linear-gradient(var(--card-bg, #120f17) 0 100%) padding-box,
+    linear-gradient(var(--card-bg, var(--bg-elevated)) 0 100%) padding-box,
     linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
     var(--gradient-one) border-box,
     var(--gradient-two) border-box,
@@ -1668,7 +1602,7 @@ a.editorial-more-link:focus-visible {
   object-fit: contain;
 }
 
-html:not(.light) .editorial-toolkit-icon img[src*="cursor.svg"] {
+html.dark .editorial-toolkit-icon img[src*="cursor.svg"] {
   filter: brightness(0) invert(1);
   opacity: 0.92;
 }
@@ -1775,13 +1709,13 @@ html:not(.light) .editorial-toolkit-icon img[src*="cursor.svg"] {
 }
 
 .editorial-build-tag--accent {
-  border-color: color-mix(in oklab, #d97757 55%, transparent);
-  color: #d97757;
+  border-color: color-mix(in oklab, var(--color-brand) 55%, transparent);
+  color: var(--color-brand);
 }
 
-html.light .editorial-build-tag--accent {
-  border-color: color-mix(in oklab, #c45c3a 45%, transparent);
-  color: #b45309;
+html.dark .editorial-build-tag--accent {
+  border-color: color-mix(in oklab, var(--color-brand) 45%, transparent);
+  color: var(--color-brand);
 }
 
 .editorial-toolkit-icon:hover::after,
@@ -2183,15 +2117,15 @@ html.light .editorial-build-tag--accent {
 /* ——— GitHub activity ——— */
 .github-activity {
   padding: 0 0 0;
-  --gh-empty: rgba(244, 245, 247, 0.10);
+  --gh-empty: rgba(33, 30, 25, 0.08);
   --gh-l1: color-mix(in oklab, var(--color-brand) 22%, transparent);
   --gh-l2: color-mix(in oklab, var(--color-brand) 40%, transparent);
   --gh-l3: color-mix(in oklab, var(--color-brand) 60%, transparent);
   --gh-l4: color-mix(in oklab, var(--color-brand) 82%, transparent);
 }
 
-html.light .github-activity {
-  --gh-empty: rgba(20, 18, 27, 0.14);
+html.dark .github-activity {
+  --gh-empty: rgba(234, 229, 216, 0.09);
 }
 
 .github-activity-embed {

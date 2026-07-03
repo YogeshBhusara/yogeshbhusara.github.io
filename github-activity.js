@@ -14,9 +14,9 @@
   function getBrandHex() {
     const root = document.documentElement;
     const value = getComputedStyle(root).getPropertyValue('--color-brand').trim();
-    // Expect hex like #8b5cf6; fallback to brand if parsing fails.
+    // Expect hex like #9c4a21; fallback to brand if parsing fails.
     const match = value.match(/^#?([0-9a-fA-F]{6})$/);
-    return match ? match[1] : '8b5cf6';
+    return match ? match[1] : '9c4a21';
   }
 
   function getUrl() {
