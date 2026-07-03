@@ -1,5 +1,6 @@
 /**
- * work-page.js — Work page: list render, detail modal, and next-project navigation.
+ * work-page.js — Work index rendering (home + work page) and the
+ * case-study overlay (document-style, with section numbers and TOC).
  */
 (function() {
     const workList = document.getElementById('work-list');
@@ -9,6 +10,8 @@
 
     // Work data (shared via work-data.js)
     const works = (window.PORTFOLIO_WORKS || []);
+
+    let lastFocusedElement = null;
 
     function getWorkDetailScrollRoot() {
         return workDetail ? workDetail.querySelector('.work-detail-content') : null;
@@ -28,59 +31,62 @@
             .replace(/"/g, '&quot;');
     }
 
-    // Render work list (same layout / classes as blog vertical list: text column + linked thumb)
+    function pad2(n) {
+        return String(n).padStart(2, '0');
+    }
+
+    function workArea(work) {
+        if (work.area) return work.area;
+        return work.meta ? work.meta.split(' · ')[0] : (work.category || '');
+    }
+
+    /** One editorial index entry. `withThumb` adds a small image on wide screens. */
+    function renderIndexEntry(work, index, withThumb) {
+        const li = document.createElement('li');
+        li.className = 'index-entry' + (withThumb ? ' index-entry--thumb' : '');
+
+        const imgSrc = withThumb && work.images && work.images[0] ? work.images[0] : '';
+        const thumb = imgSrc
+            ? '<img class="index-entry__thumb" src="' + escapeHtml(imgSrc) +
+              '" alt="" width="220" height="165" loading="lazy" decoding="async">'
+            : '';
+
+        li.innerHTML =
+            '<button type="button" class="index-entry__link" data-work-id="' + escapeHtml(work.id) + '">' +
+                '<span class="index-entry__num" aria-hidden="true">' + pad2(index + 1) + '</span>' +
+                '<span class="index-entry__main">' +
+                    '<span class="index-entry__title">' + escapeHtml(work.title) + '</span>' +
+                    (work.description
+                        ? '<span class="index-entry__context">' + escapeHtml(work.description) + '</span>'
+                        : '') +
+                '</span>' +
+                '<span class="index-entry__meta">' +
+                    '<span class="index-entry__area">' + escapeHtml(workArea(work)) + '</span>' +
+                    '<span class="index-entry__year">' + escapeHtml([work.category, work.year].filter(Boolean).join(' · ')) + '</span>' +
+                '</span>' +
+                thumb +
+            '</button>';
+
+        return li;
+    }
+
+    // Work page: full index with thumbnails
     function renderWorkList() {
         if (!workList) return;
-
         workList.innerHTML = '';
-        const ul = document.createElement('ul');
-        ul.className = 'blog-posts-list';
-
-        works.forEach((work) => {
-            const li = document.createElement('li');
-            li.className = 'blog-posts-item';
-
-            const category = work.meta ? work.meta.split(' · ')[0] : work.category;
-            const categoryHtml = category
-                ? '<span class="blog-posts-date">' + escapeHtml(category) + '</span>'
-                : '';
-            const desc = work.description
-                ? '<p class="blog-posts-desc">' + escapeHtml(work.description) + '</p>'
-                : '';
-
-            const imgSrc = work.images && work.images[0] ? work.images[0] : '';
-            const thumbInner = imgSrc
-                ? '<img class="blog-posts-thumb__img" src="' +
-                  escapeHtml(imgSrc) +
-                  '" alt="" loading="lazy" decoding="async" width="220" height="160">'
-                : '<div class="blog-posts-thumb__grad" aria-hidden="true"></div>';
-
-            const thumbLabel = 'Open ' + work.title;
-            const thumb =
-                '<a href="#" class="blog-posts-thumb" data-work-id="' +
-                escapeHtml(work.id) +
-                '" aria-label="' +
-                escapeHtml(thumbLabel) +
-                '">' +
-                thumbInner +
-                '</a>';
-
-            li.innerHTML =
-                '<div class="blog-posts-main">' +
-                categoryHtml +
-                '<a href="#" class="blog-posts-link" data-work-id="' +
-                escapeHtml(work.id) +
-                '">' +
-                escapeHtml(work.title) +
-                '</a>' +
-                desc +
-                '</div>' +
-                thumb;
-
-            ul.appendChild(li);
+        works.forEach((work, i) => {
+            workList.appendChild(renderIndexEntry(work, i, true));
         });
+    }
 
-        workList.appendChild(ul);
+    // Home: compact index (no thumbnails) — first 3 only; full list on work.html
+    function renderHomeProjectList() {
+        const el = document.getElementById('home-project-list');
+        if (!el || !works.length) return;
+        el.innerHTML = '';
+        works.slice(0, 3).forEach((work, i) => {
+            el.appendChild(renderIndexEntry(work, i, false));
+        });
     }
 
     // Open work detail
@@ -89,6 +95,10 @@
         const work = works.find(w => w.id === workId);
         if (!work) return;
 
+        if (workDetail.getAttribute('aria-hidden') !== 'false') {
+            lastFocusedElement = document.activeElement;
+        }
+
         renderWorkDetail(work);
         resetWorkDetailScroll();
 
@@ -96,21 +106,7 @@
             workDetail.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
             resetWorkDetailScroll();
-
-            if (typeof gsap !== 'undefined') {
-                const elements = document.querySelectorAll('.work-detail-header, .work-detail-section, .work-detail-image-wrapper, .work-detail-navigation');
-                gsap.fromTo(elements,
-                    { opacity: 0, y: 20 },
-                    { 
-                        opacity: 1, 
-                        y: 0, 
-                        duration: 0.5, 
-                        stagger: 0.08, 
-                        delay: 0.15,
-                        ease: 'power2.out'
-                    }
-                );
-            }
+            if (workDetailClose) workDetailClose.focus();
         });
     }
 
@@ -177,6 +173,18 @@
         return paragraphs.map(p => `<p>${p}</p>`).join('');
     }
 
+    function renderFigure(src, figNumber, contextTitle, workTitle) {
+        const caption = contextTitle
+            ? 'Fig. ' + pad2(figNumber) + ' — ' + contextTitle
+            : 'Fig. ' + pad2(figNumber);
+        return `
+            <figure class="work-detail-figure">
+                <img src="${escapeHtml(src)}" alt="${escapeHtml(workTitle + ' — ' + (contextTitle || 'product screen'))}" loading="lazy" decoding="async">
+                <figcaption>${escapeHtml(caption)}</figcaption>
+            </figure>
+        `;
+    }
+
     // Render work detail
     function renderWorkDetail(work) {
         const currentIndex = works.findIndex(w => w.id === work.id);
@@ -200,6 +208,35 @@
             })
             .join('');
 
+        let figNumber = 0;
+
+        const sectionsHtml = sections.map((section, index) => {
+            let html = `
+                <section class="work-detail-section" id="${escapeHtml(section.id)}">
+                    <h2 class="work-detail-section-title">
+                        <span class="section-num" aria-hidden="true">${pad2(index + 1)}</span>
+                        ${escapeHtml(section.title)}
+                    </h2>
+                    <div class="work-detail-section-content">
+                        ${renderRichText(section.content)}
+                    </div>
+                </section>
+            `;
+            if (work.images && work.images[index]) {
+                figNumber += 1;
+                html += renderFigure(work.images[index], figNumber, section.title, work.title);
+            }
+            return html;
+        }).join('');
+
+        const remainingImages = (Array.isArray(work.images) ? work.images : [])
+            .slice(sections.length)
+            .map((img) => {
+                figNumber += 1;
+                return renderFigure(img, figNumber, '', work.title);
+            })
+            .join('');
+
         workDetailInner.innerHTML = `
             ${toc ? `
                 <nav class="work-detail-toc" aria-label="Case study sections">
@@ -207,46 +244,26 @@
                 </nav>
             ` : ''}
 
-            <div class="work-detail-header">
-                <h1 class="work-detail-title" id="work-detail-title">${escapeHtml(work.title)}</h1>
+            <header class="work-detail-header">
                 <div class="work-detail-meta">
-                    <span class="work-detail-tag">${escapeHtml(work.year)}</span>
-                    <span class="work-detail-tag">${escapeHtml(work.category)}</span>
+                    <span class="work-detail-tag">${escapeHtml(workArea(work))}</span>
+                    <span class="work-detail-tag">${escapeHtml(work.category || '')}</span>
+                    <span class="work-detail-tag">${escapeHtml(work.year || '')}</span>
                 </div>
+                <h1 class="work-detail-title" id="work-detail-title">${escapeHtml(work.title)}</h1>
                 <p class="work-detail-description">${escapeHtml(headerDescription)}</p>
-            </div>
-            
-            ${sections.map((section, index) => {
-                const bodyHtml = renderRichText(section.content);
+            </header>
 
-                return `
-                    <div class="work-detail-section" id="${escapeHtml(section.id)}">
-                        <h2 class="work-detail-section-title">${escapeHtml(section.title)}</h2>
-                        <div class="work-detail-section-content">
-                            ${bodyHtml}
-                        </div>
-                    </div>
-                    ${work.images && work.images[index] ? `
-                        <div class="work-detail-image-wrapper">
-                            <img src="${escapeHtml(work.images[index])}" alt="${escapeHtml(work.title)}" class="work-detail-image" loading="lazy">
-                        </div>
-                    ` : ''}
-                `;
-            }).join('')}
-            
-            ${(Array.isArray(work.images) ? work.images : []).slice(sections.length).map(img => `
-                <div class="work-detail-image-wrapper">
-                    <img src="${escapeHtml(img)}" alt="${escapeHtml(work.title)}" class="work-detail-image" loading="lazy">
-                </div>
-            `).join('')}
-            
+            ${sectionsHtml}
+            ${remainingImages}
+
             <div class="work-detail-navigation">
                 <button class="work-detail-next" data-next-id="${escapeHtml(nextWork.id)}">
-                    Next Project →
+                    Next: ${escapeHtml(nextWork.title)} →
                 </button>
             </div>
         `;
-        
+
         const nextButton = workDetailInner.querySelector('.work-detail-next');
         if (nextButton) {
             nextButton.addEventListener('click', () => {
@@ -383,7 +400,7 @@
 
         let clickScrollWatchCleanup = null;
 
-        // Click: scroll within modal (not window)
+        // Click: scroll within overlay (not window)
         links.forEach((link) => {
             link.addEventListener('click', (e) => {
                 const id = link.getAttribute('data-toc-target') || link.getAttribute('href')?.replace(/^#/, '');
@@ -430,9 +447,11 @@
         if (!workDetail) return;
         workDetail.setAttribute('aria-hidden', 'true');
         resetWorkDetailScroll();
-        setTimeout(() => {
-            document.body.style.overflow = '';
-        }, 400);
+        document.body.style.overflow = '';
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+            lastFocusedElement = null;
+        }
     }
 
     // Event listeners
@@ -453,54 +472,20 @@
         }
     });
 
-    function renderHomeProjectList() {
-        const el = document.getElementById('home-project-list');
-        if (!el || !works.length) return;
-        el.innerHTML = '';
-        el.className = 'home-projects-scroller';
-        works.forEach((work) => {
-            const category = work.meta ? work.meta.split(' · ')[0] : (work.category || '');
-            const imgSrc = work.images && work.images[0] ? work.images[0] : '';
-            const a = document.createElement('a');
-            a.href = '#';
-            a.className = 'home-project-card';
-            a.dataset.workId = work.id;
-            a.setAttribute('role', 'listitem');
-
-            const media = imgSrc
-                ? '<div class="home-project-card__media"><img src="' +
-                  escapeHtml(imgSrc) +
-                  '" alt="' +
-                  escapeHtml(work.title) +
-                  '" width="480" height="360" loading="lazy" decoding="async"></div>'
-                : '<div class="home-project-card__media home-project-card__media--placeholder" aria-hidden="true"></div>';
-
-            a.innerHTML =
-                media +
-                '<div class="home-project-card__body">' +
-                (category
-                    ? '<span class="home-project-card__meta">' + escapeHtml(category) + '</span>'
-                    : '') +
-                '<span class="home-project-card__title">' + escapeHtml(work.title) + '</span></div>';
-
-            el.appendChild(a);
-        });
-    }
-
     // Initialize
     renderWorkList();
     renderHomeProjectList();
 
-    // Bento / index: open work detail when clicking any [data-work-id]
+    // Open the case study for any [data-work-id] trigger
     document.body.addEventListener('click', function(e) {
-        const el = e.target.closest('a[data-work-id], [data-work-id]');
+        const el = e.target.closest('[data-work-id]');
         if (el && el.dataset.workId) {
             e.preventDefault();
             openWorkDetail(el.dataset.workId);
         }
     });
 
-    // Check if we need to open a specific work detail from carousel
+    // Deep link from another page
     const openWorkId = sessionStorage.getItem('openWorkId');
     if (openWorkId) {
         sessionStorage.removeItem('openWorkId');

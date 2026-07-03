@@ -9,17 +9,9 @@ module.exports = {
   output: './.purgecss-out',
   safelist: [
     // Classes toggled/added at runtime (JS)
-    'has-custom-cursor',
-    'is-hover',
-    'is-hidden',
-    'variable-proximity-ready',
-    'is-active',
-    'reveal-reduced',
+    'dark',
     'reveal',
     'is-revealed',
-    'light',
-    'hc-modal--entering',
-    'is-dragging'
+    'work-detail-toc__link--active'
   ]
 };
-

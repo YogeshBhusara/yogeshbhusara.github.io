@@ -24,6 +24,7 @@
         'A full content planning layer on top of an existing publishing system — calendar view, Post Ideas, unplanned holding area, drag-and-drop scheduling, conflict warnings, and CSV import — without changing underlying publish behaviour.',
       year: '2024',
       category: 'Product Design',
+      area: 'Enterprise SaaS / Intranet',
       sections: [
         {
           title: 'Background',
@@ -117,6 +118,7 @@
         'A scalable dashboard management system — audience-targeted dashboards, delegated ownership, preview and publishing workflows, web and mobile experiences, and assignment hierarchy for users in multiple segments.',
       year: '2024',
       category: 'Product Design',
+      area: 'Enterprise SaaS / Intranet',
       sections: [
         {
           title: 'Background',
@@ -225,6 +227,7 @@
         'A reusable approval system on a generic workflow engine — centralized governance for Posts, Pages, Wikis, and Documents while preserving familiar creation flows for authors and approvers.',
       year: '2024',
       category: 'Product Design',
+      area: 'Enterprise SaaS / Governance',
       sections: [
         {
           title: 'Overview',
@@ -315,6 +318,7 @@
         'V2 expansion of centralized task orchestration — tracker-to-task automation, user-level distribution, approval previews, role-scoped execution visibility, bulk audience selection, and admin-configurable task tabs — for distributed retail operations at scale.',
       year: '2024',
       category: 'Product Design',
+      area: 'Enterprise SaaS / Productivity',
       sections: [
         {
           title: 'Background',
@@ -406,6 +410,7 @@
       description: 'Dock-free e-bike sharing app for Indian cities.',
       year: '2022',
       category: 'Mobile Design',
+      area: 'Mobility / Consumer App',
       sections: [
         {
           title: 'The Brief',
@@ -492,6 +497,7 @@
         'Delivered a complete brand system from zero — wordmark, colour, type, illustration system, and website architecture — for an engineering-first ML company shipping models to production.',
       year: '2024',
       category: 'Brand Identity',
+      area: 'Branding / AI Services',
       sections: [
         {
           title: 'Brand Context',
