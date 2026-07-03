@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="SwiftUI Effects">
+  <rect width="400" height="400" fill="#07060a"/>
+  <circle cx="120" cy="140" r="55" fill="#8b5cf6" opacity="0.85"/>
+  <circle cx="200" cy="110" r="45" fill="#22d3ee" opacity="0.75"/>
+  <circle cx="290" cy="150" r="50" fill="#f472b6" opacity="0.8"/>
+  <circle cx="160" cy="220" r="40" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="260" cy="230" r="48" fill="#34d399" opacity="0.75"/>
+  <path d="M60 300 Q120 240 180 300 T300 300" fill="none" stroke="#818cf8" stroke-width="4" opacity="0.6"/>
+  <path d="M80 320 Q160 260 240 320 T360 310" fill="none" stroke="#c084fc" stroke-width="3" opacity="0.5"/>
+  <g fill="#fff" opacity="0.35" font-family="ui-monospace,monospace" font-size="14">
+    <text x="55" y="80">A</text><text x="85" y="95">Z</text><text x="310" y="85">K</text>
+    <text x="330" y="110">9</text><text x="70" y="260">#</text><text x="320" y="280">*</text>
+  </g>
+  <text x="200" y="385" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="0.05em">SWIFTUI EFFECTS</text>
+</svg>

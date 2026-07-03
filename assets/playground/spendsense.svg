@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="SpendSense">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#042f2e"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg2)"/>
+  <circle cx="200" cy="175" r="90" fill="#10b981" opacity="0.15"/>
+  <circle cx="200" cy="175" r="70" fill="none" stroke="#10b981" stroke-width="3" opacity="0.5"/>
+  <text x="200" y="190" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="48" font-weight="700">�</text>
+  <rect x="80" y="280" width="40" height="60" rx="6" fill="#10b981" opacity="0.7"/>
+  <rect x="130" y="250" width="40" height="90" rx="6" fill="#34d399" opacity="0.8"/>
+  <rect x="180" y="265" width="40" height="75" rx="6" fill="#059669" opacity="0.75"/>
+  <rect x="230" y="235" width="40" height="105" rx="6" fill="#6ee7b7" opacity="0.85"/>
+  <rect x="280" y="255" width="40" height="85" rx="6" fill="#10b981" opacity="0.7"/>
+  <text x="200" y="385" text-anchor="middle" fill="#6ee7b7" font-family="system-ui,sans-serif" font-size="17" font-weight="600" letter-spacing="0.06em">SPENDSENSE</text>
+</svg>
