@@ -10,6 +10,8 @@
 
     const THEME_KEY = 'portfolio-theme';
     const DEFAULT_THEME = 'light';
+    const TRANSITION_MS = 460;
+    let transitionLock = false;
 
     function getTheme() {
         try {
@@ -30,9 +32,54 @@
         document.dispatchEvent(new Event('themechange'));
     }
 
+    function playThemeTransition(previousTheme) {
+        const overlay = document.createElement('div');
+        overlay.className = 'theme-transition-overlay theme-transition-overlay--' + previousTheme;
+        document.body.appendChild(overlay);
+
+        let finished = false;
+        const finish = function () {
+            if (finished) return;
+            finished = true;
+            overlay.remove();
+            transitionLock = false;
+            document.documentElement.classList.remove('is-theme-transitioning');
+        };
+
+        overlay.addEventListener(
+            'transitionend',
+            function (event) {
+                if (event.propertyName === 'opacity') finish();
+            },
+            { once: true }
+        );
+
+        window.setTimeout(finish, TRANSITION_MS);
+
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+                overlay.classList.add('is-dissolving');
+            });
+        });
+    }
+
     toggles.forEach(function (btn) {
         btn.addEventListener('click', function () {
-            setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+            const currentTheme = getTheme();
+            const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            if (
+                transitionLock ||
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ) {
+                setTheme(nextTheme);
+                return;
+            }
+
+            transitionLock = true;
+            document.documentElement.classList.add('is-theme-transitioning');
+            setTheme(nextTheme);
+            playThemeTransition(currentTheme);
         });
     });
 
