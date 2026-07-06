@@ -214,9 +214,10 @@
     const label = (heading.textContent || '').trim();
     if (!label) return;
 
+    const accentWord = (heading.getAttribute('data-accent-word') || '').trim();
     const radius = 120;
-    const fromSettings = { wght: 420, opsz: 12 };
-    const toSettings = { wght: 650, opsz: 20 };
+    const fromWeight = 500;
+    const toWeight = 650;
     const mouse = { x: -9999, y: -9999, active: false };
     const last = { x: null, y: null, active: false };
 
@@ -240,12 +241,15 @@
     label.split(' ').forEach(function (word, wordIndex, words) {
         const wordSpan = document.createElement('span');
         wordSpan.className = 'editorial-name__word';
+        if (accentWord && word === accentWord) {
+            wordSpan.classList.add('editorial-name__accent');
+        }
 
         Array.from(word).forEach(function (letter) {
             const span = document.createElement('span');
             span.className = 'editorial-name__letter';
             span.textContent = letter;
-            span.style.fontVariationSettings = '"wght" ' + fromSettings.wght + ', "opsz" ' + fromSettings.opsz;
+            span.style.fontWeight = String(fromWeight);
             wordSpan.appendChild(span);
             letterRefs[letterIndex++] = span;
         });
@@ -315,7 +319,7 @@
             if (!letterRef) return;
 
             if (!mouse.active) {
-                letterRef.style.fontVariationSettings = '"wght" ' + fromSettings.wght + ', "opsz" ' + fromSettings.opsz;
+                letterRef.style.fontWeight = String(fromWeight);
                 return;
             }
 
@@ -325,14 +329,13 @@
             const dist = distance(mouse.x, mouse.y, centerX, centerY);
 
             if (dist >= radius) {
-                letterRef.style.fontVariationSettings = '"wght" ' + fromSettings.wght + ', "opsz" ' + fromSettings.opsz;
+                letterRef.style.fontWeight = String(fromWeight);
                 return;
             }
 
             const amount = falloff(dist);
-            const wght = lerp(fromSettings.wght, toSettings.wght, amount);
-            const opsz = lerp(fromSettings.opsz, toSettings.opsz, amount);
-            letterRef.style.fontVariationSettings = '"wght" ' + wght + ', "opsz" ' + opsz;
+            const weight = Math.round(lerp(fromWeight, toWeight, amount));
+            letterRef.style.fontWeight = String(weight);
         });
 
         requestAnimationFrame(tick);
