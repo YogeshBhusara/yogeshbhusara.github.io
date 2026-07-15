@@ -10,6 +10,10 @@
 
     const THEME_KEY = 'portfolio-theme';
     const DEFAULT_THEME = 'light';
+    const THEME_COLORS = {
+        light: '#faf8f3',
+        dark: '#18160f'
+    };
 
     function getTheme() {
         try {
@@ -19,8 +23,16 @@
         }
     }
 
+    function syncThemeColor(theme) {
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+            meta.setAttribute('content', THEME_COLORS[theme] || THEME_COLORS.light);
+        }
+    }
+
     function setTheme(theme) {
         document.documentElement.classList.toggle('dark', theme === 'dark');
+        syncThemeColor(theme);
         try {
             localStorage.setItem(THEME_KEY, theme);
         } catch (e) { /* private mode */ }

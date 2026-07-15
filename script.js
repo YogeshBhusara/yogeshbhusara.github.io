@@ -25,7 +25,8 @@ document.addEventListener('click', function (e) {
     const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced || typeof IntersectionObserver === 'undefined') return;
 
-    const targets = Array.from(document.querySelectorAll('.masthead, .doc-section, .page-title-block'));
+    // Masthead stays visible on load; reveal lower sections only
+    const targets = Array.from(document.querySelectorAll('.doc-section, .page-title-block'));
     if (!targets.length) return;
 
     targets.forEach((el) => el.classList.add('reveal'));

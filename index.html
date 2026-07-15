@@ -41,7 +41,7 @@
     }
     </script>
     <title>Yogesh Bhusara — Senior UI/UX / Product Designer</title>
-    <script>(function(){try{if(localStorage.getItem('portfolio-theme')==='dark')document.documentElement.classList.add('dark');}catch(e){}})();</script>
+    <script>(function(){try{var d=localStorage.getItem('portfolio-theme')==='dark';if(d)document.documentElement.classList.add('dark');var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',d?'#18160f':'#faf8f3');}catch(e){}})();</script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -49,7 +49,11 @@
 
     <header class="site-header">
         <div class="shell site-header__inner">
-            <a href="index.html" class="site-wordmark">Yogesh Bhusara</a>
+            <a href="index.html" class="site-wordmark" aria-label="Yogesh Bhusara — Home">
+                <svg class="site-wordmark__logo" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M7.38477 9.47656L-6.12934e-07 4.97754L-6.9946e-07 2.99805L9.1543 8.55762L9.15918 8.55762L3.94531 -1.72451e-07L6.08496 -2.65982e-07L10.5664 7.38574L15.0654 -6.58531e-07L17.0449 -7.45054e-07L11.8467 8.55957L11.875 8.55957L21 3L21 5.13965L13.6143 9.62207L21 14.1201L21 16.0996L12.0068 10.6396L17.1016 19L14.9619 19L10.4795 11.6152L5.98145 19L4.00195 19L9.14062 10.5381L9.12402 10.5381L-1.26858e-07 16.0977L-2.20392e-07 13.958L7.38477 9.47656Z" fill="currentColor"/>
+                </svg>
+            </a>
             <div class="site-header__end">
                 <nav class="site-nav" aria-label="Site navigation">
                     <a href="index.html" class="site-nav__link" aria-current="page">Index</a>
@@ -81,29 +85,57 @@
 
     <main id="main" class="shell page">
         <section class="masthead" aria-label="Introduction">
-            <p class="masthead__kicker label">Portfolio · Index</p>
-            <h1 class="masthead__name">Yogesh Bhusara</h1>
-            <p class="masthead__role">Senior UI/UX / Product Designer</p>
-            <p class="masthead__lede">12+ years designing enterprise SaaS — collaboration, productivity, intranet, and complex product systems that stay usable as they scale.</p>
-            <p class="masthead__lede">Currently leading product design at <a class="link" href="https://www.mangoapps.com" target="_blank" rel="noopener noreferrer">MangoApps</a>, shaping collaboration tools for distributed teams.</p>
-            <dl class="masthead__facts">
-                <div>
-                    <dt class="label">Now</dt>
-                    <dd>Sr. UI/UX Designer, MangoApps</dd>
+            <div class="masthead__copy">
+                <p class="masthead__kicker label">Portfolio · Index</p>
+                <h1 class="masthead__name">Yogesh Bhusara</h1>
+                <p class="masthead__role">Product Designer</p>
+                <p class="masthead__lede">12+ years designing enterprise SaaS — collaboration, productivity, intranet, and complex product systems that stay usable as they scale.</p>
+                <p class="masthead__lede">Currently leading product design at <a class="link" href="https://www.mangoapps.com" target="_blank" rel="noopener noreferrer">MangoApps</a>, shaping collaboration tools for distributed teams.</p>
+                <dl class="masthead__facts">
+                    <div>
+                        <dt class="label">Now</dt>
+                        <dd>Sr. UI/UX Designer, MangoApps</dd>
+                    </div>
+                    <div>
+                        <dt class="label">Base</dt>
+                        <dd>Pune, India</dd>
+                    </div>
+                    <div>
+                        <dt class="label">Focus</dt>
+                        <dd>Design systems · Enterprise UX · AI-assisted prototyping</dd>
+                    </div>
+                    <div>
+                        <dt class="label">Toolkit</dt>
+                        <dd>Figma · Cursor · Claude · SwiftUI · Xcode</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="masthead__visual" aria-hidden="true">
+                <div class="constellation">
+                    <div class="constellation__portrait">
+                        <img src="assets/profile-image.png" alt="" width="320" height="320" loading="eager" decoding="async">
+                    </div>
+                    <div class="constellation__tile constellation__tile--a constellation__tile--behind" data-slot="a" title="Figma">
+                        <img src="assets/toolkit/figma.svg" alt="" width="96" height="96" loading="lazy" decoding="async">
+                    </div>
+                    <div class="constellation__tile constellation__tile--b constellation__tile--front" data-slot="b" title="Gaming">
+                        <img src="assets/toolkit/gaming.png" alt="" width="96" height="96" loading="lazy" decoding="async">
+                    </div>
+                    <div class="constellation__tile constellation__tile--c constellation__tile--behind" data-slot="c" title="Claude">
+                        <img src="assets/toolkit/claude.svg" alt="" width="96" height="96" loading="lazy" decoding="async">
+                    </div>
+                    <div class="constellation__tile constellation__tile--d constellation__tile--front" data-slot="d" title="Coffee">
+                        <img src="assets/toolkit/coffee.png" alt="" width="96" height="96" loading="lazy" decoding="async">
+                    </div>
+                    <div class="constellation__tile constellation__tile--f constellation__tile--behind" data-slot="f" title="Xcode">
+                        <img src="assets/toolkit/xcode.svg" alt="" width="96" height="96" loading="lazy" decoding="async">
+                    </div>
+                    <div class="constellation__tile constellation__tile--h constellation__tile--behind" data-slot="h" title="Cursor">
+                        <img src="assets/toolkit/cursor.svg" alt="" width="96" height="96" loading="lazy" decoding="async">
+                    </div>
                 </div>
-                <div>
-                    <dt class="label">Base</dt>
-                    <dd>Pune, India</dd>
-                </div>
-                <div>
-                    <dt class="label">Focus</dt>
-                    <dd>Design systems · Enterprise UX · AI-assisted prototyping</dd>
-                </div>
-                <div>
-                    <dt class="label">Toolkit</dt>
-                    <dd>Figma · Cursor · Claude · SwiftUI · Xcode</dd>
-                </div>
-            </dl>
+            </div>
         </section>
 
         <section class="doc-section" aria-labelledby="work-heading">
@@ -142,16 +174,6 @@
                                 <span class="meta">2024</span>
                             </span>
                             <span class="row-list__desc">Fixing the “where did we do this before?” problem for a design team.</span>
-                        </a>
-                    </li>
-                    <li class="row-list__item">
-                        <a class="row-list__row" href="work.html">
-                            <span class="row-list__title">This portfolio</span>
-                            <span class="row-list__aside">
-                                <span class="index-entry__area">Cursor / HTML · CSS · JS</span>
-                                <span class="meta">2025–26</span>
-                            </span>
-                            <span class="row-list__desc">Designed and built in code — no templates, no framework.</span>
                         </a>
                     </li>
                 </ul>

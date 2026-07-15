@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Selected UI/UX and product design work. Enterprise collaboration, task management, and complex product systems.">
     <meta name="twitter:image" content="https://yogeshbhusara.com/assets/og-image.svg">
     <title>Work — Yogesh Bhusara</title>
-    <script>(function(){try{if(localStorage.getItem('portfolio-theme')==='dark')document.documentElement.classList.add('dark');}catch(e){}})();</script>
+    <script>(function(){try{var d=localStorage.getItem('portfolio-theme')==='dark';if(d)document.documentElement.classList.add('dark');var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',d?'#18160f':'#faf8f3');}catch(e){}})();</script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -32,7 +32,11 @@
 
     <header class="site-header">
         <div class="shell site-header__inner">
-            <a href="index.html" class="site-wordmark">Yogesh Bhusara</a>
+            <a href="index.html" class="site-wordmark" aria-label="Yogesh Bhusara — Home">
+                <svg class="site-wordmark__logo" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M7.38477 9.47656L-6.12934e-07 4.97754L-6.9946e-07 2.99805L9.1543 8.55762L9.15918 8.55762L3.94531 -1.72451e-07L6.08496 -2.65982e-07L10.5664 7.38574L15.0654 -6.58531e-07L17.0449 -7.45054e-07L11.8467 8.55957L11.875 8.55957L21 3L21 5.13965L13.6143 9.62207L21 14.1201L21 16.0996L12.0068 10.6396L17.1016 19L14.9619 19L10.4795 11.6152L5.98145 19L4.00195 19L9.14062 10.5381L9.12402 10.5381L-1.26858e-07 16.0977L-2.20392e-07 13.958L7.38477 9.47656Z" fill="currentColor"/>
+                </svg>
+            </a>
             <div class="site-header__end">
                 <nav class="site-nav" aria-label="Site navigation">
                     <a href="index.html" class="site-nav__link">Index</a>
@@ -124,17 +128,15 @@
                 <h2 id="github-activity-heading" class="label">GitHub Activity</h2>
             </div>
             <div class="doc-section__body">
-                <div class="github-activity-embed" id="github-activity-embed" role="group" aria-label="GitHub contributions heatmap">
-                    <img
-                        id="github-activity-img"
-                        class="github-activity-img"
-                        alt="GitHub contributions calendar for Yogesh Bhusara"
-                        loading="lazy"
-                        decoding="async"
-                    >
-                </div>
-                <div class="github-activity-footer">
-                    <p class="doc-section__note doc-section__note--flush"><a href="https://github.com/YogeshBhusara" target="_blank" rel="noopener noreferrer">View profile →</a></p>
+                <div class="github-activity-embed gh-cal" id="github-activity-embed" role="group" aria-label="GitHub contributions heatmap">
+                    <div class="gh-cal__months" data-gh-months></div>
+                    <div class="gh-cal__grid">
+                        <svg class="gh-cal__svg" data-gh-svg width="100%" height="100%" role="img" aria-label="Contribution calendar for Yogesh Bhusara"></svg>
+                    </div>
+                    <div class="gh-cal__footer">
+                        <p class="gh-cal__count" data-gh-count>Loading contributions…</p>
+                        <div class="gh-cal__legend" data-gh-legend aria-hidden="true"></div>
+                    </div>
                 </div>
             </div>
         </section>

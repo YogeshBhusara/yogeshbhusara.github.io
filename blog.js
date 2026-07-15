@@ -1,5 +1,5 @@
 /**
- * blog.js — Notes lists: full list on blog page, latest three on home.
+ * blog.js — Notes lists: full list on blog page, latest two on home.
  * Entries are plain editorial rows (title, one-line description, date).
  */
 (function () {
@@ -44,5 +44,5 @@
   }
 
   renderList(container, posts);
-  renderList(homeArticles, posts.slice(0, 3));
+  renderList(homeArticles, posts.slice(0, 2));
 })();
