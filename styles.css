@@ -756,6 +756,7 @@ html.dark .constellation__tile {
 .constellation__tile--d { --tile-size: 11.2%; top: calc(38% + 18px); right: calc(22% - 16px); --float-delay: 1.7s; }
 .constellation__tile--f { --tile-size: 17%; bottom: 20%; right: 20%; --float-delay: 1.4s; }
 .constellation__tile--h { --tile-size: 19%; bottom: 20%; left: 18%; --float-delay: 2s; }
+.constellation__tile--j { --tile-size: 10.5%; top: 250px; left: 190px; --float-delay: 2.4s; }
 
 @keyframes constellation-enter {
   from {
