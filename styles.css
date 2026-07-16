@@ -1147,6 +1147,7 @@ a.row-list__row:focus-visible .row-list__title {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: baseline;
   gap: var(--space-2) var(--space-5);
 }
 
@@ -1156,6 +1157,25 @@ a.row-list__row:focus-visible .row-list__title {
   letter-spacing: 0.04em;
   color: var(--ink-muted);
   max-width: none;
+}
+
+.site-footer__end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: var(--space-2) var(--space-3);
+  margin-left: auto;
+}
+
+.site-footer__end > p + p::before {
+  content: "·";
+  margin-right: var(--space-3);
+  color: var(--ink-muted);
+}
+
+.site-footer__visits {
+  white-space: nowrap;
 }
 
 /* ——— 10 Work page + GitHub activity ——— */
