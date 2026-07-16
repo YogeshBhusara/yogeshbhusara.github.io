@@ -302,6 +302,7 @@ img {
 .doc-section__note a {
   display: inline-flex;
   align-items: center;
+  gap: 0.35em;
   width: max-content;
   font-family: var(--font-mono);
   font-size: var(--text-meta);
@@ -319,10 +320,21 @@ img {
     background-color 0.4s cubic-bezier(0.44, 0, 0.56, 1);
 }
 
+.doc-section__note a::after {
+  content: "→";
+  display: inline-block;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .doc-section__note a:hover,
 .doc-section__note a:focus-visible {
   color: var(--accent);
   background-color: var(--accent-soft);
+}
+
+.doc-section__note a:hover::after,
+.doc-section__note a:focus-visible::after {
+  transform: translateX(0.28em);
 }
 
 .prose > p + p {
@@ -495,10 +507,21 @@ img {
 }
 
 .site-nav__link--external::before {
-  content: "↗ ";
+  content: "↗";
+  display: inline-block;
+  margin-right: 0.25em;
   font-family: var(--font-mono);
   font-size: 0.75em;
   color: var(--ink-muted);
+  transition:
+    color var(--dur-fast) var(--ease),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-nav__link--external:hover::before,
+.site-nav__link--external:focus-visible::before {
+  color: var(--ink);
+  transform: translate(0.12em, -0.12em);
 }
 
 .theme-toggle {
@@ -993,11 +1016,83 @@ a.row-list__row:focus-visible .row-list__title {
 }
 
 /* ——— 09 Contact + footer ——— */
+.contact-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-5);
+}
+
+.contact-panel > .prose {
+  max-width: var(--width-reading);
+}
+
+/* Links + seal share one row so the wheel lines up with the list */
+.contact-panel__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5) var(--space-7);
+}
+
+.contact-panel__row .contact-links {
+  margin-top: 0;
+}
+
+.orbit-seal {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 10.4rem; /* was 8rem; +30% */
+  height: 10.4rem;
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  color: var(--ink-muted);
+  pointer-events: none;
+  user-select: none;
+}
+
+.orbit-seal__spin {
+  position: absolute;
+  inset: 0;
+  animation: orbit-seal-spin 24s linear infinite;
+}
+
+.orbit-seal__char {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(calc(360deg / var(--n) * var(--i))) translateY(-3.77rem);
+  transform-origin: 0 0;
+}
+
+.orbit-seal__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  z-index: 1;
+}
+
+@keyframes orbit-seal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .contact-links {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-3);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
   margin-top: var(--space-5);
 }
 
@@ -1013,6 +1108,7 @@ a.row-list__row:focus-visible .row-list__title {
   text-transform: uppercase;
   color: var(--ink-secondary);
   padding: 0.3rem 0.5rem;
+  margin-inline: -0.5rem; /* align label text with prose above */
   border-radius: 0.3rem;
   background-color: transparent;
   transition:
@@ -1022,10 +1118,14 @@ a.row-list__row:focus-visible .row-list__title {
 
 .contact-links a::after {
   content: "↗";
+  display: inline-block;
   font-size: 0.85em;
   line-height: 1;
   opacity: 0.7;
-  transition: opacity 0.4s cubic-bezier(0.44, 0, 0.56, 1), color 0.4s cubic-bezier(0.44, 0, 0.56, 1);
+  transition:
+    opacity 0.4s cubic-bezier(0.44, 0, 0.56, 1),
+    color 0.4s cubic-bezier(0.44, 0, 0.56, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .contact-links a:hover,
@@ -1038,6 +1138,7 @@ a.row-list__row:focus-visible .row-list__title {
 .contact-links a:focus-visible::after {
   opacity: 1;
   color: var(--accent);
+  transform: translate(0.18em, -0.18em);
 }
 
 .site-footer {
