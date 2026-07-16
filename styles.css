@@ -779,6 +779,14 @@ html.dark .constellation__tile {
   }
 }
 
+/* Static on mobile — float reads as jerky/fast on small screens */
+@media (max-width: 899px) {
+  .constellation,
+  .constellation__tile {
+    animation: none;
+  }
+}
+
 /* ——— 07 Index entries (project lists) ——— */
 .index-list {
   list-style: none;
