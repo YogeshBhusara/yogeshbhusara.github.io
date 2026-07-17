@@ -121,11 +121,14 @@
   --hairline: 1px solid var(--rule);
   --hairline-strong: 1px solid var(--rule-strong);
 
-  /* Motion */
+  /* Motion — strong custom curves (built-in CSS easings are too soft) */
   --dur-fast: 140ms;
-  --dur: 240ms;
-  --dur-slow: 420ms;
-  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dur: 200ms;
+  --dur-slow: 300ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease: var(--ease-out);
 
   /* Kept for github-activity.js tinting */
   --color-brand: #ff4500;
@@ -171,10 +174,18 @@ h4 {
   font-weight: 500;
   line-height: var(--leading-heading);
   letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
 }
 
 p {
   max-width: var(--width-reading);
+  text-wrap: pretty;
+}
+
+li,
+figcaption,
+blockquote {
+  text-wrap: pretty;
 }
 
 a {
@@ -192,8 +203,8 @@ a {
   transition: color var(--dur-fast) var(--ease), text-decoration-color var(--dur-fast) var(--ease);
 }
 
-.prose a:hover,
-.link:hover {
+.prose a:focus-visible,
+.link:focus-visible {
   color: var(--accent);
   text-decoration-color: var(--accent);
 }
@@ -316,23 +327,26 @@ img {
   border-radius: 0.3rem;
   background-color: transparent;
   transition:
-    color 0.4s cubic-bezier(0.44, 0, 0.56, 1),
-    background-color 0.4s cubic-bezier(0.44, 0, 0.56, 1);
+    color var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.doc-section__note a:active {
+  transform: scale(0.96);
 }
 
 .doc-section__note a::after {
   content: "→";
   display: inline-block;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 
-.doc-section__note a:hover,
 .doc-section__note a:focus-visible {
   color: var(--accent);
   background-color: var(--accent-soft);
 }
 
-.doc-section__note a:hover::after,
 .doc-section__note a:focus-visible::after {
   transform: translateX(0.28em);
 }
@@ -379,7 +393,7 @@ img {
   transition: color var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease);
 }
 
-.site-wordmark:hover {
+.site-wordmark:focus-visible {
   color: var(--accent);
 }
 
@@ -409,26 +423,28 @@ img {
   font-size: var(--text-small);
   color: var(--ink-secondary);
   padding: var(--space-1) 0;
-  transition: color var(--dur-fast) var(--ease);
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
 .site-nav__link::after {
   content: "";
   position: absolute;
   left: 0;
-  right: 100%;
+  right: 0;
   bottom: 0;
   height: 1px;
   background: currentColor;
-  transition: right var(--dur) var(--ease);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease-out);
 }
 
-.site-nav__link:hover {
+.site-nav__link:focus-visible {
   color: var(--ink);
 }
 
-.site-nav__link:hover::after {
-  right: 0;
+.site-nav__link:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .site-nav__link[aria-current="page"] {
@@ -436,7 +452,7 @@ img {
 }
 
 .site-nav__link[aria-current="page"]::after {
-  right: 0;
+  transform: scaleX(1);
   background: var(--accent);
 }
 
@@ -506,25 +522,31 @@ img {
   }
 }
 
+.site-nav__link--external {
+  display: inline-flex;
+  align-items: center;
+}
+
 .site-nav__link--external::before {
   content: "↗";
+  order: 1;
   display: inline-block;
-  margin-right: 0.25em;
+  margin-left: 0.25em;
   font-family: var(--font-mono);
   font-size: 0.75em;
   color: var(--ink-muted);
   transition:
-    color var(--dur-fast) var(--ease),
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.site-nav__link--external:hover::before,
 .site-nav__link--external:focus-visible::before {
   color: var(--ink);
   transform: translate(0.12em, -0.12em);
 }
 
 .theme-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -537,25 +559,78 @@ img {
   background: transparent;
   color: var(--ink-secondary);
   cursor: pointer;
-  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.theme-toggle:hover {
+/* Expand hit area to 44×44 without growing the visible control */
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  transform: translate(-50%, -50%);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+.theme-toggle:focus-visible {
   color: var(--ink);
   border-color: var(--rule-strong);
+}
+
+.theme-toggle__icons {
+  position: relative;
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
 }
 
 .theme-icon {
   width: 0.95rem;
   height: 0.95rem;
+  transition:
+    opacity 300ms cubic-bezier(0.2, 0, 0, 1),
+    filter 300ms cubic-bezier(0.2, 0, 0, 1),
+    transform 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.theme-icon--sun {
+  position: absolute;
+  inset: 0;
+}
+
+/* Light: moon in, sun out — dark: reverse. Both stay in DOM for exit animation. */
+html:not(.dark) .theme-icon--moon {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
 }
 
 html:not(.dark) .theme-icon--sun {
-  display: none;
+  opacity: 0;
+  transform: scale(0.25);
+  filter: blur(4px);
+  pointer-events: none;
 }
 
 html.dark .theme-icon--moon {
-  display: none;
+  opacity: 0;
+  transform: scale(0.25);
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+html.dark .theme-icon--sun {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
 }
 
 /* ——— 06 Masthead (home) ——— */
@@ -674,8 +749,7 @@ html.dark .theme-icon--moon {
   z-index: 1; /* between behind slots (0) and front slots (2) */
   overflow: hidden;
   background: var(--surface);
-  border: var(--hairline);
-  border-radius: 0.35rem;
+  border-radius: 0.5rem; /* outer; img clipped — no nested radius needed */
 }
 
 .constellation__portrait img {
@@ -684,6 +758,12 @@ html.dark .theme-icon--moon {
   height: 100%;
   object-fit: cover;
   object-position: center 15%;
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  outline-offset: -1px;
+}
+
+html.dark .constellation__portrait img {
+  outline-color: rgba(255, 255, 255, 0.1);
 }
 
 .constellation__tile {
@@ -693,9 +773,10 @@ html.dark .theme-icon--moon {
   place-items: center;
   width: var(--tile-size, 18%);
   aspect-ratio: 1;
+  padding: 0.25rem;
   background: var(--paper);
   border: var(--hairline-strong);
-  border-radius: 0.45rem;
+  border-radius: 0.5rem; /* outer = inner 0.25rem + padding 0.25rem */
   box-shadow: 0 0.45rem 1.25rem rgba(33, 30, 25, 0.12);
   animation: constellation-float 7s var(--ease) infinite;
   animation-delay: var(--float-delay, 0s);
@@ -734,10 +815,10 @@ html.dark .constellation__tile {
 .constellation__placeholder {
   display: grid;
   place-items: center;
-  width: 56%;
+  width: 100%;
   aspect-ratio: 1;
   border: 1px dashed var(--rule-strong);
-  border-radius: 0.2rem;
+  border-radius: 0.25rem; /* concentric with tile: 0.5rem − 0.25rem padding */
   color: var(--ink-muted);
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -881,12 +962,10 @@ html.dark .constellation__tile {
   color: var(--ink-secondary);
 }
 
-.index-entry__link:hover .index-entry__title,
 .index-entry__link:focus-visible .index-entry__title {
   color: var(--accent);
 }
 
-.index-entry__link:hover .index-entry__num,
 .index-entry__link:focus-visible .index-entry__num {
   color: var(--accent);
 }
@@ -915,15 +994,13 @@ html.dark .constellation__tile {
   object-fit: cover;
   object-position: center 40%;
   align-self: start;
-  border: var(--hairline);
   background: var(--surface);
-  filter: saturate(0.9);
-  transition: filter var(--dur) var(--ease);
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  outline-offset: -1px;
 }
 
-.index-entry__link:hover .index-entry__thumb,
-.index-entry__link:focus-visible .index-entry__thumb {
-  filter: saturate(1);
+html.dark .index-entry__thumb {
+  outline-color: rgba(255, 255, 255, 0.1);
 }
 
 .index-list:has(.index-entry--thumb) {
@@ -964,7 +1041,6 @@ a.row-list__row {
   transition: color var(--dur-fast) var(--ease);
 }
 
-a.row-list__row:hover .row-list__title,
 a.row-list__row:focus-visible .row-list__title {
   color: var(--accent);
 }
@@ -1121,8 +1197,13 @@ a.row-list__row:focus-visible .row-list__title {
   border-radius: 0.3rem;
   background-color: transparent;
   transition:
-    color 0.4s cubic-bezier(0.44, 0, 0.56, 1),
-    background-color 0.4s cubic-bezier(0.44, 0, 0.56, 1);
+    color var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.contact-links a:active {
+  transform: scale(0.96);
 }
 
 .contact-links a::after {
@@ -1132,18 +1213,16 @@ a.row-list__row:focus-visible .row-list__title {
   line-height: 1;
   opacity: 0.7;
   transition:
-    opacity 0.4s cubic-bezier(0.44, 0, 0.56, 1),
-    color 0.4s cubic-bezier(0.44, 0, 0.56, 1),
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.contact-links a:hover,
 .contact-links a:focus-visible {
   color: var(--accent);
   background-color: var(--accent-soft);
 }
 
-.contact-links a:hover::after,
 .contact-links a:focus-visible::after {
   opacity: 1;
   color: var(--accent);
@@ -1185,6 +1264,7 @@ a.row-list__row:focus-visible .row-list__title {
 
 .site-footer__visits {
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ——— 10 Work page + GitHub activity ——— */
@@ -1202,11 +1282,13 @@ a.row-list__row:focus-visible .row-list__title {
   font-weight: 500;
   letter-spacing: -0.025em;
   line-height: var(--leading-tight);
+  text-wrap: balance;
 }
 
 .page-title-block__lede {
   margin-top: var(--space-3);
   color: var(--ink-secondary);
+  text-wrap: pretty;
 }
 
 /* GitHub contribution calendar — Mohit-style layout, site accent scale */
@@ -1357,7 +1439,7 @@ html.dark .github-activity-embed.gh-cal {
   overscroll-behavior: contain;
   transform: translateX(2rem);
   opacity: 0;
-  transition: transform var(--dur-slow) var(--ease), opacity var(--dur-slow) var(--ease);
+  transition: transform var(--dur-slow) var(--ease-drawer), opacity var(--dur-slow) var(--ease-out);
 }
 
 .work-detail[aria-hidden="false"] .work-detail-content {
@@ -1380,10 +1462,17 @@ html.dark .github-activity-embed.gh-cal {
   background: var(--paper);
   color: var(--ink-secondary);
   cursor: pointer;
-  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.work-detail-close:hover {
+.work-detail-close:active {
+  transform: scale(0.96);
+}
+
+.work-detail-close:focus-visible {
   color: var(--ink);
   border-color: var(--ink-muted);
 }
@@ -1431,7 +1520,7 @@ html.dark .github-activity-embed.gh-cal {
   transition: color var(--dur-fast) var(--ease);
 }
 
-.work-detail-toc__link:hover {
+.work-detail-toc__link:focus-visible {
   color: var(--ink);
 }
 
@@ -1485,11 +1574,13 @@ html.dark .github-activity-embed.gh-cal {
   letter-spacing: -0.025em;
   line-height: var(--leading-tight);
   margin-bottom: var(--space-3);
+  text-wrap: balance;
 }
 
 .work-detail-description {
   color: var(--ink-secondary);
   max-width: var(--width-reading);
+  text-wrap: pretty;
 }
 
 .work-detail-section {
@@ -1538,8 +1629,13 @@ html.dark .github-activity-embed.gh-cal {
 
 .work-detail-figure img {
   width: 100%;
-  border: var(--hairline);
   background: var(--surface);
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  outline-offset: -1px;
+}
+
+html.dark .work-detail-figure img {
+  outline-color: rgba(255, 255, 255, 0.1);
 }
 
 .work-detail-figure figcaption {
@@ -1567,10 +1663,17 @@ html.dark .github-activity-embed.gh-cal {
   border-bottom: 1px solid var(--rule-strong);
   padding-bottom: 1px;
   cursor: pointer;
-  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.work-detail-next:hover {
+.work-detail-next:active {
+  transform: scale(0.96);
+}
+
+.work-detail-next:focus-visible {
   color: var(--accent);
   border-color: var(--accent);
 }
@@ -1595,8 +1698,13 @@ html.dark .github-activity-embed.gh-cal {
 
 .about-photo {
   width: 100%;
-  border: var(--hairline);
   background: var(--surface);
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  outline-offset: -1px;
+}
+
+html.dark .about-photo {
+  outline-color: rgba(255, 255, 255, 0.1);
 }
 
 .about-photo-note {
@@ -1606,6 +1714,7 @@ html.dark .github-activity-embed.gh-cal {
   letter-spacing: 0.04em;
   line-height: 1.6;
   color: var(--ink-muted);
+  text-wrap: pretty;
 }
 
 /* CV timeline (about page) */
@@ -1651,17 +1760,18 @@ html.dark .github-activity-embed.gh-cal {
 .skip-link {
   position: absolute;
   left: var(--space-4);
-  top: -3rem;
+  top: var(--space-2);
   z-index: 100;
   padding: var(--space-2) var(--space-4);
   background: var(--ink);
   color: var(--paper);
   font-size: var(--text-small);
-  transition: top var(--dur-fast) var(--ease);
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 
 .skip-link:focus {
-  top: var(--space-2);
+  transform: translateY(0);
 }
 
 .sr-only {
@@ -1681,16 +1791,93 @@ html.dark .github-activity-embed.gh-cal {
   outline-offset: 3px;
 }
 
-/* Scroll reveal — opacity + small lift; disabled under reduced motion */
+/* Scroll reveal — opacity + small lift; staggered per chunk; reduced motion off */
 .reveal {
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
 .reveal.is-revealed {
   opacity: 1;
   transform: none;
+}
+
+/* Hover motion only on fine pointers — avoids sticky tap states on touch */
+@media (hover: hover) and (pointer: fine) {
+  .prose a:hover,
+  .link:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  .site-wordmark:hover {
+    color: var(--accent);
+  }
+
+  .site-nav__link:hover {
+    color: var(--ink);
+  }
+
+  .site-nav__link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .site-nav__link--external:hover::before {
+    color: var(--ink);
+    transform: translate(0.12em, -0.12em);
+  }
+
+  .theme-toggle:hover {
+    color: var(--ink);
+    border-color: var(--rule-strong);
+  }
+
+  .doc-section__note a:hover {
+    color: var(--accent);
+    background-color: var(--accent-soft);
+  }
+
+  .doc-section__note a:hover::after {
+    transform: translateX(0.28em);
+  }
+
+  .index-entry__link:hover .index-entry__title,
+  .index-entry__link:hover .index-entry__num {
+    color: var(--accent);
+  }
+
+  a.row-list__row:hover .row-list__title {
+    color: var(--accent);
+  }
+
+  .contact-links a:hover {
+    color: var(--accent);
+    background-color: var(--accent-soft);
+  }
+
+  .contact-links a:hover::after {
+    opacity: 1;
+    color: var(--accent);
+    transform: translate(0.18em, -0.18em);
+  }
+
+  .work-detail-close:hover {
+    color: var(--ink);
+    border-color: var(--ink-muted);
+  }
+
+  .work-detail-toc__link:hover {
+    color: var(--ink);
+  }
+
+  .work-detail-next:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1704,10 +1891,40 @@ html.dark .github-activity-embed.gh-cal {
     transition: none;
   }
 
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+  /* Drop movement; keep color transitions that aid comprehension */
+  .constellation,
+  .constellation__tile,
+  .orbit-seal__spin {
+    animation: none !important;
+  }
+
+  .site-nav__link::after,
+  .site-nav__link--external::before,
+  .doc-section__note a::after,
+  .contact-links a::after,
+  .skip-link,
+  .reveal,
+  .work-detail-overlay,
+  .work-detail-content,
+  .theme-toggle,
+  .theme-icon,
+  .work-detail-close {
+    transition-property: color, background-color, border-color, text-decoration-color, opacity !important;
+  }
+
+  .site-nav__link::after,
+  .site-nav__link--external::before,
+  .doc-section__note a::after,
+  .contact-links a::after,
+  .skip-link,
+  .work-detail-content,
+  .theme-toggle:active,
+  .doc-section__note a:active,
+  .contact-links a:active,
+  .work-detail-next:active,
+  .work-detail-close:active,
+  .theme-icon {
+    transform: none !important;
+    filter: none !important;
   }
 }
