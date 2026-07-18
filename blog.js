@@ -19,7 +19,7 @@
       .replace(/"/g, '&quot;');
   }
 
-  function renderRow(post) {
+  function renderRow(post, withDescription) {
     const li = document.createElement('li');
     li.className = 'row-list__item';
     li.innerHTML =
@@ -28,21 +28,21 @@
         '<span class="row-list__aside">' +
           '<span class="meta">' + escapeHtml(post.date || 'Medium') + '</span>' +
         '</span>' +
-        (post.description
+        (withDescription && post.description
           ? '<span class="row-list__desc">' + escapeHtml(post.description) + '</span>'
           : '') +
       '</a>';
     return li;
   }
 
-  function renderList(target, items) {
+  function renderList(target, items, withDescription) {
     if (!target || !items.length) return;
     target.innerHTML = '';
     items.forEach(function (post) {
-      target.appendChild(renderRow(post));
+      target.appendChild(renderRow(post, withDescription));
     });
   }
 
-  renderList(container, posts);
-  renderList(homeArticles, posts.slice(0, 2));
+  renderList(container, posts, true);
+  renderList(homeArticles, posts.slice(0, 2), false);
 })();

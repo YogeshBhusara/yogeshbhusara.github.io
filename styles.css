@@ -979,6 +979,15 @@ html.dark .constellation__tile {
     margin-top: 0;
     text-align: right;
   }
+
+  /* Home compact rows (no thumb): keep type + year on one line */
+  .index-entry:not(.index-entry--thumb) .index-entry__meta {
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    gap: var(--space-3);
+    white-space: nowrap;
+  }
 }
 
 .index-entry__area {
@@ -1044,6 +1053,50 @@ html.dark .index-entry__thumb {
   gap: var(--space-6);
 }
 
+/* Home index lists: shared size + spacing (match experience rows) */
+#home-project-list,
+#home-lab-list,
+#home-articles {
+  gap: var(--space-3);
+}
+
+#home-project-list .index-entry__title,
+#home-lab-list .row-list__title,
+#home-articles .row-list__title {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+}
+
+#home-project-list .index-entry__link,
+#home-lab-list .row-list__row,
+#home-articles .row-list__row {
+  padding-top: 0;
+  padding-bottom: 0;
+  gap: 0 var(--space-4);
+  align-items: baseline;
+}
+
+#home-project-list .index-entry__link {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+#home-project-list .index-entry__meta {
+  grid-column: 1;
+  margin-top: 0;
+}
+
+@media (min-width: 720px) {
+  #home-project-list .index-entry__link {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  #home-project-list .index-entry__meta {
+    grid-column: auto;
+  }
+}
+
 /* ——— 08 Compact lists (lab, notes, experience) ——— */
 .row-list {
   list-style: none;
@@ -1101,6 +1154,16 @@ a.row-list__row:focus-visible .row-list__title {
     text-align: right;
     grid-row: span 2;
   }
+
+  /* Compact rows without a description: type + year stay on one line */
+  .row-list__row:not(:has(.row-list__desc)) .row-list__aside {
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    gap: var(--space-3);
+    grid-row: auto;
+    white-space: nowrap;
+  }
 }
 
 /* Experience rows */
@@ -1121,7 +1184,8 @@ a.row-list__row:focus-visible .row-list__title {
 
 .experience-rows__role {
   font-weight: 500;
-  font-size: var(--text-small);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
   letter-spacing: var(--tracking-tight);
 }
 

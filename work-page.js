@@ -92,7 +92,7 @@
     }
 
     /** One editorial index entry. `withThumb` adds a small image on wide screens. */
-    function renderIndexEntry(work, index, withThumb) {
+    function renderIndexEntry(work, index, withThumb, withDescription, withNumber, withYear) {
         const li = document.createElement('li');
         li.className = 'index-entry' + (withThumb ? ' index-entry--thumb' : '');
 
@@ -104,16 +104,20 @@
 
         li.innerHTML =
             '<button type="button" class="index-entry__link" data-work-id="' + escapeHtml(work.id) + '">' +
-                '<span class="index-entry__num" aria-hidden="true">' + pad2(index + 1) + '</span>' +
+                (withNumber
+                    ? '<span class="index-entry__num" aria-hidden="true">' + pad2(index + 1) + '</span>'
+                    : '') +
                 '<span class="index-entry__main">' +
                     '<span class="index-entry__title">' + escapeHtml(work.title) + '</span>' +
-                    (work.description
+                    (withDescription && work.description
                         ? '<span class="index-entry__context">' + escapeHtml(work.description) + '</span>'
                         : '') +
                 '</span>' +
                 '<span class="index-entry__meta">' +
                     '<span class="index-entry__area">' + escapeHtml(workArea(work)) + '</span>' +
-                    '<span class="index-entry__year">' + escapeHtml([work.category, work.year].filter(Boolean).join(' · ')) + '</span>' +
+                    (withYear
+                        ? '<span class="index-entry__year">' + escapeHtml([work.category, work.year].filter(Boolean).join(' · ')) + '</span>'
+                        : '') +
                 '</span>' +
                 thumb +
             '</button>';
@@ -126,17 +130,17 @@
         if (!workList) return;
         workList.innerHTML = '';
         works.forEach((work, i) => {
-            workList.appendChild(renderIndexEntry(work, i, true));
+            workList.appendChild(renderIndexEntry(work, i, true, true, true, true));
         });
     }
 
-    // Home: compact index (no thumbnails) — first 3 only; full list on work.html
+    // Home: compact index (title + area only) — first 3 only
     function renderHomeProjectList() {
         const el = document.getElementById('home-project-list');
         if (!el || !works.length) return;
         el.innerHTML = '';
         works.slice(0, 3).forEach((work, i) => {
-            el.appendChild(renderIndexEntry(work, i, false));
+            el.appendChild(renderIndexEntry(work, i, false, false, false, false));
         });
     }
 
