@@ -120,7 +120,7 @@
 
   /* Side dot grid — one token so every page / both rails match */
   --page-dot-size: 8px;
-  --page-dot-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='1' cy='1' r='0.95' fill='%237a7468' fill-opacity='0.275'/%3E%3C/svg%3E");
+  --page-dot-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='1' cy='1' r='0.95' fill='%237a7468' fill-opacity='0.14'/%3E%3C/svg%3E");
 
   /* Borders */
   --hairline: 1px solid var(--rule);
@@ -154,7 +154,7 @@ html.dark {
   --accent: #ff5a1f;
   --accent-soft: rgba(255, 90, 31, 0.18);
   --color-brand: #ff5a1f;
-  --page-dot-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='1' cy='1' r='0.95' fill='%23b8b09e' fill-opacity='0.225'/%3E%3C/svg%3E");
+  --page-dot-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='1' cy='1' r='0.95' fill='%23b8b09e' fill-opacity='0.11'/%3E%3C/svg%3E");
 }
 
 /* ——— 03 Base typography ——— */
