@@ -73,6 +73,7 @@
 
   /* Color — warm paper + near-black ink */
   --paper: #faf8f3;
+  --page-wash: #ebe6dc;
   --surface: #f2efe7;
   --ink: #211e19;
   --ink-secondary: #5b564c;
@@ -120,6 +121,7 @@
   /* Borders */
   --hairline: 1px solid var(--rule);
   --hairline-strong: 1px solid var(--rule-strong);
+  --hairline-dashed: 1px dashed var(--rule);
 
   /* Motion — strong custom curves (built-in CSS easings are too soft) */
   --dur-fast: 140ms;
@@ -138,6 +140,7 @@
 html.dark {
   color-scheme: dark;
   --paper: #18160f;
+  --page-wash: #12100c;
   --surface: #201d15;
   --ink: #eae5d8;
   --ink-secondary: #a8a190;
@@ -161,11 +164,26 @@ body {
   font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--ink);
-  background-color: var(--paper);
+  background-color: var(--page-wash);
   width: 100%;
   min-width: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dot Field — full-bleed under framed content (sides remain visible) */
+.dot-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.shell.page {
+  position: relative;
+  z-index: 1;
 }
 
 h1,
@@ -258,13 +276,22 @@ img {
   overflow: visible;
 }
 
-/* Section: mono label column left, content right (stacks on small screens) */
+/* Framed content column on page wash (Chandu-style border-x) */
+.shell.page {
+  background-color: var(--paper);
+  border-inline: var(--hairline);
+}
+
+/* Section: mono label column left, content right (stacks on small screens).
+   Break out of shell gutter so dashed rules run edge-to-edge of the frame. */
 .doc-section {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4) var(--space-6);
-  padding: var(--space-7) 0;
-  border-top: var(--hairline);
+  margin-inline: calc(var(--gutter) * -1);
+  padding: var(--space-7) var(--gutter);
+  border-top: var(--hairline-dashed);
 }
 
 .doc-section:first-child {
@@ -274,6 +301,27 @@ img {
 @media (min-width: 768px) {
   .doc-section {
     grid-template-columns: var(--label-col) minmax(0, 1fr);
+    column-gap: 0;
+    row-gap: var(--space-4);
+  }
+
+  /* Full-height vertical rule: section top → bottom */
+  .doc-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--gutter) + var(--label-col));
+    border-left: var(--hairline-dashed);
+    pointer-events: none;
+  }
+
+  .doc-section__label {
+    padding-right: var(--space-5);
+  }
+
+  .doc-section__body {
+    padding-left: var(--space-6);
   }
 }
 
@@ -372,8 +420,12 @@ img {
   position: sticky;
   top: 0;
   z-index: 50;
+  width: 100%;
+  max-width: var(--width-content);
+  margin-inline: auto;
   background: var(--paper);
-  border-bottom: var(--hairline);
+  border-bottom: var(--hairline-dashed);
+  border-inline: var(--hairline);
   transition:
     background-color var(--dur) var(--ease-out),
     border-color var(--dur) var(--ease-out),
@@ -382,7 +434,7 @@ img {
 
 .site-header.is-scrolled {
   background: color-mix(in srgb, var(--paper) 86%, transparent);
-  border-color: transparent;
+  border-bottom-color: transparent;
   box-shadow: 0 1px 0 color-mix(in srgb, var(--rule) 80%, transparent);
   backdrop-filter: blur(14px) saturate(1.2);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
@@ -729,8 +781,9 @@ html.dark .theme-icon--sun {
   grid-template-columns: repeat(auto-fit, minmax(10rem, max-content));
   gap: var(--space-4) var(--space-7);
   margin-top: var(--space-6);
-  padding-top: var(--space-5);
-  border-top: var(--hairline);
+  padding: var(--space-5);
+  border: var(--hairline-dashed);
+  background: var(--surface);
 }
 
 .masthead__facts div {
@@ -1053,11 +1106,24 @@ html.dark .index-entry__thumb {
   gap: var(--space-6);
 }
 
-/* Home index lists: shared size + spacing (match experience rows) */
+/* Home index lists: shared size + dashed row dividers */
 #home-project-list,
 #home-lab-list,
 #home-articles {
-  gap: var(--space-3);
+  gap: 0;
+}
+
+#home-project-list > li,
+#home-lab-list > li,
+#home-articles > li {
+  padding-block: var(--space-3);
+  border-bottom: var(--hairline-dashed);
+}
+
+#home-project-list > li:last-child,
+#home-lab-list > li:last-child,
+#home-articles > li:last-child {
+  border-bottom: none;
 }
 
 #home-project-list .index-entry__title,
@@ -1171,7 +1237,7 @@ a.row-list__row:focus-visible .row-list__title {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 0;
 }
 
 .experience-rows li {
@@ -1179,7 +1245,12 @@ a.row-list__row:focus-visible .row-list__title {
   flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-2) var(--space-3);
-  padding: 0;
+  padding-block: var(--space-3);
+  border-bottom: var(--hairline-dashed);
+}
+
+.experience-rows li:last-child {
+  border-bottom: none;
 }
 
 .experience-rows__role {
@@ -1330,8 +1401,9 @@ a.row-list__row:focus-visible .row-list__title {
 }
 
 .site-footer {
-  border-top: var(--hairline);
-  padding: var(--space-5) 0 var(--space-6);
+  margin-inline: calc(var(--gutter) * -1);
+  padding: var(--space-5) var(--gutter) var(--space-6);
+  border-top: var(--hairline-dashed);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

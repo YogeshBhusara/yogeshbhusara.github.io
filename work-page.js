@@ -134,12 +134,12 @@
         });
     }
 
-    // Home: compact index (title + area only) — first 3 only
+    // Home: compact index (title + area only) — first 5 only
     function renderHomeProjectList() {
         const el = document.getElementById('home-project-list');
         if (!el || !works.length) return;
         el.innerHTML = '';
-        works.slice(0, 3).forEach((work, i) => {
+        works.slice(0, 5).forEach((work, i) => {
             el.appendChild(renderIndexEntry(work, i, false, false, false, false));
         });
     }
