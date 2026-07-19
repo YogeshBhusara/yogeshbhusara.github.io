@@ -509,7 +509,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: clamp(0.85rem, 2.5vw, 1.5rem);
+  column-gap: calc(clamp(0.85rem, 2.5vw, 1.5rem) + 10px);
   row-gap: var(--space-1);
 }
 
@@ -897,8 +897,14 @@ html.dark .constellation__portrait img {
   border: var(--hairline-strong);
   border-radius: 0.5rem; /* outer = inner 0.25rem + padding 0.25rem */
   box-shadow: 0 0.45rem 1.25rem rgba(33, 30, 25, 0.12);
-  animation: constellation-float 7s var(--ease) infinite;
+  /* Soft sine-like drift; per-tile duration / path via custom props */
+  --float-duration: 11s;
+  --float-x: 3px;
+  --float-y: -7px;
+  --float-rot: 0.9deg;
+  animation: constellation-float var(--float-duration) cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
   animation-delay: var(--float-delay, 0s);
+  will-change: transform;
 }
 
 .constellation__tile--behind {
@@ -949,14 +955,78 @@ html.dark .constellation__tile {
   content: attr(data-label);
 }
 
-/* Slots tight to portrait — a/c/f/h behind, b/d overlapping in front */
-.constellation__tile--a { --tile-size: 20%; top: 20%; left: 20%;  --float-delay: 0s; }
-.constellation__tile--b { --tile-size: 12%; top: 18%; left: 44%; --float-delay: 0.6s; }
-.constellation__tile--c { --tile-size: 18%; top: 20%; right: 18%; --float-delay: 1.1s; }
-.constellation__tile--d { --tile-size: 11.2%; top: calc(38% + 18px); right: calc(22% - 16px); --float-delay: 1.7s; }
-.constellation__tile--f { --tile-size: 17%; bottom: 20%; right: 20%; --float-delay: 1.4s; }
-.constellation__tile--h { --tile-size: 19%; bottom: 20%; left: 18%; --float-delay: 2s; }
-.constellation__tile--j { --tile-size: 10.5%; top: 250px; left: 190px; --float-delay: 2.4s; }
+/* Slots tight to portrait — a/c/f/h behind, b/d overlapping in front.
+   Varied duration / drift so tiles don’t bob in lockstep. */
+.constellation__tile--a {
+  --tile-size: 20%;
+  top: 20%;
+  left: 20%;
+  --float-delay: 0s;
+  --float-duration: 12.8s;
+  --float-x: 4px;
+  --float-y: -9px;
+  --float-rot: -1.1deg;
+}
+.constellation__tile--b {
+  --tile-size: 12%;
+  top: 18%;
+  left: 44%;
+  --float-delay: -2.1s;
+  --float-duration: 9.6s;
+  --float-x: -3px;
+  --float-y: -6px;
+  --float-rot: 1.4deg;
+}
+.constellation__tile--c {
+  --tile-size: 18%;
+  top: 20%;
+  right: 18%;
+  --float-delay: -4.4s;
+  --float-duration: 13.4s;
+  --float-x: 5px;
+  --float-y: -8px;
+  --float-rot: 0.8deg;
+}
+.constellation__tile--d {
+  --tile-size: 11.2%;
+  top: calc(38% + 18px);
+  right: calc(22% - 16px);
+  --float-delay: -1.2s;
+  --float-duration: 10.2s;
+  --float-x: -4px;
+  --float-y: -7px;
+  --float-rot: -1.3deg;
+}
+.constellation__tile--f {
+  --tile-size: 17%;
+  bottom: 20%;
+  right: 20%;
+  --float-delay: -5.8s;
+  --float-duration: 14.1s;
+  --float-x: 3px;
+  --float-y: -10px;
+  --float-rot: 1deg;
+}
+.constellation__tile--h {
+  --tile-size: 19%;
+  bottom: 20%;
+  left: 18%;
+  --float-delay: -3.3s;
+  --float-duration: 11.7s;
+  --float-x: -5px;
+  --float-y: -8px;
+  --float-rot: -0.7deg;
+}
+.constellation__tile--j {
+  --tile-size: 10.5%;
+  top: 250px;
+  left: 190px;
+  --float-delay: -6.5s;
+  --float-duration: 9.1s;
+  --float-x: 2px;
+  --float-y: -5px;
+  --float-rot: 1.6deg;
+}
 
 @keyframes constellation-enter {
   from {
@@ -969,13 +1039,37 @@ html.dark .constellation__tile {
   }
 }
 
+/* Organic elliptical drift — multi-step path + sine easing */
 @keyframes constellation-float {
-  0%,
-  100% {
-    transform: translateY(0);
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
-  50% {
-    transform: translateY(-5px);
+  20% {
+    transform: translate3d(
+        calc(var(--float-x) * 0.7),
+        calc(var(--float-y) * 0.35),
+        0
+      )
+      rotate(calc(var(--float-rot) * 0.4));
+  }
+  45% {
+    transform: translate3d(
+        calc(var(--float-x) * 0.15),
+        var(--float-y),
+        0
+      )
+      rotate(var(--float-rot));
+  }
+  70% {
+    transform: translate3d(
+        calc(var(--float-x) * -0.85),
+        calc(var(--float-y) * 0.45),
+        0
+      )
+      rotate(calc(var(--float-rot) * -0.35));
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
 }
 
@@ -1680,9 +1774,10 @@ html.dark .github-activity-embed.gh-cal {
 }
 
 .work-detail-inner {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 0 var(--space-7);
+  gap: 0;
   padding: var(--space-7) var(--gutter) var(--space-8);
   max-width: 60rem;
 }
@@ -1690,6 +1785,17 @@ html.dark .github-activity-embed.gh-cal {
 @media (min-width: 1100px) {
   .work-detail-inner {
     grid-template-columns: 11rem minmax(0, 1fr);
+  }
+
+  /* Full-height vertical rule between TOC and content (matches doc-section) */
+  .work-detail-inner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--gutter) + 11rem);
+    border-left: var(--hairline-dashed);
+    pointer-events: none;
   }
 }
 
@@ -1709,7 +1815,6 @@ html.dark .github-activity-embed.gh-cal {
     top: var(--space-7);
     align-self: start;
     padding-right: var(--space-5);
-    border-right: var(--hairline);
   }
 }
 
@@ -1743,13 +1848,31 @@ html.dark .github-activity-embed.gh-cal {
   .work-detail-figure,
   .work-detail-navigation {
     grid-column: 2;
+    padding-left: var(--space-6);
   }
 }
 
 .work-detail-header {
+  position: relative;
   padding-bottom: var(--space-6);
-  border-bottom: var(--hairline);
   margin-bottom: var(--space-6);
+}
+
+/* Edge-to-edge dashed rule under the case-study header */
+.work-detail-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--gutter) * -1);
+  right: calc(var(--gutter) * -1);
+  border-bottom: var(--hairline-dashed);
+  pointer-events: none;
+}
+
+@media (min-width: 1100px) {
+  .work-detail-header::after {
+    left: calc(-11rem - var(--gutter));
+  }
 }
 
 .work-detail-meta {
@@ -1849,9 +1972,26 @@ html.dark .work-detail-figure img {
 }
 
 .work-detail-navigation {
+  position: relative;
   margin-top: var(--space-6);
   padding-top: var(--space-5);
-  border-top: var(--hairline);
+}
+
+/* Edge-to-edge dashed rule above case-study navigation */
+.work-detail-navigation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(var(--gutter) * -1);
+  right: calc(var(--gutter) * -1);
+  border-top: var(--hairline-dashed);
+  pointer-events: none;
+}
+
+@media (min-width: 1100px) {
+  .work-detail-navigation::before {
+    left: calc(-11rem - var(--gutter));
+  }
 }
 
 .work-detail-next {
