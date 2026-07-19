@@ -1784,16 +1784,19 @@ html.dark .github-activity-embed.gh-cal {
 
 @media (min-width: 1100px) {
   .work-detail-inner {
-    grid-template-columns: 11rem minmax(0, 1fr);
+    --work-toc-col: 11rem;
+    --work-rule-inset: var(--space-6); /* clear space on each side of the rule */
+    grid-template-columns: var(--work-toc-col) minmax(0, 1fr);
+    column-gap: calc(var(--work-rule-inset) * 2);
   }
 
-  /* Full-height vertical rule between TOC and content (matches doc-section) */
+  /* Full-height vertical rule centered in the column gap */
   .work-detail-inner::before {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
-    left: calc(var(--gutter) + 11rem);
+    left: calc(var(--gutter) + var(--work-toc-col) + var(--work-rule-inset));
     border-left: var(--hairline-dashed);
     pointer-events: none;
   }
@@ -1814,7 +1817,9 @@ html.dark .github-activity-embed.gh-cal {
     position: sticky;
     top: var(--space-7);
     align-self: start;
-    padding-right: var(--space-5);
+    z-index: 2;
+    /* Keep TOC readable when content rules scroll past */
+    background: var(--paper);
   }
 }
 
@@ -1848,7 +1853,6 @@ html.dark .github-activity-embed.gh-cal {
   .work-detail-figure,
   .work-detail-navigation {
     grid-column: 2;
-    padding-left: var(--space-6);
   }
 }
 
@@ -1858,7 +1862,7 @@ html.dark .github-activity-embed.gh-cal {
   margin-bottom: var(--space-6);
 }
 
-/* Edge-to-edge dashed rule under the case-study header */
+/* Dashed rule under header — content column only (not under TOC) */
 .work-detail-header::after {
   content: "";
   position: absolute;
@@ -1871,7 +1875,9 @@ html.dark .github-activity-embed.gh-cal {
 
 @media (min-width: 1100px) {
   .work-detail-header::after {
-    left: calc(-11rem - var(--gutter));
+    /* Reach back to the vertical rule through the column gap */
+    left: calc(var(--work-rule-inset) * -1);
+    right: calc(var(--gutter) * -1);
   }
 }
 
@@ -1909,7 +1915,8 @@ html.dark .github-activity-embed.gh-cal {
 }
 
 .work-detail-section {
-  padding: var(--space-5) 0;
+  /* Use block-only padding so wide-layout inset from the rule isn’t wiped out */
+  padding-block: var(--space-5);
 }
 
 .work-detail-section-title {
@@ -1977,7 +1984,7 @@ html.dark .work-detail-figure img {
   padding-top: var(--space-5);
 }
 
-/* Edge-to-edge dashed rule above case-study navigation */
+/* Dashed rule above navigation — content column only (not under TOC) */
 .work-detail-navigation::before {
   content: "";
   position: absolute;
@@ -1990,7 +1997,8 @@ html.dark .work-detail-figure img {
 
 @media (min-width: 1100px) {
   .work-detail-navigation::before {
-    left: calc(-11rem - var(--gutter));
+    left: calc(var(--work-rule-inset) * -1);
+    right: calc(var(--gutter) * -1);
   }
 }
 
