@@ -1737,18 +1737,23 @@ html.dark .github-activity-embed.gh-cal {
   opacity: 0.45;
 }
 
-/* ——— 11 Case study overlay ——— */
+/* ——— 11 Case study overlay (bottom sheet) ——— */
 .work-detail {
+  --work-sheet-peek: 2.25rem;
+  --work-sheet-dur: 420ms;
   position: fixed;
   inset: 0;
   z-index: 200;
   visibility: hidden;
   pointer-events: none;
+  /* Keep sheet visible through the exit slide */
+  transition: visibility 0s linear var(--work-sheet-dur);
 }
 
 .work-detail[aria-hidden="false"] {
   visibility: visible;
   pointer-events: auto;
+  transition: visibility 0s linear 0s;
 }
 
 .work-detail-overlay {
@@ -1756,7 +1761,7 @@ html.dark .github-activity-embed.gh-cal {
   inset: 0;
   background: rgba(24, 20, 14, 0.45);
   opacity: 0;
-  transition: opacity var(--dur) var(--ease);
+  transition: opacity var(--work-sheet-dur) var(--ease-out);
 }
 
 .work-detail[aria-hidden="false"] .work-detail-overlay {
@@ -1765,33 +1770,38 @@ html.dark .github-activity-embed.gh-cal {
 
 .work-detail-content {
   position: absolute;
-  inset: 0;
-  margin-left: auto;
-  width: min(64rem, 100%);
+  top: var(--work-sheet-peek);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background: var(--paper);
-  border-left: var(--hairline);
+  border-top: var(--hairline);
   overflow-y: auto;
   overscroll-behavior: contain;
-  transform: translateX(2rem);
+  transform: translateY(100%);
   opacity: 0;
-  transition: transform var(--dur-slow) var(--ease-drawer), opacity var(--dur-slow) var(--ease-out);
+  transition:
+    transform var(--work-sheet-dur) var(--ease-drawer),
+    opacity calc(var(--work-sheet-dur) * 0.75) var(--ease-out);
 }
 
 .work-detail[aria-hidden="false"] .work-detail-content {
-  transform: translateX(0);
+  transform: translateY(0);
   opacity: 1;
 }
 
 .work-detail-close {
-  position: fixed;
+  position: sticky;
   top: var(--space-4);
-  right: var(--space-4);
+  float: right;
   z-index: 10;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
+  margin: var(--space-4) var(--space-4) calc(-1 * (2.5rem + var(--space-4))) 0;
   border: var(--hairline-strong);
   border-radius: 50%;
   background: var(--paper);
@@ -1817,27 +1827,41 @@ html.dark .github-activity-embed.gh-cal {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
+  margin-inline: auto;
   padding: var(--space-7) var(--gutter) var(--space-8);
-  max-width: 60rem;
+  max-width: 74rem;
 }
 
 @media (min-width: 1100px) {
   .work-detail-inner {
-    --work-toc-col: 11rem;
-    --work-rule-inset: var(--space-6); /* clear space on each side of the rule */
-    grid-template-columns: var(--work-toc-col) minmax(0, 1fr);
+    --work-toc-col: 10rem;
+    --work-rule-inset: var(--space-6); /* space from dashed rule to content */
+    /* TOC | content | matching right spacer — keeps content centered */
+    grid-template-columns:
+      var(--work-toc-col)
+      minmax(0, 1fr)
+      var(--work-toc-col);
     column-gap: calc(var(--work-rule-inset) * 2);
+    padding-inline: var(--gutter);
   }
 
-  /* Full-height vertical rule centered in the column gap */
-  .work-detail-inner::before {
+  /* Full-height vertical rules on both sides of the content column */
+  .work-detail-inner::before,
+  .work-detail-inner::after {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
-    left: calc(var(--gutter) + var(--work-toc-col) + var(--work-rule-inset));
     border-left: var(--hairline-dashed);
     pointer-events: none;
+  }
+
+  .work-detail-inner::before {
+    left: calc(var(--gutter) + var(--work-toc-col) + var(--work-rule-inset));
+  }
+
+  .work-detail-inner::after {
+    right: calc(var(--gutter) + var(--work-toc-col) + var(--work-rule-inset));
   }
 }
 
@@ -1914,9 +1938,9 @@ html.dark .github-activity-embed.gh-cal {
 
 @media (min-width: 1100px) {
   .work-detail-header::after {
-    /* Reach back to the vertical rule through the column gap */
+    /* Reach into equal gaps on both sides of the content column */
     left: calc(var(--work-rule-inset) * -1);
-    right: calc(var(--gutter) * -1);
+    right: calc(var(--work-rule-inset) * -1);
   }
 }
 
@@ -2037,7 +2061,7 @@ html.dark .work-detail-figure img {
 @media (min-width: 1100px) {
   .work-detail-navigation::before {
     left: calc(var(--work-rule-inset) * -1);
-    right: calc(var(--gutter) * -1);
+    right: calc(var(--work-rule-inset) * -1);
   }
 }
 
@@ -2303,12 +2327,14 @@ html.dark .about-photo {
   .contact-links a::after,
   .skip-link,
   .reveal,
+  .work-detail,
   .work-detail-overlay,
   .work-detail-content,
   .theme-toggle,
   .theme-icon,
   .work-detail-close,
-  .index-entry__thumb {
+  .index-entry__thumb,
+  .cursor-thumb {
     transition-property: color, background-color, border-color, text-decoration-color, opacity !important;
   }
 

@@ -155,6 +155,8 @@
         const work = works.find(w => w.id === workId);
         if (!work) return;
 
+        cancelCloseTransition();
+
         if (workDetail.getAttribute('aria-hidden') !== 'false') {
             lastFocusedElement = document.activeElement;
         }
@@ -503,10 +505,25 @@
         };
     }
 
-    // Close work detail
-    function closeWorkDetail() {
-        if (!workDetail) return;
-        workDetail.setAttribute('aria-hidden', 'true');
+    // Close work detail — wait for sheet exit so the slide-down isn’t cut off
+    let closeTransitionTimer = null;
+    let closeTransitionHandler = null;
+
+    function cancelCloseTransition() {
+        if (closeTransitionTimer) {
+            clearTimeout(closeTransitionTimer);
+            closeTransitionTimer = null;
+        }
+        const scrollRoot = getWorkDetailScrollRoot();
+        if (closeTransitionHandler && scrollRoot) {
+            scrollRoot.removeEventListener('transitionend', closeTransitionHandler);
+            closeTransitionHandler = null;
+        }
+        if (workDetail) workDetail.removeAttribute('data-closing');
+    }
+
+    function finishCloseWorkDetail() {
+        cancelCloseTransition();
         resetWorkDetailScroll();
         document.body.style.overflow = '';
         setBackgroundInert(false);
@@ -514,6 +531,33 @@
             lastFocusedElement.focus();
             lastFocusedElement = null;
         }
+    }
+
+    function closeWorkDetail() {
+        if (!workDetail) return;
+        if (workDetail.getAttribute('aria-hidden') !== 'false') return;
+        if (workDetail.getAttribute('data-closing') === 'true') return;
+
+        workDetail.setAttribute('data-closing', 'true');
+        workDetail.setAttribute('aria-hidden', 'true');
+
+        const scrollRoot = getWorkDetailScrollRoot();
+        const reduceMotion =
+            window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!scrollRoot || reduceMotion) {
+            finishCloseWorkDetail();
+            return;
+        }
+
+        closeTransitionHandler = function (e) {
+            if (e.target !== scrollRoot) return;
+            if (e.propertyName !== 'transform') return;
+            finishCloseWorkDetail();
+        };
+        scrollRoot.addEventListener('transitionend', closeTransitionHandler);
+        closeTransitionTimer = setTimeout(finishCloseWorkDetail, 500);
     }
 
     // Event listeners
