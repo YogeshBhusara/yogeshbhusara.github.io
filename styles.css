@@ -1829,13 +1829,14 @@ html.dark .github-activity-embed.gh-cal {
   gap: 0;
   margin-inline: auto;
   padding: var(--space-7) var(--gutter) var(--space-8);
-  max-width: 74rem;
+  max-width: 90rem;
 }
 
 @media (min-width: 1100px) {
   .work-detail-inner {
-    --work-toc-col: 10rem;
-    --work-rule-inset: var(--space-6); /* space from dashed rule to content */
+    --work-toc-col: 9rem;
+    /* Gap to rails — keep air, but don’t starve the content column */
+    --work-rule-inset: 2rem;
     /* TOC | content | matching right spacer — keeps content centered */
     grid-template-columns:
       var(--work-toc-col)
@@ -1887,6 +1888,9 @@ html.dark .github-activity-embed.gh-cal {
 }
 
 .work-detail-toc__link {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--text-label);
   letter-spacing: 0.06em;
@@ -1895,8 +1899,20 @@ html.dark .github-activity-embed.gh-cal {
   transition: color var(--dur-fast) var(--ease);
 }
 
+.work-detail-toc__num {
+  flex: none;
+  color: inherit;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
 .work-detail-toc__link:focus-visible {
   color: var(--ink);
+}
+
+.work-detail-toc__link:focus-visible .work-detail-toc__num,
+.work-detail-toc__link--active .work-detail-toc__num {
+  color: var(--accent);
 }
 
 .work-detail-toc__link--active {
@@ -1973,7 +1989,7 @@ html.dark .github-activity-embed.gh-cal {
 
 .work-detail-description {
   color: var(--ink-secondary);
-  max-width: var(--width-reading);
+  max-width: none; /* fill the content column between the rails */
   text-wrap: pretty;
 }
 
@@ -2000,7 +2016,7 @@ html.dark .github-activity-embed.gh-cal {
 }
 
 .work-detail-section-content {
-  max-width: var(--width-reading);
+  max-width: none; /* fill the content column between the rails */
   color: var(--ink);
 }
 

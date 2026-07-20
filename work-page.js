@@ -255,17 +255,23 @@
         const nextWork = works[nextIndex];
 
         const sections = normalizeWorkSections(work);
-        const tocSections = sections.filter((section) => section.inToc);
         const headerDescription = (work.detailDescription || work.description || '');
-        const toc = tocSections
-            .map((section) => {
+        const toc = sections
+            .map((section, index) => ({ section, index }))
+            .filter(({ section }) => section.inToc)
+            .map(({ section, index }) => {
                 return (
                     '<a href="#' +
                     escapeHtml(section.id) +
                     '" class="work-detail-toc__link" data-toc-target="' +
                     escapeHtml(section.id) +
                     '">' +
+                    '<span class="work-detail-toc__num" aria-hidden="true">' +
+                    pad2(index + 1) +
+                    '</span>' +
+                    '<span class="work-detail-toc__label">' +
                     escapeHtml(section.tocLabel) +
+                    '</span>' +
                     '</a>'
                 );
             })
