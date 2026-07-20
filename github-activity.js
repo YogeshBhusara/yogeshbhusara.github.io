@@ -1,6 +1,6 @@
 /**
  * github-activity.js — contribution calendar (Mohit-style layout).
- * Data: github-contributions-api.jogruber.de
+ * Data: github-contributions.json (snapshot from GitHub profile)
  * Colors: site accent scale via CSS variables on .gh-cal
  */
 (function initGithubActivity() {
@@ -8,7 +8,7 @@
   if (!root) return;
 
   const username = 'YogeshBhusara';
-  const apiUrl = `https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(username)}?y=last`;
+  const dataUrl = 'github-contributions.json?v=20260720h';
   const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   const monthsEl = root.querySelector('[data-gh-months]');
@@ -191,7 +191,7 @@
     root.classList.remove('gh-cal--error');
     root.classList.add('gh-cal--loading');
     try {
-      const res = await fetch(apiUrl, { credentials: 'omit' });
+      const res = await fetch(dataUrl, { credentials: 'omit', cache: 'no-store' });
       if (!res.ok) throw new Error(String(res.status));
       const data = await res.json();
       const contributions = Array.isArray(data.contributions) ? data.contributions : [];
