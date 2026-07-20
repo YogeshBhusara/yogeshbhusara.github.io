@@ -12,6 +12,8 @@ module.exports = {
     'dark',
     'reveal',
     'is-revealed',
-    'work-detail-toc__link--active'
+    'work-detail-toc__link--active',
+    'cursor-thumb',
+    'is-visible'
   ]
 };

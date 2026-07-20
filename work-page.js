@@ -91,19 +91,24 @@
         return work.meta ? work.meta.split(' · ')[0] : (work.category || '');
     }
 
-    /** One editorial index entry. `withThumb` adds a small image on wide screens. */
+    /** One editorial index entry. `withThumb` adds a stacked image (touch fallback). */
     function renderIndexEntry(work, index, withThumb, withDescription, withNumber, withYear) {
         const li = document.createElement('li');
         li.className = 'index-entry' + (withThumb ? ' index-entry--thumb' : '');
 
-        const imgSrc = withThumb && work.images && work.images[0] ? work.images[0] : '';
-        const thumb = imgSrc
+        const imgSrc = work.images && work.images[0] ? work.images[0] : '';
+        // Cursor-follow preview is home-only (compact rows); work page keeps stacked thumbs.
+        const thumbAttr = !withThumb && imgSrc
+            ? ' data-thumb="' + escapeHtml(imgSrc) + '"'
+            : '';
+        const thumb = withThumb && imgSrc
             ? '<img class="index-entry__thumb" src="' + escapeHtml(imgSrc) +
               '" alt="" width="220" height="165" loading="lazy" decoding="async">'
             : '';
 
         li.innerHTML =
-            '<button type="button" class="index-entry__link" data-work-id="' + escapeHtml(work.id) + '">' +
+            '<button type="button" class="index-entry__link" data-work-id="' +
+                escapeHtml(work.id) + '"' + thumbAttr + '>' +
                 (withNumber
                     ? '<span class="index-entry__num" aria-hidden="true">' + pad2(index + 1) + '</span>'
                     : '') +
