@@ -302,7 +302,7 @@ img {
 }
 
 .page {
-  padding-bottom: var(--space-8);
+  padding-bottom: 0;
   overflow: visible;
 }
 
@@ -1526,7 +1526,7 @@ a.row-list__row:focus-visible .row-list__title {
 
 .site-footer {
   margin-inline: calc(var(--gutter) * -1);
-  padding: var(--space-5) var(--gutter) var(--space-6);
+  padding: var(--space-5) var(--gutter);
   border-top: var(--hairline-dashed);
   display: flex;
   flex-wrap: wrap;
