@@ -5,6 +5,14 @@
   'use strict';
   window.BLOG_POSTS = [
     {
+      title: 'AI Tools Are the New Dopamine Machines… Or Are They?',
+      description:
+        'Artificial intelligence may be changing something even more fundamental: our relationship with progress itself.',
+      link: 'https://medium.com/@bhusara89.yogesh/ai-tools-are-the-new-dopamine-machines-or-are-they-84303be4488c',
+      date: 'Jul 2026',
+      image: 'assets/blog/ai-dopamine-machines.png'
+    },
+    {
       title: 'Develop First, Design Later',
       subtitle: "I'm Still Figuring This Out",
       description: 'What Happens When a Designer Builds Before Designing?',
