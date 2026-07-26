@@ -31,8 +31,10 @@
   var drawX = 0;
   var drawY = 0;
   var rafId = 0;
+  var syncRaf = 0;
   var OFFSET_X = 18;
   var OFFSET_Y = 18;
+  var hasPointer = false;
 
   function setPosition(x, y) {
     preview.style.transform =
@@ -87,11 +89,16 @@
     }
   }
 
-  function onPointerMove(e) {
-    pointerX = e.clientX;
-    pointerY = e.clientY;
+  /** Re-check what’s under the cursor (needed when content scrolls without pointer move). */
+  function syncFromPoint() {
+    syncRaf = 0;
+    if (!hasPointer) {
+      hide();
+      return;
+    }
 
-    var el = e.target.closest && e.target.closest('[data-thumb]');
+    var under = document.elementFromPoint(pointerX, pointerY);
+    var el = under && under.closest ? under.closest('[data-thumb]') : null;
     if (el) {
       show(el.getAttribute('data-thumb'));
       if (!rafId) rafId = window.requestAnimationFrame(tick);
@@ -100,7 +107,29 @@
     }
   }
 
+  function scheduleSync() {
+    if (syncRaf) return;
+    syncRaf = window.requestAnimationFrame(syncFromPoint);
+  }
+
+  function onPointerMove(e) {
+    hasPointer = true;
+    pointerX = e.clientX;
+    pointerY = e.clientY;
+    syncFromPoint();
+  }
+
   document.addEventListener('pointermove', onPointerMove, { passive: true });
-  document.addEventListener('pointerleave', hide);
-  window.addEventListener('blur', hide);
+  document.addEventListener('pointerleave', function () {
+    hasPointer = false;
+    hide();
+  });
+  window.addEventListener('blur', function () {
+    hasPointer = false;
+    hide();
+  });
+
+  // Capture scroll from window and nested scrollers while the cursor stays still
+  window.addEventListener('scroll', scheduleSync, { passive: true, capture: true });
+  window.addEventListener('wheel', scheduleSync, { passive: true, capture: true });
 })();
