@@ -8,7 +8,7 @@
   if (!root) return;
 
   const username = 'YogeshBhusara';
-  const dataUrl = 'github-contributions.json?v=20260726a';
+  const dataUrl = 'github-contributions.json?v=20260727a';
   const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   const monthsEl = root.querySelector('[data-gh-months]');
@@ -35,6 +35,20 @@
     return new Date(y, m - 1, d);
   }
 
+  /** Prefer GitHub’s own week grid so lit cells match the profile calendar exactly. */
+  function normalizeWeeks(data) {
+    if (Array.isArray(data.weeks) && data.weeks.length) {
+      return data.weeks.map((week) =>
+        (week || []).map((day) => ({
+          date: day.date,
+          count: Number(day.count) || 0,
+          level: Math.max(0, Math.min(4, Number(day.level) || 0)),
+        }))
+      );
+    }
+    return buildWeeks(Array.isArray(data.contributions) ? data.contributions : []);
+  }
+
   function buildWeeks(contributions) {
     if (!contributions.length) return [];
 
@@ -54,15 +68,16 @@
         const d = String(cursor.getDate()).padStart(2, '0');
         const key = `${y}-${m}-${d}`;
         const hit = byDate.get(key);
-        days.push({
-          date: key,
-          count: hit ? hit.count : 0,
-          level: hit ? hit.level : 0,
-          inRange: Boolean(hit),
-        });
+        if (hit || (cursor >= start && cursor <= end)) {
+          days.push({
+            date: key,
+            count: hit ? hit.count : 0,
+            level: hit ? hit.level : 0,
+          });
+        }
         cursor.setDate(cursor.getDate() + 1);
       }
-      weeks.push(days);
+      if (days.length) weeks.push(days);
       if (cursor > end && weeks.length >= 52) break;
     }
     return weeks;
@@ -72,7 +87,7 @@
     const labels = [];
     let lastMonth = -1;
     weeks.forEach((week, wi) => {
-      const day = week.find((d) => d.inRange) || week[0];
+      const day = week[0];
       if (!day) return;
       const month = parseDate(day.date).getMonth();
       if (month !== lastMonth) {
@@ -104,27 +119,29 @@
     if (!svgEl) return;
     const colors = levelColors();
     const NS = 'http://www.w3.org/2000/svg';
-    const cell = 0.8;
+    const cell = 0.82;
     const cols = weeks.length;
 
+    // Keep square cells (GitHub-like). Don’t stretch with preserveAspectRatio=none.
     svgEl.setAttribute('viewBox', `0 0 ${cols} 7`);
-    svgEl.setAttribute('preserveAspectRatio', 'none');
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     svgEl.replaceChildren();
 
     weeks.forEach((week, wi) => {
       const g = document.createElementNS(NS, 'g');
       week.forEach((day, di) => {
-        if (!day.inRange) return;
+        // GitHub weeks are Sun→Sat; day index matches contributionDays order.
         const rect = document.createElementNS(NS, 'rect');
         const level = Math.max(0, Math.min(4, day.level | 0));
         rect.setAttribute('x', String(wi + (1 - cell) / 2));
         rect.setAttribute('y', String(di + (1 - cell) / 2));
         rect.setAttribute('width', String(cell));
         rect.setAttribute('height', String(cell));
-        rect.setAttribute('rx', '0.2');
-        rect.setAttribute('ry', '0.2');
+        rect.setAttribute('rx', '0.15');
+        rect.setAttribute('ry', '0.15');
         rect.setAttribute('fill', colors[level]);
         rect.setAttribute('data-level', String(level));
+        rect.setAttribute('data-date', day.date);
         rect.setAttribute('class', 'gh-cal__cell');
 
         const title = document.createElementNS(NS, 'title');
@@ -194,8 +211,10 @@
       const res = await fetch(dataUrl, { credentials: 'omit', cache: 'no-store' });
       if (!res.ok) throw new Error(String(res.status));
       const data = await res.json();
-      const contributions = Array.isArray(data.contributions) ? data.contributions : [];
-      cachedWeeks = buildWeeks(contributions);
+      cachedWeeks = normalizeWeeks(data);
+      const contributions = Array.isArray(data.contributions)
+        ? data.contributions
+        : cachedWeeks.flat();
       cachedTotal =
         (data.total && (data.total.lastYear ?? data.total.last_year)) ??
         contributions.reduce((sum, d) => sum + (d.count || 0), 0);
