@@ -127,6 +127,10 @@
   --hairline-strong: 1px solid var(--rule-strong);
   --hairline-dashed: 1px dashed var(--rule);
 
+  /* Internal ticks — accent + at H/V rule intersections */
+  --tick: var(--accent);
+  --tick-size: 9px;
+
   /* Motion — strong custom curves (built-in CSS easings are too soft) */
   --dur-fast: 140ms;
   --dur: 200ms;
@@ -344,6 +348,21 @@ img {
     left: calc(var(--gutter) + var(--label-col));
     border-left: var(--hairline-dashed);
     pointer-events: none;
+  }
+
+  /* Accent + only at the internal H/V rule intersection */
+  .doc-section:not(:first-child)::after {
+    content: "";
+    position: absolute;
+    top: calc((var(--tick-size) - 1px) / -2);
+    left: calc(var(--gutter) + var(--label-col) - (var(--tick-size) - 1px) / 2);
+    width: var(--tick-size);
+    height: var(--tick-size);
+    pointer-events: none;
+    z-index: 1;
+    background:
+      linear-gradient(var(--tick), var(--tick)) center / var(--tick-size) 1px no-repeat,
+      linear-gradient(var(--tick), var(--tick)) center / 1px var(--tick-size) no-repeat;
   }
 
   .doc-section__label {
@@ -1564,6 +1583,7 @@ a.row-list__row:focus-visible .row-list__title {
 }
 
 .site-footer {
+  position: relative;
   margin-inline: calc(var(--gutter) * -1);
   padding: var(--space-5) var(--gutter);
   border-top: var(--hairline-dashed);
@@ -1572,6 +1592,23 @@ a.row-list__row:focus-visible .row-list__title {
   justify-content: space-between;
   align-items: baseline;
   gap: var(--space-2) var(--space-5);
+}
+
+/* Accent + only at the contact / footer internal rule intersection */
+@media (min-width: 768px) {
+  .site-footer::before {
+    content: "";
+    position: absolute;
+    top: calc((var(--tick-size) - 1px) / -2);
+    left: calc(var(--gutter) + var(--label-col) - (var(--tick-size) - 1px) / 2);
+    width: var(--tick-size);
+    height: var(--tick-size);
+    pointer-events: none;
+    z-index: 1;
+    background:
+      linear-gradient(var(--tick), var(--tick)) center / var(--tick-size) 1px no-repeat,
+      linear-gradient(var(--tick), var(--tick)) center / 1px var(--tick-size) no-repeat;
+  }
 }
 
 .site-footer p {
