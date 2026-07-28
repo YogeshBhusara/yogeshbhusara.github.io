@@ -26,20 +26,56 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Yogesh Bhusara",
-      "url": "https://yogeshbhusara.com/",
-      "jobTitle": "Product Designer",
-      "worksFor": { "@type": "Organization", "name": "MangoApps" },
-      "sameAs": [
-        "https://www.linkedin.com/in/yogeshbhusara/",
-        "https://github.com/yogeshbhusara",
-        "https://www.behance.net/yogeshbhusara",
-        "https://dribbble.com/YBhusara",
-        "https://medium.com/@bhusara89.yogesh"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://yogeshbhusara.com/#website",
+          "url": "https://yogeshbhusara.com/",
+          "name": "Yogesh Bhusara",
+          "description": "Portfolio of Yogesh Bhusara — Product Designer specializing in enterprise SaaS, collaboration, and complex product systems.",
+          "publisher": { "@id": "https://yogeshbhusara.com/#person" },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://yogeshbhusara.com/#person",
+          "name": "Yogesh Bhusara",
+          "url": "https://yogeshbhusara.com/",
+          "image": "https://yogeshbhusara.com/assets/profile-image.png",
+          "jobTitle": "Senior UI/UX Designer",
+          "description": "Product designer with 13+ years designing enterprise SaaS — collaboration, productivity, intranet, and complex product systems. Based in Pune, India.",
+          "email": "mailto:yogesh.bhusara@outlook.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pune",
+            "addressCountry": "IN"
+          },
+          "worksFor": {
+            "@type": "Organization",
+            "name": "MangoApps",
+            "url": "https://www.mangoapps.com"
+          },
+          "knowsAbout": [
+            "Product design",
+            "UI/UX design",
+            "Enterprise SaaS",
+            "Design systems",
+            "Collaboration software",
+            "AI-assisted prototyping",
+            "SwiftUI"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/yogeshbhusara/",
+            "https://github.com/yogeshbhusara",
+            "https://www.behance.net/yogeshbhusara",
+            "https://dribbble.com/YBhusara",
+            "https://medium.com/@bhusara89.yogesh"
+          ]
+        }
       ]
     }
     </script>
+    <link rel="alternate" type="text/plain" title="LLM summary" href="https://yogeshbhusara.com/llms.txt">
     <title>Yogesh Bhusara - Product Designer</title>
     <script>(function(){try{var d=localStorage.getItem('portfolio-theme')==='dark';if(d)document.documentElement.classList.add('dark');var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',d?'#18160f':'#faf8f3');}catch(e){}})();</script>
     <link rel="stylesheet" href="styles.css?v=20260728b">
@@ -153,6 +189,15 @@
             </div>
             <div class="doc-section__body">
                 <ol class="index-list" id="home-project-list" aria-label="Selected case studies"></ol>
+                <noscript>
+                    <ol class="index-list" aria-label="Selected case studies">
+                        <li class="index-entry"><a class="index-entry__link" href="work.html#post-planning-calendar-post-ideas"><span class="index-entry__title">Post Planning Calendar &amp; Post Ideas</span></a></li>
+                        <li class="index-entry"><a class="index-entry__link" href="work.html#user-segment-based-dashboards"><span class="index-entry__title">User Segment Based Dashboards</span></a></li>
+                        <li class="index-entry"><a class="index-entry__link" href="work.html#object-review-approve-publish-workflow"><span class="index-entry__title">Object Review, Approve &amp; Publish Workflow</span></a></li>
+                        <li class="index-entry"><a class="index-entry__link" href="work.html#centralized-task-management"><span class="index-entry__title">Centralized Task Management</span></a></li>
+                        <li class="index-entry"><a class="index-entry__link" href="work.html#buuzz-app"><span class="index-entry__title">Buuzz App</span></a></li>
+                    </ol>
+                </noscript>
                 <p class="doc-section__note"><a href="work.html">Full work index</a></p>
             </div>
         </section>
