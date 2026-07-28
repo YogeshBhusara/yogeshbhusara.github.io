@@ -20,10 +20,9 @@
     <meta property="og:locale" content="en_US">
     <title>Sitemap — Yogesh Bhusara</title>
     <script>(function(){try{var d=localStorage.getItem('portfolio-theme')==='dark';if(d)document.documentElement.classList.add('dark');var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',d?'#18160f':'#faf8f3');}catch(e){}})();</script>
-    <link rel="stylesheet" href="styles.css?v=20260726e">
+    <link rel="stylesheet" href="styles.css?v=20260728b">
 </head>
 <body>
-    <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
         <div class="shell site-header__inner">
@@ -32,8 +31,12 @@
                     <path d="M7.38477 9.47656L-6.12934e-07 4.97754L-6.9946e-07 2.99805L9.1543 8.55762L9.15918 8.55762L3.94531 -1.72451e-07L6.08496 -2.65982e-07L10.5664 7.38574L15.0654 -6.58531e-07L17.0449 -7.45054e-07L11.8467 8.55957L11.875 8.55957L21 3L21 5.13965L13.6143 9.62207L21 14.1201L21 16.0996L12.0068 10.6396L17.1016 19L14.9619 19L10.4795 11.6152L5.98145 19L4.00195 19L9.14062 10.5381L9.12402 10.5381L-1.26858e-07 16.0977L-2.20392e-07 13.958L7.38477 9.47656Z" fill="currentColor"/>
                 </svg>
             </a>
-            <div class="site-header__end">
-                <nav class="site-nav" aria-label="Site navigation">
+            <div class="site-nav-wrap">
+                <button type="button" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+                    <span class="nav-toggle__label">Menu</span>
+                    <span class="nav-toggle__chevron" aria-hidden="true"></span>
+                </button>
+                <nav id="site-nav" class="site-nav" aria-label="Site navigation">
                     <a href="index.html" class="site-nav__link">Index</a>
                     <a href="work.html" class="site-nav__link">Work</a>
                     <a href="playground.html" class="site-nav__link">Lab</a>
@@ -41,25 +44,25 @@
                     <a href="about.html" class="site-nav__link">About</a>
                     <a href="assets/Yogesh_Bhusara_Resume.pdf" class="site-nav__link site-nav__link--external" target="_blank" rel="noopener">Resume</a>
                 </nav>
-                <button type="button" class="theme-toggle" aria-label="Toggle dark and light theme">
-                    <span class="theme-toggle__icons" aria-hidden="true">
-                        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </span>
-                </button>
             </div>
+            <button type="button" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <span class="theme-toggle__icons" aria-hidden="true">
+            <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            </span>
+            </button>
         </div>
     </header>
 

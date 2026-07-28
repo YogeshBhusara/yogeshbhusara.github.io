@@ -41,6 +41,64 @@ document.addEventListener('click', function (e) {
     window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
+/* Mobile pill dropdown navigation */
+(function initMobileNav() {
+    const header = document.querySelector('.site-header');
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('site-nav');
+    const labelEl = document.querySelector('.nav-toggle__label');
+    if (!header || !toggle || !nav) return;
+
+    const mq = window.matchMedia('(max-width: 640px)');
+
+    function syncLabel() {
+        if (!labelEl) return;
+        const current = nav.querySelector('[aria-current="page"]');
+        labelEl.textContent = current ? current.textContent.trim() : 'Menu';
+    }
+
+    function setOpen(open) {
+        header.classList.toggle('is-nav-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    function close() {
+        setOpen(false);
+    }
+
+    syncLabel();
+
+    toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!header.classList.contains('is-nav-open'));
+    });
+
+    nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) close();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!header.classList.contains('is-nav-open')) return;
+        if (header.querySelector('.site-nav-wrap')?.contains(e.target)) return;
+        close();
+    });
+
+    function onViewportChange() {
+        if (!mq.matches) close();
+    }
+
+    if (typeof mq.addEventListener === 'function') {
+        mq.addEventListener('change', onViewportChange);
+    } else if (typeof mq.addListener === 'function') {
+        mq.addListener(onViewportChange);
+    }
+})();
+
 // Gentle content fade on scroll — split into chunks, stagger ~80ms
 (function initReveals() {
     const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
