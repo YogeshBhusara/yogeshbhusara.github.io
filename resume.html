@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/y_logo.svg" type="image/svg+xml">
+
+    <meta name="description" content="Resume — Yogesh Bhusara. Sr. UI/UX Designer with 13+ years of experience designing enterprise SaaS products, collaboration platforms, and scalable design systems.">
+    <meta name="author" content="Yogesh Bhusara">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#faf8f3">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="canonical" href="https://yogeshbhusara.com/resume.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yogeshbhusara.com/resume.html">
+    <meta property="og:title" content="Resume — Yogesh Bhusara">
+    <meta property="og:description" content="Sr. UI/UX Designer with 13+ years of experience designing enterprise SaaS products, collaboration platforms, and scalable design systems.">
+    <meta property="og:site_name" content="Yogesh Bhusara">
+    <meta property="og:image" content="https://yogeshbhusara.com/assets/og-image.svg">
+    <meta property="og:image:alt" content="Resume — Yogesh Bhusara">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Resume — Yogesh Bhusara">
+    <meta name="twitter:description" content="Sr. UI/UX Designer with 13+ years of experience designing enterprise SaaS products, collaboration platforms, and scalable design systems.">
+    <meta name="twitter:image" content="https://yogeshbhusara.com/assets/og-image.svg">
+    <link rel="alternate" type="text/plain" title="LLM summary" href="https://yogeshbhusara.com/llms.txt">
+    <title>Resume — Yogesh Bhusara</title>
+    <script>(function(){try{var d=localStorage.getItem('portfolio-theme')==='dark';if(d)document.documentElement.classList.add('dark');var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',d?'#18160f':'#faf8f3');}catch(e){}})();</script>
+    <link rel="stylesheet" href="styles.css?v=20260828a">
+    <style>
+        /* Resume page — download bar + print styles */
+
+        .resume-contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: var(--space-2) var(--space-5);
+            margin-top: var(--space-3);
+        }
+
+        .resume-contact-row a,
+        .resume-contact-row span {
+            font-family: var(--font-mono);
+            font-size: var(--text-meta);
+            color: var(--ink-secondary);
+        }
+
+        .resume-contact-row a {
+            text-decoration: underline;
+            text-decoration-color: var(--rule-strong);
+            text-underline-offset: 0.2em;
+        }
+
+        .resume-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+            gap: var(--space-5);
+        }
+
+        .resume-skills-grid h3 {
+            font-size: var(--text-small);
+            font-weight: 500;
+            margin-bottom: var(--space-2);
+            color: var(--ink);
+        }
+
+        .resume-skills-grid ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .resume-skills-grid li {
+            font-size: var(--text-small);
+            color: var(--ink-secondary);
+        }
+
+        .resume-cert-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .resume-cert-list li {
+            font-size: var(--text-body);
+            font-weight: 500;
+        }
+
+        .resume-cert-list .meta {
+            display: block;
+            margin-top: var(--space-1);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .resume-contact-row a:hover {
+                color: var(--accent);
+                text-decoration-color: var(--accent);
+            }
+        }
+
+        @media print {
+            .site-header,
+            .site-footer,
+            body::before,
+            body::after {
+                display: none !important;
+            }
+
+            .shell.page {
+                border: none;
+                max-width: 100%;
+            }
+
+            body {
+                background: #fff;
+                color: #000;
+            }
+
+            .doc-section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="shell site-header__inner">
+            <a href="index.html" class="site-wordmark" aria-label="Yogesh Bhusara — Home">
+                <svg class="site-wordmark__logo" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M7.38477 9.47656L-6.12934e-07 4.97754L-6.9946e-07 2.99805L9.1543 8.55762L9.15918 8.55762L3.94531 -1.72451e-07L6.08496 -2.65982e-07L10.5664 7.38574L15.0654 -6.58531e-07L17.0449 -7.45054e-07L11.8467 8.55957L11.875 8.55957L21 3L21 5.13965L13.6143 9.62207L21 14.1201L21 16.0996L12.0068 10.6396L17.1016 19L14.9619 19L10.4795 11.6152L5.98145 19L4.00195 19L9.14062 10.5381L9.12402 10.5381L-1.26858e-07 16.0977L-2.20392e-07 13.958L7.38477 9.47656Z" fill="currentColor"/>
+                </svg>
+            </a>
+            <div class="site-nav-wrap">
+                <button type="button" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+                    <span class="nav-toggle__label">Resume</span>
+                    <span class="nav-toggle__chevron" aria-hidden="true"></span>
+                </button>
+                <nav id="site-nav" class="site-nav" aria-label="Site navigation">
+                    <a href="index.html" class="site-nav__link">Index</a>
+                    <a href="work.html" class="site-nav__link">Work</a>
+                    <a href="playground.html" class="site-nav__link">Lab</a>
+                    <a href="blog.html" class="site-nav__link">Notes</a>
+                    <a href="about.html" class="site-nav__link">About</a>
+                    <a href="resume.html" class="site-nav__link" aria-current="page">Resume</a>
+                </nav>
+            </div>
+            <button type="button" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <span class="theme-toggle__icons" aria-hidden="true">
+            <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            </span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main" class="shell page">
+        <div class="page-title-block">
+            <span class="label">Resume</span>
+            <h1 class="page-title">Yogesh Bhusara</h1>
+            <p class="page-title-block__lede">Senior UI/UX Designer</p>
+            <div class="resume-contact-row">
+                <span>+91 7588730467</span>
+                <a href="mailto:yogesh.bhusara@outlook.com">yogesh.bhusara@outlook.com</a>
+                <a href="https://yogeshbhusara.com" target="_blank" rel="noopener">yogeshbhusara.com</a>
+            </div>
+        </div>
+
+
+        <section class="doc-section" aria-labelledby="summary-heading">
+            <div class="doc-section__label">
+                <span class="doc-section__index">01</span>
+                <h2 id="summary-heading" class="label">Summary</h2>
+            </div>
+            <div class="doc-section__body">
+                <div class="prose">
+                    <p>Currently working as Sr UI/UX Designer with 13+ years of experience designing enterprise SaaS products, collaboration platforms, mobile applications, and scalable design systems.</p>
+                    <p>Specialized in transforming complex workflows into intuitive user experiences through research, product strategy, interaction design, and system thinking.</p>
+                    <p>Extensive experience partnering with product managers, engineering teams, and business stakeholders to deliver user-centered solutions at scale.</p>
+                    <p>Currently leading product design initiatives at MangoApps, focusing on enterprise collaboration, employee experience, AI-powered workflows, and design system evolution.</p>
+                    <p>Actively exploring AI-assisted product development using Cursor, Figma Make, Google Stitch, Claude Design, and SwiftUI-based prototyping workflows.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="doc-section" aria-labelledby="skills-heading">
+            <div class="doc-section__label">
+                <span class="doc-section__index">02</span>
+                <h2 id="skills-heading" class="label">Core Expertise</h2>
+            </div>
+            <div class="doc-section__body">
+                <div class="resume-skills-grid">
+                    <div>
+                        <h3>Product Design</h3>
+                        <ul>
+                            <li>Product Strategy</li>
+                            <li>Enterprise UX</li>
+                            <li>SaaS Platforms</li>
+                            <li>Information Architecture</li>
+                            <li>UX Research</li>
+                            <li>User Flows</li>
+                            <li>Interaction Design</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Design Systems</h3>
+                        <ul>
+                            <li>Component Libraries</li>
+                            <li>Design Tokens</li>
+                            <li>Accessibility</li>
+                            <li>Visual Consistency</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Prototyping</h3>
+                        <ul>
+                            <li>Rapid Prototyping</li>
+                            <li>High-Fidelity Design</li>
+                            <li>Interactive Prototypes</li>
+                            <li>Concept Validation</li>
+                            <li>Design-to-Code Workflows</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>AI-Assisted Design</h3>
+                        <ul>
+                            <li>Cursor</li>
+                            <li>Claude Design</li>
+                            <li>Figma Make</li>
+                            <li>Google Stitch</li>
+                            <li>Vibe Coding</li>
+                            <li>AI-driven Prototyping</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Technical</h3>
+                        <ul>
+                            <li>Figma</li>
+                            <li>SwiftUI</li>
+                            <li>HTML / CSS</li>
+                            <li>GitHub</li>
+                            <li>Design Documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="doc-section" aria-labelledby="experience-heading">
+            <div class="doc-section__label">
+                <span class="doc-section__index">03</span>
+                <h2 id="experience-heading" class="label">Experience</h2>
+            </div>
+            <div class="doc-section__body">
+                <ul class="cv-list">
+                    <li class="cv-entry">
+                        <div class="cv-entry__head">
+                            <span class="cv-entry__role">Senior UI/UX Designer</span>
+                            <span class="meta">Jan 2022 — Present</span>
+                        </div>
+                        <p class="cv-entry__co meta">MangoApps</p>
+                        <div class="cv-entry__body prose">
+                            <p>Leading end-to-end product design initiatives for a modern enterprise intranet and employee experience platform serving distributed teams.</p>
+                            <ul>
+                                <li>Led end-to-end product design for enterprise SaaS applications across web and mobile, taking features from discovery and research through wireframing, prototyping, visual design, developer handoff, and production.</li>
+                                <li>Designed and enhanced core collaboration modules including Intranet, Chat, Newsfeed, LMS, Files, Forms, Trackers, Calendar, People Directory, Communities, and Knowledge Management.</li>
+                                <li>Partnered closely with Product Managers, Engineering, QA, and stakeholders to translate complex business requirements into intuitive user experiences.</li>
+                                <li>Redesigned legacy workflows and information architecture, simplifying enterprise features and improving usability across the platform.</li>
+                                <li>Created low-fidelity wireframes, interactive prototypes, and high-fidelity UI designs using Figma while maintaining consistency with the product's design system.</li>
+                                <li>Defined and evolved reusable design components, patterns, and design standards to ensure consistency across multiple product modules.</li>
+                                <li>Worked daily with front-end and back-end engineering teams during implementation, reviewing builds, resolving UX issues, and ensuring design quality in production.</li>
+                                <li>Performed regular design reviews and usability audits to maintain a high-quality user experience across releases.</li>
+                                <li>Collaborated on AI-powered product initiatives, including AI-assisted content generation, analytics dashboards, and workflow automation experiences.</li>
+                                <li>Designed enterprise dashboards, reporting interfaces, role-based analytics, and administrative experiences for different permission levels.</li>
+                                <li>Improved complex data-heavy interfaces by simplifying navigation, hierarchy, and information presentation for enterprise users.</li>
+                                <li>Managed multiple concurrent product initiatives while delivering designs within agile sprint cycles.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="cv-entry">
+                        <div class="cv-entry__head">
+                            <span class="cv-entry__role">User Experience Designer</span>
+                            <span class="meta">Dec 2020 — Jan 2022</span>
+                        </div>
+                        <p class="cv-entry__co meta">Tata Communications</p>
+                        <div class="cv-entry__body prose">
+                            <p>Designed enterprise experiences for internal and customer-facing digital products.</p>
+                            <ul>
+                                <li>Led UX design efforts from discovery through implementation.</li>
+                                <li>Created workflows, UI specifications, and interaction models for complex business processes.</li>
+                                <li>Collaborated with cross-functional teams to improve usability and adoption.</li>
+                                <li>Established design standards and usability guidelines across initiatives.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="cv-entry">
+                        <div class="cv-entry__head">
+                            <span class="cv-entry__role">Senior UI/UX Designer</span>
+                            <span class="meta">Sep 2015 — Dec 2020</span>
+                        </div>
+                        <p class="cv-entry__co meta">MangoApps</p>
+                        <div class="cv-entry__body prose">
+                            <p>Designed and evolved enterprise collaboration products across web and mobile platforms.</p>
+                            <ul>
+                                <li>Delivered product features from concept to launch.</li>
+                                <li>Managed end-to-end UX design process.</li>
+                                <li>Created wireframes, prototypes, and high-fidelity interfaces.</li>
+                                <li>Supported product branding and visual design consistency.</li>
+                                <li>Worked closely with development teams to ensure accurate implementation.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="cv-entry">
+                        <div class="cv-entry__head">
+                            <span class="cv-entry__role">UI/UX Designer</span>
+                            <span class="meta">Jan 2015 — Aug 2015</span>
+                        </div>
+                        <p class="cv-entry__co meta">Appnocrat Technology (Therapy Box)</p>
+                        <div class="cv-entry__body prose">
+                            <p>Designed accessibility-focused mobile experiences.</p>
+                            <ul>
+                                <li>Designed applications for users with disabilities.</li>
+                                <li>Created educational and gamified mobile experiences for children.</li>
+                                <li>Worked on innovative keyboard and communication-assistance products.</li>
+                                <li>Collaborated directly with engineering teams throughout implementation.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="cv-entry">
+                        <div class="cv-entry__head">
+                            <span class="cv-entry__role">UI/UX Designer</span>
+                            <span class="meta">Sep 2012 — Dec 2014</span>
+                        </div>
+                        <p class="cv-entry__co meta">Probity Venture</p>
+                        <div class="cv-entry__body prose">
+                            <p>Worked across mobile, web, branding, and client projects.</p>
+                            <ul>
+                                <li>Sole designer responsible for strategy, UX, UI, and branding.</li>
+                                <li>Designed websites and mobile applications for multiple industries.</li>
+                                <li>Created wireframes, prototypes, visual designs, and marketing assets.</li>
+                                <li>Improved product engagement through iterative design improvements.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="doc-section" aria-labelledby="education-heading">
+            <div class="doc-section__label">
+                <span class="doc-section__index">04</span>
+                <h2 id="education-heading" class="label">Education</h2>
+            </div>
+            <div class="doc-section__body">
+                <div class="cv-entry">
+                    <div class="cv-entry__head">
+                        <span class="cv-entry__role">Bachelor of Engineering (Information Technology)</span>
+                        <span class="meta">2012</span>
+                    </div>
+                    <p class="cv-entry__co meta">Fr. Conceicao Rodrigues College of Engineering</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="doc-section" aria-labelledby="certifications-heading">
+            <div class="doc-section__label">
+                <span class="doc-section__index">05</span>
+                <h2 id="certifications-heading" class="label">Certifications</h2>
+            </div>
+            <div class="doc-section__body">
+                <ul class="resume-cert-list">
+                    <li>
+                        Mobile User Experience (UX) Design
+                        <span class="meta">IxDF — The Interaction Design Foundation</span>
+                    </li>
+                    <li>
+                        How to Design for Augmented and Virtual Reality
+                        <span class="meta">IxDF — The Interaction Design Foundation</span>
+                    </li>
+                    <li>
+                        Human-Computer Interaction — HCI
+                        <span class="meta">IxDF — The Interaction Design Foundation</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="site-footer" aria-label="Site footer">
+            <p>Built with vibe coding, curiosity and too many iterations.</p>
+            <div class="site-footer__end">
+                <p>Yogesh Bhusara © 2026</p>
+                <p class="site-footer__visits" data-visit-count aria-live="polite">Total visits …</p>
+            </div>
+        </footer>
+    </main>
+
+    <script defer src="script.js"></script>
+    <script defer src="visit-counter.js?v=20260811"></script>
+    <script defer src="theme-toggle.js"></script>
+</body>
+</html>
