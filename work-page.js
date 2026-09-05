@@ -70,7 +70,11 @@
 
     function resetWorkDetailScroll() {
         const scrollRoot = getWorkDetailScrollRoot();
-        if (scrollRoot) scrollRoot.scrollTop = 0;
+        if (!scrollRoot) return;
+        scrollRoot.scrollTop = 0;
+        requestAnimationFrame(() => {
+            scrollRoot.scrollTop = 0;
+        });
     }
 
     function escapeHtml(str) {
@@ -96,7 +100,7 @@
         const li = document.createElement('li');
         li.className = 'index-entry' + (withThumb ? ' index-entry--thumb' : '');
 
-        const imgSrc = work.images && work.images[0] ? work.images[0] : '';
+        const imgSrc = work.thumb || (work.images && work.images[0]) || '';
         // Cursor-follow preview is home-only (compact rows); work page keeps stacked thumbs.
         const thumbAttr = !withThumb && imgSrc
             ? ' data-thumb="' + escapeHtml(imgSrc) + '"'
@@ -248,11 +252,360 @@
         `;
     }
 
+    function renderV2Figure(figure, figState, workTitle) {
+        if (!figure || !figure.src) return '';
+        figState.n += 1;
+        const caption = figure.caption
+            ? 'Fig. ' + pad2(figState.n) + ' — ' + figure.caption
+            : 'Fig. ' + pad2(figState.n);
+        const alt = figure.alt || (workTitle + ' — product screen');
+        const heroClass = figure.hero ? ' work-detail-figure--hero' : '';
+        const storyClass = figure.storyboard ? ' work-detail-figure--story' : '';
+        const pageClass = figure.page ? ' work-detail-figure--page' : '';
+        const phoneClass = figure.phone ? ' work-detail-figure--phone' : '';
+        return `
+            <figure class="work-detail-figure work-detail-figure--v2${heroClass}${storyClass}${pageClass}${phoneClass}">
+                <img src="${escapeHtml(figure.src)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async">
+                <figcaption>${escapeHtml(caption)}</figcaption>
+            </figure>
+        `;
+    }
+
+    function v2TocSections(work) {
+        const raw = Array.isArray(work.sections) ? work.sections : [];
+        const usedIds = new Set();
+        let visualIndex = 0;
+
+        return raw
+            .filter((section) => section && section.title && section.inToc !== false)
+            .map((section) => {
+                visualIndex += 1;
+                let id = section.id ? slugify(section.id) : slugify(section.title);
+                id = id ? `section-${id}` : `section-part-${visualIndex}`;
+                let uniqueId = id;
+                let suffix = 2;
+                while (usedIds.has(uniqueId)) {
+                    uniqueId = `${id}-${suffix++}`;
+                }
+                usedIds.add(uniqueId);
+                return {
+                    id: uniqueId,
+                    title: section.title,
+                    tocLabel: (section.tocLabel && String(section.tocLabel).trim()) || section.title,
+                    num: visualIndex
+                };
+            });
+    }
+
+    function renderScanIntro(work) {
+        const scan = work.scan || {};
+        const meta = [
+            ['Role', scan.role],
+            ['Timeline', scan.timeline],
+            ['Team', scan.team],
+            ['Platform', scan.platform]
+        ].filter(([, value]) => value);
+
+        return `
+            <header class="work-detail-header work-scan work-scan--intro">
+                <div class="work-detail-meta">
+                    <span class="work-detail-tag">${escapeHtml(workArea(work))}</span>
+                    <span class="work-detail-tag">${escapeHtml(work.category || '')}</span>
+                    <span class="work-detail-tag">${escapeHtml(work.year || '')}</span>
+                </div>
+                <h1 class="work-detail-title" id="work-detail-title">${escapeHtml(work.title)}</h1>
+                <p class="work-detail-description">${escapeHtml(work.detailDescription || work.description || '')}</p>
+
+                <dl class="work-scan__meta">
+                    ${meta.map(([label, value]) => (
+                        '<div class="work-scan__meta-item">' +
+                            '<dt>' + escapeHtml(label) + '</dt>' +
+                            '<dd>' + escapeHtml(value) + '</dd>' +
+                        '</div>'
+                    )).join('')}
+                </dl>
+            </header>
+        `;
+    }
+
+    function renderScanHighlights(work) {
+        const scan = work.scan || {};
+        const contrib = Array.isArray(scan.contribution) ? scan.contribution : [];
+        if (!contrib.length && !scan.challenge && !scan.impact) return '';
+
+        return `
+            <div class="work-scan__after">
+                ${contrib.length ? `
+                    <div class="work-scan__contrib">
+                        <p class="work-scan__label">My contribution</p>
+                        <ul>
+                            ${contrib.map((item) => '<li>' + escapeHtml(item) + '</li>').join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+
+                <div class="work-scan__highlights">
+                    ${scan.challenge ? `
+                        <div class="work-scan__highlight">
+                            <p class="work-scan__label">The challenge</p>
+                            <p>${escapeHtml(scan.challenge)}</p>
+                        </div>
+                    ` : ''}
+                    ${scan.impact ? `
+                        <div class="work-scan__highlight work-scan__highlight--impact">
+                            <p class="work-scan__label">The impact</p>
+                            <p>${escapeHtml(scan.impact)}</p>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    function renderV2Section(section, tocMap, figState, workTitle) {
+        const toc = section.title ? tocMap.get(section) : null;
+        const sectionId = toc ? ` id="${escapeHtml(toc.id)}"` : '';
+        const heading = section.title
+            ? `<h2 class="work-detail-section-title">
+                    ${toc ? `<span class="section-num" aria-hidden="true">${pad2(toc.num)}</span>` : ''}
+                    ${escapeHtml(section.title)}
+               </h2>`
+            : '';
+
+        if (section.type === 'figure') {
+            return renderV2Figure(section, figState, workTitle);
+        }
+
+        if (section.type === 'cards') {
+            const cards = Array.isArray(section.cards) ? section.cards : [];
+            return `
+                <section class="work-detail-section work-cs-section"${sectionId}>
+                    ${heading}
+                    ${section.lead ? `<p class="work-cs-lead">${escapeHtml(section.lead)}</p>` : ''}
+                    <div class="work-cs-cards${cards.length === 3 ? ' work-cs-cards--3' : ''}">
+                        ${cards.map((card) => (
+                            '<article class="work-cs-card">' +
+                                (card.title ? '<h3>' + escapeHtml(card.title) + '</h3>' : '') +
+                                (card.body ? '<p>' + escapeHtml(card.body) + '</p>' : '') +
+                            '</article>'
+                        )).join('')}
+                    </div>
+                    ${renderV2Figure(section.figure, figState, workTitle)}
+                </section>
+            `;
+        }
+
+        if (section.type === 'process') {
+            const steps = Array.isArray(section.steps) ? section.steps : [];
+            return `
+                <section class="work-detail-section work-cs-section"${sectionId}>
+                    ${heading}
+                    <ol class="work-cs-process">
+                        ${steps.map((step, i) => (
+                            '<li>' +
+                                '<span class="work-cs-process__num" aria-hidden="true">' + pad2(i + 1) + '</span>' +
+                                '<div>' +
+                                    '<h3>' + escapeHtml(step.title || '') + '</h3>' +
+                                    '<p>' + escapeHtml(step.body || '') + '</p>' +
+                                '</div>' +
+                            '</li>'
+                        )).join('')}
+                    </ol>
+                </section>
+            `;
+        }
+
+        if (section.type === 'decision') {
+            const rows = [
+                ['The problem', section.problem],
+                ['Insight', section.insight],
+                ['Design decision', section.decision],
+                ['Why', section.why],
+                ['Result', section.result]
+            ].filter(([, value]) => value);
+            const followClass = section.title ? '' : ' work-cs-section--follow';
+            return `
+                <section class="work-detail-section work-cs-section${followClass}"${sectionId}>
+                    ${heading}
+                    ${section.kicker ? `<p class="work-cs-kicker">${escapeHtml(section.kicker)}</p>` : ''}
+                    <div class="work-cs-decision">
+                        ${rows.map(([label, value]) => (
+                            '<div class="work-cs-decision__row">' +
+                                '<p class="work-scan__label">' + escapeHtml(label) + '</p>' +
+                                '<p>' + escapeHtml(value) + '</p>' +
+                            '</div>'
+                        )).join('')}
+                    </div>
+                    ${renderV2Figure(section.figure, figState, workTitle)}
+                </section>
+            `;
+        }
+
+        if (section.type === 'split') {
+            const items = Array.isArray(section.items) ? section.items : [];
+            const lead = section.lead ? `<p class="work-cs-lead">${escapeHtml(section.lead)}</p>` : '';
+            const points = `
+                    <div class="work-cs-points">
+                        ${items.map((item) => (
+                            '<div class="work-cs-point">' +
+                                '<h3>' + escapeHtml(item.title || '') + '</h3>' +
+                                '<p>' + escapeHtml(item.body || '') + '</p>' +
+                            '</div>'
+                        )).join('')}
+                    </div>
+            `;
+            const primaryFigure = renderV2Figure(section.figure, figState, workTitle);
+            const extraFigures = (Array.isArray(section.figures) ? section.figures : [])
+                .map((figure) => renderV2Figure(figure, figState, workTitle))
+                .join('');
+            const extras = extraFigures && section.figureGrid
+                ? `<div class="work-cs-figgrid">${extraFigures}</div>`
+                : extraFigures;
+            const visual = section.figureFirst
+                ? `${primaryFigure}${lead}${points}${extras}`
+                : `${lead}${points}${primaryFigure}${extras}`;
+            return `
+                <section class="work-detail-section work-cs-section"${sectionId}>
+                    ${heading}
+                    ${visual}
+                </section>
+            `;
+        }
+
+        if (section.type === 'outcomes') {
+            const items = Array.isArray(section.items) ? section.items : [];
+            return `
+                <section class="work-detail-section work-cs-section"${sectionId}>
+                    ${heading}
+                    <div class="work-cs-outcomes">
+                        ${items.map((item) => (
+                            '<article class="work-cs-outcome">' +
+                                '<h3>' + escapeHtml(item.title || '') + '</h3>' +
+                                '<p>' + escapeHtml(item.body || '') + '</p>' +
+                            '</article>'
+                        )).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        if (section.type === 'learnings') {
+            const items = Array.isArray(section.items) ? section.items : [];
+            return `
+                <section class="work-detail-section work-cs-section"${sectionId}>
+                    ${heading}
+                    <ul class="work-cs-learnings">
+                        ${items.map((item) => '<li>' + escapeHtml(item) + '</li>').join('')}
+                    </ul>
+                </section>
+            `;
+        }
+
+        const paragraphs = Array.isArray(section.paragraphs) ? section.paragraphs : [];
+        return `
+            <section class="work-detail-section work-cs-section"${sectionId}>
+                ${heading}
+                <div class="work-detail-section-content">
+                    ${paragraphs.map((p) => '<p>' + escapeHtml(p) + '</p>').join('')}
+                </div>
+            </section>
+        `;
+    }
+
+    function renderCaseStudyV2(work, nextWork) {
+        const tocEntries = v2TocSections(work);
+        const tocMap = new Map();
+        const titled = (work.sections || []).filter((section) => section && section.title && section.inToc !== false);
+        titled.forEach((section, i) => {
+            if (tocEntries[i]) tocMap.set(section, tocEntries[i]);
+        });
+
+        const toc = tocEntries.map((entry) => {
+            return (
+                '<a href="#' +
+                escapeHtml(entry.id) +
+                '" class="work-detail-toc__link" data-toc-target="' +
+                escapeHtml(entry.id) +
+                '">' +
+                '<span class="work-detail-toc__num" aria-hidden="true">' +
+                pad2(entry.num) +
+                '</span>' +
+                '<span class="work-detail-toc__label">' +
+                escapeHtml(entry.tocLabel) +
+                '</span>' +
+                '</a>'
+            );
+        }).join('');
+
+        const mobileToc = tocEntries.map((entry) => {
+            return (
+                '<a href="#' +
+                escapeHtml(entry.id) +
+                '" class="work-cs-jump__link" data-toc-target="' +
+                escapeHtml(entry.id) +
+                '">' +
+                escapeHtml(entry.tocLabel) +
+                '</a>'
+            );
+        }).join('');
+
+        const figState = { n: 0 };
+        const heroHtml = work.hero
+            ? renderV2Figure(Object.assign({ hero: true }, work.hero), figState, work.title)
+            : '';
+        const bodyHtml = (work.sections || [])
+            .map((section) => renderV2Section(section, tocMap, figState, work.title))
+            .join('');
+
+        return `
+            ${toc ? `
+                <nav class="work-detail-toc" aria-label="Case study sections">
+                    ${toc}
+                </nav>
+            ` : ''}
+
+            ${renderScanIntro(work)}
+
+            ${mobileToc ? `
+                <nav class="work-cs-jump" aria-label="Jump to section">
+                    ${mobileToc}
+                </nav>
+            ` : ''}
+
+            ${heroHtml}
+            ${renderScanHighlights(work)}
+            ${bodyHtml}
+
+            <div class="work-detail-navigation">
+                <button class="work-detail-next" data-next-id="${escapeHtml(nextWork.id)}">
+                    Next: ${escapeHtml(nextWork.title)} →
+                </button>
+            </div>
+        `;
+    }
+
     // Render work detail
     function renderWorkDetail(work) {
         const currentIndex = works.findIndex(w => w.id === work.id);
         const nextIndex = (currentIndex + 1) % works.length;
         const nextWork = works[nextIndex];
+
+        workDetailInner.classList.toggle('work-detail-inner--v2', work.layout === 'case-study-v2');
+
+        if (work.layout === 'case-study-v2') {
+            workDetailInner.innerHTML = renderCaseStudyV2(work, nextWork);
+
+            const nextButton = workDetailInner.querySelector('.work-detail-next');
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    const nextId = nextButton.dataset.nextId;
+                    if (nextId) openWorkDetail(nextId);
+                });
+            }
+
+            setupWorkDetailToc();
+            return;
+        }
 
         const sections = normalizeWorkSections(work);
         const headerDescription = (work.detailDescription || work.description || '');
@@ -356,11 +709,10 @@
             workDetailTocCleanup = null;
         }
 
-        const toc = workDetailInner.querySelector('.work-detail-toc');
-        if (!toc) return;
+        const links = Array.from(workDetailInner.querySelectorAll('.work-detail-toc__link, .work-cs-jump__link'));
+        if (!links.length) return;
 
         const scrollRoot = getWorkDetailScrollRoot();
-        const links = Array.from(toc.querySelectorAll('.work-detail-toc__link'));
         const targets = links
             .map((link) => {
                 const id = link.getAttribute('data-toc-target') || link.getAttribute('href')?.replace(/^#/, '');
@@ -371,6 +723,14 @@
             .filter(Boolean);
 
         if (targets.length === 0) return;
+
+        function getStickyJumpOffset() {
+            const jump = workDetailInner.querySelector('.work-cs-jump');
+            if (!jump || !scrollRoot) return 16;
+            const style = window.getComputedStyle(jump);
+            if (style.position !== 'sticky' && style.position !== 'fixed') return 16;
+            return Math.ceil(jump.getBoundingClientRect().height) + 12;
+        }
 
         let clickScrollLockUntil = 0;
 
@@ -395,7 +755,7 @@
             if (nearBottom) return targets[targets.length - 1].id;
 
             const rootRect = scrollRoot.getBoundingClientRect();
-            const viewportTop = rootRect.top;
+            const viewportTop = rootRect.top + getStickyJumpOffset();
             const viewportBottom = rootRect.bottom;
             let activeId = targets[0].id;
             let maxVisible = -1;
@@ -485,7 +845,8 @@
                     clickScrollWatchCleanup = null;
                 }
 
-                const top = Math.max(0, getScrollOffsetWithinRoot(el, scrollRoot) - 16);
+                const heading = el.querySelector('.work-detail-section-title') || el;
+                const top = Math.max(0, getScrollOffsetWithinRoot(heading, scrollRoot) - getStickyJumpOffset());
                 setActiveLink(id);
                 clickScrollWatchCleanup = lockClickScrollUntilSettled();
                 scrollRoot.scrollTo({ top, behavior: 'smooth' });
