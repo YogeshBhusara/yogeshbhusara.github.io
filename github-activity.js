@@ -8,7 +8,7 @@
   if (!root) return;
 
   const username = 'YogeshBhusara';
-  const dataUrl = 'github-contributions.json?v=20260727a';
+  const dataUrl = 'github-contributions.json?v=20260914a';
   const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   const monthsEl = root.querySelector('[data-gh-months]');
