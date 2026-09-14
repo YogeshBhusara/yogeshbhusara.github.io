@@ -26,7 +26,7 @@
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Intranet',
-      thumb: 'assets/work/post-planning/hero-week.png',
+      thumb: 'assets/work/post-planning/thumb.webp',
       images: ['assets/work/post-planning/hero-week.png'],
       scan: {
         role: 'Senior UI/UX Designer',
@@ -217,7 +217,7 @@
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Intranet',
-      thumb: 'assets/work/dashboards/hero-preview.png',
+      thumb: 'assets/work/dashboards/thumb.webp',
       images: ['assets/work/dashboards/hero-preview.png'],
       scan: {
         role: 'Senior UI/UX Designer',
@@ -397,7 +397,7 @@
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Governance',
-      thumb: 'assets/work/approvals/hero-publish-flow.png',
+      thumb: 'assets/work/approvals/thumb.webp',
       images: ['assets/work/approvals/hero-publish-flow.png'],
       scan: {
         role: 'Lead Product Designer',
@@ -561,7 +561,7 @@
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Productivity',
-      thumb: 'assets/work/tasks/hero-central.png',
+      thumb: 'assets/work/tasks/thumb.webp',
       images: ['assets/work/tasks/hero-central.png'],
       scan: {
         role: 'Senior UI/UX Designer',
@@ -735,7 +735,7 @@
       year: '2022',
       category: 'Mobile Design',
       area: 'Mobility / Consumer App',
-      thumb: 'assets/work/buuzz/hero-map.png',
+      thumb: 'assets/work/buuzz/thumb.webp',
       images: ['assets/work/buuzz/hero-map.png'],
       scan: {
         role: 'Product Designer',
@@ -882,7 +882,7 @@
       year: '2024',
       category: 'Brand Identity',
       area: 'Branding / AI Services',
-      thumb: 'assets/work/yugen/home.jpg',
+      thumb: 'assets/work/yugen/thumb.webp',
       images: ['assets/work/yugen/home.jpg'],
       scan: {
         role: 'Brand & Web Designer',
