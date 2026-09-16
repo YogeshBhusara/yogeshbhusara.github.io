@@ -78,9 +78,84 @@
     <link rel="alternate" type="text/plain" title="LLM summary" href="https://yogeshbhusara.com/llms.txt">
     <title>Yogesh Bhusara - Product Designer</title>
     <script>(function(){try{var d=localStorage.getItem('portfolio-theme')==='dark';if(d)document.documentElement.classList.add('dark');var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',d?'#18160f':'#faf8f3');}catch(e){}})();</script>
-    <link rel="stylesheet" href="styles.css?v=20260828a">
+    <script>
+    /* Setting-out sheet gate — runs before first paint. Once per session; never under reduced motion or without JS. */
+    (function () {
+        try {
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduce || sessionStorage.getItem('setting-out-seen')) return;
+            sessionStorage.setItem('setting-out-seen', '1');
+
+            var root = document.documentElement;
+            var MIN_MS = 1500, MAX_MS = 3200, started = Date.now(), done = false;
+            root.classList.add('is-setting-out');
+
+            function wipe() {
+                if (done) return;
+                done = true;
+                root.classList.remove('is-setting-out');
+                var sheet = document.getElementById('setting-out');
+                if (!sheet) return;
+                sheet.classList.add('is-wiping');
+                var remove = function () { if (sheet.parentNode) sheet.parentNode.removeChild(sheet); };
+                sheet.addEventListener('transitionend', remove, { once: true });
+                setTimeout(remove, 900);
+            }
+
+            window.addEventListener('load', function () {
+                setTimeout(wipe, Math.max(0, MIN_MS - (Date.now() - started)));
+            });
+            setTimeout(wipe, MAX_MS);
+        } catch (e) {}
+    })();
+    </script>
+    <link rel="stylesheet" href="styles.css?v=20260916a">
 </head>
 <body>
+
+    <div class="setting-out" id="setting-out" aria-hidden="true">
+        <div class="setting-out__sheet">
+            <div class="setting-out__bar">
+                <span class="setting-out__plate" style="--i: 0; --w: 1.3125rem; --h: 1.1875rem;"></span>
+                <span class="setting-out__bar-end">
+                    <span class="setting-out__plate" style="--i: 0; --w: 2.4rem; --h: 0.7rem;"></span>
+                    <span class="setting-out__plate" style="--i: 1; --w: 2.2rem; --h: 0.7rem;"></span>
+                    <span class="setting-out__plate" style="--i: 2; --w: 1.6rem; --h: 0.7rem;"></span>
+                    <span class="setting-out__plate" style="--i: 3; --w: 2.4rem; --h: 0.7rem;"></span>
+                    <span class="setting-out__plate" style="--i: 4; --w: 2.4rem; --h: 0.7rem;"></span>
+                </span>
+            </div>
+
+            <div class="setting-out__masthead">
+                <div class="setting-out__copy">
+                    <span class="label setting-out__note">Sheet 01 · Setting out</span>
+                    <span class="setting-out__plate" style="--i: 1; --w: 15rem; --h: 2.6rem;"></span>
+                    <span class="setting-out__plate" style="--i: 2; --w: 9rem; --h: 1.25rem; margin-bottom: var(--space-3);"></span>
+                    <span class="setting-out__plate" style="--i: 3; --w: 100%; --h: 0.95rem;"></span>
+                    <span class="setting-out__plate" style="--i: 4; --w: 82%; --h: 0.95rem;"></span>
+                    <span class="setting-out__plate" style="--i: 5; --w: 94%; --h: 0.95rem; margin-top: var(--space-2);"></span>
+                    <span class="setting-out__plate" style="--i: 6; --w: 56%; --h: 0.95rem;"></span>
+                    <span class="setting-out__plate setting-out__plate--hollow" style="--i: 7; --w: 100%; --h: 6.5rem; margin-top: var(--space-4);"></span>
+                </div>
+                <div class="setting-out__visual">
+                    <span class="setting-out__plate setting-out__plate--x" style="--i: 2;"></span>
+                </div>
+            </div>
+
+            <div class="setting-out__section">
+                <div class="setting-out__section-label">
+                    <span class="setting-out__plate" style="--i: 8; --w: 1.2rem; --h: 0.7rem;"></span>
+                    <span class="setting-out__plate" style="--i: 8; --w: 5.5rem; --h: 0.7rem;"></span>
+                </div>
+                <div class="setting-out__section-body">
+                    <span class="setting-out__plate" style="--i: 9; --w: 62%; --h: 1.25rem;"></span>
+                    <span class="setting-out__plate" style="--i: 10; --w: 48%; --h: 1.25rem;"></span>
+                    <span class="setting-out__plate" style="--i: 11; --w: 70%; --h: 1.25rem;"></span>
+                    <span class="label setting-out__note setting-out__note--caption">Fig 0.0 — Layout before ink</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <header class="site-header">
         <div class="shell site-header__inner">

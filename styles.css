@@ -1208,6 +1208,230 @@ html.dark .constellation__tile {
   }
 }
 
+/* ——— 06b Setting-out sheet (home, first visit per session) ———
+   Shown only while the head gate holds html.is-setting-out. Draws the masthead as
+   dashed plates on the same paper frame, then wipes top → bottom into the live page. */
+.setting-out {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background-color: var(--page-wash);
+  background-image: var(--page-dot-grid);
+  background-size: var(--page-dot-size) var(--page-dot-size);
+  clip-path: inset(0 0 0 0);
+}
+
+html.is-setting-out .setting-out,
+.setting-out.is-wiping {
+  display: block;
+}
+
+.setting-out.is-wiping {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 640ms var(--ease-in-out);
+  pointer-events: none;
+}
+
+/* Hold the masthead's own entrance until the wipe starts so it inks in behind it */
+html.is-setting-out .masthead__copy > * {
+  animation-play-state: paused;
+}
+
+.setting-out__sheet {
+  position: relative;
+  height: 100%;
+  max-width: var(--width-content);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  background: var(--paper);
+  border-inline: var(--hairline);
+  overflow: hidden;
+}
+
+/* Header row — wordmark + nav slots */
+.setting-out__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: 3.5rem;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  border-bottom: var(--hairline-dashed);
+}
+
+.setting-out__bar-end {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+@media (max-width: 640px) {
+  .setting-out__bar-end .setting-out__plate:not(:first-child) {
+    display: none;
+  }
+}
+
+/* Masthead — mirrors .masthead grid */
+.setting-out__masthead {
+  display: grid;
+  gap: var(--space-7);
+  padding: var(--space-8) 0 var(--space-7);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .setting-out__masthead {
+    grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 22rem);
+    gap: var(--space-6) var(--space-7);
+  }
+}
+
+.setting-out__copy {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  min-width: 0;
+}
+
+.setting-out__visual {
+  justify-self: center;
+  width: min(100%, 22rem);
+}
+
+@media (max-width: 899px) {
+  .setting-out__visual {
+    order: -1;
+  }
+}
+
+@media (min-width: 900px) {
+  .setting-out__visual {
+    justify-self: end;
+    width: 100%;
+  }
+}
+
+/* Plates — same dashed hairline + surface fill as .masthead__facts */
+.setting-out__plate {
+  display: block;
+  width: var(--w, 100%);
+  max-width: 100%;
+  height: var(--h, 1rem);
+  border: var(--hairline-dashed);
+  background: var(--surface);
+  clip-path: inset(0 100% 0 0);
+  animation: setting-out-draw 460ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 55ms + 100ms);
+}
+
+.setting-out__plate--hollow {
+  background: transparent;
+}
+
+/* Crossed plate — reserved image slot (constellation) */
+.setting-out__plate--x {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.5px), var(--rule-strong) calc(50% - 0.5px), var(--rule-strong) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--rule-strong) calc(50% - 0.5px), var(--rule-strong) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+}
+
+/* Mono annotations */
+.setting-out__note {
+  color: var(--ink-secondary);
+  margin-bottom: var(--space-2);
+  animation: setting-out-fade 400ms var(--ease-out) both;
+  animation-delay: 60ms;
+}
+
+.setting-out__note--caption {
+  color: var(--ink-muted);
+  margin-bottom: 0;
+  margin-top: var(--space-2);
+  animation-delay: 760ms;
+}
+
+/* Section — mirrors .doc-section incl. vertical rule + accent tick */
+.setting-out__section {
+  position: relative;
+  display: grid;
+  gap: var(--space-4) var(--space-6);
+  margin-inline: calc(var(--gutter) * -1);
+  padding: var(--space-7) var(--gutter);
+  border-top: var(--hairline-dashed);
+}
+
+.setting-out__section-label {
+  display: flex;
+  align-items: center;
+  align-self: start;
+  gap: var(--space-3);
+  padding-top: 0.3rem;
+}
+
+.setting-out__section-body {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .setting-out__section {
+    grid-template-columns: var(--label-col) minmax(0, 1fr);
+    column-gap: 0;
+  }
+
+  .setting-out__section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--gutter) + var(--label-col));
+    border-left: var(--hairline-dashed);
+    pointer-events: none;
+  }
+
+  .setting-out__section::after {
+    content: "";
+    position: absolute;
+    top: calc((var(--tick-size) - 1px) / -2);
+    left: calc(var(--gutter) + var(--label-col) - (var(--tick-size) - 1px) / 2);
+    width: var(--tick-size);
+    height: var(--tick-size);
+    pointer-events: none;
+    z-index: 1;
+    background:
+      linear-gradient(var(--tick), var(--tick)) center / var(--tick-size) 1px no-repeat,
+      linear-gradient(var(--tick), var(--tick)) center / 1px var(--tick-size) no-repeat;
+    animation: setting-out-fade 300ms var(--ease-out) both;
+    animation-delay: 620ms;
+  }
+
+  .setting-out__section-body {
+    padding-left: var(--space-6);
+  }
+}
+
+@keyframes setting-out-draw {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes setting-out-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* ——— 07 Index entries (project lists) ——— */
 .index-list {
   list-style: none;
@@ -2915,6 +3139,11 @@ html.dark .about-photo {
   .site-header.is-scrolled {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  /* Setting-out sheet is gated off in JS; this is the no-flash guarantee */
+  .setting-out {
+    display: none !important;
   }
 
   /* Drop movement; keep color transitions that aid comprehension */
