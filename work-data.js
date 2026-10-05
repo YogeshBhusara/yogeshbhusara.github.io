@@ -22,7 +22,7 @@
       layout: 'case-study-v2',
       description: 'Content planning feature for a SaaS intranet platform',
       detailDescription:
-        'A planning layer on an existing publishing system — calendar, Post Ideas, and a path from capture to publish.',
+        'A planning layer on an existing publishing system: calendar, Post Ideas, and a path from capture to publish.',
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Intranet',
@@ -197,7 +197,7 @@
           title: 'What I Learned',
           tocLabel: 'Learned',
           items: [
-            'The hard problem was the content state, not the calendar widget. Until Idea existed, any calendar was just a prettier Manage list.',
+            'Until Idea existed, any calendar was just a prettier Manage list.',
             'Consolidating three surfaces mattered more than adding a fourth place to plan.',
             'I would pressure-test conflict warnings with real overlapping calendars earlier — the rule is simple to state and easy to get wrong in edge audiences.'
           ]
@@ -211,9 +211,9 @@
       size: 'wide',
       layout: 'case-study-v2',
       description:
-        'Delivering personalized dashboard experiences for different employee groups within an enterprise intranet platform.',
+        'Homepages assigned to employee groups on an enterprise intranet.',
       detailDescription:
-        'Audience-targeted dashboards — one experience per user segment, with ownership, preview, and a governed publish.',
+        'One homepage per user segment, with ownership, preview, and a governed publish.',
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Intranet',
@@ -391,9 +391,9 @@
       size: 'wide',
       layout: 'case-study-v2',
       description:
-        'Building a scalable content governance framework for enterprise content publishing.',
+        'One approval setup, reused across content types.',
       detailDescription:
-        'A reusable approval system on a generic workflow engine — authors keep their editors; governance lives once, not per module.',
+        'Authors keep their editors. Approval is configured once and reused across content types.',
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Governance',
