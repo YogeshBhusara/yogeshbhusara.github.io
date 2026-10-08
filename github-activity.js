@@ -8,7 +8,7 @@
   if (!root) return;
 
   const username = 'YogeshBhusara';
-  const dataUrl = 'github-contributions.json?v=20260914a';
+  const dataUrl = 'github-contributions.json?v=20261008a';
   const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   const monthsEl = root.querySelector('[data-gh-months]');
@@ -108,7 +108,7 @@
       const spanWeeks = (next ? next.weekIndex : n) - item.weekIndex;
       const el = document.createElement('span');
       el.className = 'gh-cal__month';
-      el.textContent = item.label;
+      el.textContent = spanWeeks < 2 ? '' : item.label;
       el.style.flex = `0 0 ${(spanWeeks / n) * 100}%`;
       el.style.textAlign = i === 0 ? 'left' : i === labels.length - 1 ? 'right' : 'center';
       monthsEl.appendChild(el);
