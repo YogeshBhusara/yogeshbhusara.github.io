@@ -14,6 +14,13 @@ module.exports = {
     'is-revealed',
     'work-detail-toc__link--active',
     'cursor-thumb',
-    'is-visible'
+    'cursor-thumb__layer',
+    'cursor-thumb__swing',
+    'cursor-thumb__stack',
+    'cursor-thumb__item',
+    'cursor-thumb__picture',
+    'is-visible',
+    'is-active',
+    'is-armed'
   ]
 };
