@@ -1673,6 +1673,11 @@ html.dark .cursor-thumb__picture {
   border-bottom: none;
 }
 
+#home-project-list .index-entry__context {
+  margin-top: 0.2em;
+  max-width: 34rem;
+}
+
 #home-project-list .index-entry__title,
 #home-lab-list .row-list__title,
 #home-articles .row-list__title {

@@ -21,6 +21,8 @@
       size: 'wide',
       layout: 'case-study-v2',
       description: 'Content planning feature for a SaaS intranet platform',
+      summary:
+        'A shared calendar and Post Ideas layer so content teams can plan, schedule, and catch conflicts in one place.',
       detailDescription:
         'A planning layer on an existing publishing system: calendar, Post Ideas, and a path from capture to publish.',
       year: '2024',
@@ -212,6 +214,8 @@
       layout: 'case-study-v2',
       description:
         'Homepages assigned to employee groups on an enterprise intranet.',
+      summary:
+        'Dashboards assigned by employee segment, so each audience gets a homepage that is relevant and ready to act on.',
       detailDescription:
         'One homepage per user segment, with ownership, preview, and a governed publish.',
       year: '2024',
@@ -392,6 +396,8 @@
       layout: 'case-study-v2',
       description:
         'One approval setup, reused across content types.',
+      summary:
+        'One review, approve, and publish setup reused across content types, instead of a different flow for each.',
       detailDescription:
         'Authors keep their editors. Approval is configured once and reused across content types.',
       year: '2024',
@@ -556,6 +562,8 @@
       layout: 'case-study-v2',
       description:
         'Enterprise task orchestration for a SaaS intranet platform, built for a distributed front-line retail workforce',
+      summary:
+        'Fragmented store work pulled into one task model — create, assign, approve, and execute from the same system.',
       detailDescription:
         'V2 of centralised task orchestration — tracker-to-task automation, user-level distribution, and role-scoped execution for retail operations at scale.',
       year: '2024',
@@ -730,6 +738,8 @@
       size: 'wide',
       layout: 'case-study-v2',
       description: 'Dock-free e-bike sharing app for Indian cities.',
+      summary:
+        'A dock-free e-bike app for Indian cities. I designed onboarding, pricing, range, and parking so riders know the rules before they unlock.',
       detailDescription:
         'A one-handed last-mile app — staged onboarding, price and range before unlock, parking rules before you stop.',
       year: '2022',

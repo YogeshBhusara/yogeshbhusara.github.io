@@ -118,8 +118,8 @@
                     : '') +
                 '<span class="index-entry__main">' +
                     '<span class="index-entry__title">' + escapeHtml(work.title) + '</span>' +
-                    (withDescription && work.description
-                        ? '<span class="index-entry__context">' + escapeHtml(work.description) + '</span>'
+                    (withDescription && (withThumb ? work.description : (work.summary || work.description))
+                        ? '<span class="index-entry__context">' + escapeHtml(withThumb ? work.description : (work.summary || work.description)) + '</span>'
                         : '') +
                 '</span>' +
                 '<span class="index-entry__meta">' +
@@ -143,13 +143,13 @@
         });
     }
 
-    // Home: compact index (title + area only) — first 5 only
+    // Home: compact index (title + one-line explanation + area) — first 5 only
     function renderHomeProjectList() {
         const el = document.getElementById('home-project-list');
         if (!el || !works.length) return;
         el.innerHTML = '';
         works.slice(0, 5).forEach((work, i) => {
-            el.appendChild(renderIndexEntry(work, i, false, false, false, false));
+            el.appendChild(renderIndexEntry(work, i, false, true, false, false));
         });
     }
 
