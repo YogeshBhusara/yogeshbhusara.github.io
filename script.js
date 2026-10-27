@@ -1,5 +1,6 @@
 /**
- * script.js — Smooth in-page scrolling + staggered scroll reveal.
+ * script.js — Smooth in-page scrolling, staggered scroll reveal,
+ * and masthead constellation tuck-on-hover.
  */
 
 // Smooth scrolling for in-page anchors (including dynamically added links)
@@ -172,5 +173,189 @@ document.addEventListener('click', function (e) {
         } else {
             observe(section);
         }
+    });
+})();
+
+/* Portrait hover: surrounding tiles spring into a stack behind the photo,
+   same bounce / scale / tilt as the home work thumbnail. */
+(function initConstellationTuck() {
+    const root = document.querySelector('.constellation');
+    const portrait = root && root.querySelector('.constellation__portrait');
+    if (!root || !portrait) return;
+
+    const canHover =
+        window.matchMedia &&
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover) return;
+
+    const reduceMotion =
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const TILTS = [-5, 3.5, -2.5, 5.5, -4, 2, -6];
+    const STIFFNESS = 92;
+    const DAMPING = 11.5;
+    const STAGGER = 0.04;
+    const HIDE_SCALE = 0.5;
+
+    const tiles = Array.prototype.map.call(
+        root.querySelectorAll('.constellation__tile'),
+        function (el, i) {
+            return {
+                el: el,
+                x: 0,
+                y: 0,
+                scale: 1,
+                rot: 0,
+                vx: 0,
+                vy: 0,
+                vs: 0,
+                vr: 0,
+                toX: 0,
+                toY: 0,
+                toScale: 1,
+                toRot: 0,
+                wait: i * STAGGER,
+                tilt: TILTS[i % TILTS.length]
+            };
+        }
+    );
+
+    if (!tiles.length) return;
+
+    let tucked = false;
+    let rafId = 0;
+    let lastNow = 0;
+
+    function springToward(value, velocity, target, dt) {
+        const next = velocity + ((target - value) * STIFFNESS - velocity * DAMPING) * dt;
+        return { value: value + next * dt, velocity: next };
+    }
+
+    function applyTile(tile) {
+        tile.el.style.translate = tile.x.toFixed(2) + 'px ' + tile.y.toFixed(2) + 'px';
+        tile.el.style.scale = String(tile.scale);
+        tile.el.style.rotate = tile.rot.toFixed(2) + 'deg';
+    }
+
+    function measureTargets() {
+        const portraitBox = portrait.getBoundingClientRect();
+        const px = portraitBox.left + portraitBox.width / 2;
+        const py = portraitBox.top + portraitBox.height / 2;
+
+        tiles.forEach(function (tile) {
+            const box = tile.el.getBoundingClientRect();
+            const cx = box.left + box.width / 2;
+            const cy = box.top + box.height / 2;
+            tile.toX = tucked ? tile.x + (px - cx) : 0;
+            tile.toY = tucked ? tile.y + (py - cy) : 0;
+            tile.toScale = tucked ? HIDE_SCALE : 1;
+            tile.toRot = tucked ? tile.tilt : 0;
+        });
+    }
+
+    function snap() {
+        tiles.forEach(function (tile) {
+            tile.x = tile.toX;
+            tile.y = tile.toY;
+            tile.scale = tile.toScale;
+            tile.rot = tile.toRot;
+            tile.vx = tile.vy = tile.vs = tile.vr = 0;
+            applyTile(tile);
+        });
+    }
+
+    function settled(tile) {
+        return (
+            Math.abs(tile.toX - tile.x) < 0.4 &&
+            Math.abs(tile.toY - tile.y) < 0.4 &&
+            Math.abs(tile.toScale - tile.scale) < 0.008 &&
+            Math.abs(tile.toRot - tile.rot) < 0.15 &&
+            Math.abs(tile.vx) + Math.abs(tile.vy) + Math.abs(tile.vs) + Math.abs(tile.vr) < 0.08
+        );
+    }
+
+    function tick(now) {
+        rafId = 0;
+        const dt = Math.min(1 / 30, (now - lastNow) / 1000 || 1 / 60);
+        lastNow = now;
+        let busy = false;
+
+        tiles.forEach(function (tile) {
+            if (tile.wait > 0) {
+                tile.wait -= dt;
+                busy = true;
+                return;
+            }
+
+            const nx = springToward(tile.x, tile.vx, tile.toX, dt);
+            const ny = springToward(tile.y, tile.vy, tile.toY, dt);
+            const ns = springToward(tile.scale, tile.vs, tile.toScale, dt);
+            const nr = springToward(tile.rot, tile.vr, tile.toRot, dt);
+            tile.x = nx.value;
+            tile.vx = nx.velocity;
+            tile.y = ny.value;
+            tile.vy = ny.velocity;
+            tile.scale = ns.value;
+            tile.vs = ns.velocity;
+            tile.rot = nr.value;
+            tile.vr = nr.velocity;
+            applyTile(tile);
+            if (!settled(tile)) busy = true;
+        });
+
+        if (busy) {
+            rafId = window.requestAnimationFrame(tick);
+            return;
+        }
+
+        if (!tucked) {
+            root.classList.remove('is-tucking');
+            tiles.forEach(function (tile) {
+                tile.el.style.animationPlayState = '';
+            });
+        }
+    }
+
+    function beginMotion() {
+        tiles.forEach(function (tile, i) {
+            tile.wait = i * STAGGER;
+            tile.el.style.animationPlayState = 'paused';
+        });
+        measureTargets();
+
+        if (reduceMotion) {
+            snap();
+            if (!tucked) {
+                root.classList.remove('is-tucking');
+                tiles.forEach(function (tile) {
+                    tile.el.style.animationPlayState = '';
+                });
+            }
+            return;
+        }
+
+        if (!rafId) {
+            lastNow = performance.now();
+            rafId = window.requestAnimationFrame(tick);
+        }
+    }
+
+    function start(hide) {
+        tucked = hide;
+        if (hide) {
+            root.classList.add('is-tucking');
+            window.requestAnimationFrame(beginMotion);
+            return;
+        }
+        beginMotion();
+    }
+
+    portrait.addEventListener('pointerenter', function (e) {
+        if (e.pointerType === 'touch') return;
+        start(true);
+    });
+    portrait.addEventListener('pointerleave', function () {
+        start(false);
     });
 })();

@@ -996,6 +996,7 @@ html.dark .theme-icon--sun {
   overflow: hidden;
   background: var(--surface);
   border-radius: 0.5rem; /* outer; img clipped — no nested radius needed */
+  transition: transform var(--dur-slow) var(--ease-out);
 }
 
 .constellation__portrait img {
@@ -1040,6 +1041,17 @@ html.dark .constellation__portrait img {
 
 .constellation__tile--front {
   z-index: 2;
+}
+
+.constellation.is-tucking .constellation__portrait {
+  z-index: 3;
+}
+
+.constellation.is-tucking .constellation__tile,
+.constellation.is-tucking .constellation__tile--front,
+.constellation.is-tucking .constellation__tile--behind {
+  z-index: 0;
+  pointer-events: none;
 }
 
 .constellation__tile img {
@@ -3105,6 +3117,10 @@ html.dark .about-photo {
     border-color: var(--rule-strong);
   }
 
+  .constellation__portrait:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
   .nav-toggle:hover {
     color: var(--ink);
     border-color: var(--rule-strong);
@@ -3190,6 +3206,12 @@ html.dark .about-photo {
   .orbit-seal__spin,
   .masthead__copy > * {
     animation: none !important;
+  }
+
+  .constellation__portrait,
+  .constellation__portrait:hover {
+    transform: translate(-50%, -50%);
+    transition: none;
   }
 
   .site-nav__link::after,
