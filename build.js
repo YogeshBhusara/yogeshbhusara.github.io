@@ -1,30 +1,22 @@
 #!/usr/bin/env node
-/**
- * build.js — Adds defer to script tags in all HTML pages. Run: node build.js (optional).
- */
-
+/** Create a deployable copy of the static site without modifying its sources. */
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.join(__dirname);
-const PAGES = ['index.html', 'about.html', 'blog.html', 'work.html', 'contact.html', 'playground.html', 'sitemap.html'];
+const root = __dirname;
+const output = path.join(root, 'dist');
+const siteExtensions = new Set(['.html', '.css', '.js', '.json', '.txt', '.xml']);
+const excludedFiles = new Set(['build.js', 'serve.js', 'package.json', 'package-lock.json']);
 
-function read(file) {
-  return fs.readFileSync(path.join(ROOT, file), 'utf8');
+// dist is generated output; recreate it so deleted source files cannot linger.
+fs.rmSync(output, { recursive: true, force: true });
+fs.mkdirSync(output, { recursive: true });
+
+for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
+  if (!entry.isFile() || excludedFiles.has(entry.name)) continue;
+  if (!siteExtensions.has(path.extname(entry.name)) && !['CNAME', '.nojekyll'].includes(entry.name)) continue;
+  fs.copyFileSync(path.join(root, entry.name), path.join(output, entry.name));
 }
 
-function addDeferToScripts(html) {
-  return html.replace(/<script src=/g, '<script defer src=');
-}
-
-function build() {
-  PAGES.forEach((pageFile) => {
-    let html = read(pageFile);
-    html = addDeferToScripts(html);
-    fs.writeFileSync(path.join(ROOT, pageFile), html, 'utf8');
-    console.log('Built:', pageFile);
-  });
-  console.log('Build complete.');
-}
-
-build();
+fs.cpSync(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true });
+console.log('Built static site in dist/');
