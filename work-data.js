@@ -31,21 +31,17 @@
       thumb: 'assets/work/post-planning/thumb.webp',
       images: ['assets/work/post-planning/hero-week.png'],
       scan: {
-        role: 'Senior UI/UX Designer',
-        timeline: '2024',
-        team: 'Product Manager, Engineering',
-        platform: 'Web · Enterprise intranet',
-        contribution: [
-          'Content-state model (Post Idea)',
-          'Unified Planning filter',
-          'Calendar, list, and unplanned panel',
-          'Drag-and-drop scheduling',
-          'Role-based visibility and CSV import'
+        "role": "Senior UI/UX Designer",
+        "timeline": "2024",
+        "team": "Product Manager, Engineering",
+        "platform": "Web · Enterprise intranet",
+        "contribution": [
+          "Content planning model",
+          "Calendar and list views",
+          "Scheduling and permissions"
         ],
-        challenge:
-          'Publishing worked. Planning did not — drafts, scheduled posts, and unwritten ideas were scattered across three surfaces.',
-        impact:
-          'One Planning filter replaced three Manage sections. Teams can capture an idea, place it on a calendar, warn on conflicts, and import a full plan.'
+        "challenge": "Content teams planned posts in spreadsheets while drafts and scheduled posts were scattered across the product.",
+        "impact": "A shared planning view brings ideas, drafts, and scheduled posts together, with conflict warnings and bulk import."
       },
       hero: {
         src: 'assets/work/post-planning/hero-week.png',
@@ -54,157 +50,67 @@
       },
       sections: [
         {
-          type: 'cards',
-          id: 'problem',
-          title: 'The Problem',
-          tocLabel: 'Problem',
-          lead: 'Publishing worked. Planning did not. Drafts and scheduled posts were buried in Manage — no calendar, no idea state, no shared week.',
-          cards: [
-            { title: 'No planning context', body: 'Drafts and scheduled posts lived in Manage — no calendar, no cadence.' },
-            { title: 'No idea state', body: 'Only draft or published. Nowhere to capture an idea before writing it.' },
-            { title: 'Three different Manages', body: 'Posts, Team Posts, and Company Posts each had their own Manage, with inconsistent behaviour.' },
-            { title: 'Plans stayed in spreadsheets', body: 'No conflict warning, no shared week, no way to import a plan in bulk.' }
-          ],
-          figure: {
-            src: 'assets/work/post-planning/spreadsheet-plan.png',
-            caption: 'A typical content plan lived in a spreadsheet — titles, audiences, dates — before it could exist in the product.',
-            alt: 'Spreadsheet of post ideas with titles, descriptions, audiences, and planned publish dates'
-          }
-        },
-        {
-          type: 'process',
-          id: 'process',
-          title: 'How I Approached It',
-          tocLabel: 'Process',
+          type: 'process', id: 'approach', title: 'The Approach', tocLabel: 'Approach',
           steps: [
-            { title: 'Align', body: 'Where a planning layer should live when drafts and scheduled posts already existed on three surfaces.' },
-            { title: 'Define the state', body: 'Post Idea as an upstream object — so the calendar had something to show before a draft existed.' },
-            { title: 'Consolidate', body: 'One Planning filter everywhere. Permissions change what you see, not the structure.' },
-            { title: 'Ship on existing publish', body: 'Calendar, list, unplanned panel, and import sit on top of create / edit / publish — those flows stay intact.' }
+            { title: 'Connect the scattered work', body: 'Drafts and scheduled posts were managed in separate areas, while early ideas often stayed in spreadsheets. I mapped these states into one planning flow.' },
+            { title: 'Plan before writing', body: 'A calendar alone could not show work that had not yet become a draft. I defined a lightweight idea state to bridge that gap.' },
+            { title: 'Build on existing publishing', body: 'The planning views sit on top of the existing editor and publishing flow, so teams can plan without relearning how to publish.' }
           ]
         },
         {
-          type: 'decision',
-          id: 'decision-idea',
-          title: 'Key Design Decisions',
-          tocLabel: 'Decisions',
-          kicker: '01 · Content state',
-          problem: 'The calendar could not be useful if the only states were draft and published. Unwritten ideas had nowhere to live.',
-          insight: 'Planning starts before writing. The missing object was not a better Manage list — it was a lighter content state.',
-          decision: 'Introduce Post Idea, upstream of Draft: title, description, audience, and an optional planned date. No template, no editor, no commitment.',
-          why: 'Three visual states (Idea, Draft, Scheduled) made the calendar readable and gave a clear path from capture to publish without breaking existing flows.',
-          result: 'Ideas with a date appear on the calendar. Ideas without a date sit in Unplanned. Convert-to-post pre-fills title and audience, then drops the idea from planning views.',
-          figure: {
-            src: 'assets/work/post-planning/new-idea-modal.png',
-            caption: 'New Post Idea — a lightweight capture modal, separate from post creation.',
-            alt: 'New Post Idea modal with title, description, audience, and optional planned publish date'
+          "type": "decision",
+          "id": "decision",
+          "title": "The Key Decision",
+          "tocLabel": "Decision",
+          "problem": "Planning starts before a draft exists.",
+          "decision": "I introduced Post Ideas: lightweight entries that can be dated, scheduled, and converted into posts.",
+          "why": "Ideas without dates stay in an Unplanned panel until the team is ready to schedule them.",
+          "figure": {
+            "src": "assets/work/post-planning/new-idea-modal.png",
+            "caption": "New Post Idea — a lightweight capture modal, separate from post creation.",
+            "alt": "New Post Idea modal with title, description, audience, and optional planned publish date"
           }
         },
         {
-          type: 'decision',
-          id: 'decision-filter',
-          kicker: '02 · Consolidation',
-          inToc: false,
-          problem: 'Manage duplicated itself across Posts, Team Posts, and Company Posts, each with slightly different behaviour.',
-          insight: 'Users did not need three planning products. They needed one model whose visibility changed with role.',
-          decision: 'Replace Manage with a unified Planning filter: All Planned for admins, My Planned for everyone, identical on every surface.',
-          why: 'Domain admins, intranet admins, team admins, network users, and guests all needed different slices of the same data — not different structures.',
-          result: 'One filter model everywhere. All Planned shows every draft, scheduled post, and idea. My Planned shows only what the logged-in user owns.'
-        },
-        {
-          type: 'split',
-          id: 'solution',
-          title: 'The Solution',
-          tocLabel: 'Solution',
-          figureFirst: true,
-          lead: 'Three coordinated views — calendar, unplanned panel, and list — plus a path from idea to post.',
-          items: [
-            { title: 'Calendar', body: 'Week default; day and month available. Fixed colours — yellow scheduled, grey draft, blue idea, red overdue — stay readable against any domain branding. Conflicts show a banner and a per-card warning.' },
-            { title: 'Unplanned panel', body: 'Drafts and ideas without a date sit on the right. Drag onto week or day snaps to the nearest slot; drop on month assigns 8:00 AM.' },
-            { title: 'Drag and drop', body: 'Cards move across views and into Unplanned. A scheduled post dropped there becomes a draft. A draft or idea dropped on the calendar gets a date, not a new state.' }
-          ],
-          figure: {
-            src: 'assets/work/post-planning/calendar-unplanned.png',
-            caption: 'Weekly calendar with the Unplanned panel open — backlog on the right, scheduled work on the grid.',
-            alt: 'Weekly planning calendar beside an Unplanned panel of drafts and ideas'
-          },
-          figures: [
+          "type": "split",
+          "id": "solution",
+          "title": "The Solution",
+          "tocLabel": "Solution",
+          "figureFirst": true,
+          "items": [
             {
-              src: 'assets/work/post-planning/month-view.png',
-              caption: 'Month view — the same three states, with overflow when a day fills up.',
-              alt: 'Monthly planning calendar with Idea, Draft, and Scheduled cards and overflow counts'
-            }
-          ]
-        },
-        {
-          type: 'split',
-          id: 'solution-list',
-          title: 'List view & conversion',
-          tocLabel: 'List',
-          figureFirst: true,
-          items: [
-            { title: 'List view', body: 'Title, status, audience, creator, date. Each row opens the edit path that matches its state. Bulk delete lives on Unplanned.' },
-            { title: 'Idea to post', body: 'Convert is one action: post creation opens with title and audience pre-filled. The idea leaves planning views once the editor is reached.' },
-            { title: 'CSV import', body: 'Admins import a plan. Only title is required. Invalid optional fields are skipped, not the file.' }
-          ],
-          figure: {
-            src: 'assets/work/post-planning/planned-list.png',
-            caption: 'Planned list — All Planned / My Planned in the sidebar, sortable rows, state-appropriate actions.',
-            alt: 'Tabular planned-posts list with status, audience, creator, and date columns'
-          },
-          figures: [
+              "title": "Plan together",
+              "body": "A shared calendar brings ideas, drafts, and scheduled posts together. Colour-coded states help teams understand what is ready and what still needs work."
+            },
             {
-              src: 'assets/work/post-planning/idea-detail.png',
-              caption: 'Inspect an idea on the calendar, then Create a Post — title and audience travel with it.',
-              alt: 'Post idea detail modal with planned date, creator, audience, and Create a Post action'
+              "title": "Schedule visually",
+              "body": "Teams can drag unscheduled items onto the calendar, adjust dates, and spot warnings when planned posts overlap."
+            },
+            {
+              "title": "Move from idea to post",
+              "body": "Create a post from an idea with its title and audience already filled in."
             }
-          ]
-        },
-        {
-          type: 'cards',
-          id: 'surfaces',
-          title: 'Across the Product',
-          inToc: false,
-          cards: [
-            { title: 'Posts & Team Posts', body: 'Calendar and list. Same Planning filter; permissions change the data, not the structure.' },
-            { title: 'Company Posts', body: 'List only — no calendar. Company-wide publishing stays a different job than weekly planning.' },
-            { title: 'Responsive rules', body: 'Above 1280px, panel and filters can stay open together. Below that, opening one closes the other.' }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'collaboration',
-          title: 'Working with PM & Engineering',
-          inToc: false,
-          items: [
-            'PM owned scope. We aligned on approach before design — especially where planning should live when drafts and scheduled posts were already scattered.',
-            'The Planning filter became the consolidation point; Post Ideas became the new upstream state.',
-            'Engineering set branding-proof colours, breakpoint rules, and the unplanned panel as a togglable overlay — so the layer would not fight the product it had to live in.'
-          ]
-        },
-        {
-          type: 'outcomes',
-          id: 'outcome',
-          title: 'Impact',
-          tocLabel: 'Impact',
-          items: [
-            { title: 'One Planning filter', body: 'Three Manage sections became one model across Posts, Team Posts, and Company Posts.' },
-            { title: 'Post Ideas', body: 'Capture and plan before writing, then convert with title and audience already filled.' },
-            { title: 'Calendar operations', body: 'Conflict warnings, drag-and-drop dates, overdue colour, and CSV import — without leaving Planning.' }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'learnings',
-          title: 'What I Learned',
-          tocLabel: 'Learned',
-          items: [
-            'Until Idea existed, any calendar was just a prettier Manage list.',
-            'Consolidating three surfaces mattered more than adding a fourth place to plan.',
-            'I would pressure-test conflict warnings with real overlapping calendars earlier — the rule is simple to state and easy to get wrong in edge audiences.'
+          ],
+          "figure": {
+            "src": "assets/work/post-planning/calendar-unplanned.png",
+            "caption": "Weekly calendar with the Unplanned panel open — backlog on the right, scheduled work on the grid.",
+            "alt": "Weekly planning calendar beside an Unplanned panel of drafts and ideas"
+          },
+          "figures": [
+            {
+              "src": "assets/work/post-planning/month-view.png",
+              "caption": "Month view — the same three states, with overflow when a day fills up.",
+              "alt": "Monthly planning calendar with Idea, Draft, and Scheduled cards and overflow counts"
+            },
+            {
+              "src": "assets/work/post-planning/planned-list.png",
+              "caption": "Planned list — All Planned / My Planned in the sidebar, sortable rows, state-appropriate actions.",
+              "alt": "Tabular planned-posts list with status, audience, creator, and date columns"
+            }
           ]
         }
       ]
+
     },
     {
       id: 'user-segment-based-dashboards',
@@ -224,21 +130,17 @@
       thumb: 'assets/work/dashboards/thumb.webp',
       images: ['assets/work/dashboards/hero-preview.png'],
       scan: {
-        role: 'Senior UI/UX Designer',
-        timeline: '2024',
-        team: 'Product Manager, Engineering',
-        platform: 'Web + mobile · Enterprise intranet',
-        contribution: [
-          'Dashboard-to-segment assignment',
-          'Delegated ownership',
-          'Preview as a segment',
-          'Independent web / mobile publish',
-          'First-match hierarchy'
+        "role": "Senior UI/UX Designer",
+        "timeline": "2024",
+        "team": "Product Manager, Engineering",
+        "platform": "Web + mobile · Enterprise intranet",
+        "contribution": [
+          "Audience assignment",
+          "Dashboard ownership",
+          "Preview and publishing"
         ],
-        challenge:
-          'One homepage cannot serve executives and frontline staff. There was no way to assign a dashboard to a segment, preview it, or publish it safely.',
-        impact:
-          'Admins create audience-specific dashboards, preview as that segment, and publish web and mobile independently — with a first-match rule when a user belongs to more than one group.'
+        "challenge": "Employees with different roles shared the same homepage, and admins could not preview an audience’s experience before publishing.",
+        "impact": "Admins can create a dashboard for each audience, preview it, and publish web and mobile layouts independently."
       },
       hero: {
         src: 'assets/work/dashboards/hero-preview.png',
@@ -247,146 +149,67 @@
       },
       sections: [
         {
-          type: 'cards',
-          id: 'problem',
-          title: 'The Problem',
-          tocLabel: 'Problem',
-          lead: 'Every employee landed on the same homepage. Widget visibility could hide a card. It could not give Finance a different dashboard from the warehouse floor.',
-          cards: [
-            { title: 'One layout for every role', body: 'Executives, office staff, and frontline workers shared a single dashboard experience.' },
-            { title: 'No delegated ownership', body: 'Dashboard administration could not be handed to a specific admin without exposing every dashboard.' },
-            { title: 'No preview before publish', body: 'Admins could not see what a segment would actually get before they shipped it.' },
-            { title: 'Multi-segment users', body: 'People in more than one group needed a predictable assignment rule — not a merge of every matching layout.' }
-          ]
-        },
-        {
-          type: 'process',
-          id: 'process',
-          title: 'How I Approached It',
-          tocLabel: 'Process',
+          type: 'process', id: 'approach', title: 'The Approach', tocLabel: 'Approach',
           steps: [
-            { title: 'Treat the dashboard as the object', body: 'Audience targeting happens at dashboard level. Widget visibility still applies inside, once the user has access.' },
-            { title: 'One segment per dashboard', body: 'A clear contract: this dashboard is for this group. No blended audiences.' },
-            { title: 'First match wins', body: 'Dashboards are evaluated top to bottom. The first match is assigned. Then widget rules run.' },
-            { title: 'Preview, then publish', body: 'Web and mobile can be previewed as a segment and published independently.' }
+            { title: 'Design for different audiences', body: 'A single homepage could not serve office and frontline staff equally well. I made the dashboard itself assignable to an employee group, rather than relying only on hidden widgets.' },
+            { title: 'Make ownership clear', body: 'Admins can choose who manages each dashboard, so responsibility can be delegated without giving everyone control over every layout.' },
+            { title: 'Make changes safely', body: 'Previewing a dashboard as an audience and publishing each platform separately gives admins a chance to check the experience before release.' }
           ]
         },
         {
-          type: 'decision',
-          id: 'decision-target',
-          title: 'Key Design Decisions',
-          tocLabel: 'Decisions',
-          kicker: '01 · Audience object',
-          problem: 'Widget-level visibility was already in the product. Using it as the only lever still left every role on the same homepage shell.',
-          insight: 'The missing object was not another widget rule. It was the dashboard itself as an audience-targeted experience.',
-          decision: 'One dashboard maps to one user segment. Name, description, ownership, and segment are set at create — not inferred from widgets.',
-          why: 'Admins can reason about “the Finance dashboard” as a thing they own, preview, and publish — instead of a pile of hidden widgets.',
-          result: 'New dashboards start inactive. They can be enabled when the layout is ready. Ownership can sit with all dashboard admins, a named set, or network admins only.',
-          figure: {
-            src: 'assets/work/dashboards/add-dashboard.png',
-            caption: 'Add Dashboard — name, segment, and who can manage it. Ownership is a first-class field, not a later permission hunt.',
-            alt: 'Add New Dashboard modal with user segment and management-permission options'
+          "type": "decision",
+          "id": "decision",
+          "title": "The Key Decision",
+          "tocLabel": "Decision",
+          "problem": "Some employees belong to more than one audience, so several dashboards might apply to the same person.",
+          "decision": "I used an ordered list: the first matching dashboard is shown, with a default dashboard as a fallback.",
+          "why": "The order is visible in the admin list, so the assignment can be explained and adjusted without relying on a hidden rule.",
+          "figure": {
+            "src": "assets/work/dashboards/dashboard-list.png",
+            "caption": "The list is the hierarchy — “the dashboard at the top of the list for that user will be applied.”",
+            "alt": "Dashboard admin list with helper text describing first-match assignment for users in multiple segments"
           }
         },
         {
-          type: 'decision',
-          id: 'decision-hierarchy',
-          kicker: '02 · Assignment rule',
-          inToc: false,
-          problem: 'Users often belong to more than one segment. Merging layouts would be unpredictable. Asking them to pick every morning would not scale.',
-          insight: 'The list order is the rule. What you see in admin is what the system will do.',
-          decision: 'Evaluate dashboards from top to bottom. The first matching segment wins. Helper copy on the list states that in plain language.',
-          why: 'A visible, ordered list is easier to govern than an invisible scoring model — and easier to explain to a customer admin.',
-          result: 'The default system dashboard is assigned to All Network Users, cannot be deleted, and remains the fallback. Custom dashboards stack above it by segment.',
-          figure: {
-            src: 'assets/work/dashboards/dashboard-list.png',
-            caption: 'The list is the hierarchy — “the dashboard at the top of the list for that user will be applied.”',
-            alt: 'Dashboard admin list with helper text describing first-match assignment for users in multiple segments'
-          }
-        },
-        {
-          type: 'split',
-          id: 'solution',
-          title: 'The Solution',
-          tocLabel: 'Solution',
-          figureFirst: true,
-          lead: 'Create, compose, preview as a segment, then publish — web and mobile as separate actions.',
-          items: [
-            { title: 'Create & own', body: 'Name, description, one segment, and an ownership mode. Edit later without changing the assignment contract.' },
-            { title: 'Compose', body: 'Widget gallery on a live layout. Web and Mobile tabs keep the two surfaces in one builder.' },
-            { title: 'Preview as', body: 'See the dashboard as Finance, Customers, or any assigned segment before it goes live.' }
-          ],
-          figure: {
-            src: 'assets/work/dashboards/edit-dashboard.png',
-            caption: 'Edit Dashboard — the same contract as create: name, segment, ownership.',
-            alt: 'Edit Dashboard modal over a list of audience-specific dashboards'
-          },
-          figures: [
+          "type": "split",
+          "id": "solution",
+          "title": "The Solution",
+          "tocLabel": "Solution",
+          "figureFirst": true,
+          "items": [
             {
-              src: 'assets/work/dashboards/widget-gallery.png',
-              caption: 'Add Web Widgets — compose the layout from a categorised gallery, then publish when it is ready.',
-              alt: 'Add Web Widgets modal with recommended widget cards on a dashboard builder'
-            }
-          ]
-        },
-        {
-          type: 'split',
-          id: 'solution-publish',
-          title: 'Preview & publish',
-          tocLabel: 'Publish',
-          figureFirst: true,
-          items: [
-            { title: 'Two audiences, two layouts', body: 'The same preview chrome. Change “View as” and the homepage changes with it.' },
-            { title: 'Governed publish', body: 'Publish is a confirm, not a save. Web and mobile can ship on different clocks.' },
-            { title: 'Override, or leave customisations', body: 'Admins choose whether a publish replaces user-customised layouts or only fills in the rest.' }
-          ],
-          figure: {
-            src: 'assets/work/dashboards/preview-customers.png',
-            caption: 'Same preview chrome, Customers Segment — the money comparison against the Finance view in the hero.',
-            alt: 'Customer Satisfaction dashboard preview viewed as Customers Segment'
-          },
-          figures: [
+              "title": "Create for an audience",
+              "body": "Assign each dashboard to a user segment and choose who can manage it."
+            },
             {
-              src: 'assets/work/dashboards/publish.png',
-              caption: 'Publish Web Dashboard — a confirm, because widget-heavy updates are not instant and should not be accidental.',
-              alt: 'Publish Web Dashboard confirmation modal over a three-column dashboard builder'
+              "title": "Build and preview",
+              "body": "Arrange widgets and preview the experience for that audience."
+            },
+            {
+              "title": "Publish with control",
+              "body": "Release web and mobile layouts separately and choose whether to replace user customisations."
             }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'collaboration',
-          title: 'Working with PM & Engineering',
-          inToc: false,
-          items: [
-            'The requirement came from customers who needed role-based homepages. PM and I aligned on assignment, ownership, and publish before the builder UI.',
-            'Several hierarchy models were explored. First-match on an ordered list won because admins could see the rule.',
-            'Engineering constraints on the existing widget and publish systems kept this as a layer on top — not a second homepage product.'
-          ]
-        },
-        {
-          type: 'outcomes',
-          id: 'outcome',
-          title: 'Impact',
-          tocLabel: 'Impact',
-          items: [
-            { title: 'Audience-specific homepages', body: 'Different employee groups can receive different dashboards from the same platform.' },
-            { title: 'Ownership without a free-for-all', body: 'A dashboard can be managed by all admins, a named set, or network admins only.' },
-            { title: 'Safer rollout', body: 'Preview as a segment, then publish web and mobile independently — with an explicit overwrite choice.' }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'learnings',
-          title: 'What I Learned',
-          tocLabel: 'Learned',
-          items: [
-            'Personalisation fails without an assignment rule. “Show the right widgets” is not the same as “give this group a homepage.”',
-            'The admin list had to state the hierarchy in a sentence. If the rule is invisible, it will be misconfigured.',
-            'I would pressure-test multi-segment edge cases with real org charts earlier — first-match is simple until two equally valid segments sit next to each other.'
+          ],
+          "figure": {
+            "src": "assets/work/dashboards/edit-dashboard.png",
+            "caption": "Edit Dashboard — the same contract as create: name, segment, ownership.",
+            "alt": "Edit Dashboard modal over a list of audience-specific dashboards"
+          },
+          "figures": [
+            {
+              "src": "assets/work/dashboards/widget-gallery.png",
+              "caption": "Add Web Widgets — compose the layout from a categorised gallery, then publish when it is ready.",
+              "alt": "Add Web Widgets modal with recommended widget cards on a dashboard builder"
+            },
+            {
+              "src": "assets/work/dashboards/preview-customers.png",
+              "caption": "Same preview chrome, Customers Segment — the money comparison against the Finance view in the hero.",
+              "alt": "Customer Satisfaction dashboard preview viewed as Customers Segment"
+            }
           ]
         }
       ]
+
     },
     {
       id: 'object-review-approve-publish-workflow',
@@ -406,20 +229,17 @@
       thumb: 'assets/work/approvals/thumb.webp',
       images: ['assets/work/approvals/hero-publish-flow.png'],
       scan: {
-        role: 'Lead Product Designer',
-        timeline: '2024',
-        team: 'Product, Engineering',
-        platform: 'Web · Posts, then Pages & Wikis',
-        contribution: [
-          'Discovery and workflow architecture',
-          'Four-approach evaluation',
-          'Admin, creator, and approver journeys',
-          'Phased rollout from Posts outward'
+        "role": "Lead Product Designer",
+        "timeline": "2024",
+        "team": "Product, Engineering",
+        "platform": "Web · Posts, then Pages & Wikis",
+        "contribution": [
+          "Workflow exploration",
+          "Admin configuration",
+          "Author and approver journeys"
         ],
-        challenge:
-          'Posts, Pages, Wikis, and Documents all needed review before publish — and there was no shared approval system that could govern them the same way.',
-        impact:
-          'One workflow engine. Authors keep their existing editors. Approvers act from a central request. Phase 1 shipped on Posts; Phase 2 reused the same framework for Pages and Wikis.'
+        "challenge": "Posts, pages, and other content needed review before publishing, but separate approval flows would be difficult to maintain.",
+        "impact": "A shared approval workflow launched for Posts and was extended to Pages and Wikis."
       },
       hero: {
         src: 'assets/work/approvals/hero-publish-flow.png',
@@ -429,130 +249,57 @@
       },
       sections: [
         {
-          type: 'cards',
-          id: 'problem',
-          title: 'The Problem',
-          tocLabel: 'Problem',
-          lead: 'Quality and compliance needed a gate. Building that gate once per content type would not scale.',
-          cards: [
-            { title: 'Admins', body: 'Configure once. Company-wide and team scopes. Mandatory and optional steps. A full audit trail.' },
-            { title: 'Creators', body: 'Keep the editors they already use. Do not pick approvers by hand. See status and feedback.' },
-            { title: 'Approvers', body: 'Review from one place. Preview as it will publish. Approve, decline, or request changes.' },
-            { title: 'The platform', body: 'Posts first — but Pages, Wikis, Documents, and future types had to fit the same engine.' }
+          type: 'process', id: 'approach', title: 'The Approach', tocLabel: 'Approach',
+          steps: [
+            { title: 'Understand the different roles', body: 'Admins needed to configure review, authors needed to submit content easily, and approvers needed enough context to make a decision.' },
+            { title: 'Explore the options', body: 'I compared four approaches, from a simple approval settings page to a reusable workflow. A settings-only solution was simpler initially but would duplicate configuration as content types grew.' },
+            { title: 'Start with Posts', body: 'Product and Engineering aligned on using the existing workflow engine. Posts provided the first use case before the framework was extended to Pages and Wikis.' }
           ]
         },
         {
-          type: 'split',
-          id: 'exploration',
-          title: 'Four Approaches',
-          tocLabel: 'Exploration',
-          figureFirst: true,
-          lead: 'I evaluated four directions before committing. Approach 1 was the obvious settings page. Approach 4 is a platform capability.',
-          items: [
-            { title: '01 · Global settings', body: 'A Content Approval admin with type toggles. Simple — and coupled to modules. Limited chains. Duplicate config as types grew.' },
-            { title: '02 · Reuse Trackers', body: 'Approvals as tracker workflows. Familiar, more flexible — still approval-centric, hard to extend past a yes/no gate.' },
-            { title: '03 · Inform + approve', body: 'Broader notifications and non-approval paths. Flexible, but mixed two jobs and raised the admin learning curve.' },
-            { title: '04 · Generic engine (selected)', body: 'Approvals as one action type on a workflow framework: routing, multiple approvers, escalations, future automation.' }
-          ],
-          figure: {
-            src: 'assets/work/approvals/approach-1-settings.png',
-            caption: 'Approach 1 — a dedicated Content Approval settings page. Clear, and too tightly bound to content modules.',
-            alt: 'Content Approval administration settings with customize-message modal',
-            storyboard: true
-          },
-          figures: [
+          "type": "decision",
+          "id": "decision",
+          "title": "The Key Decision",
+          "tocLabel": "Decision",
+          "problem": "A separate approval feature for each content type would repeat the same work.",
+          "decision": "I chose a reusable workflow framework that routes content to the right approvers.",
+          "why": "Authors stay in their existing editors, while the same framework can support more content types.",
+          "figure": {
+            "src": "assets/work/approvals/approach-4-config.png",
+            "caption": "Approach 4 — configure the workflow once (approvers, routing, publish behaviour), then apply it to content.",
+            "alt": "Storyboard of generic workflow configuration for post approval",
+            "storyboard": true
+          }
+        },
+        {
+          "type": "split",
+          "id": "solution",
+          "title": "The Solution",
+          "tocLabel": "Solution",
+          "figureFirst": true,
+          "items": [
             {
-              src: 'assets/work/approvals/approach-4-config.png',
-              caption: 'Approach 4 — configure the workflow once (approvers, routing, publish behaviour), then apply it to content.',
-              alt: 'Storyboard of generic workflow configuration for post approval',
-              storyboard: true
-            }
-          ]
-        },
-        {
-          type: 'decision',
-          id: 'decision-engine',
-          title: 'Key Design Decisions',
-          tocLabel: 'Decisions',
-          kicker: '01 · Build the engine',
-          problem: 'A Posts-only approval feature would have shipped faster — and been redesigned the first time Pages needed the same gate.',
-          insight: 'The product already had Trackers as a workflow surface. Approvals could be an action on that engine, not a new product.',
-          decision: 'Put approval on a generic workflow framework. Content type, approvers, routing, and publish behaviour are configuration — not hardcoded screens.',
-          why: 'Single, multiple, sequential, parallel, mandatory, and optional approvals become data. The UX can stay stable as types are added.',
-          result: 'Phase 1 validated the engine on Posts. Phase 2 extended to Pages and Wikis with minimal UX change.'
-        },
-        {
-          type: 'decision',
-          id: 'decision-author',
-          kicker: '02 · Do not teach a new publish',
-          inToc: false,
-          problem: 'If authors had to assemble a workflow at create time, adoption would fail even if the admin model was elegant.',
-          insight: 'Governance is an admin job. Creation is an author job. Mixing them in the editor is how you get abandoned settings.',
-          decision: 'Authors stay in existing post, page, wiki, and document editors. Submit for Approval applies the matching workflow automatically.',
-          why: 'Approvers get a central request with preview and in-review edit. Creators get status without becoming workflow designers.',
-          result: 'Approve publishes when mandatory steps are done. Decline records a reason. Request Changes returns the object and keeps history.'
-        },
-        {
-          type: 'split',
-          id: 'solution',
-          title: 'The Solution',
-          tocLabel: 'Solution',
-          figureFirst: true,
-          lead: 'Admin configures the workflow. The author submits. The approver decides. The object publishes itself.',
-          items: [
-            { title: 'Author', body: 'Same editor. Submit for Approval. A confirmation — not a new publishing product.' },
-            { title: 'Approver', body: 'Central request: preview, edit if needed, Approve / Decline / Request Changes.' },
-            { title: 'Audit', body: 'Decisions and status stay on the object. Governance is visible after the fact, not only in the moment.' }
-          ],
-          figure: {
-            src: 'assets/work/approvals/hero-publish-flow.png',
-            caption: 'Creator submit → confirmation → approver card → published. The author never left the editor they already knew.',
-            alt: 'Four-step storyboard from submit-for-approval through published post',
-            storyboard: true
-          },
-          figures: [
+              "title": "Configure",
+              "body": "Admins set the review steps and approvers."
+            },
             {
-              src: 'assets/work/approvals/audit-trail.png',
-              caption: 'Activity and view logs — the trail that makes a reusable engine trustworthy in an enterprise.',
-              alt: 'Storyboard of approval activity and view logs',
-              storyboard: true
+              "title": "Submit and review",
+              "body": "Authors submit from their usual editor. Approvers can preview the content, approve it, decline it, or request changes from a central request."
+            },
+            {
+              "title": "Keep a record",
+              "body": "Approval decisions and feedback remain in the audit trail."
             }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'collaboration',
-          title: 'Working with Product & Engineering',
-          inToc: false,
-          items: [
-            'I led discovery and the four-approach evaluation, then designed admin configuration plus creator and approver journeys.',
-            'Product and Engineering aligned on Trackers as the engine so we were not inventing a second workflow runtime.',
-            'The first launch was Posts on purpose — a proving ground before Pages and Wikis reused the same architecture.'
-          ]
-        },
-        {
-          type: 'outcomes',
-          id: 'outcome',
-          title: 'Impact',
-          tocLabel: 'Impact',
-          items: [
-            { title: 'One governance model', body: 'Approval is configured once and applied across content types — not rebuilt per module.' },
-            { title: 'Familiar creation', body: 'Authors do not select approvers or learn a new publish path.' },
-            { title: 'Reusable architecture', body: 'Phase 2 reused Phase 1. The next content type does not need a new approval product.' }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'learnings',
-          title: 'What I Learned',
-          tocLabel: 'Learned',
-          items: [
-            'The senior move was declining the settings page. Approach 1 would have looked finished and failed the second content type.',
-            'Preserve the author’s existing flow, or the governance layer will be bypassed.',
-            'I would still take a real multi-approver chain into usability earlier — sequential vs parallel is easy to draw and easy to get wrong in language.'
-          ]
+          ],
+          "figure": {
+            "src": "assets/work/approvals/audit-trail.png",
+            "caption": "The activity log keeps a record of approval decisions.",
+            "alt": "Storyboard of approval activity and view logs",
+            "storyboard": true
+          }
         }
       ]
+
     },
     {
       id: 'centralized-task-management',
@@ -572,21 +319,17 @@
       thumb: 'assets/work/tasks/thumb.webp',
       images: ['assets/work/tasks/hero-central.png'],
       scan: {
-        role: 'Senior UI/UX Designer',
-        timeline: '2024',
-        team: 'Product Manager, Engineering',
-        platform: 'Web · Enterprise intranet · Distributed retail ops',
-        contribution: [
-          'Tracker-to-task automation',
-          'User-level distribution',
-          'Role-scoped execution views',
-          'Approval preview',
-          'Bulk audience selection'
+        "role": "Senior UI/UX Designer",
+        "timeline": "2024",
+        "team": "Product Manager, Engineering",
+        "platform": "Web · Enterprise intranet · Distributed retail ops",
+        "contribution": [
+          "Task automation",
+          "People and team assignment",
+          "Role-based progress views"
         ],
-        challenge:
-          'V1 could broadcast a team task. There was no path from tracker data to a task, no user-level assignment at scale, and no scoped view for site managers.',
-        impact:
-          'A tracker entry can create a centralised task. Site managers see only their stores. Approvers can preview the task before they commit.'
+        "challenge": "Retail teams relied on manual work to create tasks, assign them at scale, and track progress across stores.",
+        "impact": "Tracker entries can create tasks automatically, while managers see progress for the locations they manage."
       },
       hero: {
         src: 'assets/work/tasks/hero-central.png',
@@ -595,141 +338,67 @@
       },
       sections: [
         {
-          type: 'cards',
-          id: 'problem',
-          title: 'Gaps in V1',
-          tocLabel: 'Problem',
-          lead: 'V1 solved broadcast to many store teams. It left the organisation coordinating the rest in spreadsheets and side channels.',
-          cards: [
-            { title: 'No automation', body: 'Structured tracker data still required a separate, manual task setup.' },
-            { title: 'Teams only', body: 'Centralised tasks could not be assigned to individual users — no personal accountability at scale.' },
-            { title: 'All or nothing visibility', body: 'Site managers could not see completion for only their stores.' },
-            { title: 'Approvers worked blind', body: 'A workflow could create a task with no preview of what that task would contain.' }
-          ]
-        },
-        {
-          type: 'process',
-          id: 'process',
-          title: 'How I Approached It',
-          tocLabel: 'Process',
+          type: 'process', id: 'approach', title: 'The Approach', tocLabel: 'Approach',
           steps: [
-            { title: 'Extend the engine', body: 'Do not build a second automation path. Add “Create a Task” next to “Publish a Post” on the tracker workflow they already use.' },
-            { title: 'Map, don’t retype', body: 'Tracker columns become task fields. Admins see exactly what will carry over before they save.' },
-            { title: 'Same screen, scoped data', body: 'Domain admins, site managers, and network users share the Centralized Tasks tab. Counts and lists respect role.' },
-            { title: 'Preview before approve', body: 'If a workflow will create a task, the approver can open that task as it would be created.' }
+            { title: 'Extend the existing model', body: 'The first version distributed tasks to store teams. I worked on the next version to support individuals, automation, and visibility across locations.' },
+            { title: 'Reuse familiar workflows', body: 'Tracker entries already held structured operational data. Connecting them to the existing workflow engine avoided introducing a separate automation tool.' },
+            { title: 'Respect each manager’s scope', body: 'The same central task view serves different roles, but each manager sees only the stores and people they are authorised to manage.' }
           ]
         },
         {
-          type: 'decision',
-          id: 'decision-engine',
-          title: 'Key Design Decisions',
-          tocLabel: 'Decisions',
-          kicker: '01 · The tracker is the source',
-          problem: 'A standalone “create tasks from a spreadsheet” tool would have duplicated triggers, conditions, and branching the product already had.',
-          insight: 'Admins who had built post workflows already knew this model. The missing action was Create a Task.',
-          decision: 'Extend Create/Publish Workflow with a task action. Mapping is required. Success and failure each get their own follow-on block.',
-          why: 'The cognitive model stays familiar. Title, teams/users, type, and from-user validate on save so a half-mapped workflow cannot silently ship empty tasks.',
-          result: 'A matching tracker row can create the task, write the task URL back, and update a status column — without a second product.',
-          figure: {
-            src: 'assets/work/tasks/create-workflow.png',
-            caption: 'Create Workflow — Create/Publish Workflow hovered: “publishing posts / creating task based on tracker entries.”',
-            alt: 'Create Workflow modal with Create/Publish Workflow option highlighted'
+          "type": "decision",
+          "id": "decision",
+          "title": "The Key Decision",
+          "tocLabel": "Decision",
+          "problem": "A separate automation tool would duplicate workflows already in the product.",
+          "decision": "I extended the existing workflow engine to create tasks from tracker entries.",
+          "why": "The same task system supports both automated and manual creation.",
+          "figure": {
+            "src": "assets/work/tasks/create-workflow.png",
+            "caption": "Create Workflow — Create/Publish Workflow hovered: “publishing posts / creating task based on tracker entries.”",
+            "alt": "Create Workflow modal with Create/Publish Workflow option highlighted"
           }
         },
         {
-          type: 'decision',
-          id: 'decision-scope',
-          kicker: '02 · Scope the data, not the UI',
-          inToc: false,
-          problem: 'Three roles needed different slices of the same operational picture. Separate apps would drift. One unfiltered list would leak the organisation.',
-          insight: 'The tab can be shared if every count, list, and export is scoped to the logged-in user.',
-          decision: 'One Centralized Tasks surface. Execution Status — team lists, user lists, percentages — reflects only what that person is authorised to see.',
-          why: 'Site managers get a role-appropriate view without a second export or an admin sitting in the middle.',
-          result: 'User-level centralised tasks follow the same parent–child pattern as team tasks. Browse gained Persona and Sites filters so large audiences can be selected without error.'
-        },
-        {
-          type: 'split',
-          id: 'solution',
-          title: 'The Solution',
-          tocLabel: 'Solution',
-          figureFirst: true,
-          lead: 'Manual create at scale, and automated create from a tracker — both land in the same Centralized Tasks tab.',
-          items: [
-            { title: 'User or team', body: 'Multi-select users is net-new. Multi-select teams still creates a parent with child tasks per store.' },
-            { title: 'Browse, don’t type', body: 'Persona filter for people. Sites filter for teams — reusing the hierarchy the product already had.' },
-            { title: 'Local context', body: 'The same work appears inside a store team, so front-line execution does not require the org-wide tab.' }
-          ],
-          figure: {
-            src: 'assets/work/tasks/add-user-task.png',
-            caption: 'Add Task as User Task — more than one user makes it centralised. The permission note is on the screen, not in a help article.',
-            alt: 'Add Task modal set to User Task with a note about creating centralized tasks by adding multiple users'
-          },
-          figures: [
+          "type": "split",
+          "id": "solution",
+          "title": "The Solution",
+          "tocLabel": "Solution",
+          "figureFirst": true,
+          "items": [
             {
-              src: 'assets/work/tasks/add-team-task.png',
-              caption: 'Team Task with Browse — the store path, still using the same parent–child model.',
-              alt: 'Add Task modal set to Team Task with a Browse control for store teams'
-            }
-          ]
-        },
-        {
-          type: 'split',
-          id: 'solution-ops',
-          title: 'Operations at scale',
-          tocLabel: 'Operations',
-          figureFirst: true,
-          items: [
-            { title: 'Bulk audiences', body: 'Select Teams is a dual list with search, CSV import, and a running selected count — built for hundreds of locations, not five.' },
-            { title: 'Execution status', body: 'Completion % and per-team or per-user actions, including a pre-filled DM to the person responsible.' },
-            { title: 'Export respects scope', body: 'The XLS from Task Tools contains only the stores and people the logged-in user is allowed to see.' }
-          ],
-          figure: {
-            src: 'assets/work/tasks/select-teams.png',
-            caption: 'Select Teams — find, add, remove, import from CSV. Nine stores selected, not typed one by one.',
-            alt: 'Select Teams dual-list dialog over an Add Task modal'
-          },
-          figures: [
+              "title": "Assign at scale",
+              "body": "Choose individuals or store teams using existing filters. For large rollouts, admins can search, select multiple teams, or import a list."
+            },
             {
-              src: 'assets/work/tasks/team-surface.png',
-              caption: 'The same task inside a store team — org-wide orchestration, local execution.',
-              alt: 'Store team tasks list with a selected task’s details panel'
+              "title": "Track the right work",
+              "body": "Managers can check completion by team or person without seeing locations outside their scope. Store teams can still find the work in their own familiar space."
+            },
+            {
+              "title": "Review before creating",
+              "body": "Approvers can preview a task before the workflow creates it."
             }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'collaboration',
-          title: 'Working with PM & Engineering',
-          inToc: false,
-          items: [
-            'PM brought the full V2 scope. We aligned early on the tracker as the automation source and where visibility boundaries should fall.',
-            'Extending the existing workflow engine beat a separate task-automation path — the mental model was already in the product.',
-            'Engineering set what the Sites hierarchy, file follow-list, and workflow execution engine could support. Those conversations decided reuse over rebuild.'
-          ]
-        },
-        {
-          type: 'outcomes',
-          id: 'outcome',
-          title: 'Impact',
-          tocLabel: 'Impact',
-          items: [
-            { title: 'Tracker to task', body: 'A matching entry can create the task, write the URL back, and update status without a manual pass.' },
-            { title: 'User-level accountability', body: 'Centralised distribution is no longer teams-only.' },
-            { title: 'Scoped operations', body: 'Site managers see their stores. Approvers can preview the task. Tab labels can match the customer’s language.' }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'learnings',
-          title: 'What I Learned',
-          tocLabel: 'Learned',
-          items: [
-            'Extend the model people already have. A second automation product would have been easier to draw and harder to run.',
-            'Scoped data on one screen beats three specialised screens that drift.',
-            'I would still get a real approval-preview in front of store managers earlier — the happy path is obvious; incomplete mappings are not.'
+          ],
+          "figure": {
+            "src": "assets/work/tasks/add-user-task.png",
+            "caption": "Add Task as User Task — more than one user makes it centralised. The permission note is on the screen, not in a help article.",
+            "alt": "Add Task modal set to User Task with a note about creating centralized tasks by adding multiple users"
+          },
+          "figures": [
+            {
+              "src": "assets/work/tasks/add-team-task.png",
+              "caption": "Team Task with Browse — the store path, still using the same parent–child model.",
+              "alt": "Add Task modal set to Team Task with a Browse control for store teams"
+            },
+            {
+              "src": "assets/work/tasks/select-teams.png",
+              "caption": "Select Teams — find, add, remove, import from CSV. Nine stores selected, not typed one by one.",
+              "alt": "Select Teams dual-list dialog over an Add Task modal"
+            }
           ]
         }
       ]
+
     },
     {
       id: 'buuzz-app',
@@ -748,21 +417,17 @@
       thumb: 'assets/work/buuzz/thumb.webp',
       images: ['assets/work/buuzz/hero-map.png'],
       scan: {
-        role: 'Product Designer',
-        timeline: '2022',
-        team: 'Product, Engineering',
-        platform: 'iOS / Android',
-        contribution: [
-          'Staged onboarding (OTP → KYC → wallet)',
-          'Map-first discovery',
-          'Ride + running cost meter',
-          'Zone parking intervention',
-          'Post-ride summary'
+        "role": "Product Designer",
+        "timeline": "2022",
+        "team": "Product, Engineering",
+        "platform": "iOS / Android",
+        "contribution": [
+          "Onboarding and identity verification",
+          "Bike discovery and ride flow",
+          "Pricing and parking guidance"
         ],
-        challenge:
-          'Existing shared-mobility apps failed Indian riders on registration, hidden pricing, unknown range, and surprise parking penalties.',
-        impact:
-          'Onboarding under 5 minutes including KYC. Pricing shown at 3 touchpoints before payment. Battery and range before unlock. Zone rules before a stop.'
+        "challenge": "Riders needed to understand registration, cost, battery range, and parking rules before committing to a ride.",
+        "impact": "The design makes onboarding, pricing, bike range, and parking guidance visible throughout the ride."
       },
       hero: {
         src: 'assets/work/buuzz/hero-map.png',
@@ -772,113 +437,71 @@
       },
       sections: [
         {
-          type: 'cards',
-          id: 'problem',
-          title: 'User Pain Points',
-          tocLabel: 'Problem',
-          lead: 'Too far to walk, too expensive to cab — and the apps that promised a bike made the ride itself feel risky.',
-          cards: [
-            { title: 'KYC drop-off', body: 'Compliance had no step structure. People left before they were allowed to ride.' },
-            { title: 'Bill shock', body: 'Price appeared after the rider had already committed.' },
-            { title: 'Unknown range', body: 'Battery and estimated range were missing at selection.' },
-            { title: 'Surprise penalties', body: 'Zone parking rules showed up as a violation, not as guidance.' }
-          ]
-        },
-        {
-          type: 'process',
-          id: 'principles',
-          title: 'Design Principles',
-          tocLabel: 'Principles',
+          type: 'process', id: 'approach', title: 'The Approach', tocLabel: 'Approach',
           steps: [
-            { title: 'One-handed', body: 'Designed for a moving urban context — large targets, daylight contrast, progressive disclosure.' },
-            { title: 'Stage the commitment', body: 'Identity (KYC) and money (wallet) are separate. Neither should feel like an ambush mid-flow.' },
-            { title: 'OTP only', body: 'No password. Lower friction for low-digital-literacy riders.' },
-            { title: 'Show the cost of a mistake early', body: 'Price, range, and parking rules appear before the action that would punish the rider.' }
+            { title: 'Reduce uncertainty before a ride', body: 'A rider needs more than a nearby bike: they need to know its range, what the ride will cost, and where they can park before committing.' },
+            { title: 'Break onboarding into steps', body: 'Phone verification, identity checks, and wallet setup are presented separately, with progress visible as the rider moves through them.' },
+            { title: 'Design for the whole journey', body: 'I connected discovery, the active ride, parking guidance, and the final summary so important information appears when it is needed.' }
           ]
         },
         {
-          type: 'split',
-          id: 'flows',
-          title: 'End-to-end flows',
-          tocLabel: 'Flows',
-          figureFirst: true,
-          figureGrid: true,
-          lead: 'OTP, KYC, and wallet are separate steps. Then pick by battery and range, ride with a live fare, and get stopped before an out-of-zone end.',
-          items: [
-            { title: 'Onboarding', body: 'Sign up → OTP → KYC → Wallet. Progress and “what happens next” on every step.' },
-            { title: 'Discovery', body: 'Zone map and a bike list. Battery and estimated range before the rider picks.' },
-            { title: 'Ride → end → summary', body: 'Live track + cost meter. Parking guidance before stop. Time, distance, and fare on the way out.' }
-          ],
-          figure: {
-            src: 'assets/work/buuzz/onboarding.png',
-            caption: 'Sign up → OTP → KYC. Identity is a step, not a wall at the start of a ride.',
-            alt: 'Three Buuzz screens: mobile sign-up, OTP verification, and KYC details'
-          },
-          figures: [
+          "type": "decision",
+          "id": "decision",
+          "title": "The Key Decision",
+          "tocLabel": "Decision",
+          "problem": "Registration and payment can feel overwhelming when presented as one long form.",
+          "decision": "I separated phone verification, identity checks, and wallet setup into clear steps.",
+          "why": "Riders see what comes next before moving on.",
+          "figure": {
+            "src": "assets/work/buuzz/onboarding.png",
+            "caption": "Sign up → OTP → KYC. Identity is a step, not a wall at the start of a ride.",
+            "alt": "Three Buuzz screens: mobile sign-up, OTP verification, and KYC details"
+          }
+        },
+        {
+          "type": "split",
+          "id": "solution",
+          "title": "The Solution",
+          "tocLabel": "Solution",
+          "figureFirst": true,
+          "items": [
             {
-              src: 'assets/work/buuzz/zone-list.png',
-              caption: 'A zone list — bike ID, battery, and range before the rider commits.',
-              alt: 'Buuzz zone sheet listing bikes with battery percent and estimated range',
-              phone: true
+              "title": "Find a bike",
+              "body": "See nearby bikes, battery level, and estimated range before choosing."
             },
             {
-              src: 'assets/work/buuzz/wallet.png',
-              caption: 'Add funds — refundable deposit and wallet top-up before the first ride.',
-              alt: 'Buuzz add-funds screen with refundable security deposit and wallet amount chips',
-              phone: true
+              "title": "Ride with confidence",
+              "body": "A live ride screen shows time, distance, and running cost."
             },
             {
-              src: 'assets/work/buuzz/active-ride.png',
-              caption: 'Ride ON — time, distance, and a running rupee total.',
-              alt: 'Buuzz active ride with live timer, distance, and fare',
-              phone: true
-            },
-            {
-              src: 'assets/work/buuzz/parking.png',
-              caption: 'End-at-zone alert before a penalty — pick a Buuzz zone, or end here anyway.',
-              alt: 'Buuzz modal asking the rider to end the ride in a designated zone',
-              phone: true
-            },
-            {
-              src: 'assets/work/buuzz/ride-summary.png',
-              caption: 'Ride summary — time, distance, fare, then share feedback.',
-              alt: 'Buuzz post-ride summary with duration, distance, and cost',
-              phone: true
+              "title": "Park and finish",
+              "body": "If a rider tries to end outside a designated zone, the app explains the parking rule before they finish. A summary then shows the ride time, distance, and fare."
             }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'collaboration',
-          title: 'Working with Product & Engineering',
-          inToc: false,
-          items: [
-            'Partnered on compliance checkpoints, pricing transparency, and map/zone constraints before the flows were drawn as final.',
-            'Edge cases we pressure-tested: failed KYC, low wallet, out-of-zone parking, interrupted rides.'
-          ]
-        },
-        {
-          type: 'outcomes',
-          id: 'outcome',
-          title: 'Impact',
-          tocLabel: 'Impact',
-          items: [
-            { title: 'Onboarding under 5 minutes', body: 'Including KYC — staged so identity and wallet are not one hostile form.' },
-            { title: 'Price at 3 touchpoints', body: 'Shown before any payment, not after the ride starts.' },
-            { title: 'Fewer regret unlocks', body: 'Battery + range before selection. Zone intervention before a penalty-triggering stop.' }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'learnings',
-          title: 'What I Learned',
-          tocLabel: 'Learned',
-          items: [
-            'Trust is designed before the ride starts. A beautiful map will not save hidden pricing or a surprise fine.',
-            'Staging KYC and wallet separately was the difference between “compliant” and “finishable.”'
-          ]
+          ],
+          "figures": [
+            {
+              "src": "assets/work/buuzz/zone-list.png",
+              "caption": "A zone list — bike ID, battery, and range before the rider commits.",
+              "alt": "Buuzz zone sheet listing bikes with battery percent and estimated range",
+              "phone": true
+            },
+            {
+              "src": "assets/work/buuzz/active-ride.png",
+              "caption": "Ride ON — time, distance, and a running rupee total.",
+              "alt": "Buuzz active ride with live timer, distance, and fare",
+              "phone": true
+            },
+            {
+              "src": "assets/work/buuzz/parking.png",
+              "caption": "End-at-zone alert before a penalty — pick a Buuzz zone, or end here anyway.",
+              "alt": "Buuzz modal asking the rider to end the ride in a designated zone",
+              "phone": true
+            }
+          ],
+          "figureGrid": true
         }
       ]
+
     },
     {
       id: 'yugen-brand-identity',
@@ -895,21 +518,17 @@
       thumb: 'assets/work/yugen/thumb.webp',
       images: ['assets/work/yugen/home.jpg'],
       scan: {
-        role: 'Brand & Web Designer',
-        timeline: '2024',
-        team: 'Founding team',
-        platform: 'Identity + website',
-        contribution: [
-          'Wordmark and lockup',
-          'Colour and type',
-          'Illustration system',
-          'Site information architecture',
-          'Careers voice'
+        "role": "Brand & Web Designer",
+        "timeline": "2024",
+        "team": "Founding team",
+        "platform": "Identity + website",
+        "contribution": [
+          "Brand identity",
+          "Illustration and visual system",
+          "Website structure"
         ],
-        challenge:
-          'An engineering-first ML company with no visual language, selling to technical buyers in a market full of glowing neural nets.',
-        impact:
-          'A complete system from zero — logo, colour, type, illustration, and a site whose architecture matches how an enterprise buyer actually looks for proof.'
+        "challenge": "Yugen needed an identity and website that could explain its machine-learning services to enterprise buyers.",
+        "impact": "A consistent brand and website bring together the company’s services, case studies, and careers content."
       },
       hero: {
         src: 'assets/work/yugen/home.jpg',
@@ -919,118 +538,71 @@
       },
       sections: [
         {
-          type: 'cards',
-          id: 'problem',
-          title: 'What Needed Solving',
-          tocLabel: 'Problem',
-          lead: 'The name references a Japanese sense of depth. The brand had to make that felt — and still pass a skeptical ML buyer.',
-          cards: [
-            { title: 'Technical, not sterile', body: 'Engineering rigour without the cold default of B2B tech brands.' },
-            { title: 'One language, many surfaces', body: 'Long-form case studies, a technical blog, an industry navigator, and careers for senior engineers.' },
-            { title: 'Abstract work, concrete pictures', body: 'Pipelines, anomaly detection, recommendations — without brains, robots, or clip art.' },
-            { title: 'Startup, not costume', body: 'Enterprise clients, early-stage company. Mature without pretending to be a 2,000-person firm.' }
-          ]
-        },
-        {
-          type: 'process',
-          id: 'direction',
-          title: 'Creative Direction',
-          tocLabel: 'Direction',
+          type: 'process', id: 'approach', title: 'The Approach', tocLabel: 'Approach',
           steps: [
-            { title: 'Not that AI look', body: 'Away from dark gradients, glowing nets, and circuit textures. Toward considered, precise, human.' },
-            { title: 'The name as a constraint', body: 'Yugen suggested layered intelligence, not volume. Restraint in the mark. Depth in illustration. A site that rewards reading.' },
-            { title: 'Earned visuals', body: 'Every choice had to come from what the company ships — production ML systems — not from what AI companies typically look like.' },
-            { title: 'Philosophy, then proof', body: 'The homepage states the approach, then grounds it. Services and case studies do the selling.' }
+            { title: 'Find a distinctive direction', body: 'Working with the founding team, I developed an identity that reflects the company’s technical depth without relying on familiar AI imagery.' },
+            { title: 'Make complex work tangible', body: 'The visual language uses typography, colour, and illustration to explain machine-learning services consistently across the site.' },
+            { title: 'Lead visitors to evidence', body: 'The website connects the company’s positioning to its services and case studies, helping potential clients find work relevant to their needs.' }
           ]
         },
         {
-          type: 'decision',
-          id: 'decision-site',
-          title: 'Key Design Decisions',
-          tocLabel: 'Decisions',
-          kicker: '01 · The site is the brand',
-          problem: 'A logo sheet without an information architecture would have left the company looking like every other ML deck.',
-          insight: 'Enterprise buyers do not skim a manifesto. They look for a system that has shipped in their industry, against their goal.',
-          decision: 'Build the identity so it holds a homepage, a service architecture, filterable case studies, and a human careers tone — same grid, different jobs.',
-          why: 'The “ai” lockup signals domain without reducing the brand to a technology sticker. Illustrations show flows and relationships, not metaphors.',
-          result: 'A repeatable foundation: type, colour, spacing, and illustration rules the team can extend without a designer in every file.',
-          figure: {
-            src: 'assets/work/yugen/services.jpg',
-            caption: 'ML Services — the offer as architecture, not a slogan under a hero video.',
-            alt: 'Yugen ML Services page showing service architecture',
-            page: true
+          "type": "decision",
+          "id": "decision",
+          "title": "The Key Decision",
+          "tocLabel": "Decision",
+          "problem": "The brand needed to communicate technical expertise clearly across more than a logo.",
+          "decision": "I built a visual system around a clear website structure, with services and case studies as proof of the work.",
+          "why": "The same visual language carries across the company’s pages.",
+          "figure": {
+            "src": "assets/work/yugen/services.jpg",
+            "caption": "ML Services — the offer as architecture, not a slogan under a hero video.",
+            "alt": "Yugen ML Services page showing service architecture",
+            "page": true
           }
         },
         {
-          type: 'split',
-          id: 'system',
-          title: 'Brand system in use',
-          tocLabel: 'System',
-          figureFirst: true,
-          lead: 'Case studies filter by industry and business goal — the way a buyer actually arrives, not the way an agency likes to present work.',
-          items: [
-            { title: 'Proof, filterable', body: 'Industry and goal are first-class. Time-to-relevant-content is the point of the IA.' },
-            { title: 'Depth holds', body: 'A case study detail page uses the same language as the index — no sudden theme change when someone clicks through.' },
-            { title: 'Careers as contrast', body: 'Direct, human, specific enough to filter senior ML engineers. Startup culture, stated — not a stock “we’re a family.”' }
-          ],
-          figure: {
-            src: 'assets/work/yugen/case-studies.jpg',
-            caption: 'Case studies index — proof before claims.',
-            alt: 'Yugen case studies listing page',
-            page: true
-          },
-          figures: [
+          "type": "split",
+          "id": "solution",
+          "title": "The Solution",
+          "tocLabel": "Solution",
+          "figureFirst": true,
+          "items": [
             {
-              src: 'assets/work/yugen/case-filter.jpg',
-              caption: 'Filter by industry and goal — structure that reflects buyer intent.',
-              alt: 'Yugen case studies page with industry and goal filters open',
-              page: true
+              "title": "Explain the offer",
+              "body": "Service pages make the company’s machine-learning work easier to understand."
             },
             {
-              src: 'assets/work/yugen/case-detail.jpg',
-              caption: 'Case study detail — the system still holds when the page gets long.',
-              alt: 'Yugen individual case study detail page',
-              page: true
+              "title": "Make proof easy to find",
+              "body": "Case studies can be explored by industry and business goal."
             },
             {
-              src: 'assets/work/yugen/careers.jpg',
-              caption: 'Careers — a different tone on the same system, aimed at people who could work anywhere.',
-              alt: 'Yugen careers page',
-              page: true
+              "title": "Support the team",
+              "body": "A consistent design system extends from case studies to careers."
             }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'collaboration',
-          title: 'With the Founding Team',
-          inToc: false,
-          items: [
-            'Worked directly with the founding team on brand strategy — positioning, what to show first, and what the site had to prove.'
-          ]
-        },
-        {
-          type: 'outcomes',
-          id: 'outcome',
-          title: 'Impact',
-          tocLabel: 'Impact',
-          items: [
-            { title: 'System from zero', body: 'Wordmark, colour, type, illustration, and site — no prior visual identity to inherit or fight.' },
-            { title: 'ML, made visible', body: 'Service categories are distinct without generic tech metaphors.' },
-            { title: 'Built to be extended', body: 'A repeatable language, not a fixed set of pages the team cannot leave.' }
-          ]
-        },
-        {
-          type: 'learnings',
-          id: 'learnings',
-          title: 'What I Learned',
-          tocLabel: 'Learned',
-          items: [
-            'For technical buyers, polish without substance is a liability. The IA had to do as much work as the wordmark.',
-            'Restraint is harder to defend than a loud AI look — and it was the only direction that matched the name they chose.'
+          ],
+          "figure": {
+            "src": "assets/work/yugen/case-studies.jpg",
+            "caption": "Case studies index — proof before claims.",
+            "alt": "Yugen case studies listing page",
+            "page": true
+          },
+          "figures": [
+            {
+              "src": "assets/work/yugen/case-filter.jpg",
+              "caption": "Filter by industry and goal — structure that reflects buyer intent.",
+              "alt": "Yugen case studies page with industry and goal filters open",
+              "page": true
+            },
+            {
+              "src": "assets/work/yugen/careers.jpg",
+              "caption": "Careers — a different tone on the same system, aimed at people who could work anywhere.",
+              "alt": "Yugen careers page",
+              "page": true
+            }
           ]
         }
       ]
+
     }
   ];
 

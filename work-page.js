@@ -353,7 +353,7 @@
                     ` : ''}
                     ${scan.impact ? `
                         <div class="work-scan__highlight work-scan__highlight--impact">
-                            <p class="work-scan__label">The impact</p>
+                            <p class="work-scan__label">The outcome</p>
                             <p>${escapeHtml(scan.impact)}</p>
                         </div>
                     ` : ''}
