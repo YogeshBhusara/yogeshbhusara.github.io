@@ -28,8 +28,8 @@
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Intranet',
-      thumb: 'assets/work/post-planning/thumb.webp',
-      images: ['assets/work/post-planning/hero-week.png'],
+      thumb: 'assets/work/post-planning/thumb-northstar.webp',
+      images: ['assets/work/post-planning/hero-week-northstar.png'],
       scan: {
         "role": "Senior UI/UX Designer",
         "timeline": "2024",
@@ -44,7 +44,7 @@
         "impact": "A shared planning view brings ideas, drafts, and scheduled posts together, with conflict warnings and bulk import."
       },
       hero: {
-        src: 'assets/work/post-planning/hero-week.png',
+        src: 'assets/work/post-planning/hero-week-northstar.png',
         caption: 'Weekly planning calendar — Idea, Draft, and Scheduled as distinct, colour-coded states.',
         alt: 'Weekly content planning calendar showing colour-coded Idea, Draft, and Scheduled post cards'
       },
@@ -66,7 +66,7 @@
           "decision": "I introduced Post Ideas: lightweight entries that can be dated, scheduled, and converted into posts.",
           "why": "Ideas without dates stay in an Unplanned panel until the team is ready to schedule them.",
           "figure": {
-            "src": "assets/work/post-planning/new-idea-modal.png",
+            "src": "assets/work/post-planning/new-idea-modal-northstar.png",
             "caption": "New Post Idea — a lightweight capture modal, separate from post creation.",
             "alt": "New Post Idea modal with title, description, audience, and optional planned publish date"
           }
@@ -92,18 +92,18 @@
             }
           ],
           "figure": {
-            "src": "assets/work/post-planning/calendar-unplanned.png",
+            "src": "assets/work/post-planning/calendar-unplanned-northstar.png",
             "caption": "Weekly calendar with the Unplanned panel open — backlog on the right, scheduled work on the grid.",
             "alt": "Weekly planning calendar beside an Unplanned panel of drafts and ideas"
           },
           "figures": [
             {
-              "src": "assets/work/post-planning/month-view.png",
+              "src": "assets/work/post-planning/month-view-northstar.png",
               "caption": "Month view — the same three states, with overflow when a day fills up.",
               "alt": "Monthly planning calendar with Idea, Draft, and Scheduled cards and overflow counts"
             },
             {
-              "src": "assets/work/post-planning/planned-list.png",
+              "src": "assets/work/post-planning/planned-list-northstar.png",
               "caption": "Planned list — All Planned / My Planned in the sidebar, sortable rows, state-appropriate actions.",
               "alt": "Tabular planned-posts list with status, audience, creator, and date columns"
             }
@@ -127,8 +127,8 @@
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Intranet',
-      thumb: 'assets/work/dashboards/thumb.webp',
-      images: ['assets/work/dashboards/hero-preview.png'],
+      thumb: 'assets/work/dashboards/thumb-northstar.webp',
+      images: ['assets/work/dashboards/hero-preview-northstar.png'],
       scan: {
         "role": "Senior UI/UX Designer",
         "timeline": "2024",
@@ -143,7 +143,7 @@
         "impact": "Admins can create a dashboard for each audience, preview it, and publish web and mobile layouts independently."
       },
       hero: {
-        src: 'assets/work/dashboards/hero-preview.png',
+        src: 'assets/work/dashboards/hero-preview-northstar.png',
         caption: 'Preview of an Engaged Users dashboard, viewed as Finance Department — web and mobile in the same chrome.',
         alt: 'Admin preview of an engaged-users dashboard with View as Finance Department and Web/Mobile toggle'
       },
@@ -165,7 +165,7 @@
           "decision": "I used an ordered list: the first matching dashboard is shown, with a default dashboard as a fallback.",
           "why": "The order is visible in the admin list, so the assignment can be explained and adjusted without relying on a hidden rule.",
           "figure": {
-            "src": "assets/work/dashboards/dashboard-list.png",
+            "src": "assets/work/dashboards/dashboard-list-northstar.png",
             "caption": "The list is the hierarchy — “the dashboard at the top of the list for that user will be applied.”",
             "alt": "Dashboard admin list with helper text describing first-match assignment for users in multiple segments"
           }
@@ -191,18 +191,18 @@
             }
           ],
           "figure": {
-            "src": "assets/work/dashboards/edit-dashboard.png",
+            "src": "assets/work/dashboards/edit-dashboard-northstar.png",
             "caption": "Edit Dashboard — the same contract as create: name, segment, ownership.",
             "alt": "Edit Dashboard modal over a list of audience-specific dashboards"
           },
           "figures": [
             {
-              "src": "assets/work/dashboards/widget-gallery.png",
+              "src": "assets/work/dashboards/widget-gallery-northstar.png",
               "caption": "Add Web Widgets — compose the layout from a categorised gallery, then publish when it is ready.",
               "alt": "Add Web Widgets modal with recommended widget cards on a dashboard builder"
             },
             {
-              "src": "assets/work/dashboards/preview-customers.png",
+              "src": "assets/work/dashboards/preview-customers-northstar.png",
               "caption": "Same preview chrome, Customers Segment — the money comparison against the Finance view in the hero.",
               "alt": "Customer Satisfaction dashboard preview viewed as Customers Segment"
             }
@@ -226,8 +226,8 @@
       year: '2024',
       category: 'Product Design',
       area: 'Enterprise SaaS / Governance',
-      thumb: 'assets/work/approvals/thumb.webp',
-      images: ['assets/work/approvals/hero-publish-flow.png'],
+      thumb: 'assets/work/approvals/thumb-northstar.webp',
+      images: ['assets/work/approvals/hero-publish-flow-northstar.png'],
       scan: {
         "role": "Lead Product Designer",
         "timeline": "2024",
@@ -242,7 +242,7 @@
         "impact": "A shared approval workflow launched for Posts and was extended to Pages and Wikis."
       },
       hero: {
-        src: 'assets/work/approvals/hero-publish-flow.png',
+        src: 'assets/work/approvals/hero-publish-flow-northstar.png',
         caption: 'Approach 4, end to end — Submit for Approval, confirmation, approver actions, then a Published post.',
         alt: 'Storyboard of post approval: editor with Submit for Approval, sent-for-approval modal, approver card, published article',
         storyboard: true
@@ -265,7 +265,7 @@
           "decision": "I chose a reusable workflow framework that routes content to the right approvers.",
           "why": "Authors stay in their existing editors, while the same framework can support more content types.",
           "figure": {
-            "src": "assets/work/approvals/approach-4-config.png",
+            "src": "assets/work/approvals/approach-4-config-northstar.png",
             "caption": "Approach 4 — configure the workflow once (approvers, routing, publish behaviour), then apply it to content.",
             "alt": "Storyboard of generic workflow configuration for post approval",
             "storyboard": true
@@ -292,7 +292,7 @@
             }
           ],
           "figure": {
-            "src": "assets/work/approvals/audit-trail.png",
+            "src": "assets/work/approvals/audit-trail-northstar.png",
             "caption": "The activity log keeps a record of approval decisions.",
             "alt": "Storyboard of approval activity and view logs",
             "storyboard": true
