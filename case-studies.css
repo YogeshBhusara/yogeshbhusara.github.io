@@ -1,0 +1,67 @@
+/* A generous reading sheet, with a quiet, compact password gate. */
+.case-sheet { position:fixed; inset:auto 0 0; width:calc(100% - 48px); max-width:1280px; height:calc(100dvh - 48px); max-height:none; margin:0 auto; padding:0; overflow-y:auto; overscroll-behavior:contain; border:0; border-radius:24px 24px 0 0; color:var(--ink); background:var(--paper); box-shadow:0 -12px 64px #0002; }
+.case-sheet::backdrop { background:#15171570; backdrop-filter:blur(5px); }
+.case-sheet[open] { animation:case-sheet-in 360ms cubic-bezier(.32,.72,0,1) both; }
+.case-sheet-top { position:sticky; top:0; height:48px; z-index:4; pointer-events:none; }
+.sheet-handle { position:absolute; top:10px; left:calc(50% - 16px); width:32px; height:4px; border-radius:8px; background:var(--muted); opacity:.35; }
+.sheet-close { display:grid; place-items:center; pointer-events:auto; position:absolute; top:12px; right:16px; width:40px; height:40px; border:1px solid var(--line); border-radius:50%; color:var(--ink); background:var(--paper); cursor:pointer; }
+.case-sheet-content { padding:8px 48px 64px; }
+.case-sheet-content > .case { max-width:880px; }
+.case-sheet .case h1,.protected-case h1 { max-width:30ch; font-size:var(--type-title); line-height:1.3; letter-spacing:-.025em; margin:16px 0; }
+.case-sheet .case .lead,.protected-case .lead { max-width:58ch; margin:0 0 32px; font-size:var(--type-body); line-height:1.65; }
+.case-intro > .micro { color:var(--muted); }
+.case-cover { margin:32px 0; padding:24px; border-radius:16px; background:var(--article-surface); }
+.case-cover img { display:block; width:100%; height:100%; max-height:460px; object-fit:contain; border-radius:8px; }
+.case-intro dl { margin:32px 0; padding:0; border:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.case-intro dt { font-size:var(--type-small); color:var(--muted); }
+.case-intro dd { font-size:var(--type-body); margin:4px 0 0; }
+.case-access { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px 24px; margin-top:40px; padding:16px 20px; border-radius:16px; background:var(--article-surface); }
+.access-message { display:flex; gap:12px; align-items:center; font-size:var(--type-small); }
+.case-access button { font:inherit; color:inherit; cursor:pointer; }
+.access-start { min-height:44px; padding:8px 16px; border:1px solid var(--line); border-radius:24px; background:var(--paper); font-size:var(--type-small)!important; }
+.access-start[hidden],.access-form[hidden] { display:none; }
+.password-entry { display:flex; align-items:center; min-height:48px; padding:4px; border:1px solid var(--ink); border-radius:28px; background:var(--paper); }
+.password-entry input { width:140px; min-width:0; border:0; padding:8px 8px 8px 12px; background:transparent; color:var(--ink); font:400 var(--type-small)/1.5 var(--font-body); border-radius:24px; }
+.password-entry button { display:grid; place-items:center; width:40px; height:40px; padding:0; border:0; border-radius:50%; background:transparent; }
+.password-entry .access-submit { color:var(--paper); background:var(--ink); }
+.password-entry:focus-within { outline:2px solid var(--focus,var(--orange)); outline-offset:3px; }
+.access-status { flex-basis:100%; font-size:var(--type-small); color:var(--muted); }
+.access-status:empty { display:none; }
+.access-contact { margin:16px 0 0; color:var(--muted); font-size:var(--type-small); }
+.access-contact a { text-decoration:underline; text-underline-offset:4px; }
+.case-unlocked-bar { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:32px; color:var(--muted); font-size:var(--type-small); }
+.case-lock { background:none; color:inherit; border:0; font:inherit; min-height:44px; cursor:pointer; }
+.is-unlocked .figure { margin:32px 0; padding:24px; border-radius:16px; background:var(--article-surface); }
+.is-unlocked .case-section { display:block; border:0; padding:32px 0; }
+.is-unlocked .case-section h2 { margin-bottom:24px; font-size:var(--type-title); }
+.is-unlocked .case-section h3 { font-size:var(--type-body); margin:24px 0 8px; }
+.is-unlocked .case-section p { max-width:66ch; font-size:var(--type-body); }
+.sheet-loading { margin:48px auto; max-width:880px; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+.case-sheet :is(button,a,input):focus-visible,.protected-case :is(button,a,input):focus-visible { outline:2px solid var(--focus,var(--orange)); outline-offset:4px; }
+.case-sheet button:disabled { opacity:.5; cursor:default; transform:none; }
+@keyframes case-sheet-in { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:600px) { .case-sheet { width:100%; height:calc(100dvh - 16px); border-radius:20px 20px 0 0; } .case-sheet-content { padding:8px 20px 48px; } .case-cover,.is-unlocked .figure { padding:12px; } .case-intro dl { grid-template-columns:1fr; gap:16px; } .case-access { padding:16px; } .access-form,.password-entry { width:100%; } .password-entry input { flex:1; } .case-access { margin-top:32px; } }
+@media(prefers-reduced-motion:reduce) { .case-sheet[open] { animation:case-sheet-fade 160ms ease-out both; } @keyframes case-sheet-fade { from { opacity:0; } to { opacity:1; } } }
+
+/* Match the portfolio's numbered section headings in every case study. */
+.case { counter-reset: case-section; }
+.case-section { counter-increment: case-section; }
+.case .case-section > h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.case .case-section > h2::before {
+  content: counter(case-section, decimal-leading-zero);
+  color: var(--orange, #ff4b1f);
+  letter-spacing: .04em;
+  flex-shrink: 0;
+}

@@ -1,0 +1,47 @@
+/* Hallmark · brand tokens: retained Yogesh Studio palette and locally hosted type */
+:root {
+  --type-small: .875rem;
+  --type-body: 1rem;
+  --type-title: 1.5rem;
+  --font-body: "IBM Plex Sans", Arial, sans-serif;
+  --font-mono: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+  --palette-paper: #faf9f6;
+  --palette-ink: #242421;
+  --palette-muted: #60605b;
+  --palette-line: #d6d5cf;
+  --palette-rule: #c6c4ba;
+  --palette-orange: #ef602a;
+  --palette-focus: #bb4616;
+  --palette-grid: #c9c8bf;
+  --palette-surface: #f1f0ea;
+  --palette-selection: #ffc7ae;
+  --palette-hover: #403e37;
+  --palette-dark-paper: #191a18;
+  --palette-dark-ink: #f3efe5;
+  --palette-dark-muted: #b7b6ac;
+  --palette-dark-line: #51524a;
+  --palette-dark-grid: #4b4d44;
+  --palette-dark-orange: #ff824d;
+  --palette-dark-selection: #824227;
+  --palette-dark-hover: #ffbc96;
+  --palette-dark-surface: #242521;
+  --palette-calendar-light: #e8e2f1;
+  --palette-calendar-deep: #ccc6e1;
+  --palette-buuzz-light: #e4e8de;
+  --palette-buuzz-deep: #ccd8c8;
+  --palette-yugen: #d9d7d3;
+  --palette-dashboard: #d8e2e8;
+  --palette-review: #e5ddd6;
+  --palette-task: #e4daca;
+  --palette-dark-calendar: #363041;
+  --palette-dark-buuzz: #2c352e;
+  --palette-dark-yugen: #343432;
+  --palette-dark-dashboard: #303d43;
+  --palette-dark-review: #403832;
+  --palette-dark-task: #433e32;
+  --palette-shadow-soft: #00000012;
+  --palette-shadow-screen: #0002;
+  --palette-shadow-dialog: #0005;
+  --palette-phone-grid: #a6b6a0;
+  --backdrop: rgb(14 17 15 / .72);
+}

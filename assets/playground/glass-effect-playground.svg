@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Glass Effect Playground">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#312e81"/>
+      <stop offset="50%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#sky)"/>
+  <circle cx="80" cy="100" r="60" fill="#f472b6" opacity="0.5"/>
+  <circle cx="320" cy="280" r="80" fill="#22d3ee" opacity="0.4"/>
+  <circle cx="300" cy="90" r="40" fill="#fbbf24" opacity="0.45"/>
+  <rect x="70" y="110" width="260" height="180" rx="28" fill="url(#glass)" stroke="#fff" stroke-opacity="0.45" stroke-width="2"/>
+  <rect x="100" y="145" width="200" height="12" rx="6" fill="#fff" opacity="0.35"/>
+  <rect x="100" y="175" width="160" height="12" rx="6" fill="#fff" opacity="0.25"/>
+  <rect x="100" y="205" width="180" height="12" rx="6" fill="#fff" opacity="0.2"/>
+  <circle cx="130" cy="250" r="22" fill="#fff" opacity="0.2"/>
+  <circle cx="200" cy="250" r="22" fill="#fff" opacity="0.15"/>
+  <circle cx="270" cy="250" r="22" fill="#fff" opacity="0.12"/>
+  <text x="200" y="385" text-anchor="middle" fill="#e0e7ff" font-family="system-ui,sans-serif" font-size="14" font-weight="600" letter-spacing="0.04em">GLASS EFFECT</text>
+</svg>

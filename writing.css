@@ -1,0 +1,82 @@
+.journal-shelf {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 180px));
+  gap: var(--space-5) var(--space-4);
+}
+.journal-cover {
+  --cover: #e6e1f1;
+  --print: #40324e;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space-3);
+  min-height: 252px;
+  position: relative;
+  transform-origin: left center;
+  transition: transform 240ms ease-in-out;
+  padding: 16px 16px 16px 20px;
+  color: var(--print);
+  background: linear-gradient(90deg, #0001, transparent 4px, transparent 8px, #0001 9px, transparent 11px), var(--cover);
+  border-radius: 2px 8px 8px 2px;
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--cover), var(--ink) 20%);
+  text-decoration: none;
+}
+.journal-cover:nth-child(2) { --cover: #dce8d6; --print: #2a4838; }
+.journal-cover:nth-child(3) { --cover: #d6e8ed; --print: #234654; }
+.journal-cover:nth-child(4) { --cover: #efdbce; --print: #54392e; }
+.journal-cover:nth-child(5) { --cover: #ebe5c8; --print: #474327; }
+.journal-cover:nth-child(6) { --cover: #dedff0; --print: #353956; }
+.journal-cover .journal-meta {
+  display: flex; align-items: center; justify-content: space-between;
+  font: 400 .75rem/1.4 var(--font-mono);
+}
+.journal-title { font: 550 .95rem/1.3 var(--font-body); letter-spacing: -.025em; }
+.journal-art { display: block; color: inherit; width: 100%; height: 48px; }
+.journal-cover:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+@media (hover:hover) and (pointer:fine) {
+  .journal-cover:hover { color: var(--print); transform: perspective(900px) rotateY(-12deg); }
+  .journal-cover:hover .journal-title { text-decoration: none; }
+}
+@media (max-width:640px) {
+  .journal-shelf { grid-template-columns: repeat(2,minmax(0,180px)); gap: 16px 12px; }
+  .journal-cover { padding: 12px 12px 12px 16px; }
+  .journal-title { font-size: .9rem; }
+  .journal-art { height: 48px; }
+}
+@media (max-width:350px) {
+  .journal-shelf { grid-template-columns: 1fr; }
+  .journal-cover { min-height: 252px; }
+}
+
+.journal-cover::after {
+  content: "";
+  position: absolute;
+  inset: 4px -4px 2px auto;
+  width: 4px;
+  border-radius: 0 3px 3px 0;
+  background: repeating-linear-gradient(to bottom, #ddd 0 1px, #fafafa 1px 3px);
+  z-index: -1;
+}
+.journal-cover:active { transform: scale(.97); transition: transform 160ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .journal-cover { transition: color 160ms ease; }
+  .journal-cover:hover, .journal-cover:active { transform: none; }
+}
+
+/* Numbered editorial section headings. */
+:is(#work, #experience, #experiments, #notes, #about) > :is(.section-head, .section-heading) > h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.section-number {
+  color: var(--orange, #ff4b1f);
+  letter-spacing: .04em;
+  flex-shrink: 0;
+}
