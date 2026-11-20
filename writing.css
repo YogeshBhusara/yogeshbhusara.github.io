@@ -33,7 +33,7 @@
 .journal-art { display: block; color: inherit; width: 100%; height: 48px; }
 .journal-cover:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 @media (hover:hover) and (pointer:fine) {
-  .journal-cover:hover { color: var(--print); transform: perspective(900px) rotateY(-12deg); }
+  .journal-shelf .journal-cover:hover { color: var(--print); transform: perspective(900px) rotateY(-12deg); }
   .journal-cover:hover .journal-title { text-decoration: none; }
 }
 @media (max-width:640px) {
