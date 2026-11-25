@@ -35,9 +35,16 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     toggle = document.querySelector('.theme-toggle');
+    if (!toggle) return;
+    const icons = document.createElement('span');
+    icons.className = 'theme-icons';
+    icons.setAttribute('aria-hidden', 'true');
+    icons.append(...toggle.children);
+    toggle.append(icons);
     toggle.hidden = false;
     updateTheme();
     toggle.addEventListener('click', () => {
+      toggle.classList.add('theme-toggle-animated');
       preference = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       updateTheme();
       try {
