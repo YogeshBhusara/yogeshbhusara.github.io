@@ -106,12 +106,12 @@ a:hover { color:inherit; }
  position:absolute;
  inset-inline-start:0;
  bottom:var(--space-4);
- transform:translateX(-50%);
+ transform:translate(-50%, calc(20px + 9.36px));
  color:var(--ink);
 }
 .personal-signature .studio-seal {
  display:block;
- width:93.6px;
+ width:112.32px;
  background:transparent;
  border-radius:50%;
 }
@@ -184,8 +184,6 @@ footer a { min-height:44px; font-size:var(--type-small); }
  .writing-row:hover .row-arrow { transform:translate(2px,-2px); }
  .resume-button:hover .arrow,.project-track .card-caption:hover .circle { transform:translate(2px,-2px); }
  .project-track .card-caption:hover .circle { transition:transform 180ms ease; }
- .personal-signature .studio-seal { transform-origin:center; transition:transform 360ms var(--ease-out); }
- .personal-signature:hover .studio-seal { transform:rotate(18deg) scale(1.04); }
 }
 .project-preview:focus-visible .project-preview-label { opacity:1; transition:none; }
 .career-entry[open] .career-body { animation:quiet-arrival 220ms var(--ease-out) both; }
@@ -235,7 +233,7 @@ footer a { min-height:44px; font-size:var(--type-small); }
  .experiment-art { width:48px; height:48px; border-radius:10px; }
  .experiment-copy p { font-size:var(--type-small); }
  .personal-copy { grid-template-columns:minmax(0,1fr); gap:var(--space-4); }
- .personal-portrait { width:126px; margin-inline-start:46.8px; }
+ .personal-portrait { width:126px; margin-inline-start:56.16px; }
  .personal-copy p { font-size:var(--type-body); }
  .email-line { gap:var(--space-1); font-size:var(--type-small); }
  footer { font-size:var(--type-small); gap:var(--space-2); }
