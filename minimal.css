@@ -35,16 +35,16 @@ a:hover { color:inherit; }
  font-weight:500;
 }
 .intro-links a:first-child {
- background:var(--ink);
- border-color:var(--ink);
- color:var(--paper);
+ background:var(--orange);
+ border-color:var(--orange);
+ color:var(--palette-dark-paper);
 }
 .intro-links .link-note { color:inherit; font-size:var(--type-small); }
 @media (hover:hover) and (pointer:fine) {
  .introduction .intro-links a:hover { background:var(--article-surface); color:var(--ink); }
  .introduction .intro-links a:first-child:hover {
-  background:color-mix(in srgb,var(--ink) 88%,var(--paper));
-  color:var(--paper);
+  background:color-mix(in srgb,var(--orange) 88%,white);
+  color:var(--palette-dark-paper);
  }
 }
 .new-section,.quiet-section { padding:0; border:0; margin:var(--space-7) 0 0; }
