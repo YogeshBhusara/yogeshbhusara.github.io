@@ -97,12 +97,25 @@ a:hover { color:inherit; }
 .lab-links a { display:block; padding:var(--space-3) 0; border:0; }
 .lab-links strong { font-size:var(--type-small); font-weight:500; }
 .lab-links small { margin-top:var(--space-1); font-size:var(--type-small); }
-.personal-copy { display:grid; grid-template-columns:minmax(0,1fr) 112px; gap:var(--space-6); align-items:start; }
+.personal-copy { display:grid; grid-template-columns:minmax(0,1fr) 168px; gap:var(--space-7); align-items:start; }
 .personal-copy p { font-size:var(--type-body); line-height:1.7; }
 .personal-copy p+p { margin-top:var(--space-4); color:var(--muted); }
-.personal-copy img { width:112px; height:140px; object-fit:cover; border-radius:6px; }
-.personal-signature { display:flex; gap:var(--space-4); align-items:center; margin-top:var(--space-5); color:var(--muted); font-size:var(--type-small); }
-.personal-signature .studio-seal { width:72px; }
+.personal-portrait { position:relative; width:168px; }
+.personal-portrait > img { display:block; width:100%; height:auto; border-radius:6px; }
+.personal-signature {
+ position:absolute;
+ inset-inline-start:0;
+ bottom:var(--space-4);
+ transform:translateX(-50%);
+ color:var(--ink);
+}
+.personal-signature .studio-seal {
+ display:block;
+ width:72px;
+ background:var(--paper);
+ border:1px solid var(--line);
+ border-radius:50%;
+}
 #contact.connect { display:block; padding:0; margin-top:var(--space-7); border-top:0; }
 #contact.connect > h2 { font-size:var(--type-body); line-height:1.4; letter-spacing:-.025em; margin:0; font-weight:500; }
 .connect > p { font-size:var(--type-small); color:var(--muted); margin-top:var(--space-2); }
@@ -222,7 +235,7 @@ footer a { min-height:44px; font-size:var(--type-small); }
  .experiment-art { width:48px; height:48px; border-radius:10px; }
  .experiment-copy p { font-size:var(--type-small); }
  .personal-copy { grid-template-columns:minmax(0,1fr); gap:var(--space-4); }
- .personal-copy img { width:84px; height:105px; }
+ .personal-portrait { width:126px; margin-inline-start:36px; }
  .personal-copy p { font-size:var(--type-body); }
  .email-line { gap:var(--space-1); font-size:var(--type-small); }
  footer { font-size:var(--type-small); gap:var(--space-2); }
