@@ -112,7 +112,7 @@ a:hover { color:inherit; }
 .personal-signature .studio-seal {
  display:block;
  width:72px;
- background:var(--paper);
+ background:transparent;
  border:1px solid var(--line);
  border-radius:50%;
 }
