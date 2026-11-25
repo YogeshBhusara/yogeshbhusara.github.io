@@ -106,7 +106,7 @@ a:hover { color:inherit; }
  position:absolute;
  inset-inline-start:0;
  bottom:var(--space-4);
- transform:translate(-50%, calc(20px + 9.36px));
+ transform:translate(-50%, calc(10px + 9.36px));
  color:var(--ink);
 }
 .personal-signature .studio-seal {
