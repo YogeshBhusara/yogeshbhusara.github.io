@@ -34,7 +34,9 @@
   const link=e.target.closest('a');if(!link||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;
   const url=new URL(link.href,location.href);
   if(!dialog.isConnected||url.origin!==location.origin||!link.closest('.project-track,.case-sheet'))return;
-  if(!url.pathname.endsWith('.html')||url.pathname.endsWith('/index.html'))return;
+  const caseRoute=/^\/work\/[a-z0-9-]+\/?$/.test(url.pathname);
+  const legacyRoute=url.pathname.endsWith('.html')&&!url.pathname.endsWith('/index.html');
+  if(!caseRoute&&!legacyRoute)return;
   e.preventDefault();open(link);
  });
  function sessionKey(){try{return sessionStorage.getItem(sessionName);}catch{return null;}}
