@@ -126,8 +126,10 @@ a:hover { color:inherit; }
 .copy-email { display:grid; place-items:center; width:36px; height:44px; padding:0; color:var(--muted); background:transparent; border:0; border-radius:6px; cursor:pointer; }
 .copy-email[hidden] { display:none; }
 .copy-status { font-size:var(--type-small); color:var(--muted); }
-.social-links { display:flex; gap:var(--space-5); flex-wrap:wrap; margin-top:var(--space-4); }
-.social-links a { display:inline-flex; gap:var(--space-2); align-items:center; min-height:44px; font-size:var(--type-small); color:var(--muted); }
+.social-links { display:flex; gap:var(--space-1); flex-wrap:wrap; margin-top:var(--space-4); }
+.social-links a { display:grid; place-items:center; width:44px; height:44px; border-radius:50%; color:var(--muted); }
+.social-links a:is(:hover,:focus-visible) { color:var(--ink); background:var(--article-surface); }
+.social-links svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.65; stroke-linecap:round; stroke-linejoin:round; }
 footer { display:flex; justify-content:space-between; align-items:center; gap:var(--space-5); padding:var(--space-5) 0 var(--space-6); margin-top:var(--space-6); border-top:1px solid var(--line); color:var(--muted); font-size:var(--type-small); }
 footer a { min-height:44px; font-size:var(--type-small); }
 .local-time { display:flex; align-items:center; gap:var(--space-2); font-variant-numeric:tabular-nums; }
