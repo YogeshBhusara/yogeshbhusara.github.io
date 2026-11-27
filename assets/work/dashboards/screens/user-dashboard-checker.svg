@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 940" width="1600" height="940"><foreignObject width="1600" height="940"><div xmlns="http://www.w3.org/1999/xhtml" style="--primary-color:#216b9b;--primary-text-color:#253044;--portal-secondary-text-color:#56657b;--portal-primary-btn-color:#216b9b;--portal-primary-btn-text-color:#fff;--links-color:#216b9b;--links-hover-color:#154a6e;--status-error-color:#a82d39;--status-success-color:#27804d;--field-border-color:#cfd8e1;--field-row-bg:#f6f8fb;--portal-background-gray-color:#edf1f6;--portal-bg-color:#fff;--disabled-text-color:#69778b;--status-scheduled:#b98327;--status-pending-color:#b98327;--portal-highlight-bg-color:#eaf2fc;--portal-border-color:#d6dfea;--menu-border-color:#d6dfea;--left-nav-primary-color:#364b66;--top-nav-color:#216b9b;--user-portal-bg:#edf1f6"><div style="position:relative;width:1600px;height:940px;overflow:hidden;background:var(--portal-background-gray-color);font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);font-size:14px;line-height:normal;">
+
+  <div style="position:absolute;left:0;top:0;right:0;height:60px;box-sizing:border-box;background:#fff;border-bottom:1px solid var(--field-border-color);display:flex;align-items:center;gap:24px;padding:0 24px 0 20px;z-index:5;">
+    <div style="display:flex;align-items:center;gap:10px;width:220px;"><span style="display:inline-flex;align-items:center;gap:9px;"><span style="width:28px;height:28px;flex:none;border-radius:8px;background:var(--primary-color);display:inline-flex;align-items:center;justify-content:center;color:#fff;"><span style="font-size:13px;"></span></span><span style="font-size:16px;font-weight:700;letter-spacing:-.01em;color:var(--primary-text-color);">Workspace</span></span><span style="font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--field-row-bg);border:1px solid var(--field-border-color);">Admin</span></div>
+    <div style="flex:1;display:flex;justify-content:center;"><div style="width:420px;height:38px;box-sizing:border-box;border-radius:10px;background:var(--field-row-bg);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--portal-secondary-text-color);"><span style=""></span><span style="flex:1;">Search settings</span></div></div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="height:34px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:0 12px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid var(--field-border-color);"><span style="font-size:12px;"></span>User Portal</span>
+      <span style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;color:var(--portal-secondary-text-color);"><span style="font-size:17px;"></span></span>
+      <span style="width:34px;height:34px;border-radius:50%;background:color-mix(in srgb, var(--primary-color) 14%, #fff);color:var(--primary-color);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;">AM</span>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:0;top:60px;bottom:0;width:76px;box-sizing:border-box;background:#fff;border-right:1px solid var(--field-border-color);padding:14px 8px;display:flex;flex-direction:column;gap:4px;z-index:4;">
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);"><span style="font-size:17px;">⌂</span><span style="font-size:10.5px;font-weight:500;">Home</span></div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);"><span style="font-size:17px;"></span><span style="font-size:10.5px;font-weight:500;">Users</span></div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:color-mix(in srgb, var(--primary-color) 10%, #fff);color:var(--primary-color);"><span style="font-size:17px;"></span><span style="font-size:10.5px;font-weight:700;">Modules</span></div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);"><span style="font-size:17px;"></span><span style="font-size:10.5px;font-weight:500;">Navigation</span></div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);"><span style="font-size:17px;"></span><span style="font-size:10.5px;font-weight:500;">Branding</span></div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);"><span style="font-size:17px;"></span><span style="font-size:10.5px;font-weight:500;">Analytics</span></div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);"><span style="font-size:17px;"></span><span style="font-size:10.5px;font-weight:500;">Security</span></div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);"><span style="font-size:17px;"></span><span style="font-size:10.5px;font-weight:500;">Settings</span></div>
+
+  </div>
+
+  <div style="position:absolute;left:76px;top:60px;right:0;bottom:0;padding:24px 32px;box-sizing:border-box;">
+
+
+      <div style="font-size:12px;color:var(--portal-secondary-text-color);">Modules / Dashboards</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:6px;">
+        <div style="flex:1;display:flex;align-items:baseline;gap:12px;"><span style="font-size:24px;font-weight:700;letter-spacing:-.01em;">Dashboards</span><span style="font-size:13px;color:var(--portal-secondary-text-color);font-weight:600;">5 of 25 dashboards</span></div>
+        <div style="display:flex;padding:3px;border-radius:10px;background:color-mix(in srgb, var(--field-border-color) 45%, #fff);">
+          <span style="height:30px;box-sizing:border-box;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.12);">Dashboards</span>
+          <span style="height:30px;box-sizing:border-box;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;color:var(--portal-secondary-text-color);">Settings</span>
+        </div>
+        <span style="height:36px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:600;background:#fff;border:1px solid var(--field-border-color);white-space:nowrap;"><span style="color:var(--portal-secondary-text-color);"></span>Check a user</span>
+        <div style="position:relative;">
+          <span style="height:36px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:600;background:var(--portal-primary-btn-color);color:var(--portal-primary-btn-text-color);white-space:nowrap;opacity:1;"><span style="">+</span>New Dashboard</span>
+
+        </div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;background:color-mix(in srgb, var(--primary-color) 7%, #fff);border:1px solid color-mix(in srgb, var(--primary-color) 22%, #fff);font-size:13px;line-height:1.5;">
+        <span style="color:var(--primary-color);font-size:16px;"></span>
+        <span style="flex:1;">Each person sees the <b>first live dashboard</b> whose segment includes them. Drag rows to set priority. Everyone else sees the fallback.</span>
+      </div>
+
+      <div style="margin-top:16px;background:#fff;border:1px solid var(--field-border-color);border-radius:16px;">
+        <div style="display:grid;grid-template-columns:24px 28px minmax(0,1.5fr) minmax(0,1.5fr) 80px 150px 48px 92px 28px;align-items:center;gap:14px;padding:0 20px;height:44px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);">
+          <span></span><span>#</span><span>Dashboard</span><span>Audience</span><span>Layout</span><span>Status</span><span>On</span><span></span><span></span>
+        </div>
+
+          <div style="position:relative;">
+
+            <div style="display:grid;grid-template-columns:24px 28px minmax(0,1.5fr) minmax(0,1.5fr) 80px 150px 48px 92px 28px;align-items:center;gap:14px;padding:0 20px;height:78px;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);background:#fff;box-shadow:none;transform:none;border-radius:0;position:relative;z-index:1;">
+              <span style="color:var(--portal-secondary-text-color);font-size:14px;opacity:0.55;">⋮</span>
+              <span style="width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:var(--field-row-bg);color:var(--primary-text-color);">1</span>
+              <div style="min-width:0;"><div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Field Operations</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Routes, shifts and safety for field teams</div></div>
+              <div style="min-width:0;">
+                <div style="display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 10px;border-radius:13px;background:var(--field-row-bg);border:1px solid var(--field-border-color);font-size:12px;font-weight:600;max-width:100%;box-sizing:border-box;"><span style="font-size:11px;color:var(--portal-secondary-text-color);">♙</span><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Field Staff</span></div>
+                <div style="font-size:12px;margin-top:5px;color:var(--portal-secondary-text-color);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">860 people</div>
+              </div>
+              <span style="font-size:13px;display:flex;align-items:center;gap:6px;"><span style="color:var(--portal-secondary-text-color);"></span>3 col</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:700;background:color-mix(in srgb, var(--status-success-color) 12%, #fff);color:var(--status-success-color);width:max-content;"><span style="width:7px;height:7px;border-radius:50%;background:var(--status-success-color);"></span>Live</span>
+              <span style="opacity:1;position:relative;display:inline-block;width:36px;height:20px;border-radius:10px;background:var(--primary-color);"><span style="position:absolute;top:2px;left:18px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);"></span></span>
+              <span style="height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid var(--field-border-color);background:#fff;">Manage</span>
+              <span style="font-size:16px;color:var(--portal-secondary-text-color);text-align:center;">⋯</span>
+            </div>
+
+          </div>
+
+          <div style="position:relative;">
+
+            <div style="display:grid;grid-template-columns:24px 28px minmax(0,1.5fr) minmax(0,1.5fr) 80px 150px 48px 92px 28px;align-items:center;gap:14px;padding:0 20px;height:78px;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);background:#fff;box-shadow:none;transform:none;border-radius:0;position:relative;z-index:1;">
+              <span style="color:var(--portal-secondary-text-color);font-size:14px;opacity:0.55;">⋮</span>
+              <span style="width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:var(--field-row-bg);color:var(--primary-text-color);">2</span>
+              <div style="min-width:0;"><div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sales Team Hub</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pipeline news, playbooks and targets</div></div>
+              <div style="min-width:0;">
+                <div style="display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 10px;border-radius:13px;background:var(--field-row-bg);border:1px solid var(--field-border-color);font-size:12px;font-weight:600;max-width:100%;box-sizing:border-box;"><span style="font-size:11px;color:var(--portal-secondary-text-color);">♙</span><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sales – North America</span></div>
+                <div style="font-size:12px;margin-top:5px;color:color-mix(in srgb, var(--status-scheduled) 70%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">1,240 people · 310 also in Field Staff see #1</div>
+              </div>
+              <span style="font-size:13px;display:flex;align-items:center;gap:6px;"><span style="color:var(--portal-secondary-text-color);"></span>3 col</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:700;background:color-mix(in srgb, color-mix(in srgb, var(--status-scheduled) 70%, #222) 16%, #fff);color:color-mix(in srgb, var(--status-scheduled) 70%, #222);width:max-content;"><span style="width:7px;height:7px;border-radius:50%;background:color-mix(in srgb, var(--status-scheduled) 70%, #222);"></span>Live · draft changes</span>
+              <span style="opacity:1;position:relative;display:inline-block;width:36px;height:20px;border-radius:10px;background:var(--primary-color);"><span style="position:absolute;top:2px;left:18px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);"></span></span>
+              <span style="height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid var(--field-border-color);background:#fff;">Manage</span>
+              <span style="font-size:16px;color:var(--portal-secondary-text-color);text-align:center;">⋯</span>
+            </div>
+
+          </div>
+
+          <div style="position:relative;">
+
+            <div style="display:grid;grid-template-columns:24px 28px minmax(0,1.5fr) minmax(0,1.5fr) 80px 150px 48px 92px 28px;align-items:center;gap:14px;padding:0 20px;height:78px;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);background:#fff;box-shadow:none;transform:none;border-radius:0;position:relative;z-index:1;">
+              <span style="color:var(--portal-secondary-text-color);font-size:14px;opacity:0.55;">⋮</span>
+              <span style="width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:var(--field-row-bg);color:var(--primary-text-color);">3</span>
+              <div style="min-width:0;"><div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">New Hire Onboarding</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">First 90 days: checklists and contacts</div></div>
+              <div style="min-width:0;">
+                <div style="display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 10px;border-radius:13px;background:var(--field-row-bg);border:1px solid var(--field-border-color);font-size:12px;font-weight:600;max-width:100%;box-sizing:border-box;"><span style="font-size:11px;color:var(--portal-secondary-text-color);">♙</span><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Joined in Last 90 Days</span></div>
+                <div style="font-size:12px;margin-top:5px;color:var(--portal-secondary-text-color);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">96 people</div>
+              </div>
+              <span style="font-size:13px;display:flex;align-items:center;gap:6px;"><span style="color:var(--portal-secondary-text-color);"></span>3 col</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:700;background:color-mix(in srgb, var(--status-success-color) 12%, #fff);color:var(--status-success-color);width:max-content;"><span style="width:7px;height:7px;border-radius:50%;background:var(--status-success-color);"></span>Live</span>
+              <span style="opacity:1;position:relative;display:inline-block;width:36px;height:20px;border-radius:10px;background:var(--primary-color);"><span style="position:absolute;top:2px;left:18px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);"></span></span>
+              <span style="height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid var(--field-border-color);background:#fff;">Manage</span>
+              <span style="font-size:16px;color:var(--portal-secondary-text-color);text-align:center;">⋯</span>
+            </div>
+
+          </div>
+
+          <div style="position:relative;">
+
+            <div style="display:grid;grid-template-columns:24px 28px minmax(0,1.5fr) minmax(0,1.5fr) 80px 150px 48px 92px 28px;align-items:center;gap:14px;padding:0 20px;height:78px;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);background:#fff;box-shadow:none;transform:none;border-radius:0;position:relative;z-index:1;">
+              <span style="color:var(--portal-secondary-text-color);font-size:14px;opacity:0.55;">⋮</span>
+              <span style="width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:var(--field-row-bg);color:var(--primary-text-color);">4</span>
+              <div style="min-width:0;"><div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Leadership Briefing</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Strategy updates and reports</div></div>
+              <div style="min-width:0;">
+                <div style="display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 10px;border-radius:13px;background:var(--field-row-bg);border:1px solid var(--field-border-color);font-size:12px;font-weight:600;max-width:100%;box-sizing:border-box;"><span style="font-size:11px;color:var(--portal-secondary-text-color);">♙</span><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Directors and Above</span></div>
+                <div style="font-size:12px;margin-top:5px;color:var(--portal-secondary-text-color);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">48 people</div>
+              </div>
+              <span style="font-size:13px;display:flex;align-items:center;gap:6px;"><span style="color:var(--portal-secondary-text-color);"></span>4 col</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:700;background:var(--field-row-bg);color:var(--portal-secondary-text-color);width:max-content;"><span style="width:7px;height:7px;border-radius:50%;background:var(--portal-secondary-text-color);"></span>Off</span>
+              <span style="opacity:1;position:relative;display:inline-block;width:36px;height:20px;border-radius:10px;background:var(--field-border-color);"><span style="position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);"></span></span>
+              <span style="height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid var(--field-border-color);background:#fff;">Manage</span>
+              <span style="font-size:16px;color:var(--portal-secondary-text-color);text-align:center;">⋯</span>
+            </div>
+
+          </div>
+
+          <div style="position:relative;">
+
+            <div style="display:grid;grid-template-columns:24px 28px minmax(0,1.5fr) minmax(0,1.5fr) 80px 150px 48px 92px 28px;align-items:center;gap:14px;padding:0 20px;height:78px;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);background:var(--field-row-bg);box-shadow:none;transform:none;border-radius:0 0 16px 16px;position:relative;z-index:1;">
+              <span style="color:var(--portal-secondary-text-color);font-size:14px;opacity:0.7;">▣</span>
+              <span style="width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:transparent;color:var(--primary-text-color);"></span>
+              <div style="min-width:0;"><div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Default Network Users Dashboard</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">For everyone not matched above</div></div>
+              <div style="min-width:0;">
+                <div style="display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 10px;border-radius:13px;background:var(--field-row-bg);border:1px solid var(--field-border-color);font-size:12px;font-weight:600;max-width:100%;box-sizing:border-box;"><span style="font-size:11px;color:var(--portal-secondary-text-color);"></span><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Everyone else</span></div>
+                <div style="font-size:12px;margin-top:5px;color:var(--portal-secondary-text-color);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">1,204 people</div>
+              </div>
+              <span style="font-size:13px;display:flex;align-items:center;gap:6px;"><span style="color:var(--portal-secondary-text-color);"></span>3 col</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:12px;font-size:12px;font-weight:700;background:color-mix(in srgb, var(--primary-color) 10%, #fff);color:var(--primary-color);width:max-content;"><span style="width:7px;height:7px;border-radius:50%;background:var(--primary-color);"></span>Fallback</span>
+              <span style="opacity:0;position:relative;display:inline-block;width:36px;height:20px;border-radius:10px;background:var(--field-border-color);"><span style="position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);"></span></span>
+              <span style="height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid var(--field-border-color);background:#fff;">Manage</span>
+              <span style="font-size:16px;color:var(--portal-secondary-text-color);text-align:center;">⋯</span>
+            </div>
+
+          </div>
+
+      </div>
+
+
+
+  </div>
+
+
+    <div style="position:absolute;left:76px;top:60px;right:0;bottom:0;background:rgba(16,24,40,.18);z-index:9;"></div>
+    <div style="position:absolute;top:60px;right:0;bottom:0;width:520px;box-sizing:border-box;background:#fff;border-left:1px solid var(--field-border-color);box-shadow:-20px 0 50px rgba(16,24,40,.14);z-index:10;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;gap:10px;padding:20px 24px 16px;border-bottom:1px solid var(--field-border-color);"><span style="flex:1;font-size:18px;font-weight:700;">Check a user</span><span style="font-size:17px;color:var(--portal-secondary-text-color);">×</span></div>
+
+
+        <div style="padding:20px 24px;display:flex;flex-direction:column;gap:16px;overflow:hidden;">
+          <div style="font-size:13px;line-height:1.5;color:var(--portal-secondary-text-color);">Find out which dashboard a person sees and why.</div>
+          <div style="height:40px;box-sizing:border-box;border:1px solid var(--primary-color);box-shadow:0 0 0 3px color-mix(in srgb, var(--primary-color) 18%, transparent);border-radius:8px;display:flex;align-items:center;gap:8px;padding:0 6px 0 12px;"><span style="color:var(--portal-secondary-text-color);"></span><span style="display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 6px 0 4px;border-radius:14px;background:var(--field-row-bg);border:1px solid var(--field-border-color);font-size:13px;font-weight:600;"><span style="width:20px;height:20px;border-radius:50%;background:color-mix(in srgb, var(--primary-color) 14%, #fff);color:var(--primary-color);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;">AS</span>Ana Silva<span style="font-size:10px;color:var(--portal-secondary-text-color);">×</span></span></div>
+          <div style="border-radius:12px;background:color-mix(in srgb, var(--status-success-color) 9%, #fff);border:1px solid color-mix(in srgb, var(--status-success-color) 30%, #fff);padding:14px 16px;display:flex;gap:12px;align-items:center;">
+            <span style="width:40px;height:40px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--status-success-color);font-size:17px;"><span style=""></span></span>
+            <div><div style="font-size:12px;color:var(--portal-secondary-text-color);">Ana sees</div><div style="font-size:17px;font-weight:700;margin-top:2px;">Field Operations</div></div>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);margin-top:4px;">How it was chosen</div>
+          <div style="display:flex;flex-direction:column;">
+
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);opacity:1;">
+                <span style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:var(--field-row-bg);border:1px solid var(--field-border-color);">1</span>
+                <div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;">Field Operations</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:2px;">Ana is in Field Staff</div></div>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--status-success-color);white-space:nowrap;"><span style="">✓</span>Shown</span>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);opacity:1;">
+                <span style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:var(--field-row-bg);border:1px solid var(--field-border-color);">2</span>
+                <div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;">Sales Team Hub</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:2px;">Ana is in Sales – North America</div></div>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--portal-secondary-text-color);white-space:nowrap;"><span style=""></span>Skipped, lower priority</span>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);opacity:0.6;">
+                <span style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:var(--field-row-bg);border:1px solid var(--field-border-color);">3</span>
+                <div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;">New Hire Onboarding</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:2px;">Ana joined in 2023</div></div>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--portal-secondary-text-color);white-space:nowrap;"><span style="">×</span>Not in segment</span>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);opacity:0.6;">
+                <span style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:var(--field-row-bg);border:1px solid var(--field-border-color);">4</span>
+                <div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;">Leadership Briefing</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:2px;">Switched off</div></div>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--portal-secondary-text-color);white-space:nowrap;"><span style=""></span>Off</span>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid color-mix(in srgb, var(--field-border-color) 60%, #fff);opacity:0.6;">
+                <span style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:var(--field-row-bg);border:1px solid var(--field-border-color);">–</span>
+                <div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;">Default Network Users Dashboard</div><div style="font-size:12px;color:var(--portal-secondary-text-color);margin-top:2px;">Fallback</div></div>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--portal-secondary-text-color);white-space:nowrap;"><span style=""></span>Not needed</span>
+              </div>
+
+          </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+</div>
+</div></foreignObject></svg>
