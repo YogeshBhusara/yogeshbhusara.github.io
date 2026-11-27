@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 940" width="1600" height="940"><foreignObject width="1600" height="940"><div xmlns="http://www.w3.org/1999/xhtml" style="--primary-color:#216b9b;--primary-text-color:#253044;--portal-secondary-text-color:#56657b;--portal-primary-btn-color:#216b9b;--portal-primary-btn-text-color:#fff;--links-color:#216b9b;--links-hover-color:#154a6e;--status-error-color:#a82d39;--status-success-color:#27804d;--danger-btn-color:#a82d39;--field-border-color:#cfd8e1;--field-row-bg:#f6f8fb;--portal-background-gray-color:#edf1f6">
+<div style="position:relative;width:1600px;height:940px;overflow:hidden;background:var(--portal-background-gray-color);font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);font-size:14px;line-height:normal;">
+
+
+
+
+  <div style="position:absolute;left:0;top:0;right:0;height:60px;box-sizing:border-box;background:#fff;border-bottom:1px solid var(--field-border-color);display:flex;align-items:center;gap:24px;padding:0 24px 0 20px;z-index:5;">
+    <div style="display:flex;align-items:center;gap:10px;width:220px;">
+      <span style="width:32px;height:32px;border-radius:9px;background:var(--primary-color);display:flex;align-items:center;justify-content:center;color:#fff;"></span>
+      <span style="font-size:17px;font-weight:700;letter-spacing:-.01em;">Workspace</span>
+    </div>
+    <div style="flex:1;display:flex;justify-content:center;">
+      <div style="width:420px;height:38px;box-sizing:border-box;border-radius:10px;background:var(--field-row-bg);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--portal-secondary-text-color);font-size:14px;"><span style="flex:1;">Search</span><span style="font-size:11px;border:1px solid var(--field-border-color);border-radius:5px;padding:1px 6px;background:#fff;">⌘K</span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;width:36px;height:36px;"></span>
+      <span style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;width:36px;height:36px;position:relative;"><span style="position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:var(--status-error-color);border:2px solid #fff;"></span></span>
+      <span style="width:34px;height:34px;border-radius:50%;margin-left:8px;background:color-mix(in srgb, var(--primary-color) 14%, #fff);color:var(--primary-color);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;">AM</span>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:0;top:60px;bottom:0;width:76px;box-sizing:border-box;background:#fff;border-right:1px solid var(--field-border-color);padding:14px 8px;display:flex;flex-direction:column;gap:4px;z-index:4;">
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Home</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Feed</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Messages</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:color-mix(in srgb, var(--primary-color) 10%, #fff);color:var(--primary-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:700;">Posts</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:17px;">▦</span><span style="font-size:10.5px;font-weight:400;">Calendar</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Docs</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Trackers</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">People</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:17px;">⋯</span><span style="font-size:10.5px;font-weight:400;">More</span>
+      </div>
+
+  </div>
+
+  <div style="position:absolute;left:76px;top:60px;right:0;bottom:0;padding:28px 32px;box-sizing:border-box;">
+    <div style="display:flex;align-items:center;gap:12px;height:36px;">
+      <div style="flex:1;font-size:24px;font-weight:700;letter-spacing:-.01em;">Posts</div>
+      <div style="display:flex;padding:3px;border-radius:10px;background:color-mix(in srgb, var(--field-border-color) 45%, #fff);">
+        <span style="height:30px;box-sizing:border-box;display:flex;align-items:center;gap:7px;padding:0 12px;border-radius:8px;font-size:13px;font-weight:700;background:transparent;color:var(--portal-secondary-text-color);box-shadow:none;"><span style="">▦</span>Calendar</span>
+        <span style="height:30px;box-sizing:border-box;display:flex;align-items:center;gap:7px;padding:0 12px;border-radius:8px;font-size:13px;font-weight:700;background:#fff;color:var(--primary-text-color);box-shadow:0 1px 2px rgba(16,24,40,.12);"><span style="">≡</span>List</span>
+      </div>
+      <span style="height:36px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;background:#fff;border:1px solid var(--field-border-color);color:var(--primary-text-color);">Admin Tools</span>
+      <span style="height:36px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;background:var(--portal-primary-btn-color);border:1px solid transparent;color:var(--portal-primary-btn-text-color);"><span style="">+</span>Tools</span>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;margin-top:24px;">
+
+        <div style="width:188px;flex:none;margin-right:24px;">
+          <div style="padding:0 12px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--portal-secondary-text-color);">Show</div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">All Published</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:color-mix(in srgb, var(--primary-color) 10%, #fff);color:var(--primary-color);font-weight:700;">All Planned</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">My Planned</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Announcements</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Must Read</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Ticker Tape</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Pinned</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Archived</div>
+
+          </div>
+        </div>
+
+
+
+
+
+        <div style="flex:1;min-width:0;background:#fff;border:1px solid var(--field-border-color);border-radius:16px;overflow:hidden;">
+          <div style="display:flex;align-items:center;gap:8px;padding:14px 20px;border-bottom:1px solid var(--field-border-color);"><span title="Click to expand/collapse" style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;"><span style="font-size:13px;">⌄</span></span><span style="font-size:15px;font-weight:700;">All Planned</span><span style="font-size:13px;color:var(--portal-secondary-text-color);">10 posts</span></div>
+          <div style="display:grid;grid-template-columns:52px minmax(0,20fr) repeat(6, minmax(0,13.33fr)) 48px;align-items:center;">
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;"><span style="margin-left:10px;width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;">Title</div>
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;">Status</div>
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;">Audience</div>
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;">Creator</div>
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;">Created On</div>
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;">Last Modified On</div>
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;">Planned/Scheduled On</div>
+
+              <div style="height:44px;display:flex;align-items:center;gap:5px;padding:0 10px;box-sizing:border-box;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);background:var(--field-row-bg);border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);white-space:nowrap;overflow:hidden;"></div>
+
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">Holiday Party RSVP</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #EEB037 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #EEB037 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#EEB037;flex:none;"></span>Scheduled</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Everyone</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Jessica Lee</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/18/2026 10:04 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/26/2026 04:12 PM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/27/2026 10:00 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">Winter Weather Policy Update</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #95A0AD 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #95A0AD 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#95A0AD;flex:none;"></span>Draft</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">HR Team</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Admin</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/27/2026 05:20 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/27/2026 05:31 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">-</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">December IT Maintenance Window</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #4E5661 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #4E5661 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#4E5661;flex:none;"></span>Pending Approval</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">IT Team</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Raj Patel</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/20/2026 02:40 PM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/25/2026 11:02 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/27/2026 11:00 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">Q4 Town Hall Recap</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #298C29 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #298C29 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#298C29;flex:none;"></span>Published</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Everyone</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Admin</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/23/2026 09:12 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/23/2026 09:12 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">-</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">Food Drive Results</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #0CB4E9 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #0CB4E9 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#0CB4E9;flex:none;"></span>Idea</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Everyone</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Jessica Lee</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/24/2026 03:15 PM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/24/2026 03:15 PM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/27/2026 08:00 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">Employee Spotlight: Team member</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #4E5661 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #4E5661 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#4E5661;flex:none;"></span>Pending Moderation</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Marketing</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dana Wu</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/21/2026 01:00 PM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/22/2026 09:45 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/28/2026 09:00 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">Parking Lot Resurfacing</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #FF1814 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #FF1814 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#FF1814;flex:none;"></span>Declined</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Facilities</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Tom Becker</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/19/2026 08:55 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/24/2026 10:10 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/28/2026 10:30 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">New Hire Welcome Series</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #0CB4E9 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #0CB4E9 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#0CB4E9;flex:none;"></span>Idea</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Everyone</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Admin</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/26/2026 11:30 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/26/2026 11:30 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">-</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">Open Enrollment Last Call</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #95A0AD 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #95A0AD 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#95A0AD;flex:none;"></span>Draft</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">HR Team</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Admin</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/16/2026 04:05 PM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/20/2026 12:22 PM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/24/2026 09:00 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px 0 20px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);"><span style="width:16px;height:16px;box-sizing:border-box;border:1px solid var(--field-border-color);border-radius:4px;background:#fff;"></span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;">Gratitude Wall Photos</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);overflow:hidden;"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:12px;background:color-mix(in srgb, #0CB4E9 12%, #fff);font-size:12px;font-weight:700;color:color-mix(in srgb, #0CB4E9 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="width:6px;height:6px;border-radius:50%;background:#0CB4E9;flex:none;"></span>Idea</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Everyone</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Jessica Lee</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/17/2026 09:00 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;color:var(--portal-secondary-text-color);"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/17/2026 09:00 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;padding:0 10px;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);font-size:13px;"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">11/25/2026 08:30 AM</span></div>
+              <div style="height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);color:var(--portal-secondary-text-color);"><span style="">⋯</span></div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div></foreignObject></svg>

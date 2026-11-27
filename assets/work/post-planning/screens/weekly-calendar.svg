@@ -1,0 +1,721 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 940" width="1600" height="940"><foreignObject width="1600" height="940"><div xmlns="http://www.w3.org/1999/xhtml" style="--primary-color:#216b9b;--primary-text-color:#253044;--portal-secondary-text-color:#56657b;--portal-primary-btn-color:#216b9b;--portal-primary-btn-text-color:#fff;--links-color:#216b9b;--links-hover-color:#154a6e;--status-error-color:#a82d39;--status-success-color:#27804d;--danger-btn-color:#a82d39;--field-border-color:#cfd8e1;--field-row-bg:#f6f8fb;--portal-background-gray-color:#edf1f6">
+<div style="position:relative;width:1600px;height:940px;overflow:hidden;background:var(--portal-background-gray-color);font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);font-size:14px;line-height:normal;">
+
+
+
+
+  <div style="position:absolute;left:0;top:0;right:0;height:60px;box-sizing:border-box;background:#fff;border-bottom:1px solid var(--field-border-color);display:flex;align-items:center;gap:24px;padding:0 24px 0 20px;z-index:5;">
+    <div style="display:flex;align-items:center;gap:10px;width:220px;">
+      <span style="width:32px;height:32px;border-radius:9px;background:var(--primary-color);display:flex;align-items:center;justify-content:center;color:#fff;"></span>
+      <span style="font-size:17px;font-weight:700;letter-spacing:-.01em;">Workspace</span>
+    </div>
+    <div style="flex:1;display:flex;justify-content:center;">
+      <div style="width:420px;height:38px;box-sizing:border-box;border-radius:10px;background:var(--field-row-bg);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--portal-secondary-text-color);font-size:14px;"><span style="flex:1;">Search</span><span style="font-size:11px;border:1px solid var(--field-border-color);border-radius:5px;padding:1px 6px;background:#fff;">⌘K</span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;width:36px;height:36px;"></span>
+      <span style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;width:36px;height:36px;position:relative;"><span style="position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:var(--status-error-color);border:2px solid #fff;"></span></span>
+      <span style="width:34px;height:34px;border-radius:50%;margin-left:8px;background:color-mix(in srgb, var(--primary-color) 14%, #fff);color:var(--primary-color);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;">AM</span>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:0;top:60px;bottom:0;width:76px;box-sizing:border-box;background:#fff;border-right:1px solid var(--field-border-color);padding:14px 8px;display:flex;flex-direction:column;gap:4px;z-index:4;">
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Home</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Feed</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Messages</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:color-mix(in srgb, var(--primary-color) 10%, #fff);color:var(--primary-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:700;">Posts</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:17px;">▦</span><span style="font-size:10.5px;font-weight:400;">Calendar</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Docs</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">Trackers</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:10.5px;font-weight:400;">People</span>
+      </div>
+
+      <div style="height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;color:var(--portal-secondary-text-color);cursor:pointer;">
+        <span style="font-size:17px;">⋯</span><span style="font-size:10.5px;font-weight:400;">More</span>
+      </div>
+
+  </div>
+
+  <div style="position:absolute;left:76px;top:60px;right:0;bottom:0;padding:28px 32px;box-sizing:border-box;">
+    <div style="display:flex;align-items:center;gap:12px;height:36px;">
+      <div style="flex:1;font-size:24px;font-weight:700;letter-spacing:-.01em;">Posts</div>
+      <div style="display:flex;padding:3px;border-radius:10px;background:color-mix(in srgb, var(--field-border-color) 45%, #fff);">
+        <span style="height:30px;box-sizing:border-box;display:flex;align-items:center;gap:7px;padding:0 12px;border-radius:8px;font-size:13px;font-weight:700;background:#fff;color:var(--primary-text-color);box-shadow:0 1px 2px rgba(16,24,40,.12);"><span style="">▦</span>Calendar</span>
+        <span style="height:30px;box-sizing:border-box;display:flex;align-items:center;gap:7px;padding:0 12px;border-radius:8px;font-size:13px;font-weight:700;background:transparent;color:var(--portal-secondary-text-color);box-shadow:none;"><span style="">≡</span>List</span>
+      </div>
+      <span style="height:36px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;background:#fff;border:1px solid var(--field-border-color);color:var(--primary-text-color);">Admin Tools</span>
+      <span style="height:36px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;background:var(--portal-primary-btn-color);border:1px solid transparent;color:var(--portal-primary-btn-text-color);"><span style="">+</span>Tools</span>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;margin-top:24px;">
+
+        <div style="width:188px;flex:none;margin-right:24px;">
+          <div style="padding:0 12px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--portal-secondary-text-color);">Show</div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">All Published</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:color-mix(in srgb, var(--primary-color) 10%, #fff);color:var(--primary-color);font-weight:700;">All Planned</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">My Planned</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Announcements</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Must Read</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Ticker Tape</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Pinned</div>
+
+              <div style="height:36px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:14px;cursor:pointer;background:transparent;color:var(--primary-text-color);font-weight:400;">Archived</div>
+
+          </div>
+        </div>
+
+
+
+        <div style="flex:1;min-width:0;display:flex;align-items:flex-start;">
+          <div style="flex:1;min-width:300px;background:#fff;border:1px solid var(--field-border-color);border-radius:16px;padding:0 24px;box-sizing:border-box;position:relative;height:764px;overflow:hidden;">
+            <div style="display:flex;align-items:center;gap:8px;padding:16px 0;">
+              <div style="flex:1;display:flex;align-items:center;gap:8px;min-width:0;">
+                <span title="Click to expand/collapse" style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;"><span style="font-size:13px;">⌄</span></span>
+                <span style="height:36px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;background:#fff;border:1px solid var(--field-border-color);color:var(--primary-text-color);height:32px;font-size:13px;padding:0 12px;">Today</span>
+                <span style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;"><span style="font-size:12px;">‹</span></span>
+                <span style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;margin-left:-6px;"><span style="font-size:12px;">›</span></span>
+                <span style="display:flex;align-items:center;gap:8px;font-size:17px;font-weight:700;cursor:pointer;white-space:nowrap;">Nov 22 – Nov 28, 2026</span>
+              </div>
+
+                <div style="display:flex;padding:3px;border-radius:10px;background:color-mix(in srgb, var(--field-border-color) 45%, #fff);">
+
+                    <span style="height:28px;box-sizing:border-box;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;background:transparent;color:var(--portal-secondary-text-color);box-shadow:none;">Day</span>
+
+                    <span style="height:28px;box-sizing:border-box;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;background:#fff;color:var(--primary-text-color);box-shadow:0 1px 2px rgba(16,24,40,.12);">Week</span>
+
+                    <span style="height:28px;box-sizing:border-box;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:700;background:transparent;color:var(--portal-secondary-text-color);box-shadow:none;">Month</span>
+
+                </div>
+
+
+            </div>
+
+
+              <div style="display:flex;height:56px;border-bottom:1px solid var(--field-border-color);">
+                <div style="width:56px;flex:none;"></div>
+
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);">Sun</span>
+                    <span style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;background:transparent;color:var(--primary-text-color);">22</span>
+                  </div>
+
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);">Mon</span>
+                    <span style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;background:transparent;color:var(--primary-text-color);">23</span>
+                  </div>
+
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);">Tue</span>
+                    <span style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;background:transparent;color:var(--primary-text-color);">24</span>
+                  </div>
+
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);">Wed</span>
+                    <span style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;background:transparent;color:var(--primary-text-color);">25</span>
+                  </div>
+
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);">Thu</span>
+                    <span style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;background:transparent;color:var(--primary-text-color);">26</span>
+                  </div>
+
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary-color);">Fri</span>
+                    <span style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;background:var(--primary-color);color:#fff;">27</span>
+                  </div>
+
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--portal-secondary-text-color);">Sat</span>
+                    <span style="width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;background:transparent;color:var(--primary-text-color);">28</span>
+                  </div>
+
+              </div>
+              <div style="position:relative;">
+
+                  <div style="display:flex;height:83px;box-sizing:border-box;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);">
+                    <div style="width:56px;flex:none;box-sizing:border-box;padding:6px 10px 0 0;text-align:right;font-size:11px;color:var(--portal-secondary-text-color);">8am</div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                  <div style="display:flex;height:83px;box-sizing:border-box;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);">
+                    <div style="width:56px;flex:none;box-sizing:border-box;padding:6px 10px 0 0;text-align:right;font-size:11px;color:var(--portal-secondary-text-color);">8:30am</div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                  <div style="display:flex;height:83px;box-sizing:border-box;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);">
+                    <div style="width:56px;flex:none;box-sizing:border-box;padding:6px 10px 0 0;text-align:right;font-size:11px;color:var(--portal-secondary-text-color);">9am</div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                  <div style="display:flex;height:83px;box-sizing:border-box;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);">
+                    <div style="width:56px;flex:none;box-sizing:border-box;padding:6px 10px 0 0;text-align:right;font-size:11px;color:var(--portal-secondary-text-color);">9:30am</div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                  <div style="display:flex;height:83px;box-sizing:border-box;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);">
+                    <div style="width:56px;flex:none;box-sizing:border-box;padding:6px 10px 0 0;text-align:right;font-size:11px;color:var(--portal-secondary-text-color);">10am</div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                  <div style="display:flex;height:83px;box-sizing:border-box;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);">
+                    <div style="width:56px;flex:none;box-sizing:border-box;padding:6px 10px 0 0;text-align:right;font-size:11px;color:var(--portal-secondary-text-color);">10:30am</div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                  <div style="display:flex;height:83px;box-sizing:border-box;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);">
+                    <div style="width:56px;flex:none;box-sizing:border-box;padding:6px 10px 0 0;text-align:right;font-size:11px;color:var(--portal-secondary-text-color);">11am</div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                  <div style="display:flex;height:83px;box-sizing:border-box;border-bottom:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);">
+                    <div style="width:56px;flex:none;box-sizing:border-box;padding:6px 10px 0 0;text-align:right;font-size:11px;color:var(--portal-secondary-text-color);">11:30am</div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                <div style="position:absolute;left:56px;right:0;top:0;bottom:0;display:flex;">
+
+                    <div style="flex:1;min-width:0;position:relative;border-left:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);background:transparent;">
+
+                        <div style="position:absolute;left:4px;right:4px;top:5px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:#fff;border:1px solid var(--field-border-color);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#298C29;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #298C29 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Published</span>
+
+        </div>
+
+      </div>
+      <div title="Thanksgiving Week Office Hours" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Thanksgiving Week Office Hours</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">08:00 AM</span> · Everyone</span>
+
+
+        <span style="font-size:10px;color:var(--portal-secondary-text-color);">ⓘ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div style="flex:1;min-width:0;position:relative;border-left:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);background:transparent;">
+
+                        <div style="position:absolute;left:4px;right:4px;top:171px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:#fff;border:1px solid var(--field-border-color);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#298C29;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #298C29 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Published</span>
+
+        </div>
+
+      </div>
+      <div title="Q4 Town Hall Recap" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Q4 Town Hall Recap</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">09:12 AM</span> · Everyone</span>
+
+
+        <span style="font-size:10px;color:var(--portal-secondary-text-color);">ⓘ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div style="flex:1;min-width:0;position:relative;border-left:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);background:transparent;">
+
+                        <div style="position:absolute;left:4px;right:4px;top:171px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:color-mix(in srgb, var(--status-error-color) 9%, #fff);border:1px solid color-mix(in srgb, var(--status-error-color) 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#95A0AD;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #95A0AD 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Draft</span>
+          <span style="font-size:10px;font-weight:700;color:var(--status-error-color);white-space:nowrap;">· Overdue</span>
+        </div>
+
+      </div>
+      <div title="Open Enrollment Last Call" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Open Enrollment Last Call</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">09:00 AM</span> · HR Team</span>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div style="flex:1;min-width:0;position:relative;border-left:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);background:transparent;">
+
+                        <div style="position:absolute;left:4px;right:4px;top:88px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:color-mix(in srgb, var(--status-error-color) 9%, #fff);border:1px solid color-mix(in srgb, var(--status-error-color) 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#0CB4E9;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #0CB4E9 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Idea</span>
+          <span style="font-size:10px;font-weight:700;color:var(--status-error-color);white-space:nowrap;">· Overdue</span>
+        </div>
+
+      </div>
+      <div title="Gratitude Wall Photos" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Gratitude Wall Photos</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">08:30 AM</span> · Everyone</span>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div style="flex:1;min-width:0;position:relative;border-left:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);background:transparent;">
+
+                    </div>
+
+                    <div style="flex:1;min-width:0;position:relative;border-left:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);background:color-mix(in srgb, var(--primary-color) 3%, #fff);">
+
+                        <div style="position:absolute;left:4px;right:4px;top:5px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:color-mix(in srgb, #0CB4E9 10%, #fff);border:1px solid color-mix(in srgb, #0CB4E9 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#0CB4E9;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #0CB4E9 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Idea</span>
+
+        </div>
+
+      </div>
+      <div title="Food Drive Results" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Food Drive Results</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">08:00 AM</span> · Everyone</span>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                          <div style="margin-top:3px;font-size:11px;font-weight:700;color:var(--links-color);">+2 more</div>
+                        </div>
+
+                        <div style="position:absolute;left:4px;right:4px;top:337px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:color-mix(in srgb, #EEB037 10%, #fff);border:1px solid color-mix(in srgb, #EEB037 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#EEB037;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #EEB037 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Scheduled</span>
+
+        </div>
+
+      </div>
+      <div title="Holiday Party RSVP" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Holiday Party RSVP</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">10:00 AM</span> · Everyone</span>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                        </div>
+
+                        <div style="position:absolute;left:4px;right:4px;top:503px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:color-mix(in srgb, #4E5661 10%, #fff);border:1px solid color-mix(in srgb, #4E5661 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#4E5661;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #4E5661 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pending Approval</span>
+
+        </div>
+
+      </div>
+      <div title="December IT Maintenance Window" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">December IT Maintenance Window</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">11:00 AM</span> · IT Team</span>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div style="flex:1;min-width:0;position:relative;border-left:1px solid color-mix(in srgb, var(--field-border-color) 55%, #fff);background:transparent;">
+
+                        <div style="position:absolute;left:4px;right:4px;top:171px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:color-mix(in srgb, #4E5661 10%, #fff);border:1px dashed #95A0AD;box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#4E5661;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #4E5661 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pending Moderation</span>
+
+        </div>
+
+      </div>
+      <div title="Employee Spotlight: Team member" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Employee Spotlight: Team member</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">09:00 AM</span> · Marketing</span>
+
+
+        <span style="font-size:10px;color:var(--portal-secondary-text-color);">ⓘ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                        </div>
+
+                        <div style="position:absolute;left:4px;right:4px;top:420px;z-index:1;">
+
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:62.7px;background:color-mix(in srgb, #FF1814 10%, #fff);border:1px solid color-mix(in srgb, #FF1814 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#FF1814;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #FF1814 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Declined</span>
+
+        </div>
+
+      </div>
+      <div title="Parking Lot Resurfacing" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Parking Lot Resurfacing</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-weight:700;">10:30 AM</span> · Facilities</span>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+              </div>
+
+
+
+
+
+
+
+          </div>
+
+
+            <div style="width:288px;flex:none;box-sizing:border-box;background:#fff;border:1px solid var(--field-border-color);border-radius:16px;margin-left:24px;padding-bottom:16px;position:relative;overflow:hidden;height:764px;">
+              <div style="display:flex;align-items:center;gap:4px;padding:14px 12px 10px 18px;">
+                <div style="flex:1;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;">Unplanned<span style="min-width:22px;height:22px;box-sizing:border-box;padding:0 7px;border-radius:11px;background:var(--field-row-bg);border:1px solid var(--field-border-color);font-size:11px;display:flex;align-items:center;justify-content:center;">6</span><span style="font-size:13px;color:var(--portal-secondary-text-color);font-weight:400;">ⓘ</span></div>
+                <span style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;"></span>
+                <span style="width:32px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--portal-secondary-text-color);cursor:pointer;"><span style="font-size:15px;">×</span></span>
+              </div>
+              <div style="padding:0 18px 14px;font-size:12px;line-height:1.45;color:var(--portal-secondary-text-color);">Drag and drop a post on the calendar to plan it.</div>
+
+              <div style="padding:0 12px;display:flex;flex-direction:column;gap:8px;">
+
+
+                  <div style="cursor:move;">
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:auto;background:color-mix(in srgb, #95A0AD 10%, #fff);border:1px solid color-mix(in srgb, #95A0AD 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#95A0AD;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #95A0AD 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Draft</span>
+
+        </div>
+
+          <span style="width:14px;height:14px;box-sizing:border-box;border-radius:4px;border:1px solid var(--field-border-color);background:#fff;display:flex;align-items:center;justify-content:center;flex:none;"></span>
+
+      </div>
+      <div title="Winter Weather Policy Update" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Winter Weather Policy Update</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">HR Team</span>
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);white-space:nowrap;">2 hours ago</span>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+                  <div style="cursor:move;">
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:auto;background:color-mix(in srgb, #0CB4E9 10%, #fff);border:1px solid color-mix(in srgb, #0CB4E9 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#0CB4E9;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #0CB4E9 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Idea</span>
+
+        </div>
+
+          <span style="width:14px;height:14px;box-sizing:border-box;border-radius:4px;border:1px solid var(--field-border-color);background:#fff;display:flex;align-items:center;justify-content:center;flex:none;"></span>
+
+      </div>
+      <div title="New Hire Welcome Series" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">New Hire Welcome Series</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Everyone</span>
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);white-space:nowrap;">1 day ago</span>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+                  <div style="cursor:move;">
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:auto;background:color-mix(in srgb, #0CB4E9 10%, #fff);border:1px solid color-mix(in srgb, #0CB4E9 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#0CB4E9;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #0CB4E9 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Idea</span>
+
+        </div>
+
+          <span style="width:14px;height:14px;box-sizing:border-box;border-radius:4px;border:1px solid var(--field-border-color);background:#fff;display:flex;align-items:center;justify-content:center;flex:none;"></span>
+
+      </div>
+      <div title="CEO Year-in-Review Video" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">CEO Year-in-Review Video</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Everyone</span>
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);white-space:nowrap;">3 days ago</span>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+                  <div style="cursor:move;">
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:auto;background:color-mix(in srgb, #95A0AD 10%, #fff);border:1px solid color-mix(in srgb, #95A0AD 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#95A0AD;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #95A0AD 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Draft</span>
+
+        </div>
+
+          <span style="width:14px;height:14px;box-sizing:border-box;border-radius:4px;border:1px solid var(--field-border-color);background:#fff;display:flex;align-items:center;justify-content:center;flex:none;"></span>
+
+      </div>
+      <div title="Wellness Challenge Kickoff" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Wellness Challenge Kickoff</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Multiple Teams</span>
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);white-space:nowrap;">5 days ago</span>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+                  <div style="cursor:move;">
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:auto;background:color-mix(in srgb, #FF1814 10%, #fff);border:1px solid color-mix(in srgb, #FF1814 26%, #fff);box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#FF1814;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #FF1814 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Declined</span>
+
+        </div>
+
+          <span style="width:14px;height:14px;box-sizing:border-box;border-radius:4px;border:1px solid var(--field-border-color);background:#fff;display:flex;align-items:center;justify-content:center;flex:none;"></span>
+
+      </div>
+      <div title="Cafeteria Menu Changes" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Cafeteria Menu Changes</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Facilities</span>
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);white-space:nowrap;">1 week ago</span>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+                  <div style="cursor:move;">
+<div style="opacity:1;transform:none;">
+  <div style="display:flex;gap:8px;padding:7px 9px;border-radius:8px;box-sizing:border-box;cursor:pointer;min-height:auto;background:color-mix(in srgb, #4E5661 10%, #fff);border:1px dashed #95A0AD;box-shadow:none;font-family:Montserrat, Arial, Helvetica, sans-serif;color:var(--primary-text-color);">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:3px;overflow:hidden;min-width:0;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;flex:1;min-width:0;overflow:hidden;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#4E5661;flex:none;"></span>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb, #4E5661 72%, #222);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pending Moderation</span>
+
+        </div>
+
+      </div>
+      <div title="Safety Award Winners" style="font-size:12px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Safety Award Winners</div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Operations</span>
+        <span style="font-size:10.5px;color:var(--portal-secondary-text-color);white-space:nowrap;">2 weeks ago</span>
+
+        <span style="font-size:10px;color:var(--portal-secondary-text-color);">ⓘ</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+              </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div></foreignObject></svg>
