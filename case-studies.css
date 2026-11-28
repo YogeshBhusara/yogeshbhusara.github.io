@@ -1,14 +1,14 @@
 /* A generous reading sheet, with a quiet, compact password gate. */
-.case-sheet { position:fixed; inset:auto 0 0; width:calc(100% - 48px); max-width:1280px; height:calc(100dvh - 48px); max-height:none; margin:0 auto; padding:0; overflow-y:auto; overscroll-behavior:contain; border:0; border-radius:24px 24px 0 0; color:var(--ink); background:var(--paper); box-shadow:0 -12px 64px #0002; }
+.case-sheet { position:fixed; inset:auto 0 0; width:calc(100% - clamp(0px, 16vw - 96px, 48px)); max-width:1280px; height:calc(100dvh - 48px); max-height:none; margin:0 auto; padding:0; overflow-y:auto; overscroll-behavior:contain; border:0; border-radius:24px 24px 0 0; color:var(--ink); background:var(--paper); box-shadow:0 -12px 64px #0002; }
 .case-sheet::backdrop { background:#15171570; backdrop-filter:blur(5px); }
 .case-sheet[open] { animation:case-sheet-in 360ms cubic-bezier(.32,.72,0,1) both; }
 .case-sheet-top { position:sticky; top:0; height:48px; z-index:4; pointer-events:none; }
 .sheet-handle { position:absolute; top:10px; left:calc(50% - 16px); width:32px; height:4px; border-radius:8px; background:var(--muted); opacity:.35; }
 .sheet-close { display:grid; place-items:center; pointer-events:auto; position:absolute; top:12px; right:16px; width:40px; height:40px; border:1px solid var(--line); border-radius:50%; color:var(--ink); background:var(--paper); cursor:pointer; }
-.case-sheet-content { padding:8px 48px 64px; }
+.case-sheet-content { padding:8px clamp(20px, 10vw - 40px, 48px) 64px; }
 .case-sheet-content > .case { max-width:880px; }
 .case-sheet .case h1,.protected-case h1 { max-width:30ch; font-size:var(--type-title); line-height:1.3; letter-spacing:-.025em; margin:16px 0; }
-.case-sheet .case .lead,.protected-case .lead { max-width:58ch; margin:0 0 32px; font-size:var(--type-body); line-height:1.65; }
+.case-sheet .case .lead,.protected-case .lead { max-width:none; margin:0 0 32px; font-size:var(--type-body); line-height:1.65; }
 .case-intro > .micro { color:var(--muted); }
 .case-cover { margin:32px 0; padding:24px; border-radius:16px; background:var(--article-surface); }
 .case-cover img { display:block; width:100%; height:100%; max-height:460px; object-fit:contain; border-radius:8px; }
@@ -35,13 +35,12 @@
 .is-unlocked .case-section { display:block; border:0; padding:32px 0; }
 .is-unlocked .case-section h2 { margin-bottom:24px; font-size:var(--type-title); }
 .is-unlocked .case-section h3 { font-size:var(--type-body); margin:24px 0 8px; }
-.is-unlocked .case-section p { max-width:66ch; font-size:var(--type-body); }
 .sheet-loading { margin:48px auto; max-width:880px; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
 .case-sheet :is(button,a,input):focus-visible,.protected-case :is(button,a,input):focus-visible { outline:2px solid var(--focus,var(--orange)); outline-offset:4px; }
 .case-sheet button:disabled { opacity:.5; cursor:default; transform:none; }
 @keyframes case-sheet-in { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
-@media(max-width:600px) { .case-sheet { width:100%; height:calc(100dvh - 16px); border-radius:20px 20px 0 0; } .case-sheet-content { padding:8px 20px 48px; } .case-cover,.is-unlocked .figure { padding:12px; } .case-intro dl { grid-template-columns:1fr; gap:16px; } .case-access { padding:16px; } .access-form,.password-entry { width:100%; } .password-entry input { flex:1; } .case-access { margin-top:32px; } }
+@media(max-width:600px) { .case-sheet { width:100%; height:calc(100dvh - 16px); border-radius:20px 20px 0 0; } .case-sheet-content { padding-bottom:48px; } .case-cover,.is-unlocked .figure { padding:12px; } .case-intro dl { grid-template-columns:1fr; gap:16px; } .case-access { padding:16px; } .access-form,.password-entry { width:100%; } .password-entry input { flex:1; } .case-access { margin-top:32px; } }
 @media(prefers-reduced-motion:reduce) { .case-sheet[open] { animation:case-sheet-fade 160ms ease-out both; } @keyframes case-sheet-fade { from { opacity:0; } to { opacity:1; } } }
 
 /* Match the portfolio's numbered section headings in every case study. */
