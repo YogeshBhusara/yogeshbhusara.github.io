@@ -402,7 +402,8 @@ body { font-size:var(--type-body); font-weight:400; }
 @media(max-width:600px) {
   .featured-project-info { display:block; min-height:64px; padding-bottom:var(--space-2); }
   .featured-project-info p { font-size:var(--type-small); }
-  .project-track { --gallery-inset:20px; --gallery-width:84vw; gap:var(--space-4); }
+  .project-track { --gallery-inset:20px; --gallery-width:84vw; --gallery-height:calc(var(--gallery-width) * .75); gap:var(--space-4); }
+  .project-track .plate:is(.calendar,.dash) .screen { top:6%; }
   .project-track::before { margin-right:calc(-1 * var(--space-4)); }
   .project-track .project-cell { flex-basis:var(--gallery-width); }
   .project-track .project-preview-label,.gallery-case { bottom:var(--space-2); padding:var(--space-1) var(--space-2); min-height:32px; }

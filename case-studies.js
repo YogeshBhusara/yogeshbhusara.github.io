@@ -27,7 +27,7 @@
    const article=document.createElement('article');article.className=main.dataset.payload?'case protected-case':'case';if(main.dataset.payload)article.dataset.payload=main.dataset.payload;article.innerHTML=main.innerHTML;
    content.replaceChildren(article);dialog.scrollTop=0;
    dialog.setAttribute('aria-label',article.querySelector('h1').textContent);
-   if(main.dataset.payload)init(article);else{article.querySelector('.back')?.remove();const hero=article.querySelector('.figure'),lead=article.querySelector('.lead');if(hero&&lead)lead.after(hero);}
+   if(main.dataset.payload)init(article);else{article.querySelector('.back')?.remove();const hero=article.querySelector(':scope > .figure'),lead=article.querySelector('.lead');if(hero&&lead)lead.after(hero);}
   }catch{if(token===opening)content.innerHTML='<p role="alert">This case study could not load. Please close it and try again.</p>';}
  }
  document.addEventListener('click',e=>{
@@ -64,7 +64,7 @@
   root.querySelector('.access-status').textContent='';
   const original=root.innerHTML;root.replaceChildren(toolbar,...parsed.body.firstElementChild.childNodes);root.classList.add('is-unlocked');
   root.querySelector('.back')?.remove();
-  const hero=root.querySelector('.figure'),lead=root.querySelector('.lead');
+  const hero=root.querySelector(':scope > .figure'),lead=root.querySelector('.lead');
   if(hero&&lead)lead.after(hero);
   const title=root.querySelector('h1');title.tabIndex=-1;
   if(root.closest('.case-sheet')){dialog.scrollTop=0;title.focus({preventScroll:true});}
